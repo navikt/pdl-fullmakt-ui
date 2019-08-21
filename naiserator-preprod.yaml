@@ -1,0 +1,29 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: pdl-fullmakt-ui
+  namespace: default
+  labels:
+    team: {{team}}
+spec:
+  image: {{version}}
+  port: 80
+  ingresses:
+    - "https://fullmakt.nais.oera-q.local/fullmakt"
+    - "https://www-q0.nav.no/fullmakt"
+  replicas:
+    min: 1
+    max: 2
+    cpuThresholdPercentage: 50
+  liveness:
+    path: fullmakt/index.html
+    initialDelay: 60
+  readiness:
+    path: fullmakt/index.html
+    initialDelay: 60
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      memory: 128Mi

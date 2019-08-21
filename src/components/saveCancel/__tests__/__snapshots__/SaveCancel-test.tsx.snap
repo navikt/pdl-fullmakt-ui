@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SaveCancel snapshot should match snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-xs-6 col-sm-5 col-md-2 col-mdOffset-d"
+    style={
+      Object {
+        "border": "none",
+        "textAlign": "center",
+      }
+    }
+  >
+    <button
+      className="btn btn-outline-primary"
+      id="Save_2"
+      onClick={[Function]}
+      type="button"
+    >
+      Hii
+    </button>
+  </div>
+  <div
+    className="col-xs-6 col-sm-5 col-md-2 "
+    style={
+      Object {
+        "border": "none",
+        "textAlign": "center",
+      }
+    }
+  >
+    <button
+      className="btn btn-link"
+      disabled={true}
+      id="Cancel_2"
+      type="button"
+    >
+      Avbryt
+    </button>
+  </div>
+</div>
+`;

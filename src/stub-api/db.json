@@ -1,0 +1,578 @@
+{
+  "me": {
+    "username": "stub-api testbruker",
+    "permissions": {
+      "statusliste": true,
+      "personEndre": true
+    }
+  },
+  "data": {
+    "content": [
+      {
+        "informationTypeId": 1,
+        "name": "Sivilstand",
+        "description": "En overordnet kategori som beskriver en persons forhold til en annen person.",
+        "category": {
+          "codeListId": 1,
+          "listName": "CATEGORY",
+          "code": "PERSONALIA",
+          "description": "Personalia",
+          "createdBy": "Datajeger",
+          "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+          "lastModifiedBy": "",
+          "lastModifiedDate": ""
+        },
+        "producer": {
+          "codeListId": 12,
+          "listName": "PRODUCER",
+          "code": "FOLKEREGISTERET",
+          "description": "Informasjon fra Skatt",
+          "createdBy": "Datajeger",
+          "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+          "lastModifiedBy": "",
+          "lastModifiedDate": ""
+        },
+        "system": {
+          "codeListId": 21,
+          "listName": "SYSTEM",
+          "code": "TPS",
+          "description": "Tjenestebasert PersondataSystem",
+          "createdBy": "Datajeger",
+          "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+          "lastModifiedBy": "",
+          "lastModifiedDate": ""
+        },
+        "personalData": true,
+        "elasticsearchId": "",
+        "elasticsearchStatus": "",
+        "createdBy": "Datajeger",
+        "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+        "lastModifiedBy": "",
+        "lastModifiedDate": "",
+        "policy": [
+          {
+            "policyId": 1,
+            "purpose": {
+              "purposeId": 1111,
+              "purposeCode": "AAP",
+              "description": "Arbeidsavklaringspenger",
+              "createdBy": "Datajeger",
+              "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+              "lastModifiedBy": "",
+              "lastModifiedDate": ""
+            },
+            "legalBasisDescription": "???",
+            "legalBasis": {
+              "legalBasisid": 1,
+              "description": "§ FTL 14",
+              "createdBy": "Datajeger",
+              "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+              "lastModifiedBy": "",
+              "lastModifiedDate": ""
+            },
+            "createdBy": "Datajeger",
+            "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+            "lastModifiedBy": "",
+            "lastModifiedDate": ""
+          },
+          {
+            "policyId": 2345,
+            "purpose": {
+              "purposeId": 1211,
+              "purposeCode": "AAR",
+              "description": "Aa-registeret",
+              "createdBy": "Datajeger",
+              "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+              "lastModifiedBy": "",
+              "lastModifiedDate": ""
+            },
+            "legalBasisDescription": "???",
+            "legalBasis": {
+              "legalBasisid": 2,
+              "description": "§ FTL 17a, § FTL 17b, § FTL 14",
+              "createdBy": "Datajeger",
+              "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+              "lastModifiedBy": "",
+              "lastModifiedDate": ""
+            },
+            "createdBy": "Datajeger",
+            "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+            "lastModifiedBy": "",
+            "lastModifiedDate": ""
+          }
+        ],
+        "isOpen": true
+      },
+      {
+        "informationTypeId": 2,
+        "name": "Bostedsadresse",
+        "description": "En geografisk adresse fra Folkeregisteret som angir hvor en fysisk person bor i juridisk forstand. Adressen angir hvor den gitte personen er regnet som bosatt etter folkeregisterlovgivningen. Bostedsadressen fastsettes i et enkeltvedtak av Skatteetaten. Bostedsadressen vil alltid være en norsk stedsadresse eller en norsk gateadresse, og er en av tre godkjente geografiske adressetyper i TPS.",
+        "sourceOfRecord": "Folkeregisteret",
+        "personalData": true,
+        "itSystem": "tps"
+      },
+      {
+        "informationTypeId": 3,
+        "name": "Oppholdsadresse",
+        "description": "Angir hvor en bruker (BEGREP-20) oppholder seg når brukeren har en postadresse (BEGREP-658). Denne adressetypen brukes i fagsystemet Arena og erstatter de to adressetypene midlertidig og bolig",
+        "sourceOfRecord": "Bruker",
+        "personalData": true,
+        "itSystem": "tps"
+      },
+      {
+        "informationTypeId": 4,
+        "name": "Fødsel",
+        "description": "En nedkomst av ett eller flere barn. Fødselsbegrepet omfatter alle levendefødte barn uansett fødselstidspunkt, og dødfødt i 26. svangerskapsuke eller senere.",
+        "sourceOfRecord": "Folkeregisteret",
+        "personalData": true,
+        "itSystem": "tps"
+      },
+      {
+        "informationTypeId": 6,
+        "name": "Pensjonsgivende inntekt",
+        "description": "Ferdiglignet pensjonsgivende inntekt.",
+        "sourceOfRecord": "Skattedirektoratet",
+        "personalData": true,
+        "itSystem": "popp"
+      },
+      {
+        "informationTypeId": 7,
+        "name": "Arbeidsforhold",
+        "description": "Avtaleforhold hvor den ene part, arbeidstakeren, forplikter seg til å utføre arbeid mot lønn eller annen godtgjørelse for den annen part, arbeidsgiveren, i henhold til dennes ledelse.",
+        "sourceOfRecord": "Arbeidsgiver",
+        "personalData": true,
+        "itSystem": "aa-reg"
+      },
+      {
+        "informationTypeId": 8,
+        "name": "Telefonnummer",
+        "description": "Telefonnummer for å komme i kontakt med bruker.",
+        "sourceOfRecord": "Bruker",
+        "personalData": true,
+        "itSystem": "tps"
+      }
+    ],
+    "currentPage": 0,
+    "pageSize": 3,
+    "totalElements": 8
+  },
+  "informationType": {
+    "content": [
+      {
+        "createdBy": "Rituvesh",
+        "createdDate": 1558421034760,
+        "lastModifiedBy": null,
+        "lastModifiedDate": null,
+        "informationTypeId": 2,
+        "id": 2,
+        "name": "Sivilstand",
+        "description": "En overordnet kategori som beskriver en persons forhold til en annen person. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-176",
+        "category": {
+          "code": "REISEVEI",
+          "description": "Opplysninger om reisevei"
+        },
+        "producer": [
+          {
+            "code": "PRODUCER",
+            "description": "producer description"
+          },
+          {
+            "code": "PRODUCER 2",
+            "description": "producer description 2"
+          }
+        ],
+        "system": {
+          "code": "INST",
+          "description": "Institusjonsopphold"
+        },
+        "personalData": true,
+        "isOpen": true,
+        "isEdit": true
+      },
+      {
+        "createdBy": "Rituvesh",
+        "createdDate": 1558421304143,
+        "lastModifiedBy": null,
+        "lastModifiedDate": null,
+        "informationTypeId": 3,
+        "id": 3,
+        "name": "Arbeidsforhold",
+        "description": "Avtaleforhold hvor den ene part, arbeidstakeren, forplikter seg til å utføre arbeid mot lønn eller annen godtgjørelse for den annen part, arbeidsgiveren, i henhold til dennes ledelse. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-390",
+        "category": {
+          "code": "REISEVEI",
+          "description": "Opplysninger om reisevei"
+        },
+        "producer": [
+          {
+            "code": "PRODUCER",
+            "description": "producer description"
+          },
+          {
+            "code": "PRODUCER 2",
+            "description": "producer description 2"
+          }
+        ],
+        "system": {
+          "code": "INST",
+          "description": "Institusjonsopphold"
+        },
+        "personalData": true,
+        "isOpen": true
+      }
+    ],
+    "currentPage": 0,
+    "pageSize": 3,
+    "totalElements": 8
+  },
+  "informationTypePutPostDelete": [
+    {
+      "createdBy": "Rituvesh",
+      "createdDate": 1558421304143,
+      "lastModifiedBy": null,
+      "lastModifiedDate": null,
+      "informationTypeId": 3,
+      "id": 3,
+      "name": "Arbeidsforhold",
+      "description": "Avtaleforhold hvor den ene part, arbeidstakeren, forplikter seg til å utføre arbeid mot lønn eller annen godtgjørelse for den annen part, arbeidsgiveren, i henhold til dennes ledelse. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-390",
+      "category": {
+        "code": "REISEVEI",
+        "description": "Opplysninger om reisevei"
+      },
+      "producer": [
+        {
+          "code": "PRODUCER",
+          "description": "producer description"
+        },
+        {
+          "code": "PRODUCER 2",
+          "description": "producer description 2"
+        }
+      ],
+      "system": {
+        "code": "INST",
+        "description": "Institusjonsopphold"
+      },
+      "personalData": true,
+      "isOpen": true
+    }
+  ],
+  "policy": {
+    "content": [
+      {
+        "policyId": 1,
+        "informationType": {
+          "informationTypeId": 2,
+          "name": "Sivilstand",
+          "description": "En overordnet kategori som beskriver en persons forhold til en annen person. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-176",
+          "category": {
+            "code": "code for 7",
+            "description": "description for 7"
+          },
+          "producer": [
+            {
+              "code": "PRODUCER",
+              "description": "producer description"
+            },
+            {
+              "code": "PRODUCER 2",
+              "description": "producer description 2"
+            }
+          ],
+          "system": {
+            "code": "code for 28",
+            "description": "description for 28"
+          },
+          "personalData": true,
+          "createdBy": "Ketill Fenne",
+          "createdDate": 1558421034760,
+          "lastModifiedBy": null,
+          "lastModifiedDate": null
+        },
+        "purpose": {
+          "purposeId": 1111,
+          "code": "AAP",
+          "description": "Arbeidsavklaringspenger",
+          "createdBy": "Datajeger",
+          "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+          "lastModifiedBy": "",
+          "lastModifiedDate": ""
+        },
+        "legalBasisDescription": "§ FTL 14",
+        "createdBy": "Datajeger",
+        "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+        "lastModifiedBy": "",
+        "lastModifiedDate": ""
+      },
+      {
+        "policyId": 2345,
+        "informationType": {
+          "informationTypeId": 2,
+          "name": "Sivilstand",
+          "description": "En overordnet kategori som beskriver en persons forhold til en annen person. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-176",
+          "category": {
+            "code": "code for 7",
+            "description": "description for 7"
+          },
+          "producer": [
+            {
+              "code": "PRODUCER",
+              "description": "producer description"
+            },
+            {
+              "code": "PRODUCER 2",
+              "description": "producer description 2"
+            }
+          ],
+          "system": {
+            "code": "code for 28",
+            "description": "description for 28"
+          },
+          "personalData": true,
+          "createdBy": "Ketill Fenne",
+          "createdDate": 1558421034760,
+          "lastModifiedBy": null,
+          "lastModifiedDate": null
+        },
+        "purpose": {
+          "purposeId": 1211,
+          "code": "AAR",
+          "description": "Aa-registeret",
+          "createdBy": "Datajeger",
+          "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+          "lastModifiedBy": "",
+          "lastModifiedDate": ""
+        },
+        "legalBasisDescription": "§ FTL 17a, § FTL 17b, § FTL 14",
+        "createdBy": "Datajeger",
+        "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+        "lastModifiedBy": "",
+        "lastModifiedDate": "",
+        "isOpen": true
+      }
+    ],
+    "currentPage": 0,
+    "pageSize": 10,
+    "totalElements": 2
+  },
+  "policyPutPostDelete": [
+    {
+      "policyId": 1,
+      "id": 1,
+      "informationType": {
+        "informationTypeId": 2,
+        "name": "Sivilstand",
+        "description": "En overordnet kategori som beskriver en persons forhold til en annen person. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-176",
+        "category": {
+          "code": "code for 7",
+          "description": "description for 7"
+        },
+        "producer": [
+          {
+            "code": "PRODUCER",
+            "description": "producer description"
+          },
+          {
+            "code": "PRODUCER 2",
+            "description": "producer description 2"
+          }
+        ],
+        "system": {
+          "code": "code for 28",
+          "description": "description for 28"
+        },
+        "personalData": true,
+        "createdBy": "Ketill Fenne",
+        "createdDate": 1558421034760,
+        "lastModifiedBy": null,
+        "lastModifiedDate": null
+      },
+      "purpose": {
+        "purposeId": 1111,
+        "code": "AAP",
+        "description": "Arbeidsavklaringspenger",
+        "createdBy": "Datajeger",
+        "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+        "lastModifiedBy": "",
+        "lastModifiedDate": ""
+      },
+      "legalBasisDescription": "§ FTL 14",
+      "createdBy": "Datajeger",
+      "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+      "lastModifiedBy": "",
+      "lastModifiedDate": ""
+    },
+    {
+      "policyId": 2345,
+      "id": 2345,
+      "informationType": {
+        "informationTypeId": 2,
+        "name": "Sivilstand",
+        "description": "En overordnet kategori som beskriver en persons forhold til en annen person. Ref. til Begrepskatalog: https://jira.adeo.no/browse/BEGREP-176",
+        "category": {
+          "code": "code for 7",
+          "description": "description for 7"
+        },
+        "producer": [
+          {
+            "code": "PRODUCER",
+            "description": "producer description"
+          },
+          {
+            "code": "PRODUCER 2",
+            "description": "producer description 2"
+          }
+        ],
+        "system": {
+          "code": "code for 28",
+          "description": "description for 28"
+        },
+        "personalData": true,
+        "createdBy": "Ketill Fenne",
+        "createdDate": 1558421034760,
+        "lastModifiedBy": null,
+        "lastModifiedDate": null
+      },
+      "purpose": {
+        "purposeId": 1211,
+        "code": "AAR",
+        "description": "Aa-registeret",
+        "createdBy": "Datajeger",
+        "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+        "lastModifiedBy": "",
+        "lastModifiedDate": ""
+      },
+      "legalBasisDescription": "§ FTL 17a, § FTL 17b, § FTL 14",
+      "createdBy": "Datajeger",
+      "createdDate": "'2019-01-01 08:45:00 GMT+1'",
+      "lastModifiedBy": "",
+      "lastModifiedDate": "",
+      "isOpen": true
+    }
+  ],
+  "purpose": {
+    "PURPOSE": "purpose description",
+    "PURPOSE_2": "purpose description 2",
+    "aaa": "purpose description 3",
+    "RVE": "Rettferdsvederlag",
+    "OPB": "Oppfostringsbidrag",
+    "KLA": "Klage/Anke",
+    "OPA": "Oppfølging - Arbeidsgiver",
+    "HJE": "Hjelpemidler",
+    "KTR": "Kontroll",
+    "TRK": "Trekkhåndtering",
+    "OPP": "Oppfølging",
+    "STO": "Regnskap/utbetaling",
+    "TRY": "Trygdeavgift",
+    "SYK": "Sykepenger",
+    "AAD": "AAD",
+    "SYM": "Sykemeldinger",
+    "LGA": "Lønnsgaranti",
+    "FOR": "Foreldre- og svangerskapspenger",
+    "FOS": "Forsikring",
+    "MED": "Medlemskap",
+    "SUP": "Supplerende stønad",
+    "AAP": "Arbeidsavklaringspenger",
+    "GEN": "Generell",
+    "TSO": "Tilleggsstønad",
+    "AAR": "Aa-registeret",
+    "SAA": "Sanksjon - Arbeidsgiver",
+    "TSR": "Tilleggsstønad arbeidssøkere",
+    "OMS": "Omsorgspenger, Pleiepenger og opplæringspenger",
+    "SIK": "Sikkerhetstiltak",
+    "GRA": "Gravferdsstønad",
+    "IAR": "Inkluderende Arbeidsliv",
+    "ENF": "Enslig forsørger",
+    "SAK": "Saksomkostning",
+    "IND": "Individstønad",
+    "KNA": "Kontakt NAV",
+    "SER": "Serviceklager",
+    "KRG": "Krigspensjon",
+    "SAP": "Sanksjon - Person",
+    "ERS": "Erstatning",
+    "YRA": "Yrkesrettet attføring",
+    "OVR": "Øvrig",
+    "GRU": "Grunn- og hjelpestønad",
+    "AFP": "Avtalefestet pensjon",
+    "GJP": "Gjenlevendepensjon",
+    "RPO": "Retting av personopplysninger",
+    "YRK": "Yrkesskade / Menerstatning",
+    "FUL": "Fullmakt",
+    "BID": "Bidrag",
+    "UFM": "Unntak fra medlemskap",
+    "UFO": "Uføretrygd",
+    "MOB": "Mob.stønad",
+    "BII": "2 - Bidrag innkreving",
+    "BIL": "Bil",
+    "KOM": "Kommunale tjenester",
+    "DAG": "Dagpenger",
+    "FEI": "Feilutbetaling",
+    "KON": "Kontantstøtte",
+    "AGR": "Ajourhold - Grunnopplysninger",
+    "HEL": "Helsetjenester og ort. Hjelpemidler",
+    "EKT": "Ektefellebidrag",
+    "OKO": "Økonomi",
+    "BAR": "Barnetrygd",
+    "MOT": "3 - Skanning",
+    "REH": "Rehabilitering",
+    "UKJ": "Ukjent",
+    "FAR": "Farskap",
+    "TIL": "Tiltak",
+    "PEN": "Pensjon",
+    "REK": "Rekruttering og Stilling",
+    "ALD": "Alderspensjon",
+    "PER": "Permittering og masseoppsigelser",
+    "VEN": "Ventelønn"
+  },
+  "category": {
+    "CATEGORY": "category description",
+    "CATEGORY 2": "category description 2",
+    "aaa 3": "bbb category description 3",
+    "MOTORVOGNOPPLYSNINGER": "Motorvognopplysninger",
+    "REISEVEI": "Opplysninger om reisevei",
+    "KONTAKTOPPLYSNINGER": "Adresse og kontaktopplysninger",
+    "ARBEIDSFORHOLD": "Arbeidsforhold",
+    "OKONOMISKE_OPPLYSNINGER": "Andre økonomiske opplysninger",
+    "BIOMETRISKE_KJENNETEGN": "Biometriske kjennetegn som kan identifisere enkeltperson",
+    "HELSEOPPLYSNINGER": "Helseopplysninger",
+    "TRO_ETNISITET": "Opplysninger om trossamfunn og etnisitet",
+    "FAMILIERELASJONER": "Familierelasjoner",
+    "VERNEPLIKT": "Opplysninger om verneplikt",
+    "CV": "CV",
+    "SKOLE_BARNEHAGE": "Opplysninger om skole og barnehageplass",
+    "INSTITUSJONSOPPHOLD": "Institusjonsopphold",
+    "UTDANNING": "Utdanning",
+    "SKATTEOPPLYSNINGER": "Skatteopplysninger",
+    "MEDIER_KJENNETEGN": "Personportrett, video- og lydopptak som kan identifisere enkeltperson",
+    "PERSONALIA": "Personalia",
+    "FULLMEKTIG": "Verge og fullmektig",
+    "INNTEKT_YTELSER": "Inntekt, trygde- og pensjonsytelser",
+    "LOVOVERTREDELSER": "Straffedommer og lovovertredelser",
+    "FOLKETRYGD": "Opphold og medlemskap i folketrygden"
+  },
+  "system": {
+    "SYSTEM": "system description",
+    "SYSTEM 2": "system description 2",
+    "INFOTRYGD": "System for saksbehandling av ytelser og trygd",
+    "BISYS": "Bidragsløsningen",
+    "INST": "Institusjonsopphold",
+    "OPPDRAG": "Oppdragssystemet",
+    "TPS": "Tjenestebasert PersondataSystem",
+    "POPP": "Pensjonfaglig opptjeningsregiste",
+    "TP": "Tjenestepensjon",
+    "ARENA": "Arbeidsrelatert saksbehandlingsystem",
+    "AA_REG": "Arbeidsgiver / Arbeidstaker register",
+    "PESYS": "Pensjonssystem"
+  },
+  "producer": {
+    "PRODUCER": "producer description",
+    "PRODUCER 2": "producer description 2",
+    "aaa": "bbb key is different for search ",
+    "UTLENDINGSDIREKTORATET": "Utlendingsdirektoratet",
+    "ARBEIDSGIVER": "Arbeidsgiver",
+    "FOLKEREGISTERET": "Folkeregisteret",
+    "SKATTEETATEN": "Skatteetaten",
+    "BRUKER": "Informasjon oppgitt av bruker",
+    "UTENLANDS_TRYGDEMYNDIGHET": "Utenlands trygdemyndighet",
+    "REVISOR": "Revisor"
+  }
+}

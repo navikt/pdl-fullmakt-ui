@@ -1,0 +1,145 @@
+.Table {
+    width: 100%;
+    min-height: 150px;
+    padding: 5px;
+    overflow-x: auto;
+}
+
+.Table-row {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray}
+
+.Table-row.no-result {
+     height: 5rem;
+     border: none;
+ }
+
+.Table-row.header-row {
+    border-bottom: 1px solid gray;
+ }
+
+.Table-row.expandable {
+     cursor: pointer;
+ }
+
+.Table-row:focus {
+     outline: 0;
+     box-shadow: 0 0 0 0px blue;
+     border-radius: 2px;
+ }
+
+.Table-row.collapse-content {
+    width: 100%;
+}
+
+.Table-header {
+    font-weight: bold;
+    padding: 0.5rem;
+    text-align: left;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.Table-header.sortable {
+     cursor: pointer;
+ }
+
+.Table-header:focus {
+     outline: 0;
+     box-shadow: 0 0 0 3px orange;
+     border-radius: 2px;
+ }
+
+.Table-cell {
+    padding: 0.5rem;
+}
+
+.Row-toggle {
+    text-align: center;
+    width: 10%;
+    margin-left: auto;
+    display: flex;
+}
+
+.Row-toggle-header {
+    width: 7.2%;
+    margin-left: auto;
+}
+
+.Table-body {
+    width: 100%;
+}
+
+.Table-body.is-loading {
+     opacity: 1;
+ }
+
+.arrow-down {
+    content: '';
+    position: absolute;
+    top: -0.25rem;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    border-top: 0.35rem solid black;
+    border-radius: 2px;
+}
+
+.arrow-up {
+    content: '';
+    position: absolute;
+    top: -0.75rem;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    border-bottom: 0.35rem solid black;
+    border-radius: 2px;
+}
+
+.sort {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.5rem;
+    width: 0;
+    height: 0;
+}
+
+
+.sort:not(.asc):not(.desc)::before {
+    content: '';
+    position: absolute;
+    top: -0.75rem;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    border-bottom: 0.35rem solid black;
+    border-radius: 2px;
+ }
+
+.sort:not(.asc):not(.desc)::after {
+    content: '';
+    position: absolute;
+    top: -0.25rem;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    border-top: 0.35rem solid black;
+    border-radius: 2px;
+ }
+
+.sort.asc::before {
+    content: '';
+    /*position: absolute;*/
+    top: -0.75rem;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    border-bottom: 0.35rem solid black;
+    border-radius: 2px;
+ }
+.sort.desc::after {
+    content: '';
+    position: absolute;
+    top: -0.25rem;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    border-top: 0.35rem solid black;
+    border-radius: 2px;
+ }
+

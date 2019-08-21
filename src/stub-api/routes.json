@@ -1,0 +1,17 @@
+{
+  "/backend/records/allRecords?*": "/data",
+  "/backend/records/allRecords": "/data",
+  "/backend/informationtype": "/informationtype",
+  "/backend/informationtype?*": "/informationtype",
+
+  "/backend/informationtype/:informationTypeId": "/informationTypePutPostDelete/:informationTypeId",
+
+  "/policy/policy": "/policy",
+  "/policy/policy?*": "/policy",
+  "/policy/policy/:policyId": "/policyPutPostDelete/:policyId",
+
+  "/backend/codelist/purpose": "/purpose",
+  "/backend/codelist/category": "/category",
+  "/backend/codelist/system": "/system",
+  "/backend/codelist/producer": "/producer"
+}
