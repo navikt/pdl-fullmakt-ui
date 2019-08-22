@@ -4,3 +4,5 @@ README.md
 *.yml
 *.yaml
 Jenkinsfile
+LICENSE.md
+*.html
