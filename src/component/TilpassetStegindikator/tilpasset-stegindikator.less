@@ -1,0 +1,35 @@
+.tilpasset-stegindikator {
+    max-width: 100%;
+    margin: 2rem 2rem 0 2rem;
+
+    @media (max-width: 500px) {
+        margin: 0.5rem 2rem 0 2rem;
+    }
+
+    &__normal {
+        @media (max-width: 500px) {
+            display: none
+        }
+    }
+   
+    &__kompakt {
+        @media (max-width: 500px) {
+            display: unset
+        }
+     
+        display: none;
+     
+        &__full-bredde {
+            background-color: @navGra20;
+            border-radius: 10px;
+            height: 6px;
+        }
+
+        &__stegindikator {
+            background-color: @navLilla;
+            border-radius: 10px;
+            height: 6px;
+            margin-top: -6px;
+        }
+    }
+}

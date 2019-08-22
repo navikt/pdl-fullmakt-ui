@@ -1,0 +1,53 @@
+.barnehage {
+    &__ingress {
+        font-size: 1rem;
+        line-height: 1.4rem;
+        margin: 0 auto;
+        max-width: 20rem;
+        margin-top: .5rem;
+        text-align: center;
+    }
+
+    &__panel {
+        background-color: @panelBakgrunn;
+
+        & .inputPanelGruppe__inner {
+            margin-top: .5rem;
+        }
+    }
+
+    &__advarsel {
+        margin: .5rem 0 0 0;
+
+        .nav-veileder__frame--m {
+            height: unset;
+        }
+
+        &.nav-veileder--advarsel .nav-veileder__snakkeboble{
+            width: 100%;
+            max-width: 60rem;
+        }
+    }
+
+    & .barnehageplass__antallTimer--container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .barnehageplass__antallTimer-input {
+        margin: 0;
+    }
+
+
+    & .barnehageplass__antallTimer--advarsel {
+        margin-top: -2rem;
+        padding: .125rem;
+        margin-right: .5rem;
+        align-self: flex-end;
+        height: 2rem;
+    }
+
+    &__vedlegg {
+        width: 100%;
+    }
+}

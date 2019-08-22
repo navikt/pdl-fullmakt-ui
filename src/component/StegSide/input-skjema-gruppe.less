@@ -1,0 +1,38 @@
+.soknad__inputSkjemaGruppe {
+  margin-top: 1.25rem;
+
+  & .inputSkjemaGruppe__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > :first-child {
+      margin: 0;
+    }
+    & > :not(:first-child) {
+      margin: .5rem 0 0 0;
+    }
+  }
+
+  & .inputElement {
+    width: 100%;
+  }
+
+  & .skjemaelement__feilmelding {
+    padding-left: .5rem;
+  }
+
+  @media (min-width: 600px) {
+    & .inputElement {
+      width: calc(100%/2 - .25rem);
+    }
+    & .inputSkjemaGruppe__inner {
+      & > :nth-child(-n+2) {
+        margin: 0;
+      }
+      & > :nth-child(n+3) {
+        margin: .5rem 0 0 0;
+      }
+    }
+  }
+}

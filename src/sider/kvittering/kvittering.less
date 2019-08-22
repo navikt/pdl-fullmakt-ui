@@ -1,0 +1,54 @@
+.kvittering {
+    &__ikon-container {
+        margin-top: .5rem;
+        text-align: center;
+    }
+
+    &__ikon {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    &__tittel {
+        text-align: center;
+        margin: .5rem auto 2rem;
+    }
+
+    &__panel {
+        margin: 0 1rem;
+        max-width: 40rem;
+        border-color: rgb(6, 137, 58);
+        border-style: solid;
+        border-width: 1px;
+        padding: 0px 1rem;
+
+        &:last-child {
+            margin-bottom: 3.125rem;
+        }
+    }
+
+    &__utvidettabell {
+        border-collapse:separate;
+        border-spacing:0 1.5rem;
+    }
+
+    &__utvidettabell__venstrekolonne {
+        width: 4rem;
+    }
+
+    &__utvidettabell__alertstripe__ikon {
+        margin-right: 0.75rem;
+        padding-right: 0.75rem;
+        width: 2.5rem;
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        border-right: 1px solid rgb(183, 177, 169);
+    }
+}
+
+@media (min-width: 600px) {
+    .kvittering__panel {
+        margin: 0 auto 1rem;
+    }
+}

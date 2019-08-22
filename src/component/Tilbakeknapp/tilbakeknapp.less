@@ -1,0 +1,31 @@
+.tilbakeknapp {
+    width: 10.75rem;
+
+    &__nede {
+        margin-left: 1.25rem;
+    }
+    &__oppe {
+        display: none;
+        position: absolute;
+    }
+
+    &__ikon {
+        margin-bottom: 4px;
+        margin-right: 2px;
+    }
+
+    @media (max-width: 750px) {
+        &__nede {
+            display: none;
+        }
+
+        &__oppe {
+            display: unset;
+            font-style: normal;
+            font-weight: 300;
+            padding: 1rem 0 1rem 0;
+            text-transform: capitalize;
+            width: 5.5rem;
+        }
+    }
+}

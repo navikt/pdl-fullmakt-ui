@@ -1,0 +1,79 @@
+@import "./personopplysning";
+
+.veiledning {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &__veileder-container {
+    width: 100%;
+    margin-bottom: 5rem;
+    background-color: @navLillaLighten60;
+  }
+
+  &__veileder {
+    margin-bottom: -3.75rem;
+    padding-top: 1.25rem;
+  }
+
+  &__veileder-snakkeboble {
+    width: 12.5rem;
+  }
+
+  &__veileder-navn {
+    text-transform: capitalize;
+  }
+
+  &__sidetittel {
+    width: 90%;
+    text-align: center;
+  }
+
+  &__info {
+    margin-top: 1.25rem;
+    width: 90%;
+    text-align: center;
+  }
+
+  &__personopplysning {
+    margin-top: 1.25rem;
+    width: 90%;
+    text-align: center;
+  }
+
+  &__knapp {
+    margin: 1.875rem 0 2rem 0;
+    display: block;
+    width: 90%;
+  }
+
+  &__sprakvalg {
+    margin-top: 1rem;
+    label {
+      margin: 0;
+    }
+  }
+
+  &__bekreftelse {
+    margin-top: 1.25rem;
+    width: 90%;
+  }
+}
+
+@media (min-width: 600px) {
+  .veiledning {
+
+    &__sidetittel {
+      width: initial;
+    }
+
+    &__info, &__personopplysning, &__bekreftelse  {
+      max-width: 38rem;
+      width: 65%;
+    }
+
+    &__knapp {
+      width: initial;
+    }
+  }
+}

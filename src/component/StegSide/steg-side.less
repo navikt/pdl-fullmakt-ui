@@ -1,0 +1,54 @@
+@import "input-skjema-gruppe";
+@import "input-panel-gruppe";
+@import "hjelpetekst";
+
+
+.side-container {
+    padding: 0 1rem;
+    margin: 0 auto 6rem;
+    max-width: 40rem;
+
+    &__soknadtittel {
+        background-color: @navLillaLighten60;
+        padding: 1.25rem 0 1.25rem 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__ikon {
+        margin: 0 auto;
+        padding-top: 1.25rem;
+        width: 5rem;
+    }
+
+    &__sidetittel {
+        margin-top: .5rem;
+        text-align: center;
+    }
+
+    & .skjema__legend {
+        margin: 2rem 0 0 0;
+        font-size: 1rem;
+    }
+
+    & .panel {
+        margin-top: .5rem;
+        padding: .5rem 1rem 1rem 1rem;
+
+        & .radioPanel {
+            margin: .5rem 0 0 0;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .side-container {
+        margin: 0 auto 3rem;
+        &__ikon {
+            width: 4rem;
+        }
+        & .skjema__legend {
+            margin: 1.25rem 0 0 0;
+        }
+    }
+}

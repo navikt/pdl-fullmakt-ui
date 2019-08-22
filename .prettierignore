@@ -1,0 +1,6 @@
+*.json
+*.less
+README.md
+*.yml
+*.yaml
+Jenkinsfile

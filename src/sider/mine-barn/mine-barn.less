@@ -1,0 +1,25 @@
+.mine-barn {
+    &__sporsmal {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: .5rem;
+        justify-content: space-between;
+
+        .skjemaelement {
+            width: calc(100%/2 - .25rem);
+
+            @media (max-width: 600px) {
+                margin: 1rem 0 0;
+                width: 100%;
+            }
+        }
+    }
+
+    &__barn-navn {
+        font-weight: bold;
+    }
+
+    &__advarsel {
+        margin-top: .5rem;
+    }
+}
