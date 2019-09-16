@@ -1,0 +1,91 @@
+{
+  "name": "pdl-fullmakt-ui",
+  "version": "0.1.0",
+  "private": true,
+  "author": "NAV",
+  "license": "MIT",
+  "homepage": "/person/pdl-fullmakt-ui/",
+  "scripts": {
+    "start": "npm-run-all -p start:*",
+    "start:lint": "tslint src/**/*.ts*",
+    "start:ts": "react-scripts start",
+    "start:less": "less-watch-compiler",
+    "build:css": "less-watch-compiler --run-once",
+    "build:js": "react-scripts build",
+    "build": "npm-run-all -p build:*",
+    "docker-build": "docker build . -t pdl-fullmakt-ui",
+    "docker-start": "docker run --name pdl-fullmakt-ui -p 8080:8080 -t -d pdl-fullmakt-ui",
+    "docker-kill": "npm run docker-stop && npm run docker-rm",
+    "docker-rm": "docker rm pdl-fullmakt-ui",
+    "docker-stop": "docker stop pdl-fullmakt-ui"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "calidation": "^1.16.2",
+    "classnames": "^2.2.6",
+    "fetch-mock": "^7.3.9",
+    "less-plugin-npm-import": "^2.1.0",
+    "less-watch-compiler": "^1.13.0",
+    "lodash.throttle": "^4.1.1",
+    "nav-frontend-alertstriper": "^3.0.3",
+    "nav-frontend-alertstriper-style": "^2.0.2",
+    "nav-frontend-chevron-style": "^0.3.4",
+    "nav-frontend-core": "^4.0.9",
+    "nav-frontend-ikoner-assets": "^1.0.1",
+    "nav-frontend-js-utils": "^1.0.7",
+    "nav-frontend-knapper": "^1.0.30",
+    "nav-frontend-knapper-style": "^0.3.26",
+    "nav-frontend-lenkepanel": "^1.0.29",
+    "nav-frontend-lenkepanel-style": "^0.3.25",
+    "nav-frontend-lenker": "^1.0.27",
+    "nav-frontend-lenker-style": "^0.2.20",
+    "nav-frontend-paneler": "^1.0.17",
+    "nav-frontend-paneler-style": "^0.3.15",
+    "nav-frontend-skjema": "^1.0.67",
+    "nav-frontend-skjema-style": "^1.0.40",
+    "nav-frontend-spinner": "^1.0.18",
+    "nav-frontend-spinner-style": "^0.2.5",
+    "nav-frontend-typografi": "^2.0.12",
+    "nav-frontend-typografi-style": "^1.0.13",
+    "nav-frontend-veileder": "^2.0.11",
+    "nav-frontend-veileder-style": "^2.0.8",
+    "nav-frontend-veilederpanel": "^0.1.14",
+    "nav-frontend-veilederpanel-style": "0.0.17",
+    "npm-run-all": "^4.1.5",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-select": "^3.0.4",
+    "typescript": "3.5.3"
+  },
+  "devDependencies": {
+    "@types/calidation": "^1.16.0",
+    "@types/fetch-mock": "^7.3.1",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.6.6",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/react-select": "^3.0.2",
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
+    "tslint-react": "^4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+body {
+  background-color: white !important;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pagecontent {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1em 2rem 1rem;
+}
+
+.nav-veileder {
+  &__frame {
+    height: 100% !important;
+  }
+}
+
+.flex__rad {
+  display: flex;
+  @media @tablet {
+    flex-direction: column;
+  }
+  @media @desktop {
+    flex-direction: row;
+  }
+}
+
+.flex__kolonne-left,
+.flex__kolonne-right {
+  @media @mobile {
+    width: 100%;
+  }
+  @media @desktop {
+    width: 50%;
+  }
+}
+
+.flex__kolonne-left {
+  @media @desktop {
+    padding-right: 0.25rem;
+  }
+}
+.flex__kolonne-right {
+  @media @desktop {
+    padding-left: 0.25rem;
+  }
+}
+
+.mellomrom {
+  margin: 1rem 0;
+}
+
+.tb__knapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.25rem;
+  .knapp {
+    width: 12rem;
+  }
+}
+.tb__knapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.radioPanel {
+  &__bool {
+    .inputPanelGruppe__inner {
+      @media @desktop {
+        display: flex;
+        :first-child {
+          margin-right: 0.25rem;
+        }
+
+        :last-child {
+          margin-left: 0.25rem;
+        }
+
+        > * {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.knapp--hoved {
+  max-height: 2.5rem;
+}
+
+label {
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.divider {
+  margin: 1rem 0;
+  border-top: 1px solid #78706a;
+}
