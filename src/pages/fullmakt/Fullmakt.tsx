@@ -38,7 +38,7 @@ export type OutboundFullmakt = OutboundFullmaktBase &
   OutboundFullmaktExtend;
 
 const Fullmakt = (props: RouteComponentProps) => {
-  document.title = "Klage på service - www.nav.no";
+  document.title = "Fullmakt service - www.nav.no";
 
   const [{ auth }] = useStore();
   const [loading, settLoading] = useState(false);

@@ -5,7 +5,7 @@ const { frontendlogger } = window as any;
 export const logApiError = (url: string, err: HTTPError) => {
   const error = `Feil ved henting av data: ${url} - ${err.code} ${err.text}`;
 
-  const title = "personopplysninger.apiclient.error";
+  const title = "pdl-fullmakt-ui.apiclient.error";
   const tags = {};
   const fields = {
     status: err.code,
