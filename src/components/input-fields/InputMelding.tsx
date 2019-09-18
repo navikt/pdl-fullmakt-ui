@@ -1,7 +1,7 @@
-import { Textarea, TextareaProps } from "nav-frontend-skjema";
-import React, { SyntheticEvent, useState } from "react";
+import { Textarea, TextareaProps } from 'nav-frontend-skjema';
+import React, { SyntheticEvent, useState } from 'react';
 
-interface Props extends Omit<TextareaProps, "onChange"> {
+interface Props extends Omit<TextareaProps, 'onChange'> {
   onChange: (value: string) => void;
   error: string | null;
   submitted: boolean;

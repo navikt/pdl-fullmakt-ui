@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useReducer,
-  Reducer,
-  Dispatch
-} from "react";
-import { Action, Store } from "./Store";
+import React, { createContext, useContext, useReducer, Reducer, Dispatch } from 'react';
+import { Action, Store } from './Store';
 
 interface Props {
   reducer: Reducer<Store, Action>;

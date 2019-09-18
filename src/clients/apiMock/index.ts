@@ -1,9 +1,9 @@
-import fetchMock from "fetch-mock";
-import authInfo from "./data/authInfo.json";
-import fodselsnr from "./data/fodselsnr.json";
-import kontaktInfo from "./data/kontaktInfo.json";
-import enheter from "./data/enheter.json";
-import Environment from "../../utils/Environments";
+import fetchMock from 'fetch-mock';
+import authInfo from './data/authInfo.json';
+import fodselsnr from './data/fodselsnr.json';
+import kontaktInfo from './data/kontaktInfo.json';
+import enheter from './data/enheter.json';
+import Environment from '../../utils/Environments';
 
 const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
 fetchMock.config.fallbackToNetwork = true;

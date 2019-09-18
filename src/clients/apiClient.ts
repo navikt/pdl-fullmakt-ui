@@ -1,7 +1,7 @@
-import Environment from "../utils/Environments";
-import { HTTPError } from "../components/error/Error";
-import { logApiError } from "../utils/logger";
-import { OutboundFullmakt } from "../pages/fullmakt/Fullmakt";
+import Environment from '../utils/Environments';
+import { HTTPError } from '../components/error/Error';
+import { logApiError } from '../utils/logger';
+import { OutboundFullmakt } from '../pages/fullmakt/Fullmakt';
 
 const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
 const parseJson = (data: any) => data.json();
@@ -20,9 +20,9 @@ const sjekkForFeil = (url: string, response: Response) => {
 
 const hentJson = (url: string) =>
   fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/json;charset=UTF-8" },
-    credentials: "include"
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+    credentials: 'include'
   })
     .then(response => sjekkForFeil(url, response))
     .then(parseJson)
@@ -35,14 +35,11 @@ const hentJson = (url: string) =>
       throw error;
     });
 
-const sendJson = (
-  url: string,
-  data: OutboundFullmakt
-) =>
+const sendJson = (url: string, data: OutboundFullmakt) =>
   fetch(url, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json;charset=UTF-8" }
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
     .then(response => sjekkForFeil(url, response))
     .then(parseJson)
@@ -58,14 +55,11 @@ const sendJson = (
 export const fetchEnheter = () => hentJson(`${apiUrl}/enheter`);
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
-export const fetchAuthInfo = () =>
-  hentJson(`${baseUrl}/innloggingslinje-api/auth`);
+export const fetchAuthInfo = () => hentJson(`${baseUrl}/innloggingslinje-api/auth`);
 
-export const fetchKontaktInfo = () =>
-  hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
+export const fetchKontaktInfo = () => hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
 
-export const postRosTilNav = (data: any) =>
-  sendJson(`${apiUrl}/mottak/ros`, data);
+export const postRosTilNav = (data: any) => sendJson(`${apiUrl}/mottak/ros`, data);
 
 export const postFullmakt = (data: OutboundFullmakt) =>
   sendJson(`${apiUrl}/mottak/fullmakt`, data);

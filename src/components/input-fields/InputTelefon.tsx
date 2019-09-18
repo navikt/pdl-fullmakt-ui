@@ -1,6 +1,6 @@
-import { Input } from "nav-frontend-skjema";
-import React, { useState } from "react";
-import { useStore } from "../../providers/Provider";
+import { Input } from 'nav-frontend-skjema';
+import React, { useState } from 'react';
+import { useStore } from '../../providers/Provider';
 
 interface Props {
   onChange: (value: string) => void;
@@ -15,21 +15,17 @@ const InputTelefon = (props: Props) => {
   const { error, submitted, value, onChange } = props;
   const [blur, settBlur] = useState(false);
 
-  if (
-    auth.authenticated &&
-    mobiltelefonnummer &&
-    mobiltelefonnummer !== value
-  ) {
+  if (auth.authenticated && mobiltelefonnummer && mobiltelefonnummer !== value) {
     onChange(mobiltelefonnummer);
   }
 
   const formattert = value;
 
   return kontaktInfo.mobiltelefonnummer ? (
-    <Input label={"Telefonnummer"} value={formattert} disabled={true} />
+    <Input label={'Telefonnummer'} value={formattert} disabled={true} />
   ) : (
     <Input
-      label={"Telefonnummer"}
+      label={'Telefonnummer'}
       required={true}
       value={formattert}
       onChange={event => onChange(event.currentTarget.value)}

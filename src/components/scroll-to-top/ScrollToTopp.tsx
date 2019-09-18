@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import React, { useEffect } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 interface Props {
   children: JSX.Element | JSX.Element[];

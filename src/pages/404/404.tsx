@@ -1,5 +1,5 @@
-import React from "react";
-import { Sidetittel } from "nav-frontend-typografi";
+import React from 'react';
+import { Sidetittel } from 'nav-frontend-typografi';
 
 const Ros = () => (
   <div className="notfound__container">

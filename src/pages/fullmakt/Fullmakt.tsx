@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import VeilederIcon from "../../assets/Veileder.svg";
-import Veilederpanel from "nav-frontend-veilederpanel";
-import Tilbake from "../../components/tilbake/Tilbake";
-import { useStore } from "../../providers/Provider";
-import RadioPanelGruppe from "../../components/input-fields/RadioPanelGruppe";
-import { Hovedknapp, Knapp } from "nav-frontend-knapper";
-import { Link, RouteComponentProps, withRouter } from "react-router-dom";
-import { baseUrl } from "../../App";
-import InputFodselsnr from "../../components/input-fields/InputFodselsnr";
-import { postFullmakt } from "../../clients/apiClient";
-import InputField from "../../components/input-fields/InputField";
-import { AlertStripeFeil } from "nav-frontend-alertstriper";
-import NavFrontendSpinner from "nav-frontend-spinner";
-import { HTTPError } from "../../components/error/Error";
-import { FormContext, Form, Validation } from "calidation";
-import InputNavn from "../../components/input-fields/InputNavn";
-import InputMelding from "../../components/input-fields/InputMelding";
-import InputTelefon from "../../components/input-fields/InputTelefon";
+import React, { useState } from 'react';
+import VeilederIcon from '../../assets/Veileder.svg';
+import Veilederpanel from 'nav-frontend-veilederpanel';
+import Tilbake from '../../components/tilbake/Tilbake';
+import { useStore } from '../../providers/Provider';
+import RadioPanelGruppe from '../../components/input-fields/RadioPanelGruppe';
+import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { baseUrl } from '../../App';
+import InputFodselsnr from '../../components/input-fields/InputFodselsnr';
+import { postFullmakt } from '../../clients/apiClient';
+import InputField from '../../components/input-fields/InputField';
+import { AlertStripeFeil } from 'nav-frontend-alertstriper';
+import NavFrontendSpinner from 'nav-frontend-spinner';
+import { HTTPError } from '../../components/error/Error';
+import { FormContext, Form, Validation } from 'calidation';
+import InputNavn from '../../components/input-fields/InputNavn';
+import InputMelding from '../../components/input-fields/InputMelding';
+import InputTelefon from '../../components/input-fields/InputTelefon';
 import {
   ON_BEHALF_OF,
   OutboundFullmaktBase,
   OutboundFullmaktType,
   OutboundFullmaktExtend
-} from "../../types/fullmakt";
+} from '../../types/fullmakt';
 import {
   annenPersFormConfig,
   baseFormConfig,
@@ -30,15 +30,15 @@ import {
   privPersFormConfig,
   tlfFormConfig,
   ytelseTjenesteFormConfig
-} from "./config/form";
-import Header from "../../components/header/Header";
+} from './config/form';
+import Header from '../../components/header/Header';
 
 export type OutboundFullmakt = OutboundFullmaktBase &
   OutboundFullmaktType &
   OutboundFullmaktExtend;
 
 const Fullmakt = (props: RouteComponentProps) => {
-  document.title = "Fullmakt service - www.nav.no";
+  document.title = 'Fullmakt service - www.nav.no';
 
   const [{ auth }] = useStore();
   const [loading, settLoading] = useState(false);
@@ -51,11 +51,11 @@ const Fullmakt = (props: RouteComponentProps) => {
     if (isValid) {
       const outboundBase: OutboundFullmaktBase = {
         klagetekst: fields.melding,
-        oenskerAaKontaktes: fields.onskerKontakt === "true" ? true : false
+        oenskerAaKontaktes: fields.onskerKontakt === 'true' ? true : false
       };
 
       const outboundType: OutboundFullmaktType =
-        fields.klageType === "SAKSBEHANDLING"
+        fields.klageType === 'SAKSBEHANDLING'
           ? {
               klagetype: fields.klageType,
               ytelseTjeneste: fields.ytelseTjeneste
@@ -68,7 +68,7 @@ const Fullmakt = (props: RouteComponentProps) => {
         [key in ON_BEHALF_OF]: OutboundFullmaktExtend;
       } = {
         PRIVATPERSON: {
-          paaVegneAv: "PRIVATPERSON",
+          paaVegneAv: 'PRIVATPERSON',
           innmelder: {
             navn: fields.innmelderNavn,
             telefonnummer: fields.innmelderTlfnr,
@@ -76,11 +76,11 @@ const Fullmakt = (props: RouteComponentProps) => {
           }
         },
         ANNEN_PERSON: {
-          paaVegneAv: "ANNEN_PERSON",
+          paaVegneAv: 'ANNEN_PERSON',
           innmelder: {
             navn: fields.innmelderNavn,
             telefonnummer: fields.innmelderTlfnr,
-            harFullmakt: fields.innmelderHarFullmakt === "true" ? true : false,
+            harFullmakt: fields.innmelderHarFullmakt === 'true' ? true : false,
             rolle: fields.innmelderRolle
           },
           paaVegneAvPerson: {
@@ -89,7 +89,7 @@ const Fullmakt = (props: RouteComponentProps) => {
           }
         },
         BEDRIFT: {
-          paaVegneAv: "BEDRIFT",
+          paaVegneAv: 'BEDRIFT',
           innmelder: {
             navn: fields.innmelderNavn,
             telefonnummer: fields.innmelderTlfnr,
@@ -131,55 +131,66 @@ const Fullmakt = (props: RouteComponentProps) => {
       <div className="pagecontent">
         <Form onSubmit={send}>
           <Validation config={baseFormConfig}>
-            {({ errors, fields = {"klageType":"","hvemFra":"ANNEN_PERSON","innmelderNavn":"STURLE  ASBJØRNSEN","onskerKontakt":"","melding":"","paaVegneAvNavn":"","paaVegneAvFodselsnr":"","innmelderHarFullmakt":"","innmelderRolle":""}, submitted, setField }) => {
-              {console.log("fields ", JSON.stringify(fields))}
-              {console.log("errors ", JSON.stringify(errors))}
+            {({
+              errors,
+              fields = {
+                klageType: '',
+                hvemFra: 'ANNEN_PERSON',
+                innmelderNavn: 'STURLE  ASBJØRNSEN',
+                onskerKontakt: '',
+                melding: '',
+                paaVegneAvNavn: '',
+                paaVegneAvFodselsnr: '',
+                innmelderHarFullmakt: '',
+                innmelderRolle: ''
+              },
+              submitted,
+              setField
+            }) => {
+              {
+                console.log('fields ', JSON.stringify(fields));
+              }
+              {
+                console.log('errors ', JSON.stringify(errors));
+              }
               const hvemFra: ON_BEHALF_OF = fields.hvemFra;
               return (
                 <>
-                  <Tilbake
-                    to={auth.authenticated ? "" : "/fullmakt/login"}
-                  />
-                  <Veilederpanel
-                    svg={<img src={VeilederIcon} alt="Veileder" />}
-                  >
+                  <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
+                  <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
                     Fullmakt
                     <br />
                     Lag/endre/vise fullmakt
                   </Veilederpanel>
                   <div className="fullmakt__content">
-
                     <RadioPanelGruppe
-                      legend={"Hvem skriver du på vegne av?"}
+                      legend={'Hvem skriver du på vegne av?'}
                       radios={[
                         {
-                          label: "Meg selv som privatperson",
-                          value: "PRIVATPERSON" as ON_BEHALF_OF
+                          label: 'Meg selv som privatperson',
+                          value: 'PRIVATPERSON' as ON_BEHALF_OF
                         },
                         {
-                          label: "På vegne av en annen privatperson",
-                          value: "ANNEN_PERSON" as ON_BEHALF_OF
+                          label: 'På vegne av en annen privatperson',
+                          value: 'ANNEN_PERSON' as ON_BEHALF_OF
                         },
                         {
-                          label: "På vegne av en bedrift",
-                          value: "BEDRIFT" as ON_BEHALF_OF
+                          label: 'På vegne av en bedrift',
+                          value: 'BEDRIFT' as ON_BEHALF_OF
                         }
                       ]}
-                      name={"hvem-fra"}
+                      name={'hvem-fra'}
                       error={errors.hvemFra}
                       checked={fields.hvemFra}
                       onChange={v => setField({ hvemFra: v })}
                       submitted={submitted}
                     />
-                    {(() => setField({ hvemFra: "ANNEN_PERSON" })) && (
+                    {(() => setField({ hvemFra: 'ANNEN_PERSON' })) && (
                       <div className="fullmakt__ekspandert">
                         {
                           {
                             PRIVATPERSON: (
-                              <Validation
-                                key={hvemFra}
-                                config={privPersFormConfig}
-                              >
+                              <Validation key={hvemFra} config={privPersFormConfig}>
                                 {() => (
                                   <>
                                     <div className="flex__rad">
@@ -188,9 +199,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                                           submitted={submitted}
                                           value={fields.innmelderNavn}
                                           error={errors.innmelderNavn}
-                                          onChange={v =>
-                                            setField({ innmelderNavn: v })
-                                          }
+                                          onChange={v => setField({ innmelderNavn: v })}
                                         />
                                       </div>
                                       <div className="flex__kolonne-right">
@@ -198,9 +207,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                                           submitted={submitted}
                                           error={errors.innmelderFnr}
                                           value={fields.innmelderFnr}
-                                          onChange={v =>
-                                            setField({ innmelderFnr: v })
-                                          }
+                                          onChange={v => setField({ innmelderFnr: v })}
                                         />
                                       </div>
                                     </div>
@@ -209,10 +216,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                               </Validation>
                             ),
                             ANNEN_PERSON: (
-                              <Validation
-                                key={hvemFra}
-                                config={annenPersFormConfig}
-                              >
+                              <Validation key={hvemFra} config={annenPersFormConfig}>
                                 {() => (
                                   <div>
                                     <div>
@@ -222,16 +226,14 @@ const Fullmakt = (props: RouteComponentProps) => {
                                             submitted={submitted}
                                             value={fields.innmelderNavn}
                                             error={errors.innmelderNavn}
-                                            onChange={v =>
-                                              setField({ innmelderNavn: v })
-                                            }
+                                            onChange={v => setField({ innmelderNavn: v })}
                                           />
                                         </div>
                                         <div className="flex__kolonne-right">
                                           <InputField
                                             submitted={submitted}
                                             label={
-                                              "Din rolle (nær pårørende, behandler e.l.)"
+                                              'Din rolle (nær pårørende, behandler e.l.)'
                                             }
                                             required={true}
                                             value={fields.innmelderRolle}
@@ -247,18 +249,16 @@ const Fullmakt = (props: RouteComponentProps) => {
                                     <div className="flex__rad">
                                       <div className="flex__kolonne-left">
                                         <InputField
-                                          label={"På vegne av"}
+                                          label={'På vegne av'}
                                           submitted={submitted}
                                           value={fields.paaVegneAvNavn}
                                           error={errors.paaVegneAvNavn}
-                                          onChange={v =>
-                                            setField({ paaVegneAvNavn: v })
-                                          }
+                                          onChange={v => setField({ paaVegneAvNavn: v })}
                                         />
                                       </div>
                                       <div className="flex__kolonne-right">
                                         <InputField
-                                          label={"Fødselsnummer"}
+                                          label={'Fødselsnummer'}
                                           submitted={submitted}
                                           value={fields.paaVegneAvFodselsnr}
                                           error={errors.paaVegneAvFodselsnr}
@@ -269,19 +269,19 @@ const Fullmakt = (props: RouteComponentProps) => {
                                       </div>
                                     </div>
                                     <RadioPanelGruppe
-                                      legend={"Har du fullmakt?"}
+                                      legend={'Har du fullmakt?'}
                                       className="radioPanel__bool"
                                       radios={[
                                         {
-                                          label: "Ja, jeg har fullmakt",
-                                          value: "true"
+                                          label: 'Ja, jeg har fullmakt',
+                                          value: 'true'
                                         },
                                         {
-                                          label: "Nei, jeg har ikke fullmakt",
-                                          value: "false"
+                                          label: 'Nei, jeg har ikke fullmakt',
+                                          value: 'false'
                                         }
                                       ]}
-                                      name={"fullmakt"}
+                                      name={'fullmakt'}
                                       submitted={submitted}
                                       checked={fields.innmelderHarFullmakt}
                                       error={errors.innmelderHarFullmakt}
@@ -294,10 +294,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                               </Validation>
                             ),
                             BEDRIFT: (
-                              <Validation
-                                key={hvemFra}
-                                config={bedriftFormConfig}
-                              >
+                              <Validation key={hvemFra} config={bedriftFormConfig}>
                                 {() => (
                                   <>
                                     <div>
@@ -307,15 +304,13 @@ const Fullmakt = (props: RouteComponentProps) => {
                                             submitted={submitted}
                                             value={fields.innmelderNavn}
                                             error={errors.innmelderNavn}
-                                            onChange={v =>
-                                              setField({ innmelderNavn: v })
-                                            }
+                                            onChange={v => setField({ innmelderNavn: v })}
                                           />
                                         </div>
                                         <div className="flex__kolonne-right">
                                           <InputField
                                             label={
-                                              "Din rolle (leder, HR-ansvarlig, tillitsvalgt osv.)"
+                                              'Din rolle (leder, HR-ansvarlig, tillitsvalgt osv.)'
                                             }
                                             submitted={submitted}
                                             value={fields.innmelderRolle}
@@ -331,48 +326,40 @@ const Fullmakt = (props: RouteComponentProps) => {
                                     <div className="flex__rad">
                                       <div className="flex__kolonne-left ">
                                         <InputField
-                                          label={"Organisasjonsnavn"}
+                                          label={'Organisasjonsnavn'}
                                           submitted={submitted}
                                           value={fields.orgNavn}
                                           error={errors.orgNavn}
-                                          onChange={v =>
-                                            setField({ orgNavn: v })
-                                          }
+                                          onChange={v => setField({ orgNavn: v })}
                                         />
                                       </div>
                                       <div className="flex__kolonne-right">
                                         <InputField
-                                          label={"Organisasjonsnummer"}
+                                          label={'Organisasjonsnummer'}
                                           submitted={submitted}
                                           value={fields.orgNummer}
                                           error={errors.orgNummer}
-                                          onChange={v =>
-                                            setField({ orgNummer: v })
-                                          }
+                                          onChange={v => setField({ orgNummer: v })}
                                         />
                                       </div>
                                     </div>
                                     <div className="flex__rad">
                                       <div className="flex__kolonne-left">
                                         <InputField
-                                          label={"Bedriftens postadresse"}
+                                          label={'Bedriftens postadresse'}
                                           submitted={submitted}
                                           value={fields.orgPostadr}
                                           error={errors.orgPostadr}
-                                          onChange={v =>
-                                            setField({ orgPostadr: v })
-                                          }
+                                          onChange={v => setField({ orgPostadr: v })}
                                         />
                                       </div>
                                       <div className="flex__kolonne-right">
                                         <InputField
-                                          label={"Bedriftens telefonnummer"}
+                                          label={'Bedriftens telefonnummer'}
                                           submitted={submitted}
                                           value={fields.orgTlfNr}
                                           error={errors.orgTlfNr}
-                                          onChange={v =>
-                                            setField({ orgTlfNr: v })
-                                          }
+                                          onChange={v => setField({ orgTlfNr: v })}
                                         />
                                       </div>
                                     </div>
@@ -386,7 +373,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                     )}
                     <div className="fullmakt__melding">
                       <InputMelding
-                        label={"Melding til NAV"}
+                        label={'Melding til NAV'}
                         submitted={submitted}
                         value={fields.melding}
                         error={errors.melding}
@@ -394,25 +381,25 @@ const Fullmakt = (props: RouteComponentProps) => {
                       />
                     </div>
                     <RadioPanelGruppe
-                      legend={"Ønsker du at vi kontakter deg?"}
+                      legend={'Ønsker du at vi kontakter deg?'}
                       className="radioPanel__bool"
                       radios={[
                         {
-                          label: "Ja, jeg ønsker å kontaktes",
-                          value: "true"
+                          label: 'Ja, jeg ønsker å kontaktes',
+                          value: 'true'
                         },
                         {
-                          label: "Nei, jeg ville bare si ifra",
-                          value: "false"
+                          label: 'Nei, jeg ville bare si ifra',
+                          value: 'false'
                         }
                       ]}
-                      name={"onsker-kontakt"}
+                      name={'onsker-kontakt'}
                       submitted={submitted}
                       error={errors.onskerKontakt}
                       checked={fields.onskerKontakt}
                       onChange={v => setField({ onskerKontakt: v })}
                     />
-                    {fields.onskerKontakt === "true" && (
+                    {fields.onskerKontakt === 'true' && (
                       <Validation key="kontakt" config={tlfFormConfig}>
                         {() => (
                           <div className="fullmakt__ekspandert">
@@ -428,15 +415,13 @@ const Fullmakt = (props: RouteComponentProps) => {
                     )}
                     <div>
                       {error && (
-                        <AlertStripeFeil>
-                          Oi! Noe gikk galt: {error}
-                        </AlertStripeFeil>
+                        <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
                       )}
                     </div>
                     <div className="tb__knapper">
                       <div className="tb__knapp">
                         <Hovedknapp disabled={loading}>
-                          {loading ? <NavFrontendSpinner type={"S"} /> : "Send"}
+                          {loading ? <NavFrontendSpinner type={'S'} /> : 'Send'}
                         </Hovedknapp>
                       </div>
                       <div className="tb__knapp">

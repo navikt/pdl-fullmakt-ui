@@ -1,7 +1,7 @@
-import { RadioPanelGruppe, RadioPanelGruppeProps } from "nav-frontend-skjema";
-import React from "react";
+import { RadioPanelGruppe, RadioPanelGruppeProps } from 'nav-frontend-skjema';
+import React from 'react';
 
-interface Props extends Omit<RadioPanelGruppeProps, "onChange"> {
+interface Props extends Omit<RadioPanelGruppeProps, 'onChange'> {
   onChange: (value: any) => void;
   error: string | null;
   submitted: boolean;

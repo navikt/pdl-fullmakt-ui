@@ -1,12 +1,12 @@
-import React from "react";
-import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
-import { lenker } from "./FrontpageLenker";
-import { LenkepanelBase } from "nav-frontend-lenkepanel";
-import { Link } from "react-router-dom";
-import Header from "../../components/header/Header";
+import React from 'react';
+import { Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { lenker } from './FrontpageLenker';
+import { LenkepanelBase } from 'nav-frontend-lenkepanel';
+import { Link } from 'react-router-dom';
+import Header from '../../components/header/Header';
 
 const Frontpage = () => {
-  document.title = "Fullmakter - www.nav.no";
+  document.title = 'Fullmakter - www.nav.no';
   return (
     <>
       <Header />

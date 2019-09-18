@@ -1,6 +1,6 @@
-import { Input } from "nav-frontend-skjema";
-import React, { useState } from "react";
-import { useStore } from "../../providers/Provider";
+import { Input } from 'nav-frontend-skjema';
+import React, { useState } from 'react';
+import { useStore } from '../../providers/Provider';
 
 interface Props {
   onChange: (value: string) => void;
@@ -19,10 +19,10 @@ const InputFodselsnr = (props: Props) => {
   }
 
   return auth.authenticated && fodselsnr ? (
-    <Input label={"Fødselsnummer"} value={value} disabled={true} />
+    <Input label={'Fødselsnummer'} value={value} disabled={true} />
   ) : (
     <Input
-      label={"Fødselsnummer"}
+      label={'Fødselsnummer'}
       value={value}
       onChange={event => props.onChange(event.currentTarget.value)}
       onBlur={() => settBlur(true)}

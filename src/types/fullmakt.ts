@@ -1,4 +1,4 @@
-export type ON_BEHALF_OF = "PRIVATPERSON" | "ANNEN_PERSON" | "BEDRIFT";
+export type ON_BEHALF_OF = 'PRIVATPERSON' | 'ANNEN_PERSON' | 'BEDRIFT';
 
 export type OutboundFullmaktBase = {
   klagetekst: string;
@@ -7,16 +7,16 @@ export type OutboundFullmaktBase = {
 
 export type OutboundFullmaktType =
   | {
-      klagetype: "SAKSBEHANDLING";
+      klagetype: 'SAKSBEHANDLING';
       ytelseTjeneste: string;
     }
   | {
-      klagetype: "NAV_KONTOR" | "TELEFON" | "NAVNO" | "ANNET";
+      klagetype: 'NAV_KONTOR' | 'TELEFON' | 'NAVNO' | 'ANNET';
     };
 
 export type OutboundFullmaktExtend =
   | {
-      paaVegneAv: "PRIVATPERSON";
+      paaVegneAv: 'PRIVATPERSON';
       innmelder: {
         navn: string;
         telefonnummer: string;
@@ -24,7 +24,7 @@ export type OutboundFullmaktExtend =
       };
     }
   | {
-      paaVegneAv: "ANNEN_PERSON";
+      paaVegneAv: 'ANNEN_PERSON';
       innmelder: {
         navn: string;
         telefonnummer: string;
@@ -37,7 +37,7 @@ export type OutboundFullmaktExtend =
       };
     }
   | {
-      paaVegneAv: "BEDRIFT";
+      paaVegneAv: 'BEDRIFT';
       innmelder: {
         navn: string;
         telefonnummer: string;

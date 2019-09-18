@@ -1,9 +1,9 @@
-import { HTTPError } from "../components/error/Error";
+import { HTTPError } from '../components/error/Error';
 
 export type FetchEnheter =
-  | { status: "LOADING" }
-  | { status: "RESULT"; data: Enheter[] }
-  | { status: "ERROR"; error: HTTPError };
+  | { status: 'LOADING' }
+  | { status: 'RESULT'; data: Enheter[] }
+  | { status: 'ERROR'; error: HTTPError };
 
 export interface Enheter {
   enhetsnummer: string;

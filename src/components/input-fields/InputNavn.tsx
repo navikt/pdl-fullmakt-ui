@@ -1,6 +1,6 @@
-import { Input } from "nav-frontend-skjema";
-import React, { useState } from "react";
-import { useStore } from "../../providers/Provider";
+import { Input } from 'nav-frontend-skjema';
+import React, { useState } from 'react';
+import { useStore } from '../../providers/Provider';
 
 interface Props {
   onChange: (value: string) => void;
@@ -19,10 +19,10 @@ const InputNavn = (props: Props) => {
   }
 
   return auth.authenticated ? (
-    <Input label={"Innsenders navn"} value={value} disabled={true} />
+    <Input label={'Innsenders navn'} value={value} disabled={true} />
   ) : (
     <Input
-      label={"Innsenders navn"}
+      label={'Innsenders navn'}
       value={value}
       onChange={event => onChange(event.currentTarget.value)}
       onBlur={() => settBlur(true)}

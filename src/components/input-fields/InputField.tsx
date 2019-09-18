@@ -1,7 +1,7 @@
-import { Input, NavFrontendInputProps } from "nav-frontend-skjema";
-import React, { useState } from "react";
+import { Input, NavFrontendInputProps } from 'nav-frontend-skjema';
+import React, { useState } from 'react';
 
-interface Props extends Omit<NavFrontendInputProps, "onChange"> {
+interface Props extends Omit<NavFrontendInputProps, 'onChange'> {
   onChange: (value: string) => void;
   value: string;
   error: string | null;

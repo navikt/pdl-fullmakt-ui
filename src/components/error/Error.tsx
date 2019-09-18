@@ -1,5 +1,5 @@
-import React from "react";
-import AlertStripe from "nav-frontend-alertstriper";
+import React from 'react';
+import AlertStripe from 'nav-frontend-alertstriper';
 
 export interface HTTPError {
   code: number;
