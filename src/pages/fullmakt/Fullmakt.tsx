@@ -131,7 +131,9 @@ const Fullmakt = (props: RouteComponentProps) => {
       <div className="pagecontent">
         <Form onSubmit={send}>
           <Validation config={baseFormConfig}>
-            {({ errors, fields, submitted, setField }) => {
+            {({ errors, fields = {"klageType":"","hvemFra":"ANNEN_PERSON","innmelderNavn":"STURLE  ASBJØRNSEN","onskerKontakt":"","melding":"","paaVegneAvNavn":"","paaVegneAvFodselsnr":"","innmelderHarFullmakt":"","innmelderRolle":""}, submitted, setField }) => {
+              {console.log("fields ", JSON.stringify(fields))}
+              {console.log("errors ", JSON.stringify(errors))}
               const hvemFra: ON_BEHALF_OF = fields.hvemFra;
               return (
                 <>
@@ -141,45 +143,12 @@ const Fullmakt = (props: RouteComponentProps) => {
                   <Veilederpanel
                     svg={<img src={VeilederIcon} alt="Veileder" />}
                   >
-                    Velg det alternativet som passer best.
+                    Fullmakt
                     <br />
-                    Vi vil uansett sørge for at tilbakemeldingen kommer fram til
-                    riktig person.
+                    Lag/endre/vise fullmakt
                   </Veilederpanel>
                   <div className="fullmakt__content">
-                    <RadioPanelGruppe
-                      legend={"Hva gjelder tilbakemeldingen?"}
-                      radios={[
-                        {
-                          label: "Saksbehandling av søknad",
-                          value: "SAKSBEHANDLING"
-                        },
-                        { label: "NAV-kontor", value: "NAV_KONTOR" },
-                        { label: "Telefon", value: "TELEFON" },
-                        { label: "nav.no", value: "NAVNO" },
-                        { label: "Annet", value: "ANNET" }
-                      ]}
-                      name={"hva-gjelder-tilbakemeldingen"}
-                      error={errors.klageType}
-                      checked={fields.klageType}
-                      onChange={v => setField({ klageType: v })}
-                      submitted={submitted}
-                    />
-                    {fields.klageType === "SAKSBEHANDLING" && (
-                      <Validation key="yt" config={ytelseTjenesteFormConfig}>
-                        {() => (
-                          <div className="fullmakt__ekspandert">
-                            <InputField
-                              label={"Ytelse eller tjeneste (valgfritt)"}
-                              value={fields.ytelseTjeneste}
-                              error={errors.ytelseTjeneste}
-                              onChange={v => setField({ ytelseTjeneste: v })}
-                              submitted={submitted}
-                            />
-                          </div>
-                        )}
-                      </Validation>
-                    )}
+
                     <RadioPanelGruppe
                       legend={"Hvem skriver du på vegne av?"}
                       radios={[
@@ -202,7 +171,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                       onChange={v => setField({ hvemFra: v })}
                       submitted={submitted}
                     />
-                    {hvemFra && (
+                    {(() => setField({ hvemFra: "ANNEN_PERSON" })) && (
                       <div className="fullmakt__ekspandert">
                         {
                           {

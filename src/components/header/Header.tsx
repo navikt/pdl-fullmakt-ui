@@ -13,7 +13,7 @@ const Header = (props: Props & RouteComponentProps) =>
     <div className="header header__frontpage">
       <div className="header__icon">
         <Veileder
-          tekst="Hei! Vi vil gjerne høre om opplevelsen din!"
+          tekst="Hei! Velkommen til NAV fullmaktsløsning!"
           posisjon="topp"
         >
           <img src={VeilederIcon} alt="Veileder" />
