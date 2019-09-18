@@ -20,40 +20,6 @@
     "docker-stop": "docker stop pdl-fullmakt-ui",
     "formatcode": "./node_modules/.bin/prettier --single-quote --trailing-comma none --ignore-path \"**/.history\" --print-width 90 --write \"{src,__{tests,mocks}__}/**/*.{js,jsx,ts,tsx,json}\""
   },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.1",
-    "@types/classnames": "^2.2.9",
-    "@types/enzyme": "^3.10.3",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/history": "^4.7.2",
-    "@types/jest": "^24.0.17",
-    "@types/jquery": "^3.3.31",
-    "@types/lodash": "^4.14.136",
-    "@types/moment": "^2.13.0",
-    "@types/node": "^11.13.19",
-    "@types/qs": "^6.5.2",
-    "@types/react": "^16.8.23",
-    "@types/react-adal": "^0.4.1",
-    "@types/react-dom": "^16.8.2",
-    "@types/react-fontawesome": "^1.6.4",
-    "@types/react-loader": "^2.4.3",
-    "@types/react-redux": "^7.1.1",
-    "@types/react-router": "^4.4.4",
-    "@types/react-router-dom": "^4.3.4",
-    "@types/sinon": "^7.0.13",
-    "@types/yup": "^0.26.22",
-    "bootstrap": "^4.3.1",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "formik": "^1.5.8",
-    "jest-enzyme": "^7.1.0",
-    "node-localstorage": "^1.3.1",
-    "prettier": "1.16.4",
-    "typescript": "^3.5.3"
-  }
-}
-
-},
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "calidation": "^1.16.2",
