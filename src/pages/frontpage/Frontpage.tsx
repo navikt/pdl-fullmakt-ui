@@ -14,7 +14,7 @@ const Frontpage = () => {
         <div className="frontpage">
           <header className="frontpage__introduksjon">
             <div className="frontpage__sidetittel">
-              <Sidetittel>Fullmakter til NAV</Sidetittel>
+              <Sidetittel>NAV Fullmakter</Sidetittel>
             </div>
           </header>
           <div className="frontpage__content">
