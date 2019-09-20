@@ -6,4 +6,5 @@ export type AuthInfo =
       authenticated: true;
       name: string;
       securityLevel: string;
+      fodselsnr: string;
     };

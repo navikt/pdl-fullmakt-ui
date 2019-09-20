@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 interface Props extends Omit<NavFrontendInputProps, 'onChange'> {
   onChange: (value: string) => void;
   value: string;
-  error: string | null;
+  error?: string | null;
   submitted: boolean;
 }
 

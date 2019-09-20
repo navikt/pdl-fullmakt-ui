@@ -21,7 +21,7 @@ const Login = () => {
 
   return (
     <>
-      <Header title="Tilbakemelding på service" />
+      <Header title="Fullmakt på service" />
       <div className="pagecontent">
         <Tilbake />
         <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>

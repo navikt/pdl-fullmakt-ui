@@ -1,7 +1,7 @@
 import Environment from '../utils/Environments';
 import { HTTPError } from '../components/error/Error';
 import { logApiError } from '../utils/logger';
-import { OutboundFullmakt } from '../pages/fullmakt/Fullmakt';
+import { FullmaktType } from '../types/fullmakt';
 
 const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
 const parseJson = (data: any) => data.json();
@@ -35,7 +35,7 @@ const hentJson = (url: string) =>
       throw error;
     });
 
-const sendJson = (url: string, data: OutboundFullmakt) =>
+const sendJson = (url: string, data: FullmaktType) =>
   fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -61,7 +61,7 @@ export const fetchKontaktInfo = () => hentJson(`${personInfoApiUrl}/kontaktinfor
 
 export const postRosTilNav = (data: any) => sendJson(`${apiUrl}/mottak/ros`, data);
 
-export const postFullmakt = (data: OutboundFullmakt) =>
+export const postFullmakt = (data: FullmaktType) =>
   sendJson(`${apiUrl}/mottak/fullmakt`, data);
 
 export const postFeilOgMangler = (data: any) =>

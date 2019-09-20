@@ -1,1 +1,6 @@
-{ "authenticated": true, "name": "STURLE  ASBJØRNSEN", "securityLevel": "4" }
+{
+  "authenticated": true,
+  "name": "STURLE  ASBJØRNSEN",
+  "securityLevel": "4",
+  "fodselsnr": "12345678901"
+}

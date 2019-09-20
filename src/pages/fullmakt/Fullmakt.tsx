@@ -12,13 +12,11 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, Form, Validation } from 'calidation';
-import InputNavn from '../../components/input-fields/InputNavn';
-import InputMelding from '../../components/input-fields/InputMelding';
-import { ON_BEHALF_OF, OutboundFullmaktExtend } from '../../types/fullmakt';
-import { annenPersFormConfig, baseFormConfig } from './config/form';
+import { FullmaktType } from '../../types/fullmakt';
+import { fullmaktFormConfig, baseFormConfig } from './config/form';
 import Header from '../../components/header/Header';
-
-export type OutboundFullmakt = OutboundFullmaktExtend;
+import { Input } from 'nav-frontend-skjema';
+import { AuthInfo } from '../../types/authInfo';
 
 const Fullmakt = (props: RouteComponentProps) => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -29,36 +27,22 @@ const Fullmakt = (props: RouteComponentProps) => {
 
   const send = (e: FormContext) => {
     const { isValid, fields } = e;
-    const hvemFra: ON_BEHALF_OF = fields.hvemFra;
 
     if (isValid) {
-      const outboundExtend: {
-        [key in ON_BEHALF_OF]: OutboundFullmaktExtend;
-      } = {
-        ANNEN_PERSON: {
-          paaVegneAv: 'ANNEN_PERSON',
-          innmelder: {
-            navn: fields.innmelderNavn,
-            telefonnummer: fields.innmelderTlfnr,
-            harFullmakt: fields.innmelderHarFullmakt === 'true' ? true : false,
-            rolle: fields.innmelderRolle
-          },
-          paaVegneAvPerson: {
-            navn: fields.paaVegneAvNavn,
-            personnummer: fields.paaVegneAvFodselsnr
-          }
-        }
+      const fullmaktData: FullmaktType = {
+        fullmaktsgiverNavn: auth.authenticated ? auth.name : '',
+        fullmaktsgiverFodselsnr: auth.authenticated ? auth.fodselsnr : '',
+        fullmektigNavn: fields.fullmektigNavn,
+        fullmektigFodselsnr: fields.fullmektigFodselsnr,
+        omraade: fields.omraade,
+        gyldigFraOgMed: fields.gyldigFraOgMed,
+        gyldigTilOgMed: fields.gyldigTilOgMed
       };
 
-      const outbound = {
-        ...outboundExtend[hvemFra]
-      };
-
-      console.log(outbound);
       settLoading(true);
-      postFullmakt(outbound)
+      postFullmakt(fullmaktData)
         .then(() => {
-          props.history.push(`${props.location.pathname}/takk`);
+          props.history.push(`${props.location.pathname}/pdl-fullmakt-ui`);
         })
         .catch((error: HTTPError) => {
           settError(`${error.code} - ${error.text}`);
@@ -82,7 +66,6 @@ const Fullmakt = (props: RouteComponentProps) => {
               {
                 console.log('errors ', JSON.stringify(errors));
               }
-              const hvemFra: ON_BEHALF_OF = fields.hvemFra;
               return (
                 <>
                   <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
@@ -93,49 +76,49 @@ const Fullmakt = (props: RouteComponentProps) => {
                   </Veilederpanel>
                   <div className="fullmakt__content">
                     <div className="fullmakt__ekspandert">
-                      <Validation key={hvemFra} config={annenPersFormConfig}>
+                      <Validation key="fullmakt" config={fullmaktFormConfig}>
                         {() => (
                           <div>
                             <div>
+                              <h3>Fullmaktsgiver </h3>
+
                               <div className="flex__rad">
                                 <div className="flex__kolonne-left">
-                                  <InputNavn
-                                    submitted={submitted}
-                                    value={fields.innmelderNavn}
-                                    error={errors.innmelderNavn}
-                                    onChange={v => setField({ innmelderNavn: v })}
+                                  <Input
+                                      disabled={true}
+                                      value={auth.authenticated ? auth.name : ''}
+                                      label={'Navn'}
                                   />
+
                                 </div>
                                 <div className="flex__kolonne-right">
-                                  <InputField
-                                    submitted={submitted}
-                                    label={'Din rolle (nær pårørende, behandler e.l.)'}
-                                    required={true}
-                                    value={fields.innmelderRolle}
-                                    error={errors.innmelderRolle}
-                                    onChange={v => setField({ innmelderRolle: v })}
+                                  <Input
+                                      disabled={true}
+                                      value={auth.authenticated ? auth.fodselsnr : ''}
+                                      label={'Fødselsnummer'}
                                   />
                                 </div>
                               </div>
                             </div>
                             <div className="divider" />
+                            <h3>Fullmektig </h3>
                             <div className="flex__rad">
                               <div className="flex__kolonne-left">
                                 <InputField
-                                  label={'På vegne av'}
+                                  label={'Navn'}
                                   submitted={submitted}
-                                  value={fields.paaVegneAvNavn}
-                                  error={errors.paaVegneAvNavn}
-                                  onChange={v => setField({ paaVegneAvNavn: v })}
+                                  value={fields.fullmektigNavn}
+                                  error={errors.fullmektigNavn}
+                                  onChange={v => setField({ fullmektigNavn: v })}
                                 />
                               </div>
                               <div className="flex__kolonne-right">
                                 <InputField
                                   label={'Fødselsnummer'}
                                   submitted={submitted}
-                                  value={fields.paaVegneAvFodselsnr}
-                                  error={errors.paaVegneAvFodselsnr}
-                                  onChange={v => setField({ paaVegneAvFodselsnr: v })}
+                                  value={fields.fullmektigFodselsnr}
+                                  error={errors.fullmektigFodselsnr}
+                                  onChange={v => setField({ fullmektigFodselsnr: v })}
                                 />
                               </div>
                             </div>
@@ -144,12 +127,12 @@ const Fullmakt = (props: RouteComponentProps) => {
                       </Validation>
                     </div>
                     <div className="fullmakt__melding">
-                      <InputMelding
-                        label={'Melding til NAV'}
+                      <InputField
+                        label={'Omraade'}
                         submitted={submitted}
-                        value={fields.melding}
-                        error={errors.melding}
-                        onChange={v => setField({ melding: v })}
+                        value={fields.omraade}
+                        error={errors.omraade}
+                        onChange={v => setField({ omraade: v })}
                       />
                     </div>
                     <div>
