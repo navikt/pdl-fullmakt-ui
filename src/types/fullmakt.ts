@@ -1,4 +1,11 @@
-export type FullmaktType = {
+import { HTTPError } from '../components/error/Error';
+
+export type FetchFullmakt =
+  | { status: 'LOADING' }
+  | { status: 'RESULT'; data: FullmaktType[] }
+  | { status: 'ERROR'; error: HTTPError };
+
+export type FullmaktViewType = {
   fullmaktsgiverNavn: string;
   fullmaktsgiverFodselsnr: string;
   fullmektigNavn: string;
@@ -7,3 +14,14 @@ export type FullmaktType = {
   gyldigFraOgMed: string;
   gyldigTilOgMed?: string;
 };
+
+export type FullmaktOtherType = {
+  fullmakt_id?: number;
+  registrert: string;
+  registrertAv: string;
+  endret?: string;
+  endretAv?: string;
+  opphoert?: boolean;
+};
+
+export type FullmaktType = FullmaktViewType & FullmaktOtherType;

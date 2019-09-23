@@ -1,0 +1,54 @@
+[
+  {
+    "fullmaktId": 2,
+    "registrert": "2019-01-01T09:45:00.000+0000",
+    "registrertAv": "12345678901",
+    "endret": "2019-01-01T09:45:00.000+0000",
+    "ednretAv": "12345678901",
+    "opphoert": false,
+    "fullmaktsgiver": "12345678901",
+    "fullmektig": "22345678901",
+    "omraade": "nav.pensjon.*",
+    "gyldigFraOgMed": "2018-12-31T23:00:00.000+0000",
+    "gyldigTilOgMed": "2019-12-31T23:00:00.000+0000"
+  },
+  {
+    "fullmaktId": 1,
+    "registrert": "2019-01-01T09:45:00.000+0000",
+    "registrertAv": "12345678901",
+    "endret": "2019-01-01T09:45:00.000+0000",
+    "ednretAv": "12345678901",
+    "opphoert": false,
+    "fullmaktsgiver": "12345678901",
+    "fullmektig": "32345678901",
+    "omraade": "nav.pensjon.*",
+    "gyldigFraOgMed": "2018-12-31T23:00:00.000+0000",
+    "gyldigTilOgMed": "2019-12-31T23:00:00.000+0000"
+  },
+  {
+    "fullmaktId": 6,
+    "registrert": "2019-01-01T09:45:00.000+0000",
+    "registrertAv": "12345678901",
+    "endret": "2019-01-01T09:45:00.000+0000",
+    "ednretAv": "12345678901",
+    "opphoert": false,
+    "fullmaktsgiver": "12345678901",
+    "fullmektig": "42345678901",
+    "omraade": "nav.pensjon.*",
+    "gyldigFraOgMed": "2018-12-31T23:00:00.000+0000",
+    "gyldigTilOgMed": "2019-12-31T23:00:00.000+0000"
+  },
+  {
+    "fullmaktId": 8,
+    "registrert": "2019-01-01T09:45:00.000+0000",
+    "registrertAv": "12345678901",
+    "endret": "2019-01-01T09:45:00.000+0000",
+    "ednretAv": "12345678901",
+    "opphoert": false,
+    "fullmaktsgiver": "12345678901",
+    "fullmektig": "52345678901",
+    "omraade": "nav.pensjon.*",
+    "gyldigFraOgMed": "2018-12-31T23:00:00.000+0000",
+    "gyldigTilOgMed": "2019-12-31T23:00:00.000+0000"
+  }
+]

@@ -12,7 +12,7 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, Form, Validation } from 'calidation';
-import { FullmaktType } from '../../types/fullmakt';
+import { FullmaktViewType } from '../../types/fullmakt';
 import { fullmaktFormConfig, baseFormConfig } from './config/form';
 import Header from '../../components/header/Header';
 import { Input } from 'nav-frontend-skjema';
@@ -28,7 +28,7 @@ const Fullmakt = (props: RouteComponentProps) => {
     const { isValid, fields } = e;
 
     if (isValid) {
-      const fullmaktData: FullmaktType = {
+      const fullmaktData: FullmaktViewType = {
         fullmaktsgiverNavn: auth.authenticated ? auth.name : '',
         fullmaktsgiverFodselsnr: auth.authenticated ? auth.fodselsnr : '',
         fullmektigNavn: fields.fullmektigNavn,
@@ -67,7 +67,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                   <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
                     Fullmakt
                     <br />
-                    Lag/endre/vise fullmakt
+                    Legge til/endre/vise fullmakt
                   </Veilederpanel>
                   <div className="fullmakt__content">
                     <div className="fullmakt__ekspandert">

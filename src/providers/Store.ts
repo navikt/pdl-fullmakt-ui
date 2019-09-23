@@ -4,6 +4,7 @@ import { Sprak } from '../types/sprak';
 import sprak from '../language/provider';
 import { Enheter, FetchEnheter } from '../types/enheter';
 import { HTTPError } from '../components/error/Error';
+import { FetchFullmakt, FullmaktType } from '../types/fullmakt';
 
 export const initialState = {
   fodselsnr: '',
@@ -11,7 +12,9 @@ export const initialState = {
   locale: 'nb' as 'nb',
   enheter: { status: 'LOADING' } as FetchEnheter,
   auth: { authenticated: false } as AuthInfo,
-  kontaktInfo: { mobiltelefonnummer: '' }
+  kontaktInfo: { mobiltelefonnummer: '' },
+  fullmatsgiver: { status: 'LOADING' } as FetchFullmakt,
+  fullmektig: { status: 'LOADING' } as FetchFullmakt
 };
 
 export interface Store {
@@ -21,6 +24,8 @@ export interface Store {
   fodselsnr: string;
   kontaktInfo: KontaktInfo;
   enheter: FetchEnheter;
+  fullmatsgiver: FetchFullmakt;
+  fullmektig: FetchFullmakt;
 }
 
 export type Action =
@@ -45,6 +50,22 @@ export type Action =
   | {
       type: 'SETT_KONTAKT_INFO_RESULT';
       payload: KontaktInfo;
+    }
+  | {
+      type: 'SETT_FULLMAKTSGIVER';
+      payload: FullmaktType[];
+    }
+  | {
+      type: 'SETT_FULLMAKTSGIVER_ERROR';
+      payload: HTTPError;
+    }
+  | {
+      type: 'SETT_FULLMEKTIG';
+      payload: FullmaktType[];
+    }
+  | {
+      type: 'SETT_FULLMEKTIG_ERROR';
+      payload: HTTPError;
     };
 
 export const reducer = (state: Store, action: Action) => {
@@ -79,6 +100,38 @@ export const reducer = (state: Store, action: Action) => {
       return {
         ...state,
         kontaktInfo: action.payload as KontaktInfo
+      };
+    case 'SETT_FULLMAKTSGIVER':
+      return {
+        ...state,
+        fullmatsgiver: {
+          status: 'RESULT',
+          data: action.payload
+        } as FetchFullmakt
+      };
+    case 'SETT_FULLMAKTSGIVER_ERROR':
+      return {
+        ...state,
+        fullmatsgiver: {
+          status: 'ERROR',
+          error: action.payload
+        } as FetchFullmakt
+      };
+    case 'SETT_FULLMEKTIG':
+      return {
+        ...state,
+        fullmektig: {
+          status: 'RESULT',
+          data: action.payload
+        } as FetchFullmakt
+      };
+    case 'SETT_FULLMEKTIG_ERROR':
+      return {
+        ...state,
+        fullmektig: {
+          status: 'ERROR',
+          error: action.payload
+        } as FetchFullmakt
       };
     default:
       return state;

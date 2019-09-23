@@ -1,7 +1,7 @@
 import Environment from '../utils/Environments';
 import { HTTPError } from '../components/error/Error';
 import { logApiError } from '../utils/logger';
-import { FullmaktType } from '../types/fullmakt';
+import { FullmaktViewType } from '../types/fullmakt';
 
 const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
 const parseJson = (data: any) => data.json();
@@ -35,7 +35,7 @@ const hentJson = (url: string) =>
       throw error;
     });
 
-const sendJson = (url: string, data: FullmaktType) =>
+const sendJson = (url: string, data: FullmaktViewType) =>
   fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -59,9 +59,11 @@ export const fetchAuthInfo = () => hentJson(`${baseUrl}/innloggingslinje-api/aut
 
 export const fetchKontaktInfo = () => hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
 
-export const postRosTilNav = (data: any) => sendJson(`${apiUrl}/mottak/ros`, data);
+export const fetchFullmaktsgiver = () => hentJson(`${apiUrl}/fullmaktsgiver`);
 
-export const postFullmakt = (data: FullmaktType) =>
+export const fetchFullmektig = () => hentJson(`${apiUrl}/fullmektig`);
+
+export const postFullmakt = (data: FullmaktViewType) =>
   sendJson(`${apiUrl}/mottak/fullmakt`, data);
 
 export const postFeilOgMangler = (data: any) =>
