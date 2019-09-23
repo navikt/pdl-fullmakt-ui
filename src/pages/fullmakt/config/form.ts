@@ -14,5 +14,11 @@ export const fullmaktFormConfig = {
       message: 'Fødselsnummer må være 11 siffer',
       length: 11
     }
+  },
+  gyldigFraOgMed: {
+    isRequired: 'Gyldig fra og med dato er påkrevd'
+  },
+  gyldigTilOgMed: {
+    isRequired: 'Gyldig til og med dato er påkrevd'
   }
 };

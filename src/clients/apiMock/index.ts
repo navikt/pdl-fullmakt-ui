@@ -35,12 +35,12 @@ export const setUpMock = async () => {
   mockFullmaktsgiver &&
     fetchMock.get(
       `${personInfoApiUrl}/fullmaktsgiver`,
-      delay(5000, 6000).then(() => fullmaktsgiver)
+      delay(10, 50).then(() => fullmaktsgiver)
     );
   mockFullmektig &&
     fetchMock.get(
       `${personInfoApiUrl}/fullmektig`,
-      delay(5000, 6000).then(() => fullmektig)
+      delay(10, 50).then(() => fullmektig)
     );
 };
 

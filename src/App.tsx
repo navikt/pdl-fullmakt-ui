@@ -19,7 +19,7 @@ import { KontaktInfo } from './types/kontaktInfo';
 import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
 import { Enheter } from './types/enheter';
-import { FullmaktType } from "./types/fullmakt";
+import { FullmaktType } from './types/fullmakt';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {

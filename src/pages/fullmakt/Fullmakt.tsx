@@ -130,9 +130,9 @@ const Fullmakt = (props: RouteComponentProps) => {
                                 <InputField
                                   label={'Gyldig fra og med dato? (dd.mm.åååå)'}
                                   submitted={submitted}
-                                  value={fields.fullmektigNavn}
-                                  error={errors.fullmektigNavn}
-                                  onChange={v => setField({ fullmektigNavn: v })}
+                                  value={fields.gyldigFraOgMed}
+                                  error={errors.gyldigFraOgMed}
+                                  onChange={v => setField({ gyldigFraOgMed: v })}
                                   type="date"
                                 />
                               </div>
@@ -140,9 +140,9 @@ const Fullmakt = (props: RouteComponentProps) => {
                                 <InputField
                                   label={'Gyldig til og med dato? (dd.mm.åååå)'}
                                   submitted={submitted}
-                                  value={fields.fullmektigFodselsnr}
-                                  error={errors.fullmektigFodselsnr}
-                                  onChange={v => setField({ fullmektigFodselsnr: v })}
+                                  value={fields.gyldigTilOgMed}
+                                  error={errors.gyldigTilOgMed}
+                                  onChange={v => setField({ gyldigTilOgMed: v })}
                                   type="date"
                                 />
                               </div>
