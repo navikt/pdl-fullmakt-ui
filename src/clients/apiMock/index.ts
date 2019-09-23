@@ -34,12 +34,12 @@ export const setUpMock = async () => {
     );
   mockFullmaktsgiver &&
     fetchMock.get(
-      `${personInfoApiUrl}/fullmaktsgiver`,
+      `${apiUrl}/fullmaktsgiver`,
       delay(10, 50).then(() => fullmaktsgiver)
     );
   mockFullmektig &&
     fetchMock.get(
-      `${personInfoApiUrl}/fullmektig`,
+      `${apiUrl}/fullmektig`,
       delay(10, 50).then(() => fullmektig)
     );
 };

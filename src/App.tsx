@@ -31,13 +31,6 @@ const App = () => {
         .then((authInfo: AuthInfo) => {
           dispatch({ type: 'SETT_AUTH_RESULT', payload: authInfo });
           if (authInfo.authenticated) {
-            fetchEnheter()
-              .then((enheter: Enheter[]) => {
-                dispatch({ type: 'SETT_ENHETER_RESULT', payload: enheter });
-              })
-              .catch((error: HTTPError) => {
-                dispatch({ type: 'SETT_ENHETER_ERROR', payload: error });
-              });
             fetchKontaktInfo()
               .then((kontaktInfo: KontaktInfo) =>
                 dispatch({
