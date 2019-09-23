@@ -80,14 +80,14 @@ const Fullmakt = (props: RouteComponentProps) => {
                                   <Input
                                     disabled={true}
                                     value={auth.authenticated ? auth.name : ''}
-                                    label={'Fullmaktsgiver navn'}
+                                    label={'Fullmaktsgivers navn'}
                                   />
                                 </div>
                                 <div className="flex__kolonne-right">
                                   <Input
                                     disabled={true}
                                     value={auth.authenticated ? auth.fodselsnr : ''}
-                                    label={'Fullmaktsgiver fødselsnummer'}
+                                    label={'Fullmaktsgivers fødselsnummer'}
                                   />
                                 </div>
                               </div>
@@ -96,7 +96,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                             <div className="flex__rad">
                               <div className="flex__kolonne-left">
                                 <InputField
-                                  label={'Fullmektig navn'}
+                                  label={'Fullmektigens navn'}
                                   submitted={submitted}
                                   value={fields.fullmektigNavn}
                                   error={errors.fullmektigNavn}
@@ -105,7 +105,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                               </div>
                               <div className="flex__kolonne-right">
                                 <InputField
-                                  label={'Fullmektig fødselsnummer'}
+                                  label={'Fullmektigens fødselsnummer'}
                                   submitted={submitted}
                                   value={fields.fullmektigFodselsnr}
                                   error={errors.fullmektigFodselsnr}

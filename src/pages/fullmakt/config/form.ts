@@ -9,7 +9,7 @@ export const fullmaktFormConfig = {
     isRequired: 'Navn er påkrevd'
   },
   fullmektigFodselsnr: {
-    isRequired: 'Fullmektig fødselsnummer er påkrevd',
+    isRequired: 'Fullmektigens fødselsnummer er påkrevd',
     isExactLength: {
       message: 'Fødselsnummer må være 11 siffer',
       length: 11
