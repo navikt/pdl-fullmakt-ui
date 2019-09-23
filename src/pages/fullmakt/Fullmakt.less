@@ -18,9 +18,49 @@
     }
   }
   &__ekspandert {
-    background-color: #f1f1f1;
     padding: 1rem;
     border-radius: 0.25rem;
     margin-bottom: 1rem;
   }
 }
+
+.navigasjon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2.5rem auto 0;
+  max-width: 50rem;
+
+  & :not(:first-child) {
+    margin-left: .5rem;
+  }
+
+  &__knapp {
+    width: 10.75rem;
+    height: 2.5rem;
+    padding: 0;
+  }
+
+  @media (max-width: 750px) {
+    margin: 2rem auto 0;
+
+    & :not(:first-child) {
+      margin-left: 0;
+    }
+
+    &__knapp {
+      width: 100%;
+
+      &--avbryt {
+        order: 2;
+        margin: .5rem 0 0 0;
+      }
+
+      &--neste {
+        order: 1;
+        margin: 0;
+      }
+    }
+  }
+}
+

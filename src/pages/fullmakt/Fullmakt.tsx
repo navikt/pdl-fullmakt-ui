@@ -16,7 +16,6 @@ import { FullmaktType } from '../../types/fullmakt';
 import { fullmaktFormConfig, baseFormConfig } from './config/form';
 import Header from '../../components/header/Header';
 import { Input } from 'nav-frontend-skjema';
-import { AuthInfo } from '../../types/authInfo';
 
 const Fullmakt = (props: RouteComponentProps) => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -60,12 +59,8 @@ const Fullmakt = (props: RouteComponentProps) => {
         <Form onSubmit={send}>
           <Validation config={baseFormConfig}>
             {({ errors, fields, submitted, setField }) => {
-              {
-                console.log('fields ', JSON.stringify(fields));
-              }
-              {
-                console.log('errors ', JSON.stringify(errors));
-              }
+              console.log('fields ', JSON.stringify(fields));
+              console.log('errors ', JSON.stringify(errors));
               return (
                 <>
                   <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
@@ -80,32 +75,28 @@ const Fullmakt = (props: RouteComponentProps) => {
                         {() => (
                           <div>
                             <div>
-                              <h3>Fullmaktsgiver </h3>
-
-                              <div className="flex__rad">
+                              <div className="flex__rad mellomrom">
                                 <div className="flex__kolonne-left">
                                   <Input
-                                      disabled={true}
-                                      value={auth.authenticated ? auth.name : ''}
-                                      label={'Navn'}
+                                    disabled={true}
+                                    value={auth.authenticated ? auth.name : ''}
+                                    label={'Fullmaktsgiver navn'}
                                   />
-
                                 </div>
                                 <div className="flex__kolonne-right">
                                   <Input
-                                      disabled={true}
-                                      value={auth.authenticated ? auth.fodselsnr : ''}
-                                      label={'Fødselsnummer'}
+                                    disabled={true}
+                                    value={auth.authenticated ? auth.fodselsnr : ''}
+                                    label={'Fullmaktsgiver fødselsnummer'}
                                   />
                                 </div>
                               </div>
                             </div>
                             <div className="divider" />
-                            <h3>Fullmektig </h3>
                             <div className="flex__rad">
                               <div className="flex__kolonne-left">
                                 <InputField
-                                  label={'Navn'}
+                                  label={'Fullmektig navn'}
                                   submitted={submitted}
                                   value={fields.fullmektigNavn}
                                   error={errors.fullmektigNavn}
@@ -114,7 +105,7 @@ const Fullmakt = (props: RouteComponentProps) => {
                               </div>
                               <div className="flex__kolonne-right">
                                 <InputField
-                                  label={'Fødselsnummer'}
+                                  label={'Fullmektig fødselsnummer'}
                                   submitted={submitted}
                                   value={fields.fullmektigFodselsnr}
                                   error={errors.fullmektigFodselsnr}
@@ -122,34 +113,59 @@ const Fullmakt = (props: RouteComponentProps) => {
                                 />
                               </div>
                             </div>
+
+                            <div className="flex__rad">
+                              <div className="flex__kolonne-left">
+                                <InputField
+                                  label={'Område'}
+                                  submitted={submitted}
+                                  value={fields.omraade}
+                                  error={errors.omraade}
+                                  onChange={v => setField({ omraade: v })}
+                                />
+                              </div>
+                            </div>
+                            <div className="flex__rad">
+                              <div className="flex__kolonne-left">
+                                <InputField
+                                  label={'Gyldig fra og med dato? (dd.mm.åååå)'}
+                                  submitted={submitted}
+                                  value={fields.fullmektigNavn}
+                                  error={errors.fullmektigNavn}
+                                  onChange={v => setField({ fullmektigNavn: v })}
+                                  type="date"
+                                />
+                              </div>
+                              <div className="flex__kolonne-right">
+                                <InputField
+                                  label={'Gyldig til og med dato? (dd.mm.åååå)'}
+                                  submitted={submitted}
+                                  value={fields.fullmektigFodselsnr}
+                                  error={errors.fullmektigFodselsnr}
+                                  onChange={v => setField({ fullmektigFodselsnr: v })}
+                                  type="date"
+                                />
+                              </div>
+                            </div>
                           </div>
                         )}
                       </Validation>
-                    </div>
-                    <div className="fullmakt__melding">
-                      <InputField
-                        label={'Omraade'}
-                        submitted={submitted}
-                        value={fields.omraade}
-                        error={errors.omraade}
-                        onChange={v => setField({ omraade: v })}
-                      />
                     </div>
                     <div>
                       {error && (
                         <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
                       )}
                     </div>
-                    <div className="tb__knapper">
-                      <div className="tb__knapp">
-                        <Hovedknapp disabled={loading}>
-                          {loading ? <NavFrontendSpinner type={'S'} /> : 'Send'}
-                        </Hovedknapp>
-                      </div>
+                    <div className="navigasjon">
                       <div className="tb__knapp">
                         <Link to={baseUrl}>
                           <Knapp>Tilbake</Knapp>
                         </Link>
+                      </div>
+                      <div className="tb__knapp">
+                        <Hovedknapp disabled={loading}>
+                          {loading ? <NavFrontendSpinner type={'S'} /> : 'Send'}
+                        </Hovedknapp>
                       </div>
                     </div>
                   </div>
