@@ -22,6 +22,8 @@ export type FullmaktOtherType = {
   endret?: string;
   endretAv?: string;
   opphoert?: boolean;
+  fullmaktsgiver: string;
+  fullmektig: string;
 };
 
 export type FullmaktType = FullmaktViewType & FullmaktOtherType;

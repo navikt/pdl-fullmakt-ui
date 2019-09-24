@@ -33,15 +33,9 @@ export const setUpMock = async () => {
       delay(10, 50).then(() => kontaktInfo)
     );
   mockFullmaktsgiver &&
-    fetchMock.get(
-      `${apiUrl}/fullmaktsgiver`,
-      delay(10, 50).then(() => fullmaktsgiver)
-    );
+    fetchMock.get(`${apiUrl}/fullmaktsgiver`, delay(10, 50).then(() => fullmaktsgiver));
   mockFullmektig &&
-    fetchMock.get(
-      `${apiUrl}/fullmektig`,
-      delay(10, 50).then(() => fullmektig)
-    );
+    fetchMock.get(`${apiUrl}/fullmektig`, delay(10, 50).then(() => fullmektig));
 };
 
 const delay = (min: number, max: number) => {

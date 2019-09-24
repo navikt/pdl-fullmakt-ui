@@ -12,6 +12,38 @@
     margin: 2rem 0;
     text-align: center;
   }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &__input-container {
+    display: flex;
+    flex-wrap: wrap;
+    &:first-child {
+      margin-right: 4rem;
+    }
+  }
+  &__knapper {
+    display: flex;
+    padding-top: 0.15rem;
+  }
+  &__knapp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.275rem !important;
+    &:first-child {
+      margin-right: 0.25rem;
+    }
+    &-tekst {
+      padding: 0 0.25rem;
+    }
+    &-ikon {
+      margin-left: 0.25rem;
+    }
+  }
 }
 
 .lenke {
@@ -26,8 +58,23 @@
   &__beskrivelse {
     margin: 1rem 1rem 1rem 0;
   }
+  &__knapper {
+    display: flex;
+    padding-top: 0.15rem;
+  }
   &__knapp {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 0.275rem !important;
+    &:first-child {
+      margin-right: 0.25rem;
+    }
+    &-tekst {
+      padding: 0 0.25rem;
+    }
+    &-ikon {
+      margin-left: 0.25rem;
+    }
   }
 }

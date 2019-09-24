@@ -18,7 +18,5 @@ export const fullmaktFormConfig = {
   gyldigFraOgMed: {
     isRequired: 'Gyldig fra og med dato er påkrevd'
   },
-  gyldigTilOgMed: {
-    isRequired: 'Gyldig til og med dato er påkrevd'
-  }
+  gyldigTilOgMed: {}
 };
