@@ -6,9 +6,6 @@ import {
   Element,
   EtikettLiten
 } from 'nav-frontend-typografi';
-import { lenker } from './FrontpageLenker';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import { useStore } from '../../providers/Provider';
 import { Knapp } from 'nav-frontend-knapper';

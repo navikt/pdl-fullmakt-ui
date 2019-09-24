@@ -7,8 +7,7 @@ import {
   fetchKontaktInfo,
   fetchFodselsnr,
   fetchFullmaktsgiver,
-  fetchFullmektig,
-  fetchEnheter
+  fetchFullmektig
 } from './clients/apiClient';
 import { useStore } from './providers/Provider';
 import { AuthInfo } from './types/authInfo';
@@ -18,7 +17,6 @@ import Login from './pages/fullmakt/Login';
 import { KontaktInfo } from './types/kontaktInfo';
 import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
-import { Enheter } from './types/enheter';
 import { FullmaktType } from './types/fullmakt';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
