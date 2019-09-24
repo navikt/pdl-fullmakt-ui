@@ -67,7 +67,9 @@ const Frontpage = () => {
                         onClick={e => e}
                       >
                         <>
-                          <EtikettLiten>Endre</EtikettLiten>
+                          <EtikettLiten>
+                            <a href={'/person/pdl-fullmakt-ui/fullmakt'}>Endre</a>
+                          </EtikettLiten>
                           <div className={'frontpage__knapp-ikon'}>
                             <img alt={'Endre fullmakt'} src={endreIkon} />
                           </div>
@@ -80,7 +82,9 @@ const Frontpage = () => {
                         autoDisableVedSpinner={true}
                         onClick={e => e}
                       >
-                        <EtikettLiten>Slett</EtikettLiten>
+                        <EtikettLiten>
+                          <a href={'/person/pdl-fullmakt-ui'}>Slett</a>
+                        </EtikettLiten>
                         <div className={'frontpage__knapp-ikon'}>
                           <img alt={'Slett fullmakt'} src={slettIkon} />
                         </div>
@@ -101,7 +105,9 @@ const Frontpage = () => {
               autoDisableVedSpinner={true}
               onClick={e => e}
             >
-              <EtikettLiten>Legg til</EtikettLiten>
+              <EtikettLiten>
+                <a href={'/person/pdl-fullmakt-ui/fullmakt'}>Legg til</a>
+              </EtikettLiten>
               <div className={'frontpage__knapp-ikon'}>
                 <img alt={'Legg til fullmakt'} src={leggTilIkon} />
               </div>
