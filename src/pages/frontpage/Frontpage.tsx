@@ -57,35 +57,35 @@ const Frontpage = () => {
                       </div>
                     </div>
                     <div className={'frontpage__knapper'}>
-                      <Knapp
-                        type={'flat'}
-                        htmlType={'button'}
-                        className={'frontpage__knapp'}
-                        onClick={e => e}
-                      >
-                        <>
-                          <EtikettLiten>
-                            <a href={'/person/pdl-fullmakt-ui/fullmakt'}>Endre</a>
-                          </EtikettLiten>
+                      <a href={'/person/pdl-fullmakt-ui/fullmakt'}>
+                        <Knapp
+                          type={'flat'}
+                          htmlType={'button'}
+                          className={'frontpage__knapp'}
+                          onClick={e => e}
+                        >
+                          <>
+                            <EtikettLiten>Endre</EtikettLiten>
+                            <div className={'frontpage__knapp-ikon'}>
+                              <img alt={'Endre fullmakt'} src={endreIkon} />
+                            </div>
+                          </>
+                        </Knapp>
+                      </a>
+                      <a href={'/person/pdl-fullmakt-ui'}>
+                        <Knapp
+                          type={'flat'}
+                          htmlType={'button'}
+                          className={'frontpage__knapp'}
+                          autoDisableVedSpinner={true}
+                          onClick={e => e}
+                        >
+                          <EtikettLiten>Slett</EtikettLiten>
                           <div className={'frontpage__knapp-ikon'}>
-                            <img alt={'Endre fullmakt'} src={endreIkon} />
+                            <img alt={'Slett fullmakt'} src={slettIkon} />
                           </div>
-                        </>
-                      </Knapp>
-                      <Knapp
-                        type={'flat'}
-                        htmlType={'button'}
-                        className={'frontpage__knapp'}
-                        autoDisableVedSpinner={true}
-                        onClick={e => e}
-                      >
-                        <EtikettLiten>
-                          <a href={'/person/pdl-fullmakt-ui'}>Slett</a>
-                        </EtikettLiten>
-                        <div className={'frontpage__knapp-ikon'}>
-                          <img alt={'Slett fullmakt'} src={slettIkon} />
-                        </div>
-                      </Knapp>
+                        </Knapp>
+                      </a>
                     </div>
                   </div>
 
@@ -95,20 +95,20 @@ const Frontpage = () => {
           </div>
           <div className={'frontpage__container'}>
             <>&nbsp;</>
-            <Knapp
-              type={'flat'}
-              htmlType={'button'}
-              className={'frontpage__knapp'}
-              autoDisableVedSpinner={true}
-              onClick={e => e}
-            >
-              <EtikettLiten>
-                <a href={'/person/pdl-fullmakt-ui/fullmakt'}>Legg til</a>
-              </EtikettLiten>
-              <div className={'frontpage__knapp-ikon'}>
-                <img alt={'Legg til fullmakt'} src={leggTilIkon} />
-              </div>
-            </Knapp>
+            <a href={'/person/pdl-fullmakt-ui/fullmakt'}>
+              <Knapp
+                type={'flat'}
+                htmlType={'button'}
+                className={'frontpage__knapp'}
+                autoDisableVedSpinner={true}
+                onClick={e => e}
+              >
+                <EtikettLiten>Legg til</EtikettLiten>
+                <div className={'frontpage__knapp-ikon'}>
+                  <img alt={'Legg til fullmakt'} src={leggTilIkon} />
+                </div>
+              </Knapp>
+            </a>
           </div>
           <div className="frontpage__content">
             <Undertittel>Fullmektig for</Undertittel>
