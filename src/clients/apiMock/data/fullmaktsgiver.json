@@ -9,8 +9,9 @@
     "fullmaktsgiver": "12345678901",
     "fullmektig": "22345678901",
     "omraade": "nav.pensjon.*",
-    "gyldigFraOgMed": "2018-12-31",
-    "gyldigTilOgMed": "2019-12-31"
+    "gyldigFraOgMed": "2018.12.31",
+    "gyldigTilOgMed": "2019.12.31",
+    "fullmektigNavn": "Test navn"
   },
   {
     "fullmaktId": 1,
@@ -22,8 +23,9 @@
     "fullmaktsgiver": "12345678901",
     "fullmektig": "32345678901",
     "omraade": "nav.pensjon.*",
-    "gyldigFraOgMed": "2018-12-31",
-    "gyldigTilOgMed": "2019-12-31"
+    "gyldigFraOgMed": "2018.12.31",
+    "gyldigTilOgMed": "2019.12.31",
+    "fullmektigNavn": "Abc Xyz"
   },
   {
     "fullmaktId": 6,
@@ -35,8 +37,9 @@
     "fullmaktsgiver": "12345678901",
     "fullmektig": "42345678901",
     "omraade": "nav.pensjon.*",
-    "gyldigFraOgMed": "2018-12-31",
-    "gyldigTilOgMed": "2019-12-31"
+    "gyldigFraOgMed": "2018.12.31",
+    "gyldigTilOgMed": "2019.12.31",
+    "fullmektigNavn": "Abcdefg Xyzdfdsfd"
   },
   {
     "fullmaktId": 8,
@@ -48,7 +51,8 @@
     "fullmaktsgiver": "12345678901",
     "fullmektig": "52345678901",
     "omraade": "nav.pensjon.*",
-    "gyldigFraOgMed": "2018-12-31",
-    "gyldigTilOgMed": "2019-12-31"
+    "gyldigFraOgMed": "2018.12.31",
+    "gyldigTilOgMed": "2019.12.31",
+    "fullmektigNavn": "Sdasd Zdfdfsdfdf"
   }
 ]

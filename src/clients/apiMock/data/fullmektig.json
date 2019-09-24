@@ -9,8 +9,9 @@
     "fullmaktsgiver": "92345678901",
     "fullmektig": "12345678901",
     "omraade": "nav.pensjon.*",
-    "gyldigFraOgMed": "2019-12-31",
-    "gyldigTilOgMed": "2021-12-31"
+    "gyldigFraOgMed": "2019.12.31",
+    "gyldigTilOgMed": "2021.12.31",
+    "fullmaktsgiverNavn": "ZZZZbcdefg Xyzdfdsfd"
   },
   {
     "fullmaktId": 1,
@@ -22,7 +23,8 @@
     "fullmaktsgiver": "82345678901",
     "fullmektig": "12345678901",
     "omraade": "nav.pensjon.*",
-    "gyldigFraOgMed": "2019-12-31",
-    "gyldigTilOgMed": "2021-12-31"
+    "gyldigFraOgMed": "2019.12.31",
+    "gyldigTilOgMed": "2021.12.31",
+    "fullmaktsgiverNavn": "BBbcdefg Xyzdfdsfd"
   }
 ]

@@ -164,7 +164,11 @@ const Fullmakt = (props: RouteComponentProps) => {
                       </div>
                       <div className="tb__knapp">
                         <Hovedknapp disabled={loading}>
-                          {loading ? <NavFrontendSpinner type={'S'} /> : 'Send'}
+                          {loading ? (
+                            <NavFrontendSpinner type={'S'} />
+                          ) : (
+                            'Lagre og avslutt'
+                          )}
                         </Hovedknapp>
                       </div>
                     </div>

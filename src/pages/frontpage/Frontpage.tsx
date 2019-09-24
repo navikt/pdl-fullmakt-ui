@@ -1,5 +1,11 @@
 import React from 'react';
-import { Normaltekst, Sidetittel, Undertittel, Element } from 'nav-frontend-typografi';
+import {
+  Normaltekst,
+  Sidetittel,
+  Undertittel,
+  Element,
+  EtikettLiten
+} from 'nav-frontend-typografi';
 import { lenker } from './FrontpageLenker';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Link } from 'react-router-dom';
@@ -8,10 +14,11 @@ import { useStore } from '../../providers/Provider';
 import { Knapp } from 'nav-frontend-knapper';
 import endreIkon from '../../assets/Pencil.svg';
 import slettIkon from '../../assets/Slett.svg';
+import leggTilIkon from '../../assets/LeggTil.svg';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig }] = useStore();
+  const [{ fullmatsgiver, fullmektig, auth }] = useStore();
   return (
     <>
       <Header />
@@ -20,10 +27,11 @@ const Frontpage = () => {
           <header className="frontpage__introduksjon">
             <div className="frontpage__sidetittel">
               <Sidetittel>NAV Fullmakter</Sidetittel>
+              <Undertittel>{auth.authenticated ? ' for ' + auth.name : ''}</Undertittel>
             </div>
           </header>
           <div className="frontpage__content">
-            <b>Fullmakter</b>
+            <Undertittel>Fullmakter gitt</Undertittel>
             <div className="divider" />
             {fullmatsgiver &&
               fullmatsgiver.status === 'RESULT' &&
@@ -35,7 +43,7 @@ const Frontpage = () => {
                       <div className={'frontpage__input-container'}>
                         <Element>Navn: &nbsp;</Element>
                         <Normaltekst>
-                          {f.fullmektigNavn || '' + ' (' + f.fullmektig + ')'}
+                          {(f.fullmektigNavn || '') + ' (' + f.fullmektig + ')'}
                         </Normaltekst>
                       </div>
                       <div className={'frontpage__container'}>
@@ -59,9 +67,9 @@ const Frontpage = () => {
                         onClick={e => e}
                       >
                         <>
-                          <div className={'frontpage__knapp-tekst'}>endre</div>
+                          <EtikettLiten>Endre</EtikettLiten>
                           <div className={'frontpage__knapp-ikon'}>
-                            <img alt={'Endre telefonnummer'} src={endreIkon} />
+                            <img alt={'Endre fullmakt'} src={endreIkon} />
                           </div>
                         </>
                       </Knapp>
@@ -72,9 +80,9 @@ const Frontpage = () => {
                         autoDisableVedSpinner={true}
                         onClick={e => e}
                       >
-                        <div className={'frontpage__knapp-tekst'}>slett</div>
+                        <EtikettLiten>Slett</EtikettLiten>
                         <div className={'frontpage__knapp-ikon'}>
-                          <img alt={'Slett telefonnummer'} src={slettIkon} />
+                          <img alt={'Slett fullmakt'} src={slettIkon} />
                         </div>
                       </Knapp>
                     </div>
@@ -84,9 +92,23 @@ const Frontpage = () => {
                 </>
               ))}
           </div>
-
+          <div className={'frontpage__container'}>
+            <>&nbsp;</>
+            <Knapp
+              type={'flat'}
+              htmlType={'button'}
+              className={'frontpage__knapp'}
+              autoDisableVedSpinner={true}
+              onClick={e => e}
+            >
+              <EtikettLiten>Legg til</EtikettLiten>
+              <div className={'frontpage__knapp-ikon'}>
+                <img alt={'Legg til fullmakt'} src={leggTilIkon} />
+              </div>
+            </Knapp>
+          </div>
           <div className="frontpage__content">
-            <b>Fullmektig</b>
+            <Undertittel>Fullmektig for</Undertittel>
             <div className="divider" />
             {fullmektig &&
               fullmektig.status === 'RESULT' &&
@@ -98,7 +120,7 @@ const Frontpage = () => {
                       <div className={'frontpage__input-container'}>
                         <Element>Navn: &nbsp;</Element>
                         <Normaltekst>
-                          {f.fullmaktsgiverNavn || '' + ' (' + f.fullmaktsgiver + ')'}
+                          {(f.fullmaktsgiverNavn || '') + ' (' + f.fullmaktsgiver + ')'}
                         </Normaltekst>
                       </div>
                       <div className={'frontpage__container'}>
