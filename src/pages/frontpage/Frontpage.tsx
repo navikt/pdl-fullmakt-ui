@@ -34,121 +34,126 @@ const Frontpage = () => {
             beskrivelse={'Fullmakter' + (auth.authenticated ? ' for ' + auth.name : '')}
             icon={FullmaktIcon}
           >
-            <div key="Fullmakter" className="frontpage__content">
-              <Undertittel>Fullmakter gitt</Undertittel>
-              <div className="divider" />
-              {fullmatsgiver &&
-                fullmatsgiver.status === 'RESULT' &&
-                fullmatsgiver.data &&
-                fullmatsgiver.data.map((f, key) => (
-                  <>
-                    <div className="frontpage__container" key={f.fullmaktId}>
-                      <div>
-                        <div className="frontpage__input-container">
-                          <Element>Navn: &nbsp;</Element>
-                          <Normaltekst>
-                            {(f.fullmektigNavn || '') + ' (' + f.fullmektig + ')'}
-                          </Normaltekst>
-                        </div>
-                        <div className="frontpage__container">
+            <div id="fullmaktPage">
+              <div key="Fullmakter" className="frontpage__content">
+                <Undertittel>Fullmakter gitt</Undertittel>
+                <div className="divider" />
+                {fullmatsgiver &&
+                  fullmatsgiver.status === 'RESULT' &&
+                  fullmatsgiver.data &&
+                  fullmatsgiver.data.map((f, key) => (
+                    <div key={f.fullmaktId}>
+                      <div className="frontpage__container" key={f.fullmaktId}>
+                        <div>
                           <div className="frontpage__input-container">
-                            <Element>Område: &nbsp;</Element>
-                            <Normaltekst>{f.omraade}</Normaltekst>
-                          </div>
-                          <div className="frontpage__input-container">
-                            <Element>Gyldig: &nbsp;</Element>
+                            <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
-                              {f.gyldigFraOgMed + ' - ' + f.gyldigTilOgMed}
+                              {(f.fullmektigNavn || '') + ' (' + f.fullmektig + ')'}
                             </Normaltekst>
                           </div>
-                        </div>
-                      </div>
-                      <div className="frontpage__knapper">
-                        <a href={'/person/pdl-fullmakt-ui/fullmakt/' + f.fullmaktId}>
-                          <Knapp
-                            type={'flat'}
-                            htmlType={'button'}
-                            className={'frontpage__knapp'}
-                            onClick={e => e}
-                          >
-                            <>
-                              <EtikettLiten>Endre</EtikettLiten>
-                              <div className={'frontpage__knapp-ikon'}>
-                                <img alt={'Endre fullmakt'} src={endreIkon} />
-                              </div>
-                            </>
-                          </Knapp>
-                        </a>
-                        <a href={'/person/pdl-fullmakt-ui'}>
-                          <Knapp
-                            type={'flat'}
-                            htmlType={'button'}
-                            className={'frontpage__knapp'}
-                            autoDisableVedSpinner={true}
-                            onClick={e => e}
-                          >
-                            <EtikettLiten>Slett</EtikettLiten>
-                            <div className={'frontpage__knapp-ikon'}>
-                              <img alt={'Slett fullmakt'} src={slettIkon} />
+                          <div className="frontpage__container">
+                            <div className="frontpage__input-container">
+                              <Element>Område: &nbsp;</Element>
+                              <Normaltekst>{f.omraade}</Normaltekst>
                             </div>
-                          </Knapp>
-                        </a>
-                      </div>
-                    </div>
-                    <div key={f.fullmaktId + 'divider'} className="divider" />
-                  </>
-                ))}
-            </div>
-            <div key={'FullmakterAdd'} className={'frontpage__container'}>
-              <>&nbsp;</>
-              <a href={'/person/pdl-fullmakt-ui/fullmakt'}>
-                <Knapp
-                  type={'flat'}
-                  htmlType={'button'}
-                  className={'frontpage__knapp'}
-                  autoDisableVedSpinner={true}
-                  onClick={e => e}
-                >
-                  <EtikettLiten>Legg til</EtikettLiten>
-                  <div className={'frontpage__knapp-ikon'}>
-                    <img alt={'Legg til fullmakt'} src={leggTilIkon} />
-                  </div>
-                </Knapp>
-              </a>
-            </div>
-            <div key={'Fullmektig'} className={'frontpage__content'}>
-              <Undertittel>Fullmektig for</Undertittel>
-              <div className={'divider'} />
-              {fullmektig &&
-                fullmektig.status === 'RESULT' &&
-                fullmektig.data &&
-                fullmektig.data.map((f, key) => (
-                  <div key={f.fullmaktId}>
-                    <div className={'frontpage__container'} key={f.fullmaktId}>
-                      <div>
-                        <div className={'frontpage__input-container'}>
-                          <Element>Navn: &nbsp;</Element>
-                          <Normaltekst>
-                            {(f.fullmaktsgiverNavn || '') + ' (' + f.fullmaktsgiver + ')'}
-                          </Normaltekst>
-                        </div>
-                        <div className={'frontpage__container'}>
-                          <div className={'frontpage__input-container'}>
-                            <Element>Område: &nbsp;</Element>
-                            <Normaltekst>{f.omraade}</Normaltekst>
+                            <div className="frontpage__input-container">
+                              <Element>Gyldig: &nbsp;</Element>
+                              <Normaltekst>
+                                {f.gyldigFraOgMed + ' - ' + f.gyldigTilOgMed}
+                              </Normaltekst>
+                            </div>
                           </div>
+                        </div>
+                        <div className="frontpage__knapper">
+                          <a href={'/person/pdl-fullmakt-ui/fullmakt/' + f.fullmaktId}>
+                            <Knapp
+                              type={'flat'}
+                              htmlType={'button'}
+                              className={'frontpage__knapp'}
+                              onClick={e => e}
+                            >
+                              <>
+                                <EtikettLiten>Endre</EtikettLiten>
+                                <div className={'frontpage__knapp-ikon'}>
+                                  <img alt={'Endre fullmakt'} src={endreIkon} />
+                                </div>
+                              </>
+                            </Knapp>
+                          </a>
+                          <a href={'/person/pdl-fullmakt-ui'}>
+                            <Knapp
+                              type={'flat'}
+                              htmlType={'button'}
+                              className={'frontpage__knapp'}
+                              autoDisableVedSpinner={true}
+                              onClick={e => e}
+                            >
+                              <EtikettLiten>Slett</EtikettLiten>
+                              <div className={'frontpage__knapp-ikon'}>
+                                <img alt={'Slett fullmakt'} src={slettIkon} />
+                              </div>
+                            </Knapp>
+                          </a>
+                        </div>
+                      </div>
+                      <div key={f.fullmaktId + 'divider'} className="divider" />
+                    </div>
+                  ))}
+              </div>
+              <div key={'FullmakterAdd'} className={'frontpage__container'}>
+                <>&nbsp;</>
+                <a href={'/person/pdl-fullmakt-ui/fullmakt'}>
+                  <Knapp
+                    type={'flat'}
+                    htmlType={'button'}
+                    className={'frontpage__knapp'}
+                    autoDisableVedSpinner={true}
+                    onClick={e => e}
+                  >
+                    <EtikettLiten>Legg til</EtikettLiten>
+                    <div className={'frontpage__knapp-ikon'}>
+                      <img alt={'Legg til fullmakt'} src={leggTilIkon} />
+                    </div>
+                  </Knapp>
+                </a>
+              </div>
+              <div key={'Fullmektig'} className={'frontpage__content'}>
+                <Undertittel>Fullmektig for</Undertittel>
+                <div className={'divider'} />
+                {fullmektig &&
+                  fullmektig.status === 'RESULT' &&
+                  fullmektig.data &&
+                  fullmektig.data.map((f, key) => (
+                    <div key={f.fullmaktId}>
+                      <div className={'frontpage__container'} key={f.fullmaktId}>
+                        <div>
                           <div className={'frontpage__input-container'}>
-                            <Element>Gyldig: &nbsp;</Element>
+                            <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
-                              {f.gyldigFraOgMed + ' - ' + f.gyldigTilOgMed}
+                              {(f.fullmaktsgiverNavn || '') +
+                                ' (' +
+                                f.fullmaktsgiver +
+                                ')'}
                             </Normaltekst>
                           </div>
+                          <div className={'frontpage__container'}>
+                            <div className={'frontpage__input-container'}>
+                              <Element>Område: &nbsp;</Element>
+                              <Normaltekst>{f.omraade}</Normaltekst>
+                            </div>
+                            <div className={'frontpage__input-container'}>
+                              <Element>Gyldig: &nbsp;</Element>
+                              <Normaltekst>
+                                {f.gyldigFraOgMed + ' - ' + f.gyldigTilOgMed}
+                              </Normaltekst>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      <div key={f.fullmaktId + 'divider'} className={'divider'} />
                     </div>
-                    <div key={f.fullmaktId + 'divider'} className={'divider'} />
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
           </Box>
         </div>
