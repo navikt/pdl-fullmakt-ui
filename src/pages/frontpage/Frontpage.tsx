@@ -6,7 +6,6 @@ import {
   Element,
   EtikettLiten
 } from 'nav-frontend-typografi';
-import Header from '../../components/header/Header';
 import { useStore } from '../../providers/Provider';
 import { Knapp } from 'nav-frontend-knapper';
 import endreIkon from '../../assets/Pencil.svg';
@@ -17,21 +16,22 @@ import FullmaktIcon from '../../assets/Fullmakt.svg';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig, auth }] = useStore();
+  const [{ fullmatsgiver, fullmektig }] = useStore();
   return (
     <>
-      <Header />
       <div className="pagecontent">
         <div className="frontpage">
           <header className="frontpage__introduksjon">
             <div className="frontpage__sidetittel">
-              <Sidetittel>NAV Fullmakter</Sidetittel>
+              <Sidetittel>Dine fullmakter</Sidetittel>
             </div>
           </header>
           <Box
             id={'fullmaktFrontPage'}
             tittel={''}
-            beskrivelse={'Fullmakter' + (auth.authenticated ? ' for ' + auth.name : '')}
+            beskrivelse={
+              '' /*'Fullmakter' + (auth.authenticated ? ' for ' + auth.name : '')*/
+            }
             icon={FullmaktIcon}
           >
             <div id="fullmaktPage">
@@ -110,7 +110,7 @@ const Frontpage = () => {
                     autoDisableVedSpinner={true}
                     onClick={e => e}
                   >
-                    <EtikettLiten>Legg til</EtikettLiten>
+                    <EtikettLiten>Ny fullmakt</EtikettLiten>
                     <div className={'frontpage__knapp-ikon'}>
                       <img alt={'Legg til fullmakt'} src={leggTilIkon} />
                     </div>

@@ -6,7 +6,7 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 
 interface Props {
   id: string;
-  tittel: string;
+  tittel?: string;
   beskrivelse?: string;
   icon?: string;
   children: JSX.Element | JSX.Element[];
@@ -25,10 +25,12 @@ const Box = (props: Props) => {
           kompakt={true}
         >
           <div className="box__container">
-            <div className="box__header">
-              <Sidetittel>{tittel}</Sidetittel>
-              <Undertittel>{beskrivelse}</Undertittel>
-            </div>
+            {(tittel || beskrivelse) && (
+              <div className="box__header">
+                {tittel && <Sidetittel>{tittel}</Sidetittel>}
+                {beskrivelse && <Undertittel>{beskrivelse}</Undertittel>}
+              </div>
+            )}
             <div className="box__content">{children}</div>
           </div>
         </Veilederpanel>

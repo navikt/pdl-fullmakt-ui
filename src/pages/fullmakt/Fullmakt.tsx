@@ -37,7 +37,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     fullmatsgiver.data &&
     fullmatsgiver.data.filter(d => d.fullmaktId === Number(fullmaktId)).shift();
   const initialValues = {
-    omraade: (fullmaktId && fullmakt && fullmakt.omraade && fullmakt.omraade) || ''
+    fullmektigNavn: fullmakt && fullmakt.fullmektigNavn
   };
 
   const send = (e: FormContext) => {
@@ -158,7 +158,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                 <div className="flex__kolonne-left">
                                   <DayPicker
                                     value={fields.gyldigFraOgMed}
-                                    label={'Gyldig fra og med dato? (dd.mm.åååå)'}
+                                    label={'Gyldig fra og med dato (dd.mm.åååå)'}
                                     submitted={submitted}
                                     error={errors.gyldigFraOgMed}
                                     onChange={value =>
@@ -172,7 +172,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                 <div className="flex__kolonne-right">
                                   <DayPicker
                                     value={fields.gyldigTilOgMed}
-                                    label={'Gyldig til og med dato? (dd.mm.åååå)'}
+                                    label={'Gyldig til og med dato (dd.mm.åååå)'}
                                     submitted={submitted}
                                     error={errors.gyldigTilOgMed}
                                     onChange={value =>
