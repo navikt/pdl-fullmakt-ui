@@ -18,6 +18,7 @@ import Header from '../../components/header/Header';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
 import EndreKontonummerFelt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
+import SelectOmraade from '../../components/felter/kodeverk/SelectOmraade';
 
 interface Routes {
   fullmaktId: string;
@@ -143,10 +144,10 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
                               <div className="flex__rad">
                                 <div className="flex__kolonne-left">
-                                  <EndreKontonummerFelt
+                                  <SelectOmraade
                                     label={'Område'}
                                     submitted={submitted}
-                                    value={fields.omraade}
+                                    option={fields.omraade}
                                     error={errors.omraade}
                                     onChange={v => setField({ omraade: v })}
                                     hjelpetekst={'NAV områder for fullmakt.'}

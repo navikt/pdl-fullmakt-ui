@@ -1,10 +1,10 @@
 [
   {
     "kode": "nav.pensjon.*",
-    "tekst": "NAV pensjon"
+    "tekst": "nav.pensjon.*"
   },
   {
     "kode": "nav.personalia.*",
-    "tekst": "NAV personalia"
+    "tekst": "nav.personalia.*"
   }
 ]

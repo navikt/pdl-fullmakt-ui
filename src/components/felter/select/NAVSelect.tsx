@@ -85,7 +85,9 @@ const NAVSelect = (props: Props) => {
       <div className="KodeverkSelect__header">
         {props.label && <div className="skjemaelement__label">{props.label}</div>}
         {props.hjelpetekst && (
-          <HjelpetekstHoyre id={'hjelpetekst'}>{props.hjelpetekst}</HjelpetekstHoyre>
+          <HjelpetekstHoyre tittel={''} id={'hjelpetekst'}>
+            {props.hjelpetekst}
+          </HjelpetekstHoyre>
         )}
       </div>
       <div className={cls('KodeverkSelect--select-wrapper')}>
