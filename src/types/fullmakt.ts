@@ -16,7 +16,7 @@ export type FullmaktViewType = {
 };
 
 export type FullmaktOtherType = {
-  fullmakt_id?: number;
+  fullmaktId?: number;
   registrert: string;
   registrertAv: string;
   endret?: string;

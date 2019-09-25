@@ -78,6 +78,7 @@ const App = () => {
           <Route exact path={`(|${baseUrl})`} component={Frontpage} />
           <Route exact path={`${baseUrl}/fullmakt/login`} component={Login} />
           <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
+          <Route exact path={`${baseUrl}/fullmakt/:fullmaktId`} component={Fullmakt} />
           <Route component={PageNotFound} />
         </Switch>
       </ScrollToTop>

@@ -1,0 +1,10 @@
+[
+  {
+    "kode": "nav.pensjon.*",
+    "tekst": "NAV pensjon"
+  },
+  {
+    "kode": "nav.personalia.*",
+    "tekst": "NAV personalia"
+  }
+]
