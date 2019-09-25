@@ -50,7 +50,7 @@ const DayPicker = (props: Props) => {
 
   const inputClasses = cls({
     'skjemaelement__input--harFeil': submitted && error,
-    'skjemaelement__input input--m': true
+    'skjemaelement__input input--fullbredde': true
   });
 
   return (
@@ -71,7 +71,7 @@ const DayPicker = (props: Props) => {
           numberOfMonths: 2,
           locale: props.locale,
           localeUtils: MomentLocaleUtils,
-          month: dateOneYearAhead,
+          month: dateNow,
           fromMonth: dateNow,
           toMonth: dateOneYearAhead,
           disabledDays: [

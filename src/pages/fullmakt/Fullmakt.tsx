@@ -8,7 +8,6 @@ import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { baseUrl } from '../../App';
 import { postFullmakt } from '../../clients/apiClient';
-import InputField from '../../components/input-fields/InputField';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
@@ -16,9 +15,9 @@ import { FormContext, Form, Validation } from 'calidation';
 import { FullmaktType, FullmaktViewType } from '../../types/fullmakt';
 import { fullmaktFormConfig, baseFormConfig } from './config/form';
 import Header from '../../components/header/Header';
-import { Input } from 'nav-frontend-skjema';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
+import EndreKontonummerFelt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
 
 interface Routes {
   fullmaktId: string;
@@ -99,17 +98,23 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                               <div>
                                 <div className="flex__rad mellomrom">
                                   <div className="flex__kolonne-left">
-                                    <Input
+                                    <EndreKontonummerFelt
                                       disabled={true}
                                       value={auth.authenticated ? auth.name : ''}
                                       label={'Fullmaktsgivers navn'}
+                                      submitted={false}
+                                      onChange={e => e}
+                                      error={''}
                                     />
                                   </div>
                                   <div className="flex__kolonne-right">
-                                    <Input
+                                    <EndreKontonummerFelt
                                       disabled={true}
                                       value={auth.authenticated ? auth.fodselsnr : ''}
                                       label={'Fullmaktsgivers fødselsnummer'}
+                                      submitted={false}
+                                      onChange={e => e}
+                                      error={''}
                                     />
                                   </div>
                                 </div>
@@ -117,7 +122,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                               <div className="divider" />
                               <div className="flex__rad">
                                 <div className="flex__kolonne-left">
-                                  <InputField
+                                  <EndreKontonummerFelt
                                     label={'Fullmektigens navn'}
                                     submitted={submitted}
                                     value={fields.fullmektigNavn}
@@ -126,7 +131,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                   />
                                 </div>
                                 <div className="flex__kolonne-right">
-                                  <InputField
+                                  <EndreKontonummerFelt
                                     label={'Fullmektigens fødselsnummer'}
                                     submitted={submitted}
                                     value={fields.fullmektigFodselsnr}
@@ -138,22 +143,23 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
                               <div className="flex__rad">
                                 <div className="flex__kolonne-left">
-                                  <InputField
+                                  <EndreKontonummerFelt
                                     label={'Område'}
                                     submitted={submitted}
                                     value={fields.omraade}
                                     error={errors.omraade}
                                     onChange={v => setField({ omraade: v })}
+                                    hjelpetekst={'NAV områder for fullmakt.'}
                                   />
                                 </div>
                               </div>
                               <div className="flex__rad">
                                 <div className="flex__kolonne-left">
                                   <DayPicker
-                                    value={fields.datoTilOgMed}
-                                    label={'Gyldig til'}
+                                    value={fields.gyldigFraOgMed}
+                                    label={'Gyldig fra og med dato? (dd.mm.åååå)'}
                                     submitted={submitted}
-                                    error={errors.datoTilOgMed}
+                                    error={errors.gyldigFraOgMed}
                                     onChange={value =>
                                       setField({ gyldigFraOgMed: value })
                                     }
@@ -161,23 +167,19 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                       setError({ gyldigFraOgMed: error })
                                     }
                                   />
-                                  <InputField
-                                    label={'Gyldig fra og med dato? (dd.mm.åååå)'}
-                                    submitted={submitted}
-                                    value={fields.gyldigFraOgMed}
-                                    error={errors.gyldigFraOgMed}
-                                    onChange={v => setField({ gyldigFraOgMed: v })}
-                                    type="date"
-                                  />
                                 </div>
                                 <div className="flex__kolonne-right">
-                                  <InputField
+                                  <DayPicker
+                                    value={fields.gyldigTilOgMed}
                                     label={'Gyldig til og med dato? (dd.mm.åååå)'}
                                     submitted={submitted}
-                                    value={fields.gyldigTilOgMed}
                                     error={errors.gyldigTilOgMed}
-                                    onChange={v => setField({ gyldigTilOgMed: v })}
-                                    type="date"
+                                    onChange={value =>
+                                      setField({ gyldigTilOgMed: value })
+                                    }
+                                    onErrors={error =>
+                                      setError({ gyldigTilOgMed: error })
+                                    }
                                   />
                                 </div>
                               </div>

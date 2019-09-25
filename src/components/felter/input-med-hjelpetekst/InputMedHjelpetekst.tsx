@@ -25,7 +25,9 @@ const EndreKontonummerFelt = ({
       <div className="ekf__header">
         {label && <div className="skjemaelement__label">{label}</div>}
         {hjelpetekst && (
-          <HjelpetekstHoyre id={'hjelpetekst'}>{hjelpetekst}</HjelpetekstHoyre>
+          <HjelpetekstHoyre tittel={''} id={'hjelpetekst'} type="auto">
+            <div>{hjelpetekst}</div>
+          </HjelpetekstHoyre>
         )}
       </div>
       <div className="ekf__input">
