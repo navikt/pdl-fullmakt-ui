@@ -36,7 +36,7 @@ const Frontpage = () => {
           >
             <div id="fullmaktPage">
               <div key="Fullmakter" className="frontpage__content">
-                <Undertittel>Fullmakter gitt</Undertittel>
+                <Undertittel>Jeg har gitt fullmakt til:</Undertittel>
                 <div className="divider" />
                 {fullmatsgiver &&
                   fullmatsgiver.status === 'RESULT' &&
@@ -53,7 +53,7 @@ const Frontpage = () => {
                           </div>
                           <div className="frontpage__container">
                             <div className="frontpage__input-container">
-                              <Element>Område: &nbsp;</Element>
+                              <Element>Fullmakten gjelder: &nbsp;</Element>
                               <Normaltekst>{f.omraade}</Normaltekst>
                             </div>
                             <div className="frontpage__input-container">
@@ -118,7 +118,7 @@ const Frontpage = () => {
                 </a>
               </div>
               <div key={'Fullmektig'} className={'frontpage__content'}>
-                <Undertittel>Fullmektig for</Undertittel>
+                <Undertittel>Jeg er fullmektig for:</Undertittel>
                 <div className={'divider'} />
                 {fullmektig &&
                   fullmektig.status === 'RESULT' &&
@@ -138,7 +138,7 @@ const Frontpage = () => {
                           </div>
                           <div className={'frontpage__container'}>
                             <div className={'frontpage__input-container'}>
-                              <Element>Område: &nbsp;</Element>
+                              <Element>Fullmakten gjelder: &nbsp;</Element>
                               <Normaltekst>{f.omraade}</Normaltekst>
                             </div>
                             <div className={'frontpage__input-container'}>
