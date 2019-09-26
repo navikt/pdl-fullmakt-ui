@@ -11,7 +11,7 @@ import { postFullmakt } from '../../clients/apiClient';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
-import { FormContext, Form, Validation, FormValidation } from 'calidation';
+import { FormContext, Validation, FormValidation } from 'calidation';
 import { FullmaktType, FullmaktViewType } from '../../types/fullmakt';
 import { fullmaktFormConfig, baseFormConfig } from './config/form';
 import Header from '../../components/header/Header';
@@ -37,7 +37,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     fullmatsgiver.data &&
     fullmatsgiver.data.filter(d => d.fullmaktId === Number(fullmaktId)).shift();
   const initialValues = {
-    fullmatsgiverNavn: 'hi'
+    fullmektigNavn: (fullmakt && fullmakt.fullmektigNavn)
   };
 
   const send = (e: FormContext) => {
@@ -138,7 +138,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                               <div className="flex__kolonne-left">
                                 <DayPicker
                                   value={fields.gyldigFraOgMed}
-                                  label={'Gyldig fra og med dato (dd.mm.åååå)'}
+                                  label={'Fullmakten skal gjelde fra (dd.mm.åååå)'}
                                   submitted={submitted}
                                   error={errors.gyldigFraOgMed}
                                   onChange={value => setField({ gyldigFraOgMed: value })}
@@ -148,7 +148,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                               <div className="flex__kolonne-right">
                                 <DayPicker
                                   value={fields.gyldigTilOgMed}
-                                  label={'Gyldig til og med dato (dd.mm.åååå)'}
+                                  label={'Fullmakten skal gjelde til (dd.mm.åååå)'}
                                   submitted={submitted}
                                   error={errors.gyldigTilOgMed}
                                   onChange={value => setField({ gyldigTilOgMed: value })}
