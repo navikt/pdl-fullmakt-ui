@@ -125,7 +125,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                             <div className="flex__rad">
                               <div className="flex__kolonne-left">
                                 <SelectOmraade
-                                  label={'Fullmakten skal gjelde'}
+                                  label={'Fullmakten gjelder'}
                                   submitted={submitted}
                                   option={fields.omraade}
                                   error={errors.omraade}
@@ -138,7 +138,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                               <div className="flex__kolonne-left">
                                 <DayPicker
                                   value={fields.gyldigFraOgMed}
-                                  label={'Fullmakten skal gjelde fra (dd.mm.åååå)'}
+                                  label={'Fullmakten gjelder fra (dd.mm.åååå)'}
                                   submitted={submitted}
                                   error={errors.gyldigFraOgMed}
                                   onChange={value => setField({ gyldigFraOgMed: value })}
@@ -148,7 +148,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                               <div className="flex__kolonne-right">
                                 <DayPicker
                                   value={fields.gyldigTilOgMed}
-                                  label={'Fullmakten skal gjelde til (dd.mm.åååå)'}
+                                  label={'Fullmakten gjelder til (dd.mm.åååå)'}
                                   submitted={submitted}
                                   error={errors.gyldigTilOgMed}
                                   onChange={value => setField({ gyldigTilOgMed: value })}
