@@ -2,7 +2,6 @@ import fetchMock from 'fetch-mock';
 import authInfo from './data/authInfo.json';
 import fodselsnr from './data/fodselsnr.json';
 import kontaktInfo from './data/kontaktInfo.json';
-import enheter from './data/enheter.json';
 import Environment from '../../utils/Environments';
 import fullmaktsgiver from './data/fullmaktsgiver.json';
 import fullmektig from './data/fullmektig.json';
@@ -14,7 +13,6 @@ fetchMock.config.fallbackToNetwork = true;
 const mockAuthInfo = true;
 const mockFodselsnr = true;
 const mockKontaktInfo = true;
-const mockEhyeter = true;
 const mockFullmaktsgiver = true;
 const mockFullmektig = true;
 const mockOmraade = true;
@@ -25,8 +23,6 @@ export const setUpMock = async () => {
       `${baseUrl}/innloggingslinje-api/auth`,
       delay(10, 50).then(() => authInfo)
     );
-  mockEhyeter &&
-    fetchMock.get(`${apiUrl}/enheter`, delay(5000, 6000).then(() => enheter));
   mockFodselsnr &&
     fetchMock.get(`${apiUrl}/fodselsnr`, delay(10, 50).then(() => fodselsnr));
   mockKontaktInfo &&

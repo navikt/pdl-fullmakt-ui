@@ -52,7 +52,6 @@ const sendJson = (url: string, data: FullmaktViewType) =>
       throw error;
     });
 
-export const fetchEnheter = () => hentJson(`${apiUrl}/enheter`);
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
 export const fetchAuthInfo = () => hentJson(`${baseUrl}/innloggingslinje-api/auth`);
