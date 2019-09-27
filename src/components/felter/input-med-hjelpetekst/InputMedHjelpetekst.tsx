@@ -11,7 +11,7 @@ interface Props extends InputProps {
   hjelpetekst?: string;
 }
 
-const EndreKontonummerFelt = ({
+const Felt = ({
   value,
   onChange,
   submitted,
@@ -43,4 +43,4 @@ const EndreKontonummerFelt = ({
   );
 };
 
-export default EndreKontonummerFelt;
+export default Felt;

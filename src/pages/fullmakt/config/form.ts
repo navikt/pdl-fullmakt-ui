@@ -1,9 +1,3 @@
-export const baseFormConfig = {
-  omraade: {
-    isRequired: 'Område er påkrevd'
-  }
-};
-
 export const fullmaktFormConfig = {
   fullmektigNavn: {
     isRequired: 'Navn er påkrevd'
@@ -14,6 +8,9 @@ export const fullmaktFormConfig = {
       message: 'Fødselsnummer må være 11 siffer',
       length: 11
     }
+  },
+  omraade: {
+    isRequired: 'Område er påkrevd'
   },
   gyldigFraOgMed: {
     isRequired: 'Gyldig fra og med dato er påkrevd'
