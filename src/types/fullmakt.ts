@@ -12,7 +12,7 @@ export type FullmaktViewType = {
   fullmektigFodselsnr: string;
   omraade: string;
   gyldigFraOgMed: string;
-  gyldigTilOgMed?: string;
+  gyldigTilOgMed: string;
 };
 
 export type FullmaktOtherType = {

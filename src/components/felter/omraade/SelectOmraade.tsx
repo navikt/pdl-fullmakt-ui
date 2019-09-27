@@ -32,7 +32,7 @@ const SelectOmraade = (props: Props) => {
       settLoading(true);
       fetchOmraade()
         .then(v => {
-          settValutaer(v);
+          v && settValutaer(v);
         })
         .catch((error: HTTPError) => {
           settFetchError(error);

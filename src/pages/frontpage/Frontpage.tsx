@@ -13,6 +13,7 @@ import slettIkon from '../../assets/Slett.svg';
 import leggTilIkon from '../../assets/LeggTil.svg';
 import Box from '../../components/box/Box';
 import FullmaktIcon from '../../assets/Fullmakt.svg';
+import { getDefaultDateFormat } from '../../components/felter/day-picker/utils';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -59,7 +60,9 @@ const Frontpage = () => {
                             <div className="frontpage__input-container">
                               <Element>Gyldig: &nbsp;</Element>
                               <Normaltekst>
-                                {f.gyldigFraOgMed + ' - ' + f.gyldigTilOgMed}
+                                {getDefaultDateFormat(f.gyldigFraOgMed) +
+                                  ' - ' +
+                                  getDefaultDateFormat(f.gyldigTilOgMed)}
                               </Normaltekst>
                             </div>
                           </div>
@@ -144,7 +147,9 @@ const Frontpage = () => {
                             <div className={'frontpage__input-container'}>
                               <Element>Gyldig: &nbsp;</Element>
                               <Normaltekst>
-                                {f.gyldigFraOgMed + ' - ' + f.gyldigTilOgMed}
+                                {getDefaultDateFormat(f.gyldigFraOgMed) +
+                                  ' - ' +
+                                  getDefaultDateFormat(f.gyldigTilOgMed)}
                               </Normaltekst>
                             </div>
                           </div>

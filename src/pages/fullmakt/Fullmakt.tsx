@@ -11,7 +11,7 @@ import { postFullmakt } from '../../clients/apiClient';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
-import { FormContext, Validation, FormValidation } from 'calidation';
+import { FormContext, FormValidation } from 'calidation';
 import { FullmaktType, FullmaktViewType } from '../../types/fullmakt';
 import { fullmaktFormConfig } from './config/form';
 import Header from '../../components/header/Header';
@@ -31,15 +31,25 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
   const [{ auth, fullmatsgiver }] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
+
   const fullmaktData =
     fullmatsgiver &&
     fullmatsgiver.status === 'RESULT' &&
     fullmatsgiver.data &&
     fullmatsgiver.data.filter(d => d.fullmaktId === Number(fullmaktId)).shift();
-  const initialValues = {
-    fullmektigNavn: fullmaktData && fullmaktData.fullmektigNavn
-  };
-  const [data] = useState(fullmaktData);
+
+  const initialValues = fullmaktData
+    ? {
+        fullmektigNavn: fullmaktData.fullmektigNavn || '',
+        fullmektigFodselsnr: fullmaktData.fullmektig || '',
+        omraade: {
+          value: fullmaktData.omraade || '',
+          label: fullmaktData.omraade || ''
+        },
+        gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
+        gyldigTilOgMed: fullmaktData.gyldigTilOgMed || ''
+      }
+    : {};
 
   const send = (e: FormContext) => {
     const { isValid, fields } = e;
@@ -73,119 +83,121 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     <>
       <Header title="Fullmakt" />
       <div className="pagecontent">
-        <FormValidation
-          onSubmit={send}
-          config={fullmaktFormConfig}
-          initialValues={{...fullmaktData}}
-        >
-          {({ errors, fields, submitted, setField, setError }) => {
-            console.log('fields ', JSON.stringify(fields));
-            console.log('errors ', JSON.stringify(errors));
-            console.log('fullmakt ', JSON.stringify(fullmaktData));
-            console.log('data ', JSON.stringify(data));
-            return (
-              <>
-                <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
-                <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
-                  Fullmakt
-                  <br />
-                  Legge til/endre/vise fullmakt
-                </Veilederpanel>
-                <Box
-                  id="fullmaktFrontPage"
-                  tittel="Fullmakt"
-                  beskrivelse=""
-                  icon={FullmaktIcon}
-                >
-                  <div className="fullmakt__content">
-                    <div className="fullmakt__ekspandert">
-                      <div>
-                        <div className="flex__rad">Jeg ønsker å gi fullmakt til</div>
-                        <br />
-                        <div className="flex__rad">
-                          <div className="flex__kolonne-left">
-                            <Felt
-                              label={'Navn'}
-                              submitted={submitted}
-                              value={fullmaktData &&  !fields.fullmektigNavn? fullmaktData.fullmektigNavn : fields.fullmektigNavn}
-                              error={errors.fullmektigNavn}
-                              onChange={v => setField({ fullmektigNavn: v })}
-                            />
+        {fullmaktData && (
+          <FormValidation
+            onSubmit={send}
+            config={fullmaktFormConfig}
+            initialValues={initialValues}
+          >
+            {({ errors, fields, submitted, setField, setError }) => {
+              console.log('fields ', JSON.stringify(fields));
+              console.log('errors ', JSON.stringify(errors));
+              console.log('fullmakt ', JSON.stringify(fullmaktData));
+              console.log('initialValues ', JSON.stringify(initialValues));
+              return (
+                <>
+                  <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
+                  <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
+                    Fullmakt
+                    <br />
+                    Legge til/endre/vise fullmakt
+                  </Veilederpanel>
+                  <Box
+                    id="fullmaktFrontPage"
+                    tittel="Fullmakt"
+                    beskrivelse=""
+                    icon={FullmaktIcon}
+                  >
+                    <div className="fullmakt__content">
+                      <div className="fullmakt__ekspandert">
+                        <div>
+                          <div className="flex__rad">Jeg ønsker å gi fullmakt til</div>
+                          <br />
+                          <div className="flex__rad">
+                            <div className="flex__kolonne-left">
+                              <Felt
+                                label={'Navn'}
+                                submitted={submitted}
+                                value={fields.fullmektigNavn}
+                                error={errors.fullmektigNavn}
+                                onChange={v => setField({ fullmektigNavn: v })}
+                              />
+                            </div>
+                            <div className="flex__kolonne-right">
+                              <Felt
+                                label={'Fødselsnummer (11 siffer)'}
+                                submitted={submitted}
+                                value={fields.fullmektigFodselsnr}
+                                error={errors.fullmektigFodselsnr}
+                                onChange={v => setField({ fullmektigFodselsnr: v })}
+                              />
+                            </div>
                           </div>
-                          <div className="flex__kolonne-right">
-                            <Felt
-                              label={'Fødselsnummer (11 siffer)'}
-                              submitted={submitted}
-                              value={fields.fullmektigFodselsnr}
-                              error={errors.fullmektigFodselsnr}
-                              onChange={v => setField({ fullmektigFodselsnr: v })}
-                            />
-                          </div>
-                        </div>
 
-                        <div className="flex__rad">
-                          <div className="flex__kolonne-left">
-                            <SelectOmraade
-                              label={'Fullmakten gjelder'}
-                              submitted={submitted}
-                              option={fields.omraade}
-                              error={errors.omraade}
-                              onChange={v => setField({ omraade: v })}
-                              hjelpetekst={'NAV områder for fullmakt.'}
-                            />
+                          <div className="flex__rad">
+                            <div className="flex__kolonne-left">
+                              <SelectOmraade
+                                label={'Fullmakten gjelder'}
+                                submitted={submitted}
+                                option={fields.omraade}
+                                error={errors.omraade}
+                                onChange={v => setField({ omraade: v })}
+                                hjelpetekst={'NAV områder for fullmakt.'}
+                              />
+                            </div>
+                          </div>
+                          <div className="flex__rad">
+                            <div className="flex__kolonne-left">
+                              <DayPicker
+                                value={fields.gyldigFraOgMed}
+                                label={'Fullmakten gjelder fra (dd.mm.åååå)'}
+                                submitted={submitted}
+                                error={errors.gyldigFraOgMed}
+                                onChange={value => setField({ gyldigFraOgMed: value })}
+                                onErrors={error => setError({ gyldigFraOgMed: error })}
+                              />
+                            </div>
+                            <div className="flex__kolonne-right">
+                              <DayPicker
+                                value={fields.gyldigTilOgMed}
+                                label={'Fullmakten gjelder til (dd.mm.åååå)'}
+                                submitted={submitted}
+                                error={errors.gyldigTilOgMed}
+                                onChange={value => setField({ gyldigTilOgMed: value })}
+                                onErrors={error => setError({ gyldigTilOgMed: error })}
+                              />
+                            </div>
                           </div>
                         </div>
-                        <div className="flex__rad">
-                          <div className="flex__kolonne-left">
-                            <DayPicker
-                              value={fields.gyldigFraOgMed}
-                              label={'Fullmakten gjelder fra (dd.mm.åååå)'}
-                              submitted={submitted}
-                              error={errors.gyldigFraOgMed}
-                              onChange={value => setField({ gyldigFraOgMed: value })}
-                              onErrors={error => setError({ gyldigFraOgMed: error })}
-                            />
-                          </div>
-                          <div className="flex__kolonne-right">
-                            <DayPicker
-                              value={fields.gyldigTilOgMed}
-                              label={'Fullmakten gjelder til (dd.mm.åååå)'}
-                              submitted={submitted}
-                              error={errors.gyldigTilOgMed}
-                              onChange={value => setField({ gyldigTilOgMed: value })}
-                              onErrors={error => setError({ gyldigTilOgMed: error })}
-                            />
-                          </div>
+                      </div>
+                      <div>
+                        {error && (
+                          <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
+                        )}
+                      </div>
+                      <div className="navigasjon">
+                        <div className="tb__knapp">
+                          <Link to={baseUrl}>
+                            <Knapp>Tilbake</Knapp>
+                          </Link>
+                        </div>
+                        <div className="tb__knapp">
+                          <Hovedknapp disabled={loading}>
+                            {loading ? (
+                              <NavFrontendSpinner type={'S'} />
+                            ) : (
+                              'Lagre og avslutt'
+                            )}
+                          </Hovedknapp>
                         </div>
                       </div>
                     </div>
-                    <div>
-                      {error && (
-                        <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
-                      )}
-                    </div>
-                    <div className="navigasjon">
-                      <div className="tb__knapp">
-                        <Link to={baseUrl}>
-                          <Knapp>Tilbake</Knapp>
-                        </Link>
-                      </div>
-                      <div className="tb__knapp">
-                        <Hovedknapp disabled={loading}>
-                          {loading ? (
-                            <NavFrontendSpinner type={'S'} />
-                          ) : (
-                            'Lagre og avslutt'
-                          )}
-                        </Hovedknapp>
-                      </div>
-                    </div>
-                  </div>
-                </Box>
-              </>
-            );
-          }}
-        </FormValidation>
+                  </Box>
+                </>
+              );
+            }}
+          </FormValidation>
+        )}
       </div>
     </>
   );

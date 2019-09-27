@@ -15,3 +15,5 @@ export const parseDate = (
         .locale(locale)
         .toDate()
     : undefined;
+
+export const getDefaultDateFormat = (date: string) => moment(date).format('DD.MM.YYYY');
