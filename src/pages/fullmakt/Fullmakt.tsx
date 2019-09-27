@@ -83,7 +83,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     <>
       <Header title="Fullmakt" />
       <div className="pagecontent">
-        {fullmaktData && (
+        {(fullmaktData || !fullmaktId) && (
           <FormValidation
             onSubmit={send}
             config={fullmaktFormConfig}
