@@ -1,6 +1,6 @@
 export const fullmaktFormConfig = {
   fullmektigNavn: {
-    isRequired: 'Navn er påkrevd'
+    isRequired: 'Fullmektigens navn er påkrevd'
   },
   fullmektigFodselsnr: {
     isRequired: 'Fullmektigens fødselsnummer er påkrevd',
@@ -13,7 +13,9 @@ export const fullmaktFormConfig = {
     isRequired: 'Område er påkrevd'
   },
   gyldigFraOgMed: {
-    isRequired: 'Gyldig fra og med dato er påkrevd'
+    isRequired: 'Dato er påkrevd'
   },
-  gyldigTilOgMed: {}
+  gyldigTilOgMed: {
+    isRequired: 'Dato er påkrevd'
+  }
 };
