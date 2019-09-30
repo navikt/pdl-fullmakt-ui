@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/navikt/pdl-fullmakt-ui.svg?style=svg)](https://circleci.com/gh/navikt/pdl-fullmakt-ui)
+
 # pdl-fullmakt-ui
 Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api)
 
