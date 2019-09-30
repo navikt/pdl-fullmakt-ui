@@ -98,9 +98,20 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                 <>
                   <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
                   <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
-                    Fullmakt
-                    <br />
-                    Legge til/endre/vise fullmakt
+                    Se oversikt over dine fullmakter{' '}
+                    <Link
+                      to={`${baseUrl}${auth.authenticated ? '' : '/fullmakt/login'}`}
+                      className="lenke"
+                    >
+                      her
+                    </Link>
+                    . Les mer om fullmakt og innsyn{' '}
+                    <a
+                      className="lenke"
+                      href="https://www.nav.no/no/NAV+og+samfunn/Samarbeid/Leger+og+andre+behandlere/annen-behandler/fullmakt-og-innsyn"
+                    >
+                      her.
+                    </a>
                   </Veilederpanel>
                   <Box
                     id="fullmaktFrontPage"

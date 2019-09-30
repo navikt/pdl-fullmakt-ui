@@ -14,6 +14,8 @@ import leggTilIkon from '../../assets/LeggTil.svg';
 import Box from '../../components/box/Box';
 import FullmaktIcon from '../../assets/Fullmakt.svg';
 import { getDefaultDateFormat } from '../../components/felter/day-picker/utils';
+import VeilederIcon from '../../assets/Veileder.svg';
+import Veilederpanel from 'nav-frontend-veilederpanel';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -27,6 +29,22 @@ const Frontpage = () => {
               <Sidetittel>Dine fullmakter</Sidetittel>
             </div>
           </header>
+          <br />
+          <Veilederpanel
+            svg={<img src={VeilederIcon} alt="Veileder" />}
+            type={'plakat'}
+            kompakt
+          >
+            Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er
+            fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker og
+            ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
+            <a
+              className="lenke"
+              href="https://www.nav.no/no/NAV+og+samfunn/Samarbeid/Leger+og+andre+behandlere/annen-behandler/fullmakt-og-innsyn"
+            >
+              her.
+            </a>
+          </Veilederpanel>
           <Box
             id={'fullmaktFrontPage'}
             tittel={''}
