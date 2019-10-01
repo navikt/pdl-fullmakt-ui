@@ -3,7 +3,8 @@ import { HTTPError } from '../components/error/Error';
 import { logApiError } from '../utils/logger';
 import { FullmaktViewType } from '../types/fullmakt';
 
-const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
+const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
+
 const parseJson = (data: any) => data.json();
 
 const sjekkForFeil = (url: string, response: Response) => {
@@ -51,6 +52,16 @@ const sendJson = (url: string, data: FullmaktViewType) =>
       logApiError(url, error);
       throw error;
     });
+
+export const sendTilLogin = () => {
+  const { pathname } = window.location;
+
+  if (pathname.includes('/fullmakt')) {
+    window.location.assign(`${loginUrl}?redirect=${appUrl}/fullmakt`);
+  } else {
+    window.location.assign(`${loginUrl}?redirect=${appUrl}`);
+  }
+};
 
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 

@@ -18,13 +18,14 @@ import { KontaktInfo } from './types/kontaktInfo';
 import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
 import { FullmaktType } from './types/fullmakt';
+import WithAuth from './providers/auth/Auth';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
   const [{ auth }, dispatch] = useStore();
 
   useEffect(() => {
-    if (!auth.authenticated)
+    if (!(auth.status === 'RESULT' && auth.data.authenticated))
       fetchAuthInfo()
         .then((authInfo: AuthInfo) => {
           dispatch({ type: 'SETT_AUTH_RESULT', payload: authInfo });
@@ -73,15 +74,17 @@ const App = () => {
 
   return (
     <Router>
-      <ScrollToTop>
-        <Switch>
-          <Route exact path={`(|${baseUrl})`} component={Frontpage} />
-          <Route exact path={`${baseUrl}/fullmakt/login`} component={Login} />
-          <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
-          <Route exact path={`${baseUrl}/fullmakt/:fullmaktId`} component={Fullmakt} />
-          <Route component={PageNotFound} />
-        </Switch>
-      </ScrollToTop>
+      <WithAuth>
+        <ScrollToTop>
+          <Switch>
+            <Route exact path={`(|${baseUrl})`} component={Frontpage} />
+            <Route exact path={`${baseUrl}/fullmakt/login`} component={Login} />
+            <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
+            <Route exact path={`${baseUrl}/fullmakt/:fullmaktId`} component={Fullmakt} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </ScrollToTop>
+      </WithAuth>
     </Router>
   );
 };

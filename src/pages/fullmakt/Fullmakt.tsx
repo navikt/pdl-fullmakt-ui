@@ -56,8 +56,10 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
     if (isValid) {
       const fullmaktData: FullmaktViewType = {
-        fullmaktsgiverNavn: auth.authenticated ? auth.name : '',
-        fullmaktsgiverFodselsnr: auth.authenticated ? auth.fodselsnr : '',
+        fullmaktsgiverNavn:
+          auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
+        fullmaktsgiverFodselsnr:
+          auth.status === 'RESULT' && auth.data.authenticated ? auth.data.fodselsnr : '',
         fullmektigNavn: fields.fullmektigNavn,
         fullmektigFodselsnr: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
@@ -96,11 +98,21 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
               console.log('initialValues ', JSON.stringify(initialValues));
               return (
                 <>
-                  <Tilbake to={auth.authenticated ? '' : '/fullmakt/login'} />
+                  <Tilbake
+                    to={
+                      auth.status === 'RESULT' && auth.data.authenticated
+                        ? ''
+                        : '/fullmakt/login'
+                    }
+                  />
                   <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
                     Se oversikt over dine fullmakter{' '}
                     <Link
-                      to={`${baseUrl}${auth.authenticated ? '' : '/fullmakt/login'}`}
+                      to={`${baseUrl}${
+                        auth.status === 'RESULT' && auth.data.authenticated
+                          ? ''
+                          : '/fullmakt/login'
+                      }`}
                       className="lenke"
                     >
                       her

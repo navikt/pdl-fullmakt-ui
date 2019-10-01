@@ -1,4 +1,4 @@
-import { AuthInfo } from '../types/authInfo';
+import { AuthInfo, FetchAuthInfo } from '../types/authInfo';
 import { KontaktInfo } from '../types/kontaktInfo';
 import { Sprak } from '../types/sprak';
 import sprak from '../language/provider';
@@ -9,7 +9,7 @@ export const initialState = {
   fodselsnr: '',
   language: sprak,
   locale: 'nb' as 'nb',
-  auth: { authenticated: false } as AuthInfo,
+  auth: { status: 'LOADING' } as FetchAuthInfo,
   kontaktInfo: { mobiltelefonnummer: '' },
   fullmatsgiver: { status: 'LOADING' } as FetchFullmakt,
   fullmektig: { status: 'LOADING' } as FetchFullmakt
@@ -18,7 +18,7 @@ export const initialState = {
 export interface Store {
   locale: 'nb';
   language: Sprak;
-  auth: AuthInfo;
+  auth: FetchAuthInfo;
   fodselsnr: string;
   kontaktInfo: KontaktInfo;
   fullmatsgiver: FetchFullmakt;
@@ -29,6 +29,10 @@ export type Action =
   | {
       type: 'SETT_AUTH_RESULT';
       payload: AuthInfo;
+    }
+  | {
+      type: 'SETT_AUTH_ERROR';
+      payload: HTTPError;
     }
   | {
       type: 'SETT_FODSELSNR';
@@ -62,7 +66,18 @@ export const reducer = (state: Store, action: Action) => {
     case 'SETT_AUTH_RESULT':
       return {
         ...state,
-        auth: action.payload as AuthInfo
+        auth: {
+          status: 'RESULT',
+          data: action.payload
+        } as FetchAuthInfo
+      };
+    case 'SETT_AUTH_ERROR':
+      return {
+        ...state,
+        auth: {
+          status: 'ERROR',
+          error: action.payload
+        } as FetchAuthInfo
       };
     case 'SETT_FODSELSNR':
       return {
