@@ -95,7 +95,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
               console.log('fields ', JSON.stringify(fields));
               console.log('errors ', JSON.stringify(errors));
               console.log('fullmakt ', JSON.stringify(fullmaktData));
-              console.log('initialValues ', JSON.stringify(initialValues));
+              console.log('auth ', JSON.stringify(auth));
               return (
                 <>
                   <Tilbake
