@@ -13,7 +13,6 @@ import { useStore } from './providers/Provider';
 import { AuthInfo } from './types/authInfo';
 import { HTTPError } from './components/error/Error';
 import Fullmakt from './pages/fullmakt/Fullmakt';
-import Login from './pages/fullmakt/Login';
 import { KontaktInfo } from './types/kontaktInfo';
 import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
@@ -78,7 +77,6 @@ const App = () => {
         <ScrollToTop>
           <Switch>
             <Route exact path={`(|${baseUrl})`} component={Frontpage} />
-            <Route exact path={`${baseUrl}/fullmakt/login`} component={Login} />
             <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
             <Route exact path={`${baseUrl}/fullmakt/:fullmaktId`} component={Fullmakt} />
             <Route component={PageNotFound} />

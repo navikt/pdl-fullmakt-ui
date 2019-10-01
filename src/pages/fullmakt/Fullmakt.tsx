@@ -14,7 +14,6 @@ import { HTTPError } from '../../components/error/Error';
 import { FormContext, FormValidation } from 'calidation';
 import { FullmaktType, FullmaktViewType } from '../../types/fullmakt';
 import { fullmaktFormConfig } from './config/form';
-import Header from '../../components/header/Header';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
 import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
@@ -83,7 +82,6 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
   return (
     <>
-      <Header title="Fullmakt" />
       <div className="pagecontent">
         {(fullmaktData || !fullmaktId) && (
           <FormValidation
@@ -98,13 +96,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
               console.log('auth ', JSON.stringify(auth));
               return (
                 <>
-                  <Tilbake
-                    to={
-                      auth.status === 'RESULT' && auth.data.authenticated
-                        ? ''
-                        : '/fullmakt/login'
-                    }
-                  />
+                  <Tilbake to={''} />
                   <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
                     Se oversikt over dine fullmakter{' '}
                     <Link
