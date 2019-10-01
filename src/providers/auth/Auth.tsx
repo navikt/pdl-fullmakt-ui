@@ -31,7 +31,7 @@ const Auth = (props: Props) => {
     case 'LOADING':
       return <Spinner />;
     case 'RESULT':
-      return <>{props.children}</>;
+      return auth.data.authenticated ? <>{props.children}</> :  <Spinner />;
     case 'ERROR':
       return <Error error={auth.error} />;
   }
