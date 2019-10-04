@@ -7,7 +7,8 @@ import {
   fetchKontaktInfo,
   fetchFodselsnr,
   fetchFullmaktsgiver,
-  fetchFullmektig
+  fetchFullmektig,
+  fetchNavn
 } from './clients/apiClient';
 import { useStore } from './providers/Provider';
 import { AuthInfo } from './types/authInfo';
@@ -18,6 +19,7 @@ import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
 import { FullmaktType } from './types/fullmakt';
 import WithAuth from './providers/auth/Auth';
+import { NavnType } from './types/navn';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
@@ -64,6 +66,16 @@ const App = () => {
               )
               .catch((error: HTTPError) => {
                 dispatch({ type: 'SETT_FULLMEKTIG_ERROR', payload: error });
+              });
+            fetchNavn()
+              .then((navn: NavnType[]) =>
+                dispatch({
+                  type: 'SETT_NAVN',
+                  payload: navn
+                })
+              )
+              .catch((error: HTTPError) => {
+                dispatch({ type: 'SETT_NAVN_ERROR', payload: error });
               });
           }
         })

@@ -7,7 +7,6 @@ import { Input } from 'nav-frontend-skjema';
 import { FormatOptionLabelMeta } from 'react-select/base';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
 import { inString } from './utils';
-import { Omraade } from '../omraade/SelectOmraade';
 
 interface Props {
   option: OptionType;
@@ -82,14 +81,10 @@ const NAVSelect = (props: Props) => {
     }
   };
 
-  const mapKoderToHjelpetekst = (koder: Omraade[]): string =>
-    koder.map(k => `${k.kode} : ${k.term}: ${k.tekst}`).join(`\n`);
-
-  function valueTimed() {
-    return value
+  const valueTimed = () =>
+    value
       ? { value: value.value || '', label: value.label.split(':').shift() || '' }
       : null;
-  }
 
   return !props.fetchError ? (
     <div className={containerClasses}>
