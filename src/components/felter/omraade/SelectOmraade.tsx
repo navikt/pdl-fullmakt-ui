@@ -17,14 +17,16 @@ interface OptionType {
   label: string;
 }
 
-export interface Land {
+export interface Omraade {
+  sortering: number;
   kode: string;
+  term: string;
   tekst: string;
 }
 
 const SelectOmraade = (props: Props) => {
   const [loading, settLoading] = useState(false);
-  const [valutaer, settValutaer] = useState([] as Land[]);
+  const [valutaer, settValutaer] = useState([] as Omraade[]);
   const [fetchError, settFetchError] = useState();
 
   useEffect(() => {
@@ -44,15 +46,15 @@ const SelectOmraade = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const mapKoderToOptions = (koder: Land[]): any =>
+  const mapKoderToOptions = (koder: Omraade[]): any =>
     koder.map(k => ({
-      label: k.tekst,
+      label: k.term + ': ' + k.tekst,
       value: k.kode
     }));
 
-  const options = mapKoderToOptions(valutaer)
-    .filter((option: OptionType) => option.value !== 'NOR')
-    .sort((a: OptionType, b: OptionType) => (a.label < b.label ? -1 : 1));
+  const options = mapKoderToOptions(
+    valutaer.sort((a: Omraade, b: Omraade) => (a.sortering < b.sortering ? -1 : 1))
+  );
 
   return (
     <NAVSelect
@@ -64,6 +66,7 @@ const SelectOmraade = (props: Props) => {
       submitted={props.submitted}
       onChange={props.onChange}
       hjelpetekst={props.hjelpetekst}
+      apiData={valutaer}
     />
   );
 };

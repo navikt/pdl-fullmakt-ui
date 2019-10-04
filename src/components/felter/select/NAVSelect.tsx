@@ -7,6 +7,7 @@ import { Input } from 'nav-frontend-skjema';
 import { FormatOptionLabelMeta } from 'react-select/base';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
 import { inString } from './utils';
+import { Omraade } from '../omraade/SelectOmraade';
 
 interface Props {
   option: OptionType;
@@ -23,6 +24,7 @@ interface Props {
     option: OptionType,
     context: FormatOptionLabelMeta<OptionType>
   ) => string;
+  apiData?: Object[];
 }
 
 interface OptionType {
@@ -80,19 +82,37 @@ const NAVSelect = (props: Props) => {
     }
   };
 
+  const mapKoderToHjelpetekst = (koder: Omraade[]): string =>
+    koder.map(k => `${k.kode} : ${k.term}: ${k.tekst}`).join(`\n`);
+
+  function valueTimed() {
+    return value
+      ? { value: value.value || '', label: value.label.split(':').shift() || '' }
+      : null;
+  }
+
   return !props.fetchError ? (
     <div className={containerClasses}>
       <div className="KodeverkSelect__header">
         {props.label && <div className="skjemaelement__label">{props.label}</div>}
         {props.hjelpetekst && (
           <HjelpetekstHoyre tittel={''} id={'hjelpetekst'}>
-            {props.hjelpetekst}
+            <div>
+              {props.hjelpetekst}
+              {props.apiData &&
+                props.apiData.map((k: any) => (
+                  <div key={k.kode}>
+                    {k.kode} => {k.term}: {k.tekst}
+                  </div>
+                ))}
+            </div>
           </HjelpetekstHoyre>
         )}
       </div>
       <div className={cls('KodeverkSelect--select-wrapper')}>
         <Select
-          value={value}
+          value={valueTimed()}
+          defaultValue={valueTimed()}
           label={props.label}
           placeholder="Søk..."
           classNamePrefix="KodeverkSelect"

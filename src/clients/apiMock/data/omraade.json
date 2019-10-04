@@ -1,10 +1,50 @@
 [
   {
-    "kode": "nav.pensjon.*",
-    "tekst": "nav.pensjon.*"
+    "sortering": 1,
+    "kode": "ARBD",
+    "term": "Arbeid",
+    "tekst": "Arbeidsledig"
   },
   {
-    "kode": "nav.personalia.*",
-    "tekst": "nav.personalia.*"
+    "sortering": 2,
+    "kode": "FMLI",
+    "term": "Familie",
+    "tekst": "Venter barn"
+  },
+  {
+    "sortering": 3,
+    "kode": "PENS",
+    "term": "Pensjon",
+    "tekst": "Pensjon"
+  },
+  {
+    "sortering": 4,
+    "kode": "UFRT",
+    "term": "Uføretrygd",
+    "tekst": "varig nedsatt inntektsevne på grunn av sykdom eller skade."
+  },
+  {
+    "sortering": 5,
+    "kode": "HJLPM",
+    "term": "Hjelpemidler",
+    "tekst": "Bevegelse"
+  },
+  {
+    "sortering": 6,
+    "kode": "OKSOS",
+    "term": "Økonomisk sosialhjelp",
+    "tekst": "Økonomisk stønad"
+  },
+  {
+    "sortering": 7,
+    "kode": "ANSOS",
+    "term": "Andre sosiale tjenester",
+    "tekst": "Sosiale tjenester i NAV-kontoret"
+  },
+  {
+    "sortering": 8,
+    "kode": "OVRG",
+    "term": "Øvrig",
+    "tekst": "Sosiale tjenester i NAV-kontoret"
   }
 ]
