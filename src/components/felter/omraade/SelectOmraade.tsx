@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { fetchOmraade } from '../../../clients/apiClient';
 import { HTTPError } from '../../error/Error';
 import NAVSelect from '../select/NAVSelect';
-import omraade from '../../../clients/apiMock/data/omraade.json';
 
 interface Props {
   option: OptionType;
@@ -39,7 +38,6 @@ const SelectOmraade = (props: Props) => {
         })
         .catch((error: HTTPError) => {
           settFetchError(error);
-          settValutaer(omraade); // delete it later
         })
         .then(() => {
           settLoading(false);

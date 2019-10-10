@@ -9,13 +9,13 @@
     "fullmaktsgiver": "12345678901",
     "fullmektig": "22345678901",
     "omraade": "Pensjon",
-    "gyldigFraOgMed": "2019-12-31",
+    "gyldigFraOgMed": "2018-12-31",
     "gyldigTilOgMed": "2020-12-31",
     "fullmektigNavn": "Test navn"
   },
   {
     "fullmaktId": 1,
-    "registrert": "2019-01-01T09:45:00.000+0000",
+    "registrert": "2019-01-01T09:45:00.000+0000:
     "registrertAv": "12345678901",
     "endret": "2019-01-01T09:45:00.000+0000",
     "ednretAv": "12345678901",
