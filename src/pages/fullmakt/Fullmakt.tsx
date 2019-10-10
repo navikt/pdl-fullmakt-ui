@@ -41,12 +41,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     ? {
         fullmektigNavn: fullmaktData.fullmektigNavn || '',
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
-        omraade: [
-          {
-            value: fullmaktData.omraade || '',
-            label: fullmaktData.omraade || ''
-          }
-        ],
+        omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
         gyldigTilOgMed: fullmaktData.gyldigTilOgMed || ''
       }

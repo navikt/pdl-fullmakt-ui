@@ -69,10 +69,13 @@ const NAVSelect = (props: Props) => {
     }
   };
 
-  /*const valueTrimed = () =>
-    value
-      ? [{ value: value.value || '', label: value.label.split(':').shift() || '' }]
-      : [];*/
+  const valueFormatted: OptionType[] =
+    value && value.length > 0
+      ? value.map(v => ({
+          value: v.value || '',
+          label: v.label.split(':').shift() || ''
+        }))
+      : [];
 
   return !props.fetchError ? (
     <div className={containerClasses}>
@@ -93,12 +96,9 @@ const NAVSelect = (props: Props) => {
         )}
       </div>
       <div className={cls('KodeverkSelect--select-wrapper')}>
-        {JSON.stringify(props.options)}
-        {JSON.stringify(value)}
-        {JSON.stringify(props.value)}
         <Select
-          value={value}
-          defaultValue={value}
+          value={valueFormatted}
+          defaultValue={valueFormatted}
           label={props.label}
           placeholder="Søk..."
           classNamePrefix="KodeverkSelect"

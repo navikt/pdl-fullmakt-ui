@@ -4,11 +4,11 @@ import { HTTPError } from '../../error/Error';
 import NAVSelect from '../select/NAVSelect';
 
 interface Props {
-  value: OptionType[];
+  value: string;
   submitted: boolean;
   label: string;
   error: string | null;
-  onChange: (value?: OptionType[]) => void;
+  onChange: (value?: string) => void;
   hjelpetekst?: string;
 }
 
@@ -56,15 +56,21 @@ const SelectOmraade = (props: Props) => {
     valutaer.sort((a: Omraade, b: Omraade) => (a.sortering < b.sortering ? -1 : 1))
   );
 
+  const valueToOptionType: OptionType[] = props.value
+    ? props.value.split(';').map(s => ({ value: s, label: s }))
+    : [];
+
   return (
     <NAVSelect
       label={props.label}
       error={props.error}
       options={options}
       fetchError={fetchError}
-      value={props.value}
+      value={valueToOptionType}
       submitted={props.submitted}
-      onChange={props.onChange}
+      onChange={v =>
+        props.onChange(v && v.length > 0 ? v.map(o => o.value).join(';') : undefined)
+      }
       hjelpetekst={props.hjelpetekst}
       apiData={valutaer}
     />
