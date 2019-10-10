@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Select from 'react-select';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import cls from 'classnames';
@@ -6,17 +6,16 @@ import { NedChevron } from 'nav-frontend-chevron';
 import { Input } from 'nav-frontend-skjema';
 import { FormatOptionLabelMeta } from 'react-select/base';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
-import { inString } from './utils';
 
 interface Props {
-  option: OptionType;
+  value: OptionType[];
   submitted: boolean;
   label: string;
   options: OptionType[];
   error: string | null;
   fetchError: boolean;
   hjelpetekst?: string;
-  onChange: (value?: OptionType) => void;
+  onChange: (value?: OptionType[]) => void;
   borderUnderFirst?: boolean;
   loading?: boolean;
   defineLabel?: (
@@ -57,34 +56,23 @@ const NAVSelect = (props: Props) => {
     KodeverkSelect__borderUnderFirst: props.borderUnderFirst
   });
 
-  const value = props.option
-    ? props.options
-        .filter(
-          (option: OptionType) =>
-            inString(option.label, props.option.value) ||
-            inString(option.label, props.option.label) ||
-            inString(option.value, props.option.value) ||
-            inString(option.value, props.option.label)
+  const value =
+    props.value && props.value.length > 0
+      ? props.options.filter((option: OptionType) =>
+          props.value.find(v => option.value === v.value)
         )
-        .shift()
-    : null;
+      : [];
 
-  useEffect(() => {
-    if (value && value.value !== props.option.value) {
-      props.onChange(value);
-    }
-  }, [props, value]);
-
-  const onChange = (option: OptionType) => {
+  const onChange = (option: OptionType[]) => {
     if (option) {
       props.onChange(option);
     }
   };
 
-  const valueTimed = () =>
+  /*const valueTrimed = () =>
     value
-      ? { value: value.value || '', label: value.label.split(':').shift() || '' }
-      : null;
+      ? [{ value: value.value || '', label: value.label.split(':').shift() || '' }]
+      : [];*/
 
   return !props.fetchError ? (
     <div className={containerClasses}>
@@ -105,9 +93,12 @@ const NAVSelect = (props: Props) => {
         )}
       </div>
       <div className={cls('KodeverkSelect--select-wrapper')}>
+        {JSON.stringify(props.options)}
+        {JSON.stringify(value)}
+        {JSON.stringify(props.value)}
         <Select
-          value={valueTimed()}
-          defaultValue={valueTimed()}
+          value={value}
+          defaultValue={value}
           label={props.label}
           placeholder="Søk..."
           classNamePrefix="KodeverkSelect"
@@ -120,6 +111,7 @@ const NAVSelect = (props: Props) => {
           onMenuOpen={() => props.onChange(undefined)}
           components={{ LoadingIndicator, DropdownIndicator }}
           onChange={onChange as any}
+          isMulti={true}
         />
       </div>
       {props.submitted && props.error && (
@@ -131,8 +123,8 @@ const NAVSelect = (props: Props) => {
   ) : (
     <Input
       label={props.label}
-      value={props.option.value}
-      onChange={e => props.onChange({ label: props.label, value: e.target.value })}
+      value={props.value && props.value.map(v => v.value)}
+      onChange={e => props.onChange([{ label: props.label, value: e.target.value }])}
       feil={props.submitted && props.error ? { feilmelding: props.error } : undefined}
       placeholder={'+'}
     />
