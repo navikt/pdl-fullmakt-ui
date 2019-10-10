@@ -65,7 +65,7 @@ const NAVSelect = (props: Props) => {
 
   const onChange = (option: OptionType[]) => {
     if (option) {
-      props.onChange(option);
+      props.onChange(option.concat(props.value));
     }
   };
 

@@ -69,7 +69,16 @@ const SelectOmraade = (props: Props) => {
       value={valueToOptionType}
       submitted={props.submitted}
       onChange={v =>
-        props.onChange(v && v.length > 0 ? v.map(o => o.value).join(';') : undefined)
+        props.onChange(
+          v && v.length > 0
+            ? v
+                .map(o => {
+                  console.log('on change value = ', JSON.stringify(v));
+                  return o.value;
+                })
+                .join(';')
+            : undefined
+        )
       }
       hjelpetekst={props.hjelpetekst}
       apiData={valutaer}
