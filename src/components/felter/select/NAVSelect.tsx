@@ -65,7 +65,7 @@ const NAVSelect = (props: Props) => {
 
   const onChange = (option: OptionType[]) => {
     if (option) {
-      props.onChange(option.concat(props.value));
+      props.onChange(option);
     }
   };
 
@@ -98,7 +98,7 @@ const NAVSelect = (props: Props) => {
       <div className={cls('KodeverkSelect--select-wrapper')}>
         <Select
           value={valueFormatted}
-          defaultValue={valueFormatted}
+          // defaultValue={valueFormatted}
           label={props.label}
           placeholder="Søk..."
           classNamePrefix="KodeverkSelect"
@@ -108,10 +108,13 @@ const NAVSelect = (props: Props) => {
           isLoading={props.loading}
           options={props.options}
           formatOptionLabel={props.defineLabel}
-          onMenuOpen={() => props.onChange(undefined)}
+          // onMenuOpen={() => props.onChange(undefined)}
           components={{ LoadingIndicator, DropdownIndicator }}
           onChange={onChange as any}
           isMulti={true}
+          clearable={false}
+          closeOnSelect={true}
+          removeSelected={false}
         />
       </div>
       {props.submitted && props.error && (

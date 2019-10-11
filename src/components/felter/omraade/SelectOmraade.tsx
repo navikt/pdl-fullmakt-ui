@@ -46,15 +46,19 @@ const SelectOmraade = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const mapKoderToOptions = (koder: Omraade[]): any =>
+  const mapKoderToOptions = (koder: Omraade[]): OptionType[] =>
     koder.map(k => ({
       label: k.term + ': ' + k.tekst,
       value: k.kode
     }));
 
-  const options = mapKoderToOptions(
-    valutaer.sort((a: Omraade, b: Omraade) => (a.sortering < b.sortering ? -1 : 1))
-  );
+  const sortOmraade = (omraader: Omraade[]): Omraade[] =>
+    omraader.sort((a: Omraade, b: Omraade) => (a.sortering < b.sortering ? -1 : 1));
+
+  const sortOptionsByValue = (options: OptionType[]): OptionType[] =>
+    options.sort((a: OptionType, b: OptionType) => (a.value < b.value ? -1 : 1));
+
+  const options = mapKoderToOptions(sortOmraade(valutaer));
 
   const valueToOptionType: OptionType[] = props.value
     ? props.value.split(';').map(s => ({ value: s, label: s }))
@@ -71,7 +75,7 @@ const SelectOmraade = (props: Props) => {
       onChange={v =>
         props.onChange(
           v && v.length > 0
-            ? v
+            ? sortOptionsByValue(v)
                 .map(o => {
                   console.log('on change value = ', JSON.stringify(v));
                   return o.value;
