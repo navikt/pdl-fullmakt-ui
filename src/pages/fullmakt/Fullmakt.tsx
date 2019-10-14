@@ -133,6 +133,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                 value={fields.fullmektigNavn}
                                 error={errors.fullmektigNavn}
                                 onChange={v => setField({ fullmektigNavn: v })}
+                                disabled={!!fullmaktId}
                               />
                             </div>
                             <div className="flex__kolonne-right">
@@ -142,6 +143,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                 value={fields.fullmektigFodselsnr}
                                 error={errors.fullmektigFodselsnr}
                                 onChange={v => setField({ fullmektigFodselsnr: v })}
+                                disabled={!!fullmaktId}
                               />
                             </div>
                           </div>
