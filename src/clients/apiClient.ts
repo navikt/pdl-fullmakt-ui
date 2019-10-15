@@ -73,7 +73,7 @@ export const fetchFullmaktsgiver = () => hentJson(`${apiUrl}/fullmaktsgiver`);
 
 export const fetchFullmektig = () => hentJson(`${apiUrl}/fullmektig`);
 
-export const fetchOmraade = () => hentJson(`${apiUrl}/omraade`);
+export const fetchOmraade = () => hentJson(`${apiUrl}/api/fullmakt/omraade`);
 
 export const fetchNavn = () => hentJson(`${apiUrl}/navn`);
 

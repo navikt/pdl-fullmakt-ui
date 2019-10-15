@@ -1,5 +1,11 @@
 [
   {
+    "sortering": "0",
+    "kode": "ALL",
+    "term": "Alle",
+    "tekst": "(...forklaringstekst for innbygger...)"
+  },
+  {
     "sortering": "1",
     "kode": "AAP",
     "term": "Arbeidsavklaringspenger",
