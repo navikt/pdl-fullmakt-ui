@@ -35,7 +35,7 @@ export const setUpMock = async () => {
     fetchMock.get(`${apiUrl}/fullmaktsgiver`, delay(10, 50).then(() => fullmaktsgiver));
   mockFullmektig &&
     fetchMock.get(`${apiUrl}/fullmektig`, delay(10, 50).then(() => fullmektig));
-  mockOmraade && fetchMock.get(`${apiUrl}/api/fullmakt/omraade`, delay(10, 50).then(() => omraade));
+  mockOmraade && fetchMock.get(`${apiUrl}/fullmaktsgiver/omraade`, delay(10, 50).then(() => omraade));
 
   mockNavn && fetchMock.get(`${apiUrl}/navn`, delay(10, 50).then(() => navn));
 };
