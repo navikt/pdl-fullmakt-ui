@@ -40,7 +40,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
   const initialValues = fullmaktData
     ? {
-        fullmektigNavn: fullmaktData.fullmektigNavn || '',
+        fullmektigNavn: fullmaktData.fullmektigNavn || 'Default navn ',
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
         omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
@@ -88,7 +88,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
       settLoading(true);
       postFullmakt(sendData, !!fullmaktId)
         .then((response: any) => {
-            fullmaktId &&
+            !fullmaktId &&
           props.history.push(`${props.location.pathname}/${response && response.fullmaktId}`);
         })
         .catch((error: HTTPError) => {
