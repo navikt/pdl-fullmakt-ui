@@ -1,7 +1,7 @@
 import Environment from '../utils/Environments';
 import { HTTPError } from '../components/error/Error';
 import { logApiError } from '../utils/logger';
-import { FullmaktViewType } from '../types/fullmakt';
+import { FullmaktPostType } from '../types/fullmakt';
 
 const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 
@@ -36,7 +36,7 @@ const hentJson = (url: string) =>
       throw error;
     });
 
-const sendJson = (url: string, data: FullmaktViewType) =>
+const sendJson = (url: string, data: FullmaktPostType) =>
   fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -79,7 +79,7 @@ export const fetchOmraade = () => hentJson(`${apiUrl}/omraade`);
 
 export const fetchNavn = () => hentJson(`${apiUrl}/navn`);
 
-export const postFullmakt = (data: FullmaktViewType) =>
+export const postFullmakt = (data: FullmaktPostType) =>
   sendJson(`${apiUrl}/fullmakt`, data);
 
 export const postFeilOgMangler = (data: any) =>

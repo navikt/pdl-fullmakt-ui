@@ -12,7 +12,7 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, FormValidation } from 'calidation';
-import { FullmaktPostType, FullmaktType } from "../../types/fullmakt";
+import { FullmaktPostType, FullmaktType } from '../../types/fullmakt';
 import { fullmaktFormConfig } from './config/form';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
