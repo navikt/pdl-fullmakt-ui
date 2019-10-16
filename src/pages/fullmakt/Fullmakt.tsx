@@ -55,8 +55,8 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
         fullmaktsgiverNavn:
           auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
         fullmaktsgiverFodselsnr:
-          auth.status === 'RESULT' && auth.data.authenticated ? auth.data.fodselsnr : '',
-        fullmektigNavn: fields.fullmektigNavn,
+          auth.status === 'RESULT' && auth.data.authenticated ? auth.data.fodselsnr : '12345678901',
+        fullmektigNavn: fields.fullmektigNavn || 'Default navn',
         fullmektigFodselsnr: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
         gyldigFraOgMed: fields.gyldigFraOgMed,
