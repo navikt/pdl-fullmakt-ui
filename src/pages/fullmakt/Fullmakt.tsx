@@ -12,12 +12,13 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, FormValidation } from 'calidation';
-import { FullmaktPostType, FullmaktType } from '../../types/fullmakt';
+import { FullmaktPageType, FullmaktSendType, FullmaktType } from '../../types/fullmakt';
 import { fullmaktFormConfig } from './config/form';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
 import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
 import SelectOmraade from '../../components/felter/omraade/SelectOmraade';
+import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 
 interface Routes {
   fullmaktId: string;
@@ -43,7 +44,11 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
         omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
-        gyldigTilOgMed: fullmaktData.gyldigTilOgMed || ''
+        gyldigTilOgMed: fullmaktData.gyldigTilOgMed || '',
+        registrert: fullmaktData.registrert || '',
+        registrertAv: fullmaktData.registrertAv || '',
+        endret: fullmaktData.endret || '',
+        endretAv: fullmaktData.endretAv || ''
       }
     : {};
 
@@ -51,7 +56,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     const { isValid, fields } = e;
 
     if (isValid) {
-      const fullmaktData: FullmaktPostType = {
+      const fullmaktData: FullmaktPageType = {
         fullmaktsgiverNavn:
           auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
         fullmaktsgiver:
@@ -65,8 +70,23 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
         gyldigTilOgMed: fields.gyldigTilOgMed
       };
 
+      const sendData: FullmaktSendType = fullmaktId
+        ? {
+            fullmaktId: Number(fullmaktId),
+            registrert: fields.registrert,
+            registrertAv: fields.registrertAv,
+            endret: nowDateFullmakt,
+            endretAv: fullmaktData.fullmaktsgiver,
+            ...fullmaktData
+          }
+        : {
+            registrert: nowDateFullmakt,
+            registrertAv: fullmaktData.fullmaktsgiver,
+            ...fullmaktData
+          };
+      console.log('Data to send = ', JSON.stringify(sendData));
       settLoading(true);
-      postFullmakt(fullmaktData)
+      postFullmakt(sendData, !!fullmaktId)
         .then(() => {
           props.history.push(`${props.location.pathname}/pdl-fullmakt-ui`);
         })

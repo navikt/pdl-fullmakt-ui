@@ -17,3 +17,9 @@ export const parseDate = (
     : undefined;
 
 export const getDefaultDateFormat = (date: string) => moment(date).format('DD.MM.YYYY');
+
+export const dateOneYearAhead = new Date(
+  new Date().setFullYear(new Date().getFullYear() + 1)
+);
+
+export const nowDateFullmakt: string = moment().toISOString();
