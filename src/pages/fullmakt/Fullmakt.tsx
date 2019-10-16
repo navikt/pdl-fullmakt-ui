@@ -7,7 +7,7 @@ import { useStore } from '../../providers/Provider';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { baseUrl } from '../../App';
-import { postFullmakt } from '../../clients/apiClient';
+import { fetchFullmaktsgiver, postFullmakt } from '../../clients/apiClient';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
@@ -28,7 +28,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
   const { fullmaktId } = props.match.params;
 
-  const [{ auth, fullmatsgiver }] = useStore();
+  const [{ auth, fullmatsgiver }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
 
@@ -88,8 +88,20 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
       settLoading(true);
       postFullmakt(sendData, !!fullmaktId)
         .then((response: any) => {
-            !fullmaktId &&
-          props.history.push(`${props.location.pathname}/${response && response.fullmaktId}`);
+          fetchFullmaktsgiver('12345678901')
+            .then((fullmaktsgiver: FullmaktType[]) =>
+              dispatch({
+                type: 'SETT_FULLMAKTSGIVER',
+                payload: fullmaktsgiver
+              })
+            )
+            .catch((error: HTTPError) => {
+              dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
+            });
+          !fullmaktId &&
+            props.history.push(
+              `${props.location.pathname}/${response && response.fullmaktId}`
+            );
         })
         .catch((error: HTTPError) => {
           settError(`${error.code} - ${error.text}`);
