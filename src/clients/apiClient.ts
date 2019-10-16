@@ -36,7 +36,7 @@ const hentJson = (url: string) =>
       throw error;
     });
 
-const sendJson = (url: string, data: FullmaktSendType, put: boolean) =>
+const sendJson = (url: string, data: FullmaktSendType, put: boolean): any =>
   fetch(url, {
     method: put ? 'PUT' : 'POST',
     body: JSON.stringify(data),
@@ -82,5 +82,5 @@ export const fetchNavn = () => hentJson(`${apiUrl}/navn`);
 export const postFullmakt = (data: FullmaktSendType, put: boolean) =>
   sendJson(`${apiUrl}/fullmakt`, data, put);
 
-export const postFeilOgMangler = (data: any) =>
+export const postFeilOgMangler = (data: any): any =>
   sendJson(`${apiUrl}/feil-og-mangler`, data, false);

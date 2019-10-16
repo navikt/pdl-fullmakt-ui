@@ -87,8 +87,9 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
       console.log('Data to send = ', JSON.stringify(sendData));
       settLoading(true);
       postFullmakt(sendData, !!fullmaktId)
-        .then(() => {
-          props.history.push(`${props.location.pathname}/pdl-fullmakt-ui`);
+        .then((response: any) => {
+            fullmaktId &&
+          props.history.push(`${props.location.pathname}/${response && response.fullmaktId}`);
         })
         .catch((error: HTTPError) => {
           settError(`${error.code} - ${error.text}`);
