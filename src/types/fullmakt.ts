@@ -26,4 +26,14 @@ export type FullmaktOtherType = {
   fullmektig: string;
 };
 
+export type FullmaktPostType = {
+  fullmaktsgiverNavn: string;
+  fullmaktsgiver: string;
+  fullmektigNavn: string;
+  fullmektig: string;
+  omraade: string;
+  gyldigFraOgMed: string;
+  gyldigTilOgMed: string;
+};
+
 export type FullmaktType = FullmaktViewType & FullmaktOtherType;

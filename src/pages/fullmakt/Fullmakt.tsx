@@ -12,7 +12,7 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, FormValidation } from 'calidation';
-import { FullmaktType, FullmaktViewType } from '../../types/fullmakt';
+import { FullmaktPostType, FullmaktType } from "../../types/fullmakt";
 import { fullmaktFormConfig } from './config/form';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
@@ -51,13 +51,15 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     const { isValid, fields } = e;
 
     if (isValid) {
-      const fullmaktData: FullmaktViewType = {
+      const fullmaktData: FullmaktPostType = {
         fullmaktsgiverNavn:
           auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
-        fullmaktsgiverFodselsnr:
-          auth.status === 'RESULT' && auth.data.authenticated ? (auth.data.fodselsnr || '12345678901') : '',
+        fullmaktsgiver:
+          auth.status === 'RESULT' && auth.data.authenticated
+            ? auth.data.fodselsnr || '12345678901'
+            : '',
         fullmektigNavn: fields.fullmektigNavn || 'Default navn',
-        fullmektigFodselsnr: fields.fullmektigFodselsnr,
+        fullmektig: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
         gyldigFraOgMed: fields.gyldigFraOgMed,
         gyldigTilOgMed: fields.gyldigTilOgMed
