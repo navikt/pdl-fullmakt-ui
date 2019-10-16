@@ -78,7 +78,7 @@ export const fetchOmraade = () => hentJson(`${apiUrl}/omraade`);
 export const fetchNavn = () => hentJson(`${apiUrl}/navn`);
 
 export const postFullmakt = (data: FullmaktViewType) =>
-  sendJson(`${apiUrl}/api/fullmakt`, data);
+  sendJson(`${apiUrl}/fullmakt`, data);
 
 export const postFeilOgMangler = (data: any) =>
-  sendJson(`${apiUrl}/api/feil-og-mangler`, data);
+  sendJson(`${apiUrl}/feil-og-mangler`, data);
