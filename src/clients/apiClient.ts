@@ -69,9 +69,9 @@ export const fetchAuthInfo = () => hentJson(`${baseUrl}/innloggingslinje-api/aut
 
 export const fetchKontaktInfo = () => hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
 
-export const fetchFullmaktsgiver = () => hentJson(`${apiUrl}/fullmaktsgiver`);
+export const fetchFullmaktsgiver = (fodselsnr: string) => hentJson(`${apiUrl}/fullmaktsgiver/${fodselsnr}`);
 
-export const fetchFullmektig = () => hentJson(`${apiUrl}/fullmektig`);
+export const fetchFullmektig = (fodselsnr: string) => hentJson(`${apiUrl}/fullmektig/${fodselsnr}`);
 
 export const fetchOmraade = () => hentJson(`${apiUrl}/omraade`);
 
