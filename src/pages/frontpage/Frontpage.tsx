@@ -16,6 +16,7 @@ import FullmaktIcon from '../../assets/Fullmakt.svg';
 import { getDefaultDateFormat } from '../../components/felter/day-picker/utils';
 import VeilederIcon from '../../assets/Veileder.svg';
 import Veilederpanel from 'nav-frontend-veilederpanel';
+import { deleteFullmakt } from '../../clients/apiClient';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -107,7 +108,10 @@ const Frontpage = () => {
                               htmlType={'button'}
                               className={'frontpage__knapp'}
                               autoDisableVedSpinner={true}
-                              onClick={e => e}
+                              onClick={e => {
+                                e.preventDefault();
+                                return deleteFullmakt(String(f.fullmaktId));
+                              }}
                             >
                               <EtikettLiten>Slett</EtikettLiten>
                               <div className={'frontpage__knapp-ikon'}>
