@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Normaltekst,
   Sidetittel,
@@ -7,7 +7,7 @@ import {
   EtikettLiten
 } from 'nav-frontend-typografi';
 import { useStore } from '../../providers/Provider';
-import { Knapp } from 'nav-frontend-knapper';
+import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import endreIkon from '../../assets/Pencil.svg';
 import slettIkon from '../../assets/Slett.svg';
 import leggTilIkon from '../../assets/LeggTil.svg';
@@ -16,11 +16,17 @@ import FullmaktIcon from '../../assets/Fullmakt.svg';
 import { getDefaultDateFormat } from '../../components/felter/day-picker/utils';
 import VeilederIcon from '../../assets/Veileder.svg';
 import Veilederpanel from 'nav-frontend-veilederpanel';
-import { deleteFullmakt } from '../../clients/apiClient';
+import { deleteFullmakt, fetchFullmaktsgiver } from '../../clients/apiClient';
+import { FullmaktType } from '../../types/fullmakt';
+import { HTTPError } from '../../components/error/Error';
+import NavFrontendSpinner from 'nav-frontend-spinner';
+import { AlertStripeFeil } from "nav-frontend-alertstriper";
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig }] = useStore();
+  const [{ fullmatsgiver, fullmektig }, dispatch] = useStore();
+  const [loading, settLoading] = useState(false);
+  const [error, settError] = useState();
   return (
     <>
       <div className="pagecontent">
@@ -102,7 +108,7 @@ const Frontpage = () => {
                               </>
                             </Knapp>
                           </a>
-                          <a href={'/person/pdl-fullmakt-ui'}>
+                          <div >
                             <Knapp
                               type={'flat'}
                               htmlType={'button'}
@@ -110,15 +116,40 @@ const Frontpage = () => {
                               autoDisableVedSpinner={true}
                               onClick={e => {
                                 e.preventDefault();
-                                return deleteFullmakt(String(f.fullmaktId));
+                                return deleteFullmakt(String(f.fullmaktId))
+                                  .then((response: any) => {
+                                    fetchFullmaktsgiver('12345678901')
+                                      .then((fullmaktsgiver: FullmaktType[]) =>
+                                        dispatch({
+                                          type: 'SETT_FULLMAKTSGIVER',
+                                          payload: fullmaktsgiver
+                                        })
+                                      )
+                                      .catch((error: HTTPError) => {
+                                        dispatch({
+                                          type: 'SETT_FULLMAKTSGIVER_ERROR',
+                                          payload: error
+                                        });
+                                      });
+                                  })
+                                  .catch((error: HTTPError) => {
+                                    settError(`${error.code} - ${error.text}`);
+                                  })
+                                  .then(() => {
+                                    settLoading(false);
+                                  });
                               }}
                             >
-                              <EtikettLiten>Slett</EtikettLiten>
+                              {loading ? (
+                                <NavFrontendSpinner type={'S'} />
+                              ) : (
+                                <EtikettLiten>Slett</EtikettLiten>
+                              )}
                               <div className={'frontpage__knapp-ikon'}>
                                 <img alt={'Slett fullmakt'} src={slettIkon} />
                               </div>
                             </Knapp>
-                          </a>
+                          </div>
                         </div>
                       </div>
                       <div key={f.fullmaktId + 'divider'} className="divider" />
@@ -181,6 +212,11 @@ const Frontpage = () => {
                     </div>
                   ))}
               </div>
+            </div>
+            <div>
+              {error && (
+                  <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
+              )}
             </div>
           </Box>
         </div>
