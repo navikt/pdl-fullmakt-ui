@@ -7,7 +7,7 @@ import {
   EtikettLiten
 } from 'nav-frontend-typografi';
 import { useStore } from '../../providers/Provider';
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
+import { Knapp } from 'nav-frontend-knapper';
 import endreIkon from '../../assets/Pencil.svg';
 import slettIkon from '../../assets/Slett.svg';
 import leggTilIkon from '../../assets/LeggTil.svg';
@@ -20,7 +20,7 @@ import { deleteFullmakt, fetchFullmaktsgiver } from '../../clients/apiClient';
 import { FullmaktType } from '../../types/fullmakt';
 import { HTTPError } from '../../components/error/Error';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import { AlertStripeFeil } from "nav-frontend-alertstriper";
+import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -108,7 +108,7 @@ const Frontpage = () => {
                               </>
                             </Knapp>
                           </a>
-                          <div >
+                          <div>
                             <Knapp
                               type={'flat'}
                               htmlType={'button'}
@@ -214,9 +214,7 @@ const Frontpage = () => {
               </div>
             </div>
             <div>
-              {error && (
-                  <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
-              )}
+              {error && <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>}
             </div>
           </Box>
         </div>
