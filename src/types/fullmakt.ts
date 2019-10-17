@@ -26,4 +26,29 @@ export type FullmaktOtherType = {
   fullmektig: string;
 };
 
+export type FullmaktSendType = FullmaktPutType | FullmaktPostType;
+
+export type FullmaktPostType = FullmaktPageType & {
+  registrert: string;
+  registrertAv: string;
+};
+
+export type FullmaktPutType = FullmaktPageType & {
+  fullmaktId: number;
+  registrert: string;
+  registrertAv: string;
+  endret: string;
+  endretAv: string;
+};
+
+export type FullmaktPageType = {
+  fullmaktsgiverNavn: string;
+  fullmaktsgiver: string;
+  fullmektigNavn: string;
+  fullmektig: string;
+  omraade: string;
+  gyldigFraOgMed: string;
+  gyldigTilOgMed: string;
+};
+
 export type FullmaktType = FullmaktViewType & FullmaktOtherType;

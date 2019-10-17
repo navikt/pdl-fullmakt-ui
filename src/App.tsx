@@ -47,7 +47,7 @@ const App = () => {
                 })
               )
               .catch((error: HTTPError) => console.error(error));
-            fetchFullmaktsgiver("12345678901")
+            fetchFullmaktsgiver('12345678901')
               .then((fullmaktsgiver: FullmaktType[]) =>
                 dispatch({
                   type: 'SETT_FULLMAKTSGIVER',
@@ -57,7 +57,7 @@ const App = () => {
               .catch((error: HTTPError) => {
                 dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
               });
-            fetchFullmektig("12345678901")
+            fetchFullmektig('12345678901')
               .then((fullmektig: FullmaktType[]) =>
                 dispatch({
                   type: 'SETT_FULLMEKTIG',

@@ -7,17 +7,18 @@ import { useStore } from '../../providers/Provider';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { baseUrl } from '../../App';
-import { postFullmakt } from '../../clients/apiClient';
+import { fetchFullmaktsgiver, postFullmakt } from '../../clients/apiClient';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, FormValidation } from 'calidation';
-import { FullmaktType, FullmaktViewType } from '../../types/fullmakt';
+import { FullmaktPageType, FullmaktSendType, FullmaktType } from '../../types/fullmakt';
 import { fullmaktFormConfig } from './config/form';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
 import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
 import SelectOmraade from '../../components/felter/omraade/SelectOmraade';
+import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 
 interface Routes {
   fullmaktId: string;
@@ -27,7 +28,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
   const { fullmaktId } = props.match.params;
 
-  const [{ auth, fullmatsgiver }] = useStore();
+  const [{ auth, fullmatsgiver }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
 
@@ -39,7 +40,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
   const initialValues = fullmaktData
     ? {
-        fullmektigNavn: fullmaktData.fullmektigNavn || '',
+        fullmektigNavn: fullmaktData.fullmektigNavn || 'Default navn ',
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
         omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
@@ -51,22 +52,52 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     const { isValid, fields } = e;
 
     if (isValid) {
-      const fullmaktData: FullmaktViewType = {
+      const fullmaktPageData: FullmaktPageType = {
         fullmaktsgiverNavn:
           auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
-        fullmaktsgiverFodselsnr:
-          auth.status === 'RESULT' && auth.data.authenticated ? auth.data.fodselsnr : '12345678901',
+        fullmaktsgiver:
+          auth.status === 'RESULT' && auth.data.authenticated
+            ? auth.data.fodselsnr || '12345678901'
+            : '',
         fullmektigNavn: fields.fullmektigNavn || 'Default navn',
-        fullmektigFodselsnr: fields.fullmektigFodselsnr,
+        fullmektig: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
         gyldigFraOgMed: fields.gyldigFraOgMed,
         gyldigTilOgMed: fields.gyldigTilOgMed
       };
 
+      const sendData: FullmaktSendType = fullmaktId
+        ? {
+            fullmaktId: Number(fullmaktId),
+            registrert: (fullmaktData && fullmaktData.registrert) || '',
+            registrertAv: (fullmaktData && fullmaktData.registrertAv) || '',
+            endret: nowDateFullmakt,
+            endretAv: fullmaktPageData.fullmaktsgiver,
+            ...fullmaktPageData
+          }
+        : {
+            registrert: nowDateFullmakt,
+            registrertAv: fullmaktPageData.fullmaktsgiver,
+            ...fullmaktPageData
+          };
+      console.log('Data to send = ', JSON.stringify(sendData));
       settLoading(true);
-      postFullmakt(fullmaktData)
-        .then(() => {
-          props.history.push(`${props.location.pathname}/pdl-fullmakt-ui`);
+      postFullmakt(sendData, !!fullmaktId)
+        .then((response: any) => {
+          fetchFullmaktsgiver('12345678901')
+            .then((fullmaktsgiver: FullmaktType[]) =>
+              dispatch({
+                type: 'SETT_FULLMAKTSGIVER',
+                payload: fullmaktsgiver
+              })
+            )
+            .catch((error: HTTPError) => {
+              dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
+            });
+          !fullmaktId &&
+            props.history.push(
+              `${props.location.pathname}/${response && response.fullmaktId}`
+            );
         })
         .catch((error: HTTPError) => {
           settError(`${error.code} - ${error.text}`);
