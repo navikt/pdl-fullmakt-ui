@@ -44,11 +44,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
         omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
-        gyldigTilOgMed: fullmaktData.gyldigTilOgMed || '',
-        registrert: fullmaktData.registrert || '',
-        registrertAv: fullmaktData.registrertAv || '',
-        endret: fullmaktData.endret || '',
-        endretAv: fullmaktData.endretAv || ''
+        gyldigTilOgMed: fullmaktData.gyldigTilOgMed || ''
       }
     : {};
 
@@ -56,7 +52,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
     const { isValid, fields } = e;
 
     if (isValid) {
-      const fullmaktData: FullmaktPageType = {
+      const fullmaktPageData: FullmaktPageType = {
         fullmaktsgiverNavn:
           auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
         fullmaktsgiver:
@@ -73,16 +69,16 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
       const sendData: FullmaktSendType = fullmaktId
         ? {
             fullmaktId: Number(fullmaktId),
-            registrert: fields.registrert,
-            registrertAv: fields.registrertAv,
+            registrert: (fullmaktData && fullmaktData.registrert) || '',
+            registrertAv: (fullmaktData && fullmaktData.registrertAv) || '',
             endret: nowDateFullmakt,
-            endretAv: fullmaktData.fullmaktsgiver,
-            ...fullmaktData
+            endretAv: fullmaktPageData.fullmaktsgiver,
+            ...fullmaktPageData
           }
         : {
             registrert: nowDateFullmakt,
-            registrertAv: fullmaktData.fullmaktsgiver,
-            ...fullmaktData
+            registrertAv: fullmaktPageData.fullmaktsgiver,
+            ...fullmaktPageData
           };
       console.log('Data to send = ', JSON.stringify(sendData));
       settLoading(true);
