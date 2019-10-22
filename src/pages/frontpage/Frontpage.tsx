@@ -116,7 +116,7 @@ const Frontpage = () => {
                               autoDisableVedSpinner={true}
                               onClick={e => {
                                 e.preventDefault();
-                                return deleteFullmakt(String(f.fullmaktId))
+                                deleteFullmakt(String(f.fullmaktId))
                                   .then((response: any) => {
                                     fetchFullmaktsgiver(fodselsnr)
                                       .then((fullmaktsgiver: FullmaktType[]) =>
