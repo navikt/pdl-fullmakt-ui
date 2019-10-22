@@ -118,6 +118,7 @@ const Frontpage = () => {
                                 e.preventDefault();
                                 deleteFullmakt(String(f.fullmaktId))
                                   .then((response: any) => {
+                                    console.log(String(f.fullmaktId) + ' is deleted with response = ' , response )
                                     fetchFullmaktsgiver(fodselsnr)
                                       .then((fullmaktsgiver: FullmaktType[]) =>
                                         dispatch({
