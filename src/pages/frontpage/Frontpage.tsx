@@ -108,7 +108,7 @@ const Frontpage = () => {
                               </>
                             </Knapp>
                           </a>
-                          <a href={'/person/pdl-fullmakt-ui'}>
+                          <div>
                             <Knapp
                               type={'flat'}
                               htmlType={'button'}
@@ -150,7 +150,7 @@ const Frontpage = () => {
                                 <img alt={'Slett fullmakt'} src={slettIkon} />
                               </div>
                             </Knapp>
-                          </a>
+                          </div>
                         </div>
                       </div>
                       <div key={f.fullmaktId + 'divider'} className="divider" />

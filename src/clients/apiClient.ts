@@ -59,7 +59,6 @@ const deleteRequest = (url: string): any =>
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
     .then(response => sjekkForFeil(url, response))
-    .then(parseJson)
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
