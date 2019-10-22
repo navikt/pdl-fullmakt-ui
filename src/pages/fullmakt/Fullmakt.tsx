@@ -28,7 +28,7 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
 
   const { fullmaktId } = props.match.params;
 
-  const [{ auth, fullmatsgiver }, dispatch] = useStore();
+  const [{ auth, fullmatsgiver, fodselsnr }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
 
@@ -51,14 +51,16 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
   const send = (e: FormContext) => {
     const { isValid, fields } = e;
 
-    if (isValid) {
+    if (
+      isValid &&
+      fodselsnr &&
+      auth.status === 'RESULT' &&
+      auth.data.authenticated &&
+      auth.data.name
+    ) {
       const fullmaktPageData: FullmaktPageType = {
-        fullmaktsgiverNavn:
-          auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '',
-        fullmaktsgiver:
-          auth.status === 'RESULT' && auth.data.authenticated
-            ? auth.data.fodselsnr || '12345678901'
-            : '',
+        fullmaktsgiverNavn: auth.data.name,
+        fullmaktsgiver: fodselsnr,
         fullmektigNavn: fields.fullmektigNavn || 'Default navn',
         fullmektig: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
@@ -72,19 +74,19 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
             registrert: (fullmaktData && fullmaktData.registrert) || '',
             registrertAv: (fullmaktData && fullmaktData.registrertAv) || '',
             endret: nowDateFullmakt,
-            endretAv: fullmaktPageData.fullmaktsgiver,
+            endretAv: fodselsnr,
             ...fullmaktPageData
           }
         : {
             registrert: nowDateFullmakt,
-            registrertAv: fullmaktPageData.fullmaktsgiver,
+            registrertAv: fodselsnr,
             ...fullmaktPageData
           };
       console.log('Data to send = ', JSON.stringify(sendData));
       settLoading(true);
       postFullmakt(sendData, !!fullmaktId)
         .then((response: any) => {
-          fetchFullmaktsgiver('12345678901')
+          fetchFullmaktsgiver(fodselsnr)
             .then((fullmaktsgiver: FullmaktType[]) =>
               dispatch({
                 type: 'SETT_FULLMAKTSGIVER',

@@ -7,8 +7,7 @@ import {
   fetchKontaktInfo,
   fetchFodselsnr,
   fetchFullmaktsgiver,
-  fetchFullmektig,
-  fetchNavn
+  fetchFullmektig
 } from './clients/apiClient';
 import { useStore } from './providers/Provider';
 import { AuthInfo } from './types/authInfo';
@@ -19,7 +18,6 @@ import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
 import { FullmaktType } from './types/fullmakt';
 import WithAuth from './providers/auth/Auth';
-import { NavnType } from './types/navn';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
@@ -40,43 +38,33 @@ const App = () => {
               )
               .catch((error: HTTPError) => console.error(error));
             fetchFodselsnr()
-              .then((fodselsnr: Fodselsnr) =>
+              .then((fodselsnr: Fodselsnr) => {
                 dispatch({
                   type: 'SETT_FODSELSNR',
                   payload: fodselsnr
-                })
-              )
+                });
+                fetchFullmaktsgiver(fodselsnr && fodselsnr.fodselsnr)
+                  .then((fullmaktsgiver: FullmaktType[]) =>
+                    dispatch({
+                      type: 'SETT_FULLMAKTSGIVER',
+                      payload: fullmaktsgiver
+                    })
+                  )
+                  .catch((error: HTTPError) => {
+                    dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
+                  });
+                fetchFullmektig(fodselsnr && fodselsnr.fodselsnr)
+                  .then((fullmektig: FullmaktType[]) =>
+                    dispatch({
+                      type: 'SETT_FULLMEKTIG',
+                      payload: fullmektig
+                    })
+                  )
+                  .catch((error: HTTPError) => {
+                    dispatch({ type: 'SETT_FULLMEKTIG_ERROR', payload: error });
+                  });
+              })
               .catch((error: HTTPError) => console.error(error));
-            fetchFullmaktsgiver('12345678901')
-              .then((fullmaktsgiver: FullmaktType[]) =>
-                dispatch({
-                  type: 'SETT_FULLMAKTSGIVER',
-                  payload: fullmaktsgiver
-                })
-              )
-              .catch((error: HTTPError) => {
-                dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
-              });
-            fetchFullmektig('12345678901')
-              .then((fullmektig: FullmaktType[]) =>
-                dispatch({
-                  type: 'SETT_FULLMEKTIG',
-                  payload: fullmektig
-                })
-              )
-              .catch((error: HTTPError) => {
-                dispatch({ type: 'SETT_FULLMEKTIG_ERROR', payload: error });
-              });
-            fetchNavn()
-              .then((navn: NavnType[]) =>
-                dispatch({
-                  type: 'SETT_NAVN',
-                  payload: navn
-                })
-              )
-              .catch((error: HTTPError) => {
-                dispatch({ type: 'SETT_NAVN_ERROR', payload: error });
-              });
           }
         })
         .catch((error: HTTPError) => console.error(error));

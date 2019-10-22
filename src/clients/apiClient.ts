@@ -93,8 +93,6 @@ export const fetchFullmektig = (fodselsnr: string) =>
 
 export const fetchOmraade = () => hentJson(`${apiUrl}/omraade`);
 
-export const fetchNavn = () => hentJson(`${apiUrl}/navn`);
-
 export const postFullmakt = (data: FullmaktSendType, put: boolean) =>
   sendJson(`${apiUrl}/fullmakt`, data, put);
 

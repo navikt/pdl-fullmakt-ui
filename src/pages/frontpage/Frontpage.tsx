@@ -24,7 +24,7 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig }, dispatch] = useStore();
+  const [{ fullmatsgiver, fullmektig, fodselsnr }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
   return (
@@ -118,7 +118,7 @@ const Frontpage = () => {
                                 e.preventDefault();
                                 return deleteFullmakt(String(f.fullmaktId))
                                   .then((response: any) => {
-                                    fetchFullmaktsgiver('12345678901')
+                                    fetchFullmaktsgiver(fodselsnr)
                                       .then((fullmaktsgiver: FullmaktType[]) =>
                                         dispatch({
                                           type: 'SETT_FULLMAKTSGIVER',

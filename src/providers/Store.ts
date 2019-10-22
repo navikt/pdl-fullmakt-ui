@@ -4,7 +4,6 @@ import { Sprak } from '../types/sprak';
 import sprak from '../language/provider';
 import { HTTPError } from '../components/error/Error';
 import { FetchFullmakt, FullmaktType } from '../types/fullmakt';
-import { FetchNavn, NavnType } from '../types/navn';
 
 export const initialState = {
   fodselsnr: '',
@@ -13,8 +12,7 @@ export const initialState = {
   auth: { status: 'LOADING' } as FetchAuthInfo,
   kontaktInfo: { mobiltelefonnummer: '' },
   fullmatsgiver: { status: 'LOADING' } as FetchFullmakt,
-  fullmektig: { status: 'LOADING' } as FetchFullmakt,
-  navn: { status: 'LOADING' } as FetchNavn
+  fullmektig: { status: 'LOADING' } as FetchFullmakt
 };
 
 export interface Store {
@@ -60,14 +58,6 @@ export type Action =
     }
   | {
       type: 'SETT_FULLMEKTIG_ERROR';
-      payload: HTTPError;
-    }
-  | {
-      type: 'SETT_NAVN';
-      payload: NavnType[];
-    }
-  | {
-      type: 'SETT_NAVN_ERROR';
       payload: HTTPError;
     };
 
@@ -130,22 +120,6 @@ export const reducer = (state: Store, action: Action) => {
           status: 'ERROR',
           error: action.payload
         } as FetchFullmakt
-      };
-    case 'SETT_NAVN':
-      return {
-        ...state,
-        navn: {
-          status: 'RESULT',
-          data: action.payload
-        } as FetchNavn
-      };
-    case 'SETT_NAVN_ERROR':
-      return {
-        ...state,
-        navn: {
-          status: 'ERROR',
-          error: action.payload
-        } as FetchNavn
       };
     default:
       return state;
