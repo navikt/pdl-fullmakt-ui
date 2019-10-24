@@ -167,6 +167,8 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
                                 error={errors.fullmektigNavn}
                                 onChange={v => setField({ fullmektigNavn: v })}
                                 disabled={!!fullmaktId}
+                                placeholder="Fornavn Etternavn"
+                                hjelpetekst={'Folkeregistrert navn (slik det står i pass, førerkort etc).'}
                               />
                             </div>
                             <div className="flex__kolonne-right">
