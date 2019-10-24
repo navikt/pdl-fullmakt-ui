@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchOmraade } from '../../../clients/apiClient';
 import { HTTPError } from '../../error/Error';
 import NAVSelect from '../select/NAVSelect';
+import { Omraade } from '../../../types/omraade';
 
 interface Props {
   value: string;
@@ -15,13 +16,6 @@ interface Props {
 interface OptionType {
   value: string;
   label: string;
-}
-
-export interface Omraade {
-  sortering: number;
-  kode: string;
-  term: string;
-  tekst: string;
 }
 
 const SelectOmraade = (props: Props) => {

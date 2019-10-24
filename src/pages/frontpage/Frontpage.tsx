@@ -24,7 +24,7 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig, fodselsnr }, dispatch] = useStore();
+  const [{ fullmatsgiver, fullmektig, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
   return (
@@ -80,7 +80,14 @@ const Frontpage = () => {
                           <div className="frontpage__container">
                             <div className="frontpage__input-container">
                               <Element>Fullmakten gjelder: &nbsp;</Element>
-                              <Normaltekst>{f.omraade}</Normaltekst>
+                              <Normaltekst>
+                                {omraade && omraade.status === 'RESULT' && omraade.data
+                                  ? omraade.data
+                                      .filter(o => f.omraade.includes(o.kode))
+                                      .map(o => o.term)
+                                      .join(';')
+                                  : f.omraade}
+                              </Normaltekst>
                             </div>
                             <div className="frontpage__input-container">
                               <Element>Gyldig: &nbsp;</Element>
@@ -118,7 +125,11 @@ const Frontpage = () => {
                                 e.preventDefault();
                                 deleteFullmakt(String(f.fullmaktId))
                                   .then((response: any) => {
-                                    console.log(String(f.fullmaktId) + ' is deleted with response = ' , response )
+                                    console.log(
+                                      String(f.fullmaktId) +
+                                        ' is deleted with response = ',
+                                      response
+                                    );
                                     fetchFullmaktsgiver(fodselsnr)
                                       .then((fullmaktsgiver: FullmaktType[]) =>
                                         dispatch({
@@ -196,7 +207,14 @@ const Frontpage = () => {
                           <div className={'frontpage__container'}>
                             <div className={'frontpage__input-container'}>
                               <Element>Fullmakten gjelder: &nbsp;</Element>
-                              <Normaltekst>{f.omraade}</Normaltekst>
+                              <Normaltekst>
+                                {omraade && omraade.status === 'RESULT' && omraade.data
+                                  ? omraade.data
+                                      .filter(o => f.omraade.includes(o.kode))
+                                      .map(o => o.term)
+                                      .join(';')
+                                  : f.omraade}
+                              </Normaltekst>
                             </div>
                             <div className={'frontpage__input-container'}>
                               <Element>Gyldig: &nbsp;</Element>

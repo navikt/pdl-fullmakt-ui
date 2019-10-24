@@ -4,6 +4,7 @@ import { Sprak } from '../types/sprak';
 import sprak from '../language/provider';
 import { HTTPError } from '../components/error/Error';
 import { FetchFullmakt, FullmaktType } from '../types/fullmakt';
+import { FetchOmraade, Omraade } from '../types/omraade';
 
 export const initialState = {
   fodselsnr: '',
@@ -12,7 +13,8 @@ export const initialState = {
   auth: { status: 'LOADING' } as FetchAuthInfo,
   kontaktInfo: { mobiltelefonnummer: '' },
   fullmatsgiver: { status: 'LOADING' } as FetchFullmakt,
-  fullmektig: { status: 'LOADING' } as FetchFullmakt
+  fullmektig: { status: 'LOADING' } as FetchFullmakt,
+  omraade: { status: 'LOADING' } as FetchOmraade
 };
 
 export interface Store {
@@ -23,6 +25,7 @@ export interface Store {
   kontaktInfo: KontaktInfo;
   fullmatsgiver: FetchFullmakt;
   fullmektig: FetchFullmakt;
+  omraade: FetchOmraade;
 }
 
 export type Action =
@@ -58,6 +61,14 @@ export type Action =
     }
   | {
       type: 'SETT_FULLMEKTIG_ERROR';
+      payload: HTTPError;
+    }
+  | {
+      type: 'SETT_OMRAADE';
+      payload: Omraade[];
+    }
+  | {
+      type: 'SETT_OMRAADE_ERROR';
       payload: HTTPError;
     };
 
@@ -120,6 +131,22 @@ export const reducer = (state: Store, action: Action) => {
           status: 'ERROR',
           error: action.payload
         } as FetchFullmakt
+      };
+    case 'SETT_OMRAADE':
+      return {
+        ...state,
+        omraade: {
+          status: 'RESULT',
+          data: action.payload
+        } as FetchOmraade
+      };
+    case 'SETT_OMRAADE_ERROR':
+      return {
+        ...state,
+        omraade: {
+          status: 'ERROR',
+          error: action.payload
+        } as FetchOmraade
       };
     default:
       return state;
