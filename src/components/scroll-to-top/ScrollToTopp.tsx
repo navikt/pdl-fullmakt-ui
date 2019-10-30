@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-type MergedProps = Props & RouteComponentProps;
-const ScrollToTop = ({ location, children }: MergedProps) => {
+const ScrollToTop = ({ children }: Props) => {
+  const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -14,4 +15,4 @@ const ScrollToTop = ({ location, children }: MergedProps) => {
   return <>{children}</> || null;
 };
 
-export default withRouter(ScrollToTop);
+export default ScrollToTop;
