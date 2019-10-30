@@ -21,12 +21,14 @@ import { FullmaktType } from '../../types/fullmakt';
 import { HTTPError } from '../../components/error/Error';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
+import { useHistory } from 'react-router-dom';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
   const [{ fullmatsgiver, fullmektig, fodselsnr }, dispatch] = useStore();
-  const [loading, settLoading] = useState(false);
+  const [loading, settLoading] = useState(false)
   const [error, settError] = useState();
+  const history = useHistory();
   return (
     <>
       <div className="pagecontent">
@@ -93,12 +95,11 @@ const Frontpage = () => {
                           </div>
                         </div>
                         <div className="frontpage__knapper">
-                          <a href={'/person/pdl-fullmakt-ui/fullmakt/' + f.fullmaktId}>
                             <Knapp
                               type={'flat'}
                               htmlType={'button'}
                               className={'frontpage__knapp'}
-                              onClick={e => e}
+                              onClick={() => history.push(`/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`)}
                             >
                               <>
                                 <EtikettLiten>Endre</EtikettLiten>
@@ -107,7 +108,6 @@ const Frontpage = () => {
                                 </div>
                               </>
                             </Knapp>
-                          </a>
                           <div>
                             <Knapp
                               type={'flat'}
@@ -159,20 +159,18 @@ const Frontpage = () => {
               </div>
               <div key={'FullmakterAdd'} className={'frontpage__container'}>
                 <>&nbsp;</>
-                <a href={'/person/pdl-fullmakt-ui/fullmakt'}>
-                  <Knapp
-                    type={'flat'}
-                    htmlType={'button'}
-                    className={'frontpage__knapp'}
-                    autoDisableVedSpinner={true}
-                    onClick={e => e}
-                  >
-                    <EtikettLiten>Ny fullmakt</EtikettLiten>
-                    <div className={'frontpage__knapp-ikon'}>
-                      <img alt={'Legg til fullmakt'} src={leggTilIkon} />
-                    </div>
-                  </Knapp>
-                </a>
+                <Knapp
+                  type={'flat'}
+                  htmlType={'button'}
+                  className={'frontpage__knapp'}
+                  autoDisableVedSpinner={true}
+                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}
+                >
+                  <EtikettLiten>Ny fullmakt</EtikettLiten>
+                  <div className={'frontpage__knapp-ikon'}>
+                    <img alt={'Legg til fullmakt'} src={leggTilIkon} />
+                  </div>
+                </Knapp>
               </div>
               <div key={'Fullmektig'} className={'frontpage__content'}>
                 <Undertittel>Jeg er fullmektig for:</Undertittel>
