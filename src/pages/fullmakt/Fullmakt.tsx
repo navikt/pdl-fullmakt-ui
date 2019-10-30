@@ -5,7 +5,7 @@ import Veilederpanel from 'nav-frontend-veilederpanel';
 import Tilbake from '../../components/tilbake/Tilbake';
 import { useStore } from '../../providers/Provider';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { Link, useHistory, useParams, useLocation } from 'react-router-dom';
 import { baseUrl } from '../../App';
 import { fetchFullmaktsgiver, postFullmakt } from '../../clients/apiClient';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
@@ -20,13 +20,11 @@ import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpete
 import SelectOmraade from '../../components/felter/omraade/SelectOmraade';
 import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 
-interface Routes {
-  fullmaktId: string;
-}
-const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
+const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
-
-  const { fullmaktId } = props.match.params;
+  const { fullmaktId } = useParams();
+  const history  = useHistory();
+  const location = useLocation();
 
   const [{ auth, fullmatsgiver, fodselsnr }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
@@ -97,8 +95,8 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
               dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
             });
           !fullmaktId &&
-            props.history.push(
-              `${props.location.pathname}/${response && response.fullmaktId}`
+            history.push(
+              `${location.pathname}/${response && response.fullmaktId}`
             );
         })
         .catch((error: HTTPError) => {
@@ -252,4 +250,4 @@ const Fullmakt = (props: FullmaktType & RouteComponentProps<Routes>) => {
   );
 };
 
-export default withRouter(Fullmakt);
+export default Fullmakt;
