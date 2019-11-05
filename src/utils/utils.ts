@@ -1,4 +1,6 @@
 import { Omraade, UnderNode } from '../types/omraade';
+import { string } from 'prop-types';
+import { Node } from 'typescript';
 
 export const mapSubNodes = (obj: any): any =>
   obj.map((n: UnderNode) => ({ checked: false, label: n.termer.no, value: n.kode }));
@@ -10,6 +12,17 @@ export const transformData = (omraade: any): Omraade[] =>
     ...node,
     undernoder: getArrayOfNodes(node.undernoder)
   }));
+
+export const kodeDetaljer = (kode: string, omraader: Omraade[]): string => {
+  var node = omraader.find(o => o.undernoder.find(u => u.kode === kode));
+  var underNode = node ? node.undernoder.find(u => u.kode === kode) : null;
+  return underNode ? underNode.termer.no : kode;
+};
+
+export const hentOmraadeDetaljer = (omraader: Omraade[], kodeList: string): string[] =>
+  omraader && kodeList
+    ? kodeList.split(';').map(kode => kodeDetaljer(kode, omraader))
+    : [kodeList];
 
 // string functions
 export const sortSubString = (list: string): string =>

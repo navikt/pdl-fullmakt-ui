@@ -22,8 +22,7 @@ import { HTTPError } from '../../components/error/Error';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
-import Lesmerpanel from 'nav-frontend-lesmerpanel';
-import { Collapse } from 'react-collapse';
+import { hentOmraadeDetaljer } from '../../utils/utils';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -98,22 +97,12 @@ const Frontpage = () => {
                             <div className="frontpage__input-container">
                               <Element>Fullmakten gjelder: &nbsp;</Element>
                               {showOmraade(f.omraade)}
-                              <Lesmerpanel intro={<span>vis detaljer</span>}>
-                                <div>
-                                  <p style={{ marginTop: 0 }}>data</p>
-                                </div>
-                              </Lesmerpanel>
-                              <Collapse isOpened={true || false}>
-                                <div>Random content</div>
-                              </Collapse>
-                              {/*<Normaltekst>
-                                {omraade && omraade.status === 'RESULT' && omraade.data
-                                  ? omraade.data
-                                      .filter(o => f.omraade.includes(o.kode))
-                                      .map(o => o.term)
-                                      .join(';')
-                                  : f.omraade}
-                              </Normaltekst>*/}
+                              {f.omraade !== '*' && <button>vis detaljer</button>}
+
+                              {omraade && omraade.status === 'RESULT' && omraade.data
+                                ? hentOmraadeDetaljer(omraade.data, f.omraade).join('; ')
+                                : f.omraade}
+
                             </div>
                           </div>
                         </div>

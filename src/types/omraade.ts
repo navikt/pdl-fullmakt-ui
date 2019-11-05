@@ -24,3 +24,8 @@ export interface UnderNode {
     no: string;
   };
 }
+
+export interface Node {
+  kode: string;
+  termer: string;
+}
