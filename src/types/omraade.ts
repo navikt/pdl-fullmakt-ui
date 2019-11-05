@@ -5,9 +5,22 @@ export type FetchOmraade =
   | { status: 'RESULT'; data: Omraade[] }
   | { status: 'ERROR'; error: HTTPError };
 
+export interface OmraadeAPI {
+  hierarkinivaaer: string[];
+  noder: any;
+}
+
 export interface Omraade {
-  sortering: number;
   kode: string;
-  term: string;
-  tekst: string;
+  termer: {
+    no: string;
+  };
+  undernoder: UnderNode[];
+}
+
+export interface UnderNode {
+  kode: string;
+  termer: {
+    no: string;
+  };
 }
