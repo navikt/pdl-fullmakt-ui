@@ -17,16 +17,18 @@ import { fullmaktFormConfig } from './config/form';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
 import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
-import SelectOmraade from '../../components/felter/omraade/SelectOmraade';
 import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
+import { Radio, Checkbox, SkjemaGruppe } from 'nav-frontend-skjema';
+import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
+import { addSubString, removeSubString } from '../../utils/utils';
 
 const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
   const { fullmaktId } = useParams();
-  const history  = useHistory();
+  const history = useHistory();
   const location = useLocation();
 
-  const [{ auth, fullmatsgiver, fodselsnr }, dispatch] = useStore();
+  const [{ auth, fullmatsgiver, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
 
@@ -40,7 +42,7 @@ const Fullmakt = () => {
     ? {
         fullmektigNavn: fullmaktData.fullmektigNavn || 'Default navn ',
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
-        omraade: fullmaktData.omraade,
+        omraade: fullmaktData.omraade.split(';'),
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
         gyldigTilOgMed: fullmaktData.gyldigTilOgMed || ''
       }
@@ -95,9 +97,7 @@ const Fullmakt = () => {
               dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
             });
           !fullmaktId &&
-            history.push(
-              `${location.pathname}/${response && response.fullmaktId}`
-            );
+            history.push(`${location.pathname}/${response && response.fullmaktId}`);
         })
         .catch((error: HTTPError) => {
           settError(`${error.code} - ${error.text}`);
@@ -121,7 +121,7 @@ const Fullmakt = () => {
               console.log('fields ', JSON.stringify(fields));
               console.log('errors ', JSON.stringify(errors));
               // console.log('fullmakt ', JSON.stringify(fullmaktData));
-              //  console.log('auth ', JSON.stringify(auth));
+              console.log('omraade ', JSON.stringify(omraade));
               return (
                 <>
                   <Tilbake to={''} />
@@ -166,7 +166,9 @@ const Fullmakt = () => {
                                 onChange={v => setField({ fullmektigNavn: v })}
                                 disabled={!!fullmaktId}
                                 placeholder="Fornavn Etternavn"
-                                hjelpetekst={'Folkeregistrert navn (slik det står i pass, førerkort etc).'}
+                                hjelpetekst={
+                                  'Folkeregistrert navn (slik det står i pass, førerkort etc).'
+                                }
                               />
                             </div>
                             <div className="flex__kolonne-right">
@@ -180,19 +182,79 @@ const Fullmakt = () => {
                               />
                             </div>
                           </div>
-
-                          <div className="flex__rad">
-                            <div className="flex__kolonne-left">
-                              <SelectOmraade
-                                label={'Fullmakten gjelder'}
-                                submitted={submitted}
-                                value={fields.omraade}
-                                error={errors.omraade}
-                                onChange={v => setField({ omraade: v })}
-                                hjelpetekst={'NAV områder for fullmakt.'}
+                          <SkjemaGruppe
+                            feil={
+                              submitted && errors.omraade
+                                ? { feilmelding: errors.omraade }
+                                : undefined
+                            }
+                          >
+                            <div>
+                              <div className="ekf__header">
+                                <div className="skjemaelement__label">
+                                  <div>Fullmakten gjelder</div>
+                                </div>
+                                <HjelpetekstHoyre
+                                  tittel={''}
+                                  id={'hjelpetekst'}
+                                  type="auto"
+                                >
+                                  NAV områder for fullmakt.
+                                </HjelpetekstHoyre>
+                              </div>
+                              <Radio
+                                label="All informasjon"
+                                name={'NAV_ALL_OMRAADE'}
+                                checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
+                                onChange={() =>
+                                  setField({
+                                    hvemOmraade: 'NAV_ALL_OMRAADE',
+                                    omraade: '*'
+                                  })
+                                }
                               />
+                              <Radio
+                                label="Begrenset"
+                                name={'NAV_BEGRENSET_OMRAADE'}
+                                checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
+                                onChange={() =>
+                                  setField({ hvemOmraade: 'NAV_BEGRENSET_OMRAADE' })
+                                }
+                              />
+                              {fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE' &&
+                                omraade &&
+                                omraade.status === 'RESULT' &&
+                                omraade.data.map(group => (
+                                  <div key={group.kode}>
+                                    <u>
+                                      <div className="skjemaelement__label">
+                                        {group.termer.no + ' :'}
+                                      </div>
+                                    </u>
+                                    {group.undernoder.map(n => (
+                                      <Checkbox
+                                        key={n.kode}
+                                        label={n.termer.no}
+                                        value={n.kode}
+                                        onChange={e =>
+                                          setField({
+                                            omraade: e.target.checked
+                                              ? addSubString(
+                                                  e.target.value,
+                                                  fields.omraade
+                                                )
+                                              : removeSubString(
+                                                  e.target.value,
+                                                  fields.omraade
+                                                )
+                                          })
+                                        }
+                                      />
+                                    ))}
+                                  </div>
+                                ))}
                             </div>
-                          </div>
+                          </SkjemaGruppe>
                           <div className="flex__rad">
                             <div className="flex__kolonne-left">
                               <DayPicker

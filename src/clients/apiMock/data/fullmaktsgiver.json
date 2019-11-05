@@ -8,7 +8,7 @@
     "opphoert": false,
     "fullmaktsgiver": "12345678901",
     "fullmektig": "22345678901",
-    "omraade": "AAP;DAG;FOS;IND;MOB;OPP;REH;SAK;SAP;SYK;SYM;VEN;YRA;YRK;TSO;TSR",
+    "omraade": "*",
     "gyldigFraOgMed": "2018-12-31",
     "gyldigTilOgMed": "2020-12-31",
     "fullmektigNavn": "Test navn"

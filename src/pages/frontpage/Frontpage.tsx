@@ -22,6 +22,8 @@ import { HTTPError } from '../../components/error/Error';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
+import Lesmerpanel from 'nav-frontend-lesmerpanel';
+import { Collapse } from 'react-collapse';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -30,6 +32,8 @@ const Frontpage = () => {
 
   const [error, settError] = useState();
   const history = useHistory();
+  const showOmraade = (o: string) =>
+    o ? (o === '*' ? 'All informasjon' : 'Begrenset informasjon') : '';
   return (
     <>
       <div className="pagecontent">
@@ -82,17 +86,6 @@ const Frontpage = () => {
                           </div>
                           <div className="frontpage__container">
                             <div className="frontpage__input-container">
-                              <Element>Fullmakten gjelder: &nbsp;</Element>
-                              <Normaltekst>
-                                {omraade && omraade.status === 'RESULT' && omraade.data
-                                  ? omraade.data
-                                      .filter(o => f.omraade.includes(o.kode))
-                                      .map(o => o.term)
-                                      .join(';')
-                                  : f.omraade}
-                              </Normaltekst>
-                            </div>
-                            <div className="frontpage__input-container">
                               <Element>Gyldig: &nbsp;</Element>
                               <Normaltekst>
                                 {getDefaultDateFormat(f.gyldigFraOgMed) +
@@ -101,21 +94,47 @@ const Frontpage = () => {
                               </Normaltekst>
                             </div>
                           </div>
+                          <div className="frontpage__container">
+                            <div className="frontpage__input-container">
+                              <Element>Fullmakten gjelder: &nbsp;</Element>
+                              {showOmraade(f.omraade)}
+                              <Lesmerpanel intro={<span>vis detaljer</span>}>
+                                <div>
+                                  <p style={{ marginTop: 0 }}>data</p>
+                                </div>
+                              </Lesmerpanel>
+                              <Collapse isOpened={true || false}>
+                                <div>Random content</div>
+                              </Collapse>
+                              {/*<Normaltekst>
+                                {omraade && omraade.status === 'RESULT' && omraade.data
+                                  ? omraade.data
+                                      .filter(o => f.omraade.includes(o.kode))
+                                      .map(o => o.term)
+                                      .join(';')
+                                  : f.omraade}
+                              </Normaltekst>*/}
+                            </div>
+                          </div>
                         </div>
                         <div className="frontpage__knapper">
-                            <Knapp
-                              type={'flat'}
-                              htmlType={'button'}
-                              className={'frontpage__knapp'}
-                              onClick={() => history.push(`/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`)}
-                            >
-                              <>
-                                <EtikettLiten>Endre</EtikettLiten>
-                                <div className={'frontpage__knapp-ikon'}>
-                                  <img alt={'Endre fullmakt'} src={endreIkon} />
-                                </div>
-                              </>
-                            </Knapp>
+                          <Knapp
+                            type={'flat'}
+                            htmlType={'button'}
+                            className={'frontpage__knapp'}
+                            onClick={() =>
+                              history.push(
+                                `/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`
+                              )
+                            }
+                          >
+                            <>
+                              <EtikettLiten>Endre</EtikettLiten>
+                              <div className={'frontpage__knapp-ikon'}>
+                                <img alt={'Endre fullmakt'} src={endreIkon} />
+                              </div>
+                            </>
+                          </Knapp>
                           <div>
                             <Knapp
                               type={'flat'}
@@ -205,23 +224,26 @@ const Frontpage = () => {
                           </div>
                           <div className={'frontpage__container'}>
                             <div className={'frontpage__input-container'}>
-                              <Element>Fullmakten gjelder: &nbsp;</Element>
-                              <Normaltekst>
-                                {omraade && omraade.status === 'RESULT' && omraade.data
-                                  ? omraade.data
-                                      .filter(o => f.omraade.includes(o.kode))
-                                      .map(o => o.term)
-                                      .join(';')
-                                  : f.omraade}
-                              </Normaltekst>
-                            </div>
-                            <div className={'frontpage__input-container'}>
                               <Element>Gyldig: &nbsp;</Element>
                               <Normaltekst>
                                 {getDefaultDateFormat(f.gyldigFraOgMed) +
                                   ' - ' +
                                   getDefaultDateFormat(f.gyldigTilOgMed)}
                               </Normaltekst>
+                            </div>
+                          </div>
+                          <div className={'frontpage__container'}>
+                            <div className={'frontpage__input-container'}>
+                              <Element>Fullmakten gjelder: &nbsp;</Element>
+                              {showOmraade(f.omraade)}
+                              {/* <Normaltekst>
+                                {omraade && omraade.status === 'RESULT' && omraade.data
+                                  ? omraade.data
+                                      .filter(o => f.omraade.includes(o.kode))
+                                      .map(o => o.term)
+                                      .join(';')
+                                  : f.omraade}
+                              </Normaltekst>*/}
                             </div>
                           </div>
                         </div>

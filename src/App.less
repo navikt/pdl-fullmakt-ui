@@ -72,6 +72,16 @@ a {text-decoration: none;}
   padding: 1.5rem;
 }
 
+.skjema {
+  &__content {
+    margin: 1rem 0;
+    > div {
+      &:not(:last-child) {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}
 .radioPanel {
   &__bool {
     .inputPanelGruppe__inner {
@@ -97,10 +107,7 @@ a {text-decoration: none;}
   max-height: 2.5rem;
 }
 
-label {
-  font-weight: bold;
-  padding-bottom: 8px;
-}
+
 
 .divider {
   margin: 1rem 0;

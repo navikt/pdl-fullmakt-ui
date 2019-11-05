@@ -20,6 +20,7 @@ import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
 import { FullmaktType } from './types/fullmakt';
 import WithAuth from './providers/auth/Auth';
 import { Omraade } from './types/omraade';
+import { transformData } from './utils/utils';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
@@ -49,7 +50,7 @@ const App = () => {
                   .then((omraade: Omraade[]) =>
                     dispatch({
                       type: 'SETT_OMRAADE',
-                      payload: omraade
+                      payload: transformData(omraade)
                     })
                   )
                   .catch((error: HTTPError) => {

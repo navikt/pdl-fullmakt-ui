@@ -1,44 +1,239 @@
-[
-  {
-    "sortering": "0",
-    "overkode": "ALLE",
-    "kode": "AAP;DAG;FOS;IND;MOB;OPP;REH;SAK;SAP;SYK;SYM;VEN;YRA;YRK;TSO;TSR;BAR;BID;ENF;FOR;GRA;GRU;KON;OMS;PEN;SUP;UFO;FAR;MED;RPO;RVE;SER;TRY;UFM",
-    "term": "Alle",
-    "tekst": "(Alle)"
-  },
-  {
-    "sortering": "1",
-    "overkode": "ARBD",
-    "kode": "AAP;DAG;FOS;IND;MOB;OPP;REH;SAK;SAP;SYK;SYM;VEN;YRA;YRK;TSO;TSR",
-    "term": "Arbeid",
-    "tekst": "Arbeidsledig,jobbsøker, sykmeldt og arbeidsavklaringspenger."
-  },
-  {
-    "sortering": "2",
-    "overkode": "FMLI",
-    "kode": "BAR;BID;ENF;FOR;GRA;GRU;KON;OMS",
-    "term": "Familie",
-    "tekst": "Venter barn, barnetrygd, kontantstøtte, sykdom i familien, grunn- og hjelpestønad, ytelser ved dødsfall."
-  },
-  {
-    "sortering": "3",
-    "overkode": "PENS",
-    "kode": "PEN;SUP",
-    "term": "Pensjon",
-    "tekst": "Pensjon, alderspensjon, uførepensjon, omsorgsopptjening, pensjonist i utlandet og andre pensjonsordninger."
-  },
-  {
-    "sortering": "4",
-    "overkode": "UFRT",
-    "kode": "UFO",
-    "term": "Uføretrygd",
-    "tekst": "Varig nedsatt inntektsevne på grunn av sykdom eller skade."
-  },
-  {
-    "sortering": "5",
-    "overkode": "OVRG",
-    "kode": "FAR;MED;RPO;RVE;SER;TRY;UFM",
-    "term": "Øvrig",
-    "tekst": "Øvrige tjenester, foreldreskap, medlemskap i forletrygden, arbeid og opphold i utlandet, arbeid og opphold i Norge, klage, ris og ros."
+{
+  "hierarkinivaaer": ["Temagrupper", "Arkivtema"],
+  "noder": {
+    "ARBD": {
+      "kode": "ARBD",
+      "termer": {
+        "no": "Arbeid"
+      },
+      "undernoder": {
+        "AAP": {
+          "kode": "AAP",
+          "termer": {
+            "no": "Arbeidsavklaringspenger"
+          }
+        },
+        "DAG": {
+          "kode": "DAG",
+          "termer": {
+            "no": "Dagpenger"
+          }
+        },
+        "FOS": {
+          "kode": "FOS",
+          "termer": {
+            "no": "Forsikring"
+          }
+        },
+        "IND": {
+          "kode": "IND",
+          "termer": {
+            "no": "Tiltakspenger"
+          }
+        },
+        "SAK": {
+          "kode": "SAK",
+          "termer": {
+            "no": "Saksomkostninger"
+          }
+        },
+        "SYK": {
+          "kode": "SYK",
+          "termer": {
+            "no": "Sykepenger"
+          }
+        },
+        "SYM": {
+          "kode": "SYM",
+          "termer": {
+            "no": "Sykmelding"
+          }
+        },
+        "TSO": {
+          "kode": "TSO",
+          "termer": {
+            "no": "Tilleggsstønad"
+          }
+        },
+        "TSR": {
+          "kode": "TSR",
+          "termer": {
+            "no": "Tilleggsstønad arbeidssøkere"
+          }
+        },
+        "YRK": {
+          "kode": "YRK",
+          "termer": {
+            "no": "Yrkesskade / Menerstatning"
+          }
+        }
+      }
+    },
+    "FMLI": {
+      "kode": "FMLI",
+      "termer": {
+        "no": "Familie"
+      },
+      "undernoder": {
+        "BAR": {
+          "kode": "BAR",
+          "termer": {
+            "no": "Barnetrygd"
+          }
+        },
+        "BID": {
+          "kode": "BID",
+          "termer": {
+            "no": "Bidrag"
+          }
+        },
+        "ENF": {
+          "kode": "ENF",
+          "termer": {
+            "no": "Enslig forsørger"
+          }
+        },
+        "FOR": {
+          "kode": "FOR",
+          "termer": {
+            "no": "Foreldre- og svangerskapspenger"
+          }
+        },
+        "GRA": {
+          "kode": "GRA",
+          "termer": {
+            "no": "Gravferdsstønad"
+          }
+        },
+        "GRU": {
+          "kode": "GRU",
+          "termer": {
+            "no": "Grunn- og hjelpestønad"
+          }
+        },
+        "KON": {
+          "kode": "KON",
+          "termer": {
+            "no": "Kontantstøtte"
+          }
+        },
+        "OMS": {
+          "kode": "OMS",
+          "termer": {
+            "no": "Omsorgspenger, Pleiepenger og opplæringspenger"
+          }
+        }
+      }
+    },
+    "HJLPM": {
+      "kode": "HJLPM",
+      "termer": {
+        "no": "Hjelpemidler"
+      },
+      "undernoder": {
+        "BIL": {
+          "kode": "BIL",
+          "termer": {
+            "no": "Bil"
+          }
+        },
+        "HEL": {
+          "kode": "HEL",
+          "termer": {
+            "no": "Helsetjenester og ortopediske hjelpemidler"
+          }
+        },
+        "HJE": {
+          "kode": "HJE",
+          "termer": {
+            "no": "Hjelpemidler"
+          }
+        }
+      }
+    },
+    "PENS": {
+      "kode": "PENS",
+      "termer": {
+        "no": "Hjelpemidler"
+      },
+      "undernoder": {
+        "PEN": {
+          "kode": "PEN",
+          "termer": {
+            "no": "Pensjon"
+          }
+        },
+        "SUP": {
+          "kode": "SUP",
+          "termer": {
+            "no": "Supplerende stønad"
+          }
+        }
+      }
+    },
+    "UFRT": {
+      "kode": "UFRT",
+      "termer": {
+        "no": "Uføretrygd"
+      },
+      "undernoder": {
+        "UFO": {
+          "kode": "UFO",
+          "termer": {
+            "no": "Uføretrygd"
+          }
+        }
+      }
+    },
+    "OVRG": {
+      "kode": "OVRG",
+      "termer": {
+        "no": "Øvrig"
+      },
+      "undernoder": {
+        "FAR": {
+          "kode": "FAR",
+          "termer": {
+            "no": "Farskap"
+          }
+        },
+        "MED": {
+          "kode": "MED",
+          "termer": {
+            "no": "Medlemskap"
+          }
+        },
+        "RPO": {
+          "kode": "RPO",
+          "termer": {
+            "no": "Retting av personopplysninger"
+          }
+        },
+        "RVE": {
+          "kode": "RVE",
+          "termer": {
+            "no": "Rettferdsvederlag"
+          }
+        },
+        "SER": {
+          "kode": "SER",
+          "termer": {
+            "no": "Serviceklager"
+          }
+        },
+        "TRY": {
+          "kode": "TRY",
+          "termer": {
+            "no": "Trygdeavgift"
+          }
+        },
+        "UFM": {
+          "kode": "UFM",
+          "termer": {
+            "no": "Unntak fra medlemskap"
+          }
+        }
+      }
+    }
   }
-]
+}
