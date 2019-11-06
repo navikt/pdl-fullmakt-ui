@@ -41,7 +41,8 @@ const Frontpage = () => {
       <Lesmerpanel
         className={'frontpage__apne'}
         lukkTekst={'Lukk'}
-        apneTekst={'vis detaljer'}>
+        apneTekst={'vis detaljer'}
+      >
         <div style={{ marginTop: 0 }}>
           Du kan finne detaljene om begrenset fullmakt informasjon ned
           <div style={{ marginLeft: 20, marginTop: 0 }}>
@@ -78,7 +79,8 @@ const Frontpage = () => {
           <Veilederpanel
             svg={<img src={VeilederIcon} alt='Veileder' />}
             type={'plakat'}
-            kompakt>
+            kompakt
+          >
             Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er
             fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker og
             ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
@@ -124,7 +126,8 @@ const Frontpage = () => {
                                 history.push(
                                   `/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`
                                 )
-                              }>
+                              }
+                            >
                               <>
                                 <EtikettLiten>Endre</EtikettLiten>
                                 <div className={'frontpage__knapp-ikon'}>
@@ -167,7 +170,8 @@ const Frontpage = () => {
                                     .then(() => {
                                       settLoading(false);
                                     });
-                                }}>
+                                }}
+                              >
                                 {loading ? (
                                   <NavFrontendSpinner type={'S'} />
                                 ) : (
@@ -192,7 +196,8 @@ const Frontpage = () => {
                   htmlType={'button'}
                   className={'frontpage__knapp'}
                   autoDisableVedSpinner={true}
-                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}>
+                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}
+                >
                   <EtikettLiten>Ny fullmakt</EtikettLiten>
                   <div className={'frontpage__knapp-ikon'}>
                     <img alt={'Legg til fullmakt'} src={leggTilIkon} />

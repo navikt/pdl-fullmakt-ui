@@ -118,7 +118,8 @@ const Fullmakt = () => {
           <FormValidation
             onSubmit={send}
             config={fullmaktFormConfig}
-            initialValues={initialValues}>
+            initialValues={initialValues}
+          >
             {({ errors, fields, submitted, setField, setError }) => {
               console.log('fields ', JSON.stringify(fields));
               console.log('errors ', JSON.stringify(errors));
@@ -135,7 +136,8 @@ const Fullmakt = () => {
                           ? ''
                           : '/fullmakt/login'
                       }`}
-                      className='lenke'>
+                      className='lenke'
+                    >
                       her
                     </Link>
                     . Les mer om fullmakt og innsyn{' '}
@@ -147,7 +149,8 @@ const Fullmakt = () => {
                     id='fullmaktFrontPage'
                     tittel='Fullmakt'
                     beskrivelse=''
-                    icon={FullmaktIcon}>
+                    icon={FullmaktIcon}
+                  >
                     <div className='fullmakt__content'>
                       <div className='fullmakt__ekspandert'>
                         <div>
@@ -184,7 +187,8 @@ const Fullmakt = () => {
                               submitted && errors.omraade
                                 ? { feilmelding: errors.omraade }
                                 : undefined
-                            }>
+                            }
+                          >
                             <div>
                               <div className='ekf__header'>
                                 <div className='skjemaelement__label'>
@@ -193,7 +197,8 @@ const Fullmakt = () => {
                                 <HjelpetekstHoyre
                                   tittel={''}
                                   id={'hjelpetekst'}
-                                  type='auto'>
+                                  type='auto'
+                                >
                                   NAV områder for fullmakt.
                                 </HjelpetekstHoyre>
                               </div>

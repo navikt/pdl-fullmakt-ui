@@ -22,7 +22,8 @@ const Box = (props: Props) => {
         <Veilederpanel
           svg={<img src={icon} className='box__ikon' alt='Veileder' />}
           type={'plakat'}
-          kompakt={true}>
+          kompakt={true}
+        >
           <div className='box__container'>
             {(tittel || beskrivelse) && (
               <div className='box__header'>
