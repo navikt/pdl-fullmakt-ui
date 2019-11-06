@@ -53,7 +53,7 @@ const DayPicker = (props: Props) => {
 
   return (
     <>
-      {label && <div className="skjemaelement__label">{label}</div>}
+      {label && <div className='skjemaelement__label'>{label}</div>}
       <DayPickerInput
         value={valgtDag}
         format={props.format}
@@ -80,7 +80,7 @@ const DayPicker = (props: Props) => {
           ]
         }}
       />
-      {submitted && error && <div className="skjemaelement__feilmelding">{error}</div>}
+      {submitted && error && <div className='skjemaelement__feilmelding'>{error}</div>}
     </>
   );
 };

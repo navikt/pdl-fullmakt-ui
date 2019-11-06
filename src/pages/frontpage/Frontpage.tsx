@@ -22,85 +22,109 @@ import { HTTPError } from '../../components/error/Error';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
+import { hentOmraadeDetaljer } from '../../utils/utils';
+import { fullmaktSkjemaURL } from '../../utils/konstanter';
+import Lesmerpanel from 'nav-frontend-lesmerpanel';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig, fodselsnr }, dispatch] = useStore();
-  const [loading, settLoading] = useState(false)
+  const [{ fullmatsgiver, fullmektig, fodselsnr, omraade }, dispatch] = useStore();
+  const [loading, settLoading] = useState(false);
+
   const [error, settError] = useState();
   const history = useHistory();
+  const showOmraade = (o: string) =>
+    o ? (o === '*' ? 'All informasjon' : 'Begrenset informasjon') : '';
+
+  const showDetails = (omr: string) =>
+    omr !== '*' && (
+      <Lesmerpanel
+        className={'frontpage__apne'}
+        lukkTekst={'Lukk'}
+        apneTekst={'vis detaljer'}>
+        <div style={{ marginTop: 0 }}>
+          Du kan finne detaljene om begrenset fullmakt informasjon ned
+          <div style={{ marginLeft: 20, marginTop: 0 }}>
+            {omraade && omraade.status === 'RESULT' && omraade.data ? (
+              hentOmraadeDetaljer(omraade.data, omr).map(o => <li key={o}>{o}</li>)
+            ) : (
+              <li key={omr}>{omr}</li>
+            )}
+          </div>
+        </div>
+      </Lesmerpanel>
+    );
+
+  const omraadeKomponent = (omraade: string) => (
+    <div className={'frontpage__container'}>
+      <div className={'frontpage__input-container'}>
+        <Element>Fullmakten gjelder: &nbsp;</Element>
+        {showOmraade(omraade)} &nbsp;
+        {showDetails(omraade)}
+      </div>
+    </div>
+  );
+
   return (
     <>
-      <div className="pagecontent">
-        <div className="frontpage">
-          <header className="frontpage__introduksjon">
-            <div className="frontpage__sidetittel">
+      <div className='pagecontent'>
+        <div className='frontpage'>
+          <header className='frontpage__introduksjon'>
+            <div className='frontpage__sidetittel'>
               <Sidetittel>Dine fullmakter</Sidetittel>
             </div>
           </header>
           <br />
           <Veilederpanel
-            svg={<img src={VeilederIcon} alt="Veileder" />}
+            svg={<img src={VeilederIcon} alt='Veileder' />}
             type={'plakat'}
-            kompakt
-          >
+            kompakt>
             Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er
             fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker og
             ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
-            <a
-              className="lenke"
-              href="https://www.nav.no/no/NAV+og+samfunn/Samarbeid/Leger+og+andre+behandlere/annen-behandler/fullmakt-og-innsyn"
-            >
+            <a className='lenke' href={fullmaktSkjemaURL}>
               her.
             </a>
           </Veilederpanel>
-          <Box
-            id={'fullmaktFrontPage'}
-            tittel={''}
-            beskrivelse={
-              '' /*'Fullmakter' + (auth.authenticated ? ' for ' + auth.name : '')*/
-            }
-            icon={FullmaktIcon}
-          >
-            <div id="fullmaktPage">
-              <div key="Fullmakter" className="frontpage__content">
+          <Box id={'fullmaktFrontPage'} tittel={''} beskrivelse={''} icon={FullmaktIcon}>
+            <div id='fullmaktPage'>
+              <div key='Fullmakter' className='frontpage__content'>
                 <Undertittel>Jeg har gitt fullmakt til:</Undertittel>
-                <div className="divider" />
+                <div className='divider' />
                 {fullmatsgiver &&
                   fullmatsgiver.status === 'RESULT' &&
                   fullmatsgiver.data &&
                   fullmatsgiver.data.map((f, key) => (
                     <div key={f.fullmaktId}>
-                      <div className="frontpage__container" key={f.fullmaktId}>
+                      <div className='frontpage__container' key={f.fullmaktId}>
                         <div>
-                          <div className="frontpage__input-container">
+                          <div className='frontpage__input-container'>
                             <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
                               {(f.fullmektigNavn || '') + ' (' + f.fullmektig + ')'}
                             </Normaltekst>
                           </div>
-                          <div className="frontpage__container">
-                            <div className="frontpage__input-container">
-                              <Element>Fullmakten gjelder: &nbsp;</Element>
-                              <Normaltekst>{f.omraade}</Normaltekst>
-                            </div>
-                            <div className="frontpage__input-container">
-                              <Element>Gyldig: &nbsp;</Element>
-                              <Normaltekst>
-                                {getDefaultDateFormat(f.gyldigFraOgMed) +
-                                  ' - ' +
-                                  getDefaultDateFormat(f.gyldigTilOgMed)}
-                              </Normaltekst>
-                            </div>
+                          <div className='frontpage__input-container'>
+                            <Element>Gyldig: &nbsp;</Element>
+                            <Normaltekst>
+                              {getDefaultDateFormat(f.gyldigFraOgMed) +
+                                ' - ' +
+                                getDefaultDateFormat(f.gyldigTilOgMed)}
+                            </Normaltekst>
                           </div>
+                          {omraadeKomponent(f.omraade)}
                         </div>
-                        <div className="frontpage__knapper">
+                        <div className={'frontpage__knapper-container'}>
+                          <div className={'frontpage__knapper'}>
                             <Knapp
                               type={'flat'}
                               htmlType={'button'}
                               className={'frontpage__knapp'}
-                              onClick={() => history.push(`/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`)}
-                            >
+                              onClick={() =>
+                                history.push(
+                                  `/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`
+                                )
+                              }>
                               <>
                                 <EtikettLiten>Endre</EtikettLiten>
                                 <div className={'frontpage__knapp-ikon'}>
@@ -108,52 +132,56 @@ const Frontpage = () => {
                                 </div>
                               </>
                             </Knapp>
-                          <div>
-                            <Knapp
-                              type={'flat'}
-                              htmlType={'button'}
-                              className={'frontpage__knapp'}
-                              autoDisableVedSpinner={true}
-                              onClick={e => {
-                                e.preventDefault();
-                                deleteFullmakt(String(f.fullmaktId))
-                                  .then((response: any) => {
-                                    console.log(String(f.fullmaktId) + ' is deleted with response = ' , response )
-                                    fetchFullmaktsgiver(fodselsnr)
-                                      .then((fullmaktsgiver: FullmaktType[]) =>
-                                        dispatch({
-                                          type: 'SETT_FULLMAKTSGIVER',
-                                          payload: fullmaktsgiver
-                                        })
-                                      )
-                                      .catch((error: HTTPError) => {
-                                        dispatch({
-                                          type: 'SETT_FULLMAKTSGIVER_ERROR',
-                                          payload: error
+                            <div>
+                              <Knapp
+                                type={'flat'}
+                                htmlType={'button'}
+                                className={'frontpage__knapp'}
+                                autoDisableVedSpinner={true}
+                                onClick={e => {
+                                  e.preventDefault();
+                                  deleteFullmakt(String(f.fullmaktId))
+                                    .then((response: any) => {
+                                      console.log(
+                                        String(f.fullmaktId) +
+                                          ' is deleted with response = ',
+                                        response
+                                      );
+                                      fetchFullmaktsgiver(fodselsnr)
+                                        .then((fullmaktsgiver: FullmaktType[]) =>
+                                          dispatch({
+                                            type: 'SETT_FULLMAKTSGIVER',
+                                            payload: fullmaktsgiver
+                                          })
+                                        )
+                                        .catch((error: HTTPError) => {
+                                          dispatch({
+                                            type: 'SETT_FULLMAKTSGIVER_ERROR',
+                                            payload: error
+                                          });
                                         });
-                                      });
-                                  })
-                                  .catch((error: HTTPError) => {
-                                    settError(`${error.code} - ${error.text}`);
-                                  })
-                                  .then(() => {
-                                    settLoading(false);
-                                  });
-                              }}
-                            >
-                              {loading ? (
-                                <NavFrontendSpinner type={'S'} />
-                              ) : (
-                                <EtikettLiten>Slett</EtikettLiten>
-                              )}
-                              <div className={'frontpage__knapp-ikon'}>
-                                <img alt={'Slett fullmakt'} src={slettIkon} />
-                              </div>
-                            </Knapp>
+                                    })
+                                    .catch((error: HTTPError) => {
+                                      settError(`${error.code} - ${error.text}`);
+                                    })
+                                    .then(() => {
+                                      settLoading(false);
+                                    });
+                                }}>
+                                {loading ? (
+                                  <NavFrontendSpinner type={'S'} />
+                                ) : (
+                                  <EtikettLiten>Opphør</EtikettLiten>
+                                )}
+                                <div className={'frontpage__knapp-ikon'}>
+                                  <img alt={'Opphør fullmakt'} src={slettIkon} />
+                                </div>
+                              </Knapp>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div key={f.fullmaktId + 'divider'} className="divider" />
+                      <div key={f.fullmaktId + 'divider'} className={'divider'} />
                     </div>
                   ))}
               </div>
@@ -164,8 +192,7 @@ const Frontpage = () => {
                   htmlType={'button'}
                   className={'frontpage__knapp'}
                   autoDisableVedSpinner={true}
-                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}
-                >
+                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}>
                   <EtikettLiten>Ny fullmakt</EtikettLiten>
                   <div className={'frontpage__knapp-ikon'}>
                     <img alt={'Legg til fullmakt'} src={leggTilIkon} />
@@ -193,10 +220,6 @@ const Frontpage = () => {
                           </div>
                           <div className={'frontpage__container'}>
                             <div className={'frontpage__input-container'}>
-                              <Element>Fullmakten gjelder: &nbsp;</Element>
-                              <Normaltekst>{f.omraade}</Normaltekst>
-                            </div>
-                            <div className={'frontpage__input-container'}>
                               <Element>Gyldig: &nbsp;</Element>
                               <Normaltekst>
                                 {getDefaultDateFormat(f.gyldigFraOgMed) +
@@ -205,6 +228,7 @@ const Frontpage = () => {
                               </Normaltekst>
                             </div>
                           </div>
+                          {omraadeKomponent(f.omraade)}
                         </div>
                       </div>
                       <div key={f.fullmaktId + 'divider'} className={'divider'} />

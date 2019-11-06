@@ -7,7 +7,8 @@ import {
   fetchKontaktInfo,
   fetchFodselsnr,
   fetchFullmaktsgiver,
-  fetchFullmektig
+  fetchFullmektig,
+  fetchOmraade
 } from './clients/apiClient';
 import { useStore } from './providers/Provider';
 import { AuthInfo } from './types/authInfo';
@@ -18,6 +19,8 @@ import { Fodselsnr } from './types/fodselsnr';
 import ScrollToTop from './components/scroll-to-top/ScrollToTopp';
 import { FullmaktType } from './types/fullmakt';
 import WithAuth from './providers/auth/Auth';
+import { Omraade } from './types/omraade';
+import { transformData } from './utils/utils';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
@@ -43,6 +46,16 @@ const App = () => {
                   type: 'SETT_FODSELSNR',
                   payload: fodselsnr
                 });
+                fetchOmraade()
+                  .then((omraade: Omraade[]) =>
+                    dispatch({
+                      type: 'SETT_OMRAADE',
+                      payload: transformData(omraade)
+                    })
+                  )
+                  .catch((error: HTTPError) => {
+                    dispatch({ type: 'SETT_OMRAADE_ERROR', payload: error });
+                  });
                 fetchFullmaktsgiver(fodselsnr && fodselsnr.fodselsnr)
                   .then((fullmaktsgiver: FullmaktType[]) =>
                     dispatch({

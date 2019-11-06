@@ -1,380 +1,239 @@
-[
-  {
-    "sortering": "0",
-    "kode": "ALL",
-    "term": "Alle",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "1",
-    "kode": "AAP",
-    "term": "Arbeidsavklaringspenger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "2",
-    "kode": "AAR",
-    "term": "Aa-registeret",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "3",
-    "kode": "AGR",
-    "term": "Ajourhold - Grunnopplysninger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "4",
-    "kode": "BAR",
-    "term": "Barnetrygd",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "5",
-    "kode": "BID",
-    "term": "1 - Bidrag",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "6",
-    "kode": "BII",
-    "term": "2 - Bidrag innkreving",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "7",
-    "kode": "BIL",
-    "term": "Bil",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "8",
-    "kode": "DAG",
-    "term": "Dagpenger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "9",
-    "kode": "ENF",
-    "term": "Enslig forsørger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "10",
-    "kode": "ERS",
-    "term": "Erstatning",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "11",
-    "kode": "FAR",
-    "term": "Farskap",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "12",
-    "kode": "FEI",
-    "term": "Feilutbetaling",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "13",
-    "kode": "FOR",
-    "term": "Foreldre- og svangerskapspenger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "14",
-    "kode": "FOS",
-    "term": "Forsikring",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "15",
-    "kode": "FUL",
-    "term": "Fullmakt",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "16",
-    "kode": "GEN",
-    "term": "Generell",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "17",
-    "kode": "GRA",
-    "term": "Gravferdsstønad",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "18",
-    "kode": "GRU",
-    "term": "Grunn- og hjelpestønad",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "19",
-    "kode": "HEL",
-    "term": "Helsetjenester og ort. Hjelpemidler",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "20",
-    "kode": "HJE",
-    "term": "Hjelpemidler",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "21",
-    "kode": "IAR",
-    "term": "Inkluderende Arbeidsliv",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "22",
-    "kode": "IND",
-    "term": "Tiltakspenger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "23",
-    "kode": "KLA",
-    "term": "Klage/Anke",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "24",
-    "kode": "KNA",
-    "term": "Kontakt NAV",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "25",
-    "kode": "KOM",
-    "term": "Kommunale tjenester",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "26",
-    "kode": "KON",
-    "term": "Kontantstøtte",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "27",
-    "kode": "KTR",
-    "term": "Kontroll",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "28",
-    "kode": "LGA",
-    "term": "Lønnsgaranti",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "29",
-    "kode": "MED",
-    "term": "Medlemskap",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "30",
-    "kode": "MOB",
-    "term": "Mob.stønad",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "31",
-    "kode": "MOT",
-    "term": "3 - Skanning",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "32",
-    "kode": "OKO",
-    "term": "Økonomi",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "33",
-    "kode": "OMS",
-    "term": "Omsorgspenger",
-    "tekst": " Pleiepenger og opplæringspenger"
-  },
-  {
-    "sortering": "34",
-    "kode": "OPA",
-    "term": "Oppfølging - Arbeidsgiver",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "35",
-    "kode": "OPP",
-    "term": "Oppfølging",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "36",
-    "kode": "OVR",
-    "term": "4 - Øvrig",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "37",
-    "kode": "PEN",
-    "term": "Pensjon",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "38",
-    "kode": "PER",
-    "term": "Permittering og masseoppsigelser",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "39",
-    "kode": "REH",
-    "term": "Rehabilitering",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "40",
-    "kode": "REK",
-    "term": "Rekruttering og Stilling",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "41",
-    "kode": "RPO",
-    "term": "Retting av personopplysninger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "42",
-    "kode": "RVE",
-    "term": "Rettferdsvederlag",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "43",
-    "kode": "SAA",
-    "term": "Sanksjon - Arbeidsgiver",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "44",
-    "kode": "SAK",
-    "term": "Saksomkostning",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "45",
-    "kode": "SAP",
-    "term": "Sanksjon - Person",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "46",
-    "kode": "SER",
-    "term": "Serviceklager",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "47",
-    "kode": "SIK",
-    "term": "Sikkerhetstiltak",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "48",
-    "kode": "STO",
-    "term": "Regnskap/utbetaling",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "49",
-    "kode": "SUP",
-    "term": "Supplerende stønad",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "50",
-    "kode": "SYK",
-    "term": "Sykepenger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "51",
-    "kode": "SYM",
-    "term": "Sykemeldinger",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "52",
-    "kode": "TIL",
-    "term": "Tiltak",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "53",
-    "kode": "TRK",
-    "term": "Trekkhåndtering",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "54",
-    "kode": "TRY",
-    "term": "Trygdeavgift",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "55",
-    "kode": "TSO",
-    "term": "Tilleggsstønad",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "56",
-    "kode": "TSR",
-    "term": "Tilleggsstønad arbeidssøkere",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "57",
-    "kode": "UFM",
-    "term": "Unntak fra medlemskap",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "58",
-    "kode": "UFO",
-    "term": "Uføretrygd",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "59",
-    "kode": "UKJ",
-    "term": "Ukjent",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "60",
-    "kode": "VEN",
-    "term": "Ventelønn",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "61",
-    "kode": "YRA",
-    "term": "Yrkesrettet attføring",
-    "tekst": "(...forklaringstekst for innbygger...)"
-  },
-  {
-    "sortering": "62",
-    "kode": "YRK",
-    "term": "Yrkesskade / Menerstatning",
-    "tekst": "(...forklaringstekst for innbygger...)"
+{
+  "hierarkinivaaer": ["Temagrupper", "Arkivtema"],
+  "noder": {
+    "ARBD": {
+      "kode": "ARBD",
+      "termer": {
+        "no": "Arbeid"
+      },
+      "undernoder": {
+        "AAP": {
+          "kode": "AAP",
+          "termer": {
+            "no": "Arbeidsavklaringspenger"
+          }
+        },
+        "DAG": {
+          "kode": "DAG",
+          "termer": {
+            "no": "Dagpenger"
+          }
+        },
+        "FOS": {
+          "kode": "FOS",
+          "termer": {
+            "no": "Forsikring"
+          }
+        },
+        "IND": {
+          "kode": "IND",
+          "termer": {
+            "no": "Tiltakspenger"
+          }
+        },
+        "SAK": {
+          "kode": "SAK",
+          "termer": {
+            "no": "Saksomkostninger"
+          }
+        },
+        "SYK": {
+          "kode": "SYK",
+          "termer": {
+            "no": "Sykepenger"
+          }
+        },
+        "SYM": {
+          "kode": "SYM",
+          "termer": {
+            "no": "Sykmelding"
+          }
+        },
+        "TSO": {
+          "kode": "TSO",
+          "termer": {
+            "no": "Tilleggsstønad"
+          }
+        },
+        "TSR": {
+          "kode": "TSR",
+          "termer": {
+            "no": "Tilleggsstønad arbeidssøkere"
+          }
+        },
+        "YRK": {
+          "kode": "YRK",
+          "termer": {
+            "no": "Yrkesskade / Menerstatning"
+          }
+        }
+      }
+    },
+    "FMLI": {
+      "kode": "FMLI",
+      "termer": {
+        "no": "Familie"
+      },
+      "undernoder": {
+        "BAR": {
+          "kode": "BAR",
+          "termer": {
+            "no": "Barnetrygd"
+          }
+        },
+        "BID": {
+          "kode": "BID",
+          "termer": {
+            "no": "Bidrag"
+          }
+        },
+        "ENF": {
+          "kode": "ENF",
+          "termer": {
+            "no": "Enslig forsørger"
+          }
+        },
+        "FOR": {
+          "kode": "FOR",
+          "termer": {
+            "no": "Foreldre- og svangerskapspenger"
+          }
+        },
+        "GRA": {
+          "kode": "GRA",
+          "termer": {
+            "no": "Gravferdsstønad"
+          }
+        },
+        "GRU": {
+          "kode": "GRU",
+          "termer": {
+            "no": "Grunn- og hjelpestønad"
+          }
+        },
+        "KON": {
+          "kode": "KON",
+          "termer": {
+            "no": "Kontantstøtte"
+          }
+        },
+        "OMS": {
+          "kode": "OMS",
+          "termer": {
+            "no": "Omsorgspenger, Pleiepenger og opplæringspenger"
+          }
+        }
+      }
+    },
+    "HJLPM": {
+      "kode": "HJLPM",
+      "termer": {
+        "no": "Hjelpemidler"
+      },
+      "undernoder": {
+        "BIL": {
+          "kode": "BIL",
+          "termer": {
+            "no": "Bil"
+          }
+        },
+        "HEL": {
+          "kode": "HEL",
+          "termer": {
+            "no": "Helsetjenester og ortopediske hjelpemidler"
+          }
+        },
+        "HJE": {
+          "kode": "HJE",
+          "termer": {
+            "no": "Hjelpemidler"
+          }
+        }
+      }
+    },
+    "PENS": {
+      "kode": "PENS",
+      "termer": {
+        "no": "Hjelpemidler"
+      },
+      "undernoder": {
+        "PEN": {
+          "kode": "PEN",
+          "termer": {
+            "no": "Pensjon"
+          }
+        },
+        "SUP": {
+          "kode": "SUP",
+          "termer": {
+            "no": "Supplerende stønad"
+          }
+        }
+      }
+    },
+    "UFRT": {
+      "kode": "UFRT",
+      "termer": {
+        "no": "Uføretrygd"
+      },
+      "undernoder": {
+        "UFO": {
+          "kode": "UFO",
+          "termer": {
+            "no": "Uføretrygd"
+          }
+        }
+      }
+    },
+    "OVRG": {
+      "kode": "OVRG",
+      "termer": {
+        "no": "Øvrig"
+      },
+      "undernoder": {
+        "FAR": {
+          "kode": "FAR",
+          "termer": {
+            "no": "Farskap"
+          }
+        },
+        "MED": {
+          "kode": "MED",
+          "termer": {
+            "no": "Medlemskap"
+          }
+        },
+        "RPO": {
+          "kode": "RPO",
+          "termer": {
+            "no": "Retting av personopplysninger"
+          }
+        },
+        "RVE": {
+          "kode": "RVE",
+          "termer": {
+            "no": "Rettferdsvederlag"
+          }
+        },
+        "SER": {
+          "kode": "SER",
+          "termer": {
+            "no": "Serviceklager"
+          }
+        },
+        "TRY": {
+          "kode": "TRY",
+          "termer": {
+            "no": "Trygdeavgift"
+          }
+        },
+        "UFM": {
+          "kode": "UFM",
+          "termer": {
+            "no": "Unntak fra medlemskap"
+          }
+        }
+      }
+    }
   }
-]
+}

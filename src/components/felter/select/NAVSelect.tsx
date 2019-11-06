@@ -32,15 +32,15 @@ interface OptionType {
 
 const LoadingIndicator = () => (
   <NavFrontendSpinner
-    type="XS"
+    type='XS'
     negativ={true}
     stroke={true}
-    className="KodeverkSelect__spinner"
+    className='KodeverkSelect__spinner'
   />
 );
 
 const DropdownIndicator = (props: any) => (
-  <div className="KodeverkSelect__dropdown-indicator">
+  <div className='KodeverkSelect__dropdown-indicator'>
     <NedChevron />
   </div>
 );
@@ -79,8 +79,8 @@ const NAVSelect = (props: Props) => {
 
   return !props.fetchError ? (
     <div className={containerClasses}>
-      <div className="KodeverkSelect__header">
-        {props.label && <div className="skjemaelement__label">{props.label}</div>}
+      <div className='KodeverkSelect__header'>
+        {props.label && <div className='skjemaelement__label'>{props.label}</div>}
         {props.hjelpetekst && (
           <HjelpetekstHoyre tittel={''} id={'hjelpetekst'}>
             <div>
@@ -100,8 +100,8 @@ const NAVSelect = (props: Props) => {
           value={valueFormatted}
           // defaultValue={valueFormatted}
           label={props.label}
-          placeholder="Søk..."
-          classNamePrefix="KodeverkSelect"
+          placeholder='Søk...'
+          classNamePrefix='KodeverkSelect'
           loadingMessage={() => 'Laster inn...'}
           noOptionsMessage={v => `Ingen treff funnet for ${v.inputValue}...`}
           className={controlClasses}
@@ -118,7 +118,7 @@ const NAVSelect = (props: Props) => {
         />
       </div>
       {props.submitted && props.error && (
-        <div role="alert" aria-live="assertive" className="skjemaelement__feilmelding">
+        <div role='alert' aria-live='assertive' className='skjemaelement__feilmelding'>
           {props.error}
         </div>
       )}
