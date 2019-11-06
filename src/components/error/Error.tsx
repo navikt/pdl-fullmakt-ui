@@ -13,8 +13,8 @@ interface Props {
 const Error = (props: Props) => {
   const { error } = props;
   return (
-    <div className="error__container">
-      <AlertStripe type="advarsel">
+    <div className='error__container'>
+      <AlertStripe type='advarsel'>
         Oisann, noe gikk galt ved henting av data!
         <br />
         <span>{` ${error.code}: ${error.text}`}</span>

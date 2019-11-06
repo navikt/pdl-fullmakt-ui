@@ -18,7 +18,7 @@
     "docker-kill": "npm run docker-stop && npm run docker-rm",
     "docker-rm": "docker rm pdl-fullmakt-ui",
     "docker-stop": "docker stop pdl-fullmakt-ui",
-    "formatcode": "./node_modules/.bin/prettier --single-quote --trailing-comma none --ignore-path \"**/.history\" --print-width 90 --write \"{src,__{tests,mocks}__}/**/*.{js,jsx,ts,tsx,json}\""
+    "formatcode": "./node_modules/.bin/prettier --jsx-bracket-same-line --jsx-single-quote --single-quote --trailing-comma none --ignore-path \"**/.history\" --print-width 90 --write \"{src,__{tests,mocks}__}/**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

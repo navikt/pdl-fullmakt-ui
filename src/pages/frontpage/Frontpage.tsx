@@ -41,8 +41,7 @@ const Frontpage = () => {
       <Lesmerpanel
         className={'frontpage__apne'}
         lukkTekst={'Lukk'}
-        apneTekst={'vis detaljer'}
-      >
+        apneTekst={'vis detaljer'}>
         <div style={{ marginTop: 0 }}>
           Du kan finne detaljene om begrenset fullmakt informasjon ned
           <div style={{ marginLeft: 20, marginTop: 0 }}>
@@ -68,45 +67,44 @@ const Frontpage = () => {
 
   return (
     <>
-      <div className="pagecontent">
-        <div className="frontpage">
-          <header className="frontpage__introduksjon">
-            <div className="frontpage__sidetittel">
+      <div className='pagecontent'>
+        <div className='frontpage'>
+          <header className='frontpage__introduksjon'>
+            <div className='frontpage__sidetittel'>
               <Sidetittel>Dine fullmakter</Sidetittel>
             </div>
           </header>
           <br />
           <Veilederpanel
-            svg={<img src={VeilederIcon} alt="Veileder" />}
+            svg={<img src={VeilederIcon} alt='Veileder' />}
             type={'plakat'}
-            kompakt
-          >
+            kompakt>
             Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er
             fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker og
             ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
-            <a className="lenke" href={fullmaktSkjemaURL}>
+            <a className='lenke' href={fullmaktSkjemaURL}>
               her.
             </a>
           </Veilederpanel>
           <Box id={'fullmaktFrontPage'} tittel={''} beskrivelse={''} icon={FullmaktIcon}>
-            <div id="fullmaktPage">
-              <div key="Fullmakter" className="frontpage__content">
+            <div id='fullmaktPage'>
+              <div key='Fullmakter' className='frontpage__content'>
                 <Undertittel>Jeg har gitt fullmakt til:</Undertittel>
-                <div className="divider" />
+                <div className='divider' />
                 {fullmatsgiver &&
                   fullmatsgiver.status === 'RESULT' &&
                   fullmatsgiver.data &&
                   fullmatsgiver.data.map((f, key) => (
                     <div key={f.fullmaktId}>
-                      <div className="frontpage__container" key={f.fullmaktId}>
+                      <div className='frontpage__container' key={f.fullmaktId}>
                         <div>
-                          <div className="frontpage__input-container">
+                          <div className='frontpage__input-container'>
                             <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
                               {(f.fullmektigNavn || '') + ' (' + f.fullmektig + ')'}
                             </Normaltekst>
                           </div>
-                          <div className="frontpage__input-container">
+                          <div className='frontpage__input-container'>
                             <Element>Gyldig: &nbsp;</Element>
                             <Normaltekst>
                               {getDefaultDateFormat(f.gyldigFraOgMed) +
@@ -126,8 +124,7 @@ const Frontpage = () => {
                                 history.push(
                                   `/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`
                                 )
-                              }
-                            >
+                              }>
                               <>
                                 <EtikettLiten>Endre</EtikettLiten>
                                 <div className={'frontpage__knapp-ikon'}>
@@ -170,8 +167,7 @@ const Frontpage = () => {
                                     .then(() => {
                                       settLoading(false);
                                     });
-                                }}
-                              >
+                                }}>
                                 {loading ? (
                                   <NavFrontendSpinner type={'S'} />
                                 ) : (
@@ -196,8 +192,7 @@ const Frontpage = () => {
                   htmlType={'button'}
                   className={'frontpage__knapp'}
                   autoDisableVedSpinner={true}
-                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}
-                >
+                  onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}>
                   <EtikettLiten>Ny fullmakt</EtikettLiten>
                   <div className={'frontpage__knapp-ikon'}>
                     <img alt={'Legg til fullmakt'} src={leggTilIkon} />

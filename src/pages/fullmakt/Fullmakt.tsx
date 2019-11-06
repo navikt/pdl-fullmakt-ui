@@ -111,13 +111,12 @@ const Fullmakt = () => {
 
   return (
     <>
-      <div className="pagecontent">
+      <div className='pagecontent'>
         {(fullmaktData || !fullmaktId) && (
           <FormValidation
             onSubmit={send}
             config={fullmaktFormConfig}
-            initialValues={initialValues}
-          >
+            initialValues={initialValues}>
             {({ errors, fields, submitted, setField, setError }) => {
               console.log('fields ', JSON.stringify(fields));
               console.log('errors ', JSON.stringify(errors));
@@ -126,7 +125,7 @@ const Fullmakt = () => {
               return (
                 <>
                   <Tilbake to={''} />
-                  <Veilederpanel svg={<img src={VeilederIcon} alt="Veileder" />}>
+                  <Veilederpanel svg={<img src={VeilederIcon} alt='Veileder' />}>
                     Se oversikt over dine fullmakter{' '}
                     <Link
                       to={`${baseUrl}${
@@ -134,28 +133,26 @@ const Fullmakt = () => {
                           ? ''
                           : '/fullmakt/login'
                       }`}
-                      className="lenke"
-                    >
+                      className='lenke'>
                       her
                     </Link>
                     . Les mer om fullmakt og innsyn{' '}
-                    <a className="lenke" href={fullmaktSkjemaURL}>
+                    <a className='lenke' href={fullmaktSkjemaURL}>
                       her.
                     </a>
                   </Veilederpanel>
                   <Box
-                    id="fullmaktFrontPage"
-                    tittel="Fullmakt"
-                    beskrivelse=""
-                    icon={FullmaktIcon}
-                  >
-                    <div className="fullmakt__content">
-                      <div className="fullmakt__ekspandert">
+                    id='fullmaktFrontPage'
+                    tittel='Fullmakt'
+                    beskrivelse=''
+                    icon={FullmaktIcon}>
+                    <div className='fullmakt__content'>
+                      <div className='fullmakt__ekspandert'>
                         <div>
-                          <div className="flex__rad">Jeg ønsker å gi fullmakt til</div>
+                          <div className='flex__rad'>Jeg ønsker å gi fullmakt til</div>
                           <br />
-                          <div className="flex__rad">
-                            <div className="flex__kolonne-left">
+                          <div className='flex__rad'>
+                            <div className='flex__kolonne-left'>
                               <Felt
                                 label={'Navn'}
                                 submitted={submitted}
@@ -163,13 +160,13 @@ const Fullmakt = () => {
                                 error={errors.fullmektigNavn}
                                 onChange={v => setField({ fullmektigNavn: v })}
                                 disabled={!!fullmaktId}
-                                placeholder="Fornavn Etternavn"
+                                placeholder='Fornavn Etternavn'
                                 hjelpetekst={
                                   'Folkeregistrert navn (slik det står i pass, førerkort etc).'
                                 }
                               />
                             </div>
-                            <div className="flex__kolonne-right">
+                            <div className='flex__kolonne-right'>
                               <Felt
                                 label={'Fødselsnummer (11 siffer)'}
                                 submitted={submitted}
@@ -185,23 +182,21 @@ const Fullmakt = () => {
                               submitted && errors.omraade
                                 ? { feilmelding: errors.omraade }
                                 : undefined
-                            }
-                          >
+                            }>
                             <div>
-                              <div className="ekf__header">
-                                <div className="skjemaelement__label">
+                              <div className='ekf__header'>
+                                <div className='skjemaelement__label'>
                                   <div>Fullmakten gjelder</div>
                                 </div>
                                 <HjelpetekstHoyre
                                   tittel={''}
                                   id={'hjelpetekst'}
-                                  type="auto"
-                                >
+                                  type='auto'>
                                   NAV områder for fullmakt.
                                 </HjelpetekstHoyre>
                               </div>
                               <Radio
-                                label="All informasjon"
+                                label='All informasjon'
                                 name={'NAV_ALL_OMRAADE'}
                                 checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
                                 onChange={() =>
@@ -212,7 +207,7 @@ const Fullmakt = () => {
                                 }
                               />
                               <Radio
-                                label="Begrenset"
+                                label='Begrenset'
                                 name={'NAV_BEGRENSET_OMRAADE'}
                                 checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
                                 onChange={() =>
@@ -225,7 +220,7 @@ const Fullmakt = () => {
                                 omraade.data.map(group => (
                                   <div key={group.kode}>
                                     <u>
-                                      <div className="skjemaelement__label">
+                                      <div className='skjemaelement__label'>
                                         {group.termer.no + ' :'}
                                       </div>
                                     </u>
@@ -253,8 +248,8 @@ const Fullmakt = () => {
                                 ))}
                             </div>
                           </SkjemaGruppe>
-                          <div className="flex__rad">
-                            <div className="flex__kolonne-left">
+                          <div className='flex__rad'>
+                            <div className='flex__kolonne-left'>
                               <DayPicker
                                 value={fields.gyldigFraOgMed}
                                 label={'Fullmakten gjelder fra og med '}
@@ -264,7 +259,7 @@ const Fullmakt = () => {
                                 onErrors={error => setError({ gyldigFraOgMed: error })}
                               />
                             </div>
-                            <div className="flex__kolonne-right">
+                            <div className='flex__kolonne-right'>
                               <DayPicker
                                 value={fields.gyldigTilOgMed}
                                 label={'Fullmakten gjelder til og med   '}
@@ -282,13 +277,13 @@ const Fullmakt = () => {
                           <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
                         )}
                       </div>
-                      <div className="navigasjon">
-                        <div className="tb__knapp">
+                      <div className='navigasjon'>
+                        <div className='tb__knapp'>
                           <Link to={baseUrl}>
                             <Knapp>Tilbake</Knapp>
                           </Link>
                         </div>
-                        <div className="tb__knapp">
+                        <div className='tb__knapp'>
                           <Hovedknapp disabled={loading}>
                             {loading ? (
                               <NavFrontendSpinner type={'S'} />

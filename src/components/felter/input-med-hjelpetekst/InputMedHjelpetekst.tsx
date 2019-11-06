@@ -22,15 +22,15 @@ const Felt = ({
 }: Props) => {
   return (
     <>
-      <div className="ekf__header">
-        {label && <div className="skjemaelement__label">{label}</div>}
+      <div className='ekf__header'>
+        {label && <div className='skjemaelement__label'>{label}</div>}
         {hjelpetekst && (
-          <HjelpetekstHoyre tittel={''} id={'hjelpetekst'} type="auto">
+          <HjelpetekstHoyre tittel={''} id={'hjelpetekst'} type='auto'>
             <div>{hjelpetekst}</div>
           </HjelpetekstHoyre>
         )}
       </div>
-      <div className="ekf__input">
+      <div className='ekf__input'>
         <Input
           label={''}
           value={value}
