@@ -17,5 +17,6 @@ export const fullmaktFormConfig = {
   },
   gyldigTilOgMed: {
     isRequired: 'Dato er påkrevd'
-  }
+  },
+  hvemOmraade: {}
 };
