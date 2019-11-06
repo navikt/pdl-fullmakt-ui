@@ -23,7 +23,8 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
 import { hentOmraadeDetaljer } from '../../utils/utils';
-import { fullmaktSkjemaURL } from "../../utils/konstanter";
+import { fullmaktSkjemaURL } from '../../utils/konstanter';
+import Lesmerpanel from 'nav-frontend-lesmerpanel';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -34,6 +35,33 @@ const Frontpage = () => {
   const history = useHistory();
   const showOmraade = (o: string) =>
     o ? (o === '*' ? 'All informasjon' : 'Begrenset informasjon') : '';
+
+  const showDetails = (omr: string) =>
+    omr !== '*' && (
+      <Lesmerpanel className="frontpage__apne" lukkTekst={''} apneTekst={'vis detaljer'}>
+        <p style={{ marginTop: 0 }}>
+          Du kan finne finn detaljene om begrenset informasjon ned
+          <div style={{ marginLeft: 20, marginTop: 0 }}>
+            {omraade && omraade.status === 'RESULT' && omraade.data ? (
+              hentOmraadeDetaljer(omraade.data, omr).map(o => <li key={o}>{o}</li>)
+            ) : (
+              <li key={omr}>{omr}</li>
+            )}
+          </div>
+        </p>
+      </Lesmerpanel>
+    );
+
+  const omraadeKomponent = (omraade: string) => (
+    <div className={'frontpage__container'}>
+      <div className={'frontpage__input-container'}>
+        <Element>Fullmakten gjelder: &nbsp;</Element>
+        {showOmraade(omraade)} &nbsp;
+        {showDetails(omraade)}
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className="pagecontent">
@@ -52,21 +80,11 @@ const Frontpage = () => {
             Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er
             fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker og
             ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
-            <a
-              className="lenke"
-              href={fullmaktSkjemaURL}
-            >
+            <a className="lenke" href={fullmaktSkjemaURL}>
               her.
             </a>
           </Veilederpanel>
-          <Box
-            id={'fullmaktFrontPage'}
-            tittel={''}
-            beskrivelse={
-              '' /*'Fullmakter' + (auth.authenticated ? ' for ' + auth.name : '')*/
-            }
-            icon={FullmaktIcon}
-          >
+          <Box id={'fullmaktFrontPage'} tittel={''} beskrivelse={''} icon={FullmaktIcon}>
             <div id="fullmaktPage">
               <div key="Fullmakter" className="frontpage__content">
                 <Undertittel>Jeg har gitt fullmakt til:</Undertittel>
@@ -94,18 +112,7 @@ const Frontpage = () => {
                               </Normaltekst>
                             </div>
                           </div>
-                          <div className="frontpage__container">
-                            <div className="frontpage__input-container">
-                              <Element>Fullmakten gjelder: &nbsp;</Element>
-                              {showOmraade(f.omraade)}
-                              {f.omraade !== '*' && <button>vis detaljer</button>}
-
-                              {omraade && omraade.status === 'RESULT' && omraade.data
-                                ? hentOmraadeDetaljer(omraade.data, f.omraade).join('; ')
-                                : f.omraade}
-
-                            </div>
-                          </div>
+                          {omraadeKomponent(f.omraade)}
                         </div>
                         <div className="frontpage__knapper">
                           <Knapp
@@ -165,10 +172,10 @@ const Frontpage = () => {
                               {loading ? (
                                 <NavFrontendSpinner type={'S'} />
                               ) : (
-                                <EtikettLiten>Slett</EtikettLiten>
+                                <EtikettLiten>Opphør</EtikettLiten>
                               )}
                               <div className={'frontpage__knapp-ikon'}>
-                                <img alt={'Slett fullmakt'} src={slettIkon} />
+                                <img alt={'Opphør fullmakt'} src={slettIkon} />
                               </div>
                             </Knapp>
                           </div>
@@ -222,20 +229,7 @@ const Frontpage = () => {
                               </Normaltekst>
                             </div>
                           </div>
-                          <div className={'frontpage__container'}>
-                            <div className={'frontpage__input-container'}>
-                              <Element>Fullmakten gjelder: &nbsp;</Element>
-                              {showOmraade(f.omraade)}
-                              {/* <Normaltekst>
-                                {omraade && omraade.status === 'RESULT' && omraade.data
-                                  ? omraade.data
-                                      .filter(o => f.omraade.includes(o.kode))
-                                      .map(o => o.term)
-                                      .join(';')
-                                  : f.omraade}
-                              </Normaltekst>*/}
-                            </div>
-                          </div>
+                          {omraadeKomponent(f.omraade)}
                         </div>
                       </div>
                       <div key={f.fullmaktId + 'divider'} className={'divider'} />

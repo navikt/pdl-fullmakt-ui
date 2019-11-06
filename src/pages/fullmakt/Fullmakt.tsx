@@ -21,7 +21,7 @@ import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 import { Radio, Checkbox, SkjemaGruppe } from 'nav-frontend-skjema';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
 import { addSubString, removeSubString } from '../../utils/utils';
-import { fullmaktSkjemaURL } from "../../utils/konstanter";
+import { fullmaktSkjemaURL } from '../../utils/konstanter';
 
 const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -139,10 +139,7 @@ const Fullmakt = () => {
                       her
                     </Link>
                     . Les mer om fullmakt og innsyn{' '}
-                    <a
-                      className="lenke"
-                      href={fullmaktSkjemaURL}
-                    >
+                    <a className="lenke" href={fullmaktSkjemaURL}>
                       her.
                     </a>
                   </Veilederpanel>

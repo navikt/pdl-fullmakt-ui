@@ -1,1 +1,2 @@
-export const fullmaktSkjemaURL = 'https://www.nav.no/soknader/nb/person/diverse/fullmaktskjema';
+export const fullmaktSkjemaURL =
+  'https://www.nav.no/soknader/nb/person/diverse/fullmaktskjema';
