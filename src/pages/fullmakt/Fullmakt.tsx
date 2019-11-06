@@ -20,7 +20,7 @@ import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpete
 import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 import { Radio, Checkbox, SkjemaGruppe } from 'nav-frontend-skjema';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
-import { addSubString, removeSubString } from '../../utils/utils';
+import { addSubString, findSubString, removeSubString } from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 
 const Fullmakt = () => {
@@ -233,7 +233,7 @@ const Fullmakt = () => {
                                       <Checkbox
                                         key={n.kode}
                                         label={n.termer.no}
-                                        // checked={findSubString(n.kode, fields.omraade)}
+                                        checked={findSubString(n.kode, fields.omraade)}
                                         value={n.kode}
                                         onChange={e =>
                                           setField({
@@ -282,7 +282,7 @@ const Fullmakt = () => {
                         {error && (
                           <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
                         )}
-                       {/* {submitted && errors && (
+                        {submitted && errors && (
                           <div>
                             {submitted &&
                               errors &&
@@ -290,7 +290,7 @@ const Fullmakt = () => {
                                 o ? <AlertStripeFeil key={i}>{o} </AlertStripeFeil> : ''
                               )}
                           </div>
-                        )}*/}
+                        )}
                       </div>
                       <div className='navigasjon'>
                         <div className='tb__knapp'>
