@@ -229,27 +229,30 @@ const Fullmakt = () => {
                                         {group.termer.no + ' :'}
                                       </div>
                                     </u>
-                                    {group.undernoder.map(n => (
-                                      <Checkbox
-                                        key={n.kode}
-                                        label={n.termer.no}
-                                        checked={findSubString(n.kode, fields.omraade)}
-                                        value={n.kode}
-                                        onChange={e =>
-                                          setField({
-                                            omraade: e.target.checked
-                                              ? addSubString(
-                                                  e.target.value,
-                                                  fields.omraade
-                                                )
-                                              : removeSubString(
-                                                  e.target.value,
-                                                  fields.omraade
-                                                )
-                                          })
-                                        }
-                                      />
-                                    ))}
+                                    <div className={'fullmakt__checkbox'}>
+                                      {group.undernoder.map(n => (
+                                        <Checkbox
+                                          className={'fullmakt__checkbox-width'}
+                                          key={n.kode}
+                                          label={n.termer.no}
+                                          checked={findSubString(n.kode, fields.omraade)}
+                                          value={n.kode}
+                                          onChange={e =>
+                                            setField({
+                                              omraade: e.target.checked
+                                                ? addSubString(
+                                                    e.target.value,
+                                                    fields.omraade
+                                                  )
+                                                : removeSubString(
+                                                    e.target.value,
+                                                    fields.omraade
+                                                  )
+                                            })
+                                          }
+                                        />
+                                      ))}
+                                    </div>
                                   </div>
                                 ))}
                             </div>
