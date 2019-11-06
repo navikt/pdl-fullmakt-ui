@@ -43,7 +43,7 @@ const Fullmakt = () => {
     ? {
         fullmektigNavn: fullmaktData.fullmektigNavn || 'Default navn ',
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
-        omraade: fullmaktData.omraade.split(';'),
+        omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
         gyldigTilOgMed: fullmaktData.gyldigTilOgMed || ''
       }
@@ -211,7 +211,7 @@ const Fullmakt = () => {
                                 name={'NAV_BEGRENSET_OMRAADE'}
                                 checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
                                 onChange={() =>
-                                  setField({ hvemOmraade: 'NAV_BEGRENSET_OMRAADE' })
+                                  setField({ hvemOmraade: 'NAV_BEGRENSET_OMRAADE', omraade: '' })
                                 }
                               />
                               {fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE' &&
