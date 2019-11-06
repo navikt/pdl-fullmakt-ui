@@ -1,6 +1,4 @@
 import { Omraade, UnderNode } from '../types/omraade';
-import { string } from 'prop-types';
-import { Node } from 'typescript';
 
 export const mapSubNodes = (obj: any): any =>
   obj.map((n: UnderNode) => ({ checked: false, label: n.termer.no, value: n.kode }));

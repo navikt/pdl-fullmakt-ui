@@ -23,6 +23,7 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
 import { hentOmraadeDetaljer } from '../../utils/utils';
+import { fullmaktSkjemaURL } from "../../utils/konstanter";
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -53,7 +54,7 @@ const Frontpage = () => {
             ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
             <a
               className="lenke"
-              href="https://www.nav.no/no/NAV+og+samfunn/Samarbeid/Leger+og+andre+behandlere/annen-behandler/fullmakt-og-innsyn"
+              href={fullmaktSkjemaURL}
             >
               her.
             </a>
