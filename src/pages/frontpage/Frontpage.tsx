@@ -25,6 +25,8 @@ import { useHistory } from 'react-router-dom';
 import { hentOmraadeDetaljer } from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
+import Navigasjon from '../../components/Knapper/Navigering/Navigasjon';
+import InfoModal from '../../components/Knapper/infoModal/InfoModal';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
@@ -87,6 +89,10 @@ const Frontpage = () => {
             <a className='lenke' href={fullmaktSkjemaURL}>
               her.
             </a>
+            <Navigasjon />
+            <InfoModal text={'Show here'} message={'Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er\n' +
+            '              fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker\n' +
+            '              og ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn'} />
           </Veilederpanel>
           <Box id={'fullmaktFrontPage'} tittel={''} beskrivelse={''} icon={FullmaktIcon}>
             <div id='fullmaktPage'>

@@ -1,0 +1,62 @@
+.infoModal {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  &__lenkeknapp {
+    color: rgb(0, 103, 197);
+    background: none;
+    text-decoration: none;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    /*border-bottom: 1px solid rgb(183, 177, 169);*/
+    cursor: pointer;
+  }
+
+  &__lenketekst {
+    border-bottom: 1px solid rgb(183, 177, 169);
+  }
+
+  &__modal {
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  &__innhold {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  &__knapp {
+    align-self: center;
+    width: 16rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .infoModal {
+    &__modal {
+      width: 40%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &__innhold {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}

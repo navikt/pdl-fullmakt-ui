@@ -1,5 +1,5 @@
 {
-  "hierarkinivaaer": ["Temagrupper", "Arkivtema"],
+  "hierarkinivaaer": ["Temagrupper", "Arkivtemaer"],
   "noder": {
     "ARBD": {
       "kode": "ARBD",
@@ -7,12 +7,6 @@
         "no": "Arbeid"
       },
       "undernoder": {
-        "AAP": {
-          "kode": "AAP",
-          "termer": {
-            "no": "Arbeidsavklaringspenger"
-          }
-        },
         "DAG": {
           "kode": "DAG",
           "termer": {
@@ -151,40 +145,6 @@
         }
       }
     },
-    "PENS": {
-      "kode": "PENS",
-      "termer": {
-        "no": "Hjelpemidler"
-      },
-      "undernoder": {
-        "PEN": {
-          "kode": "PEN",
-          "termer": {
-            "no": "Pensjon"
-          }
-        },
-        "SUP": {
-          "kode": "SUP",
-          "termer": {
-            "no": "Supplerende stønad"
-          }
-        }
-      }
-    },
-    "UFRT": {
-      "kode": "UFRT",
-      "termer": {
-        "no": "Uføretrygd"
-      },
-      "undernoder": {
-        "UFO": {
-          "kode": "UFO",
-          "termer": {
-            "no": "Uføretrygd"
-          }
-        }
-      }
-    },
     "OVRG": {
       "kode": "OVRG",
       "termer": {
@@ -231,6 +191,46 @@
           "kode": "UFM",
           "termer": {
             "no": "Unntak fra medlemskap"
+          }
+        }
+      }
+    },
+    "PENS": {
+      "kode": "PENS",
+      "termer": {
+        "no": "Pensjon"
+      },
+      "undernoder": {
+        "PEN": {
+          "kode": "PEN",
+          "termer": {
+            "no": "Pensjon"
+          }
+        },
+        "SUP": {
+          "kode": "SUP",
+          "termer": {
+            "no": "Supplerende stønad"
+          }
+        },
+        "UFO": {
+          "kode": "UFO",
+          "termer": {
+            "no": "Uføretrygd"
+          }
+        }
+      }
+    },
+    "﻿ARBD": {
+      "kode": "﻿ARBD",
+      "termer": {
+        "no": "Arbeid"
+      },
+      "undernoder": {
+        "AAP": {
+          "kode": "AAP",
+          "termer": {
+            "no": "Arbeidsavklaringspenger"
           }
         }
       }

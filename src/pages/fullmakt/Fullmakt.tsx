@@ -229,7 +229,7 @@ const Fullmakt = () => {
                                 omraade.status === 'RESULT' &&
                                 omraade.data.map(group => (
                                   <div key={group.kode}>
-                                    <div style={{fontWeight: 2}}>
+                                    <div style={{ fontWeight: 2 }}>
                                       <div className='skjemaelement__label'>
                                         {group.termer.no}
                                       </div>
