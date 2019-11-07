@@ -44,7 +44,7 @@ const Frontpage = () => {
         apneTekst={'vis detaljer'}
       >
         <div style={{ marginTop: 0 }}>
-          Du kan finne detaljene om begrenset fullmakt informasjon ned
+          Du kan finne detaljene om begrenset fullmakt informasjon nedenfor
           <div style={{ marginLeft: 20, marginTop: 0 }}>
             {omraade && omraade.status === 'RESULT' && omraade.data ? (
               hentOmraadeDetaljer(omraade.data, omr).map(o => <li key={o}>{o}</li>)
