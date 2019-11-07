@@ -8,7 +8,7 @@
     "opphoert": false,
     "fullmaktsgiver": "92345678901",
     "fullmektig": "12345678901",
-    "omraade": "AAP;DAG;FOS;IND;MOB;OPP;REH;SAK;SAP;SYK;SYM;VEN;YRA;YRK;TSO;TSR",
+    "omraade": "AAP;DAG;FOS",
     "gyldigFraOgMed": "2018-12-31",
     "gyldigTilOgMed": "2020-12-31",
     "fullmaktsgiverNavn": "ZZZZbcdefg Xyzdfdsfd"
@@ -22,7 +22,7 @@
     "opphoert": false,
     "fullmaktsgiver": "82345678901",
     "fullmektig": "12345678901",
-    "omraade": "AAP;DAG;FOS;IND;MOB;OPP;REH;SAK;SAP;SYK;SYM;VEN;YRA;YRK;TSO;TSR",
+    "omraade": "AAP;DAG;FOS",
     "gyldigFraOgMed": "2019-12-31",
     "gyldigTilOgMed": "2020-12-31",
     "fullmaktsgiverNavn": "BBbcdefg Xyzdfdsfd"
