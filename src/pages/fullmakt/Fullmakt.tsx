@@ -229,11 +229,11 @@ const Fullmakt = () => {
                                 omraade.status === 'RESULT' &&
                                 omraade.data.map(group => (
                                   <div key={group.kode}>
-                                    <u>
+                                    <div style={{fontWeight: 2}}>
                                       <div className='skjemaelement__label'>
-                                        {group.termer.no + ' :'}
+                                        {group.termer.no}
                                       </div>
-                                    </u>
+                                    </div>
                                     <div className={'fullmakt__checkbox'}>
                                       {group.undernoder.map(n => (
                                         <Checkbox

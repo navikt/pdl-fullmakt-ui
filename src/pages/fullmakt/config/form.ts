@@ -13,10 +13,10 @@ export const fullmaktFormConfig = {
     isRequired: 'Område er påkrevd'
   },
   gyldigFraOgMed: {
-    isRequired: 'Dato er påkrevd'
+    isRequired: 'Fra-dato er påkrevd'
   },
   gyldigTilOgMed: {
-    isRequired: 'Dato er påkrevd'
+    isRequired: 'Til-dato er påkrevd'
   },
   hvemOmraade: {}
 };
