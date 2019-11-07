@@ -192,7 +192,7 @@ const Fullmakt = () => {
                             <div>
                               <div className='ekf__header'>
                                 <div className='skjemaelement__label'>
-                                  <div>Fullmakten gjelder</div>
+                                  <div>Fullmaktens gyldighetsområde</div>
                                 </div>
                                 <HjelpetekstHoyre
                                   tittel={''}
@@ -203,7 +203,7 @@ const Fullmakt = () => {
                                 </HjelpetekstHoyre>
                               </div>
                               <Radio
-                                label='All informasjon'
+                                label='Alle områder'
                                 name={'NAV_ALL_OMRAADE'}
                                 checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
                                 onChange={() =>
@@ -214,7 +214,7 @@ const Fullmakt = () => {
                                 }
                               />
                               <Radio
-                                label='Begrenset'
+                                label='Avgrenset til bestemte områder'
                                 name={'NAV_BEGRENSET_OMRAADE'}
                                 checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
                                 onChange={() =>

@@ -34,7 +34,7 @@ const Frontpage = () => {
   const [error, settError] = useState();
   const history = useHistory();
   const showOmraade = (o: string) =>
-    o ? (o === '*' ? 'All informasjon' : 'Begrenset informasjon') : '';
+    o ? (o === '*' ? 'Alle områder' : 'Avgrenset til bestemte områder') : '';
 
   const showDetails = (omr: string) =>
     omr !== '*' && (
