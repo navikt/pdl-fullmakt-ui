@@ -3,20 +3,12 @@ import * as React from 'react';
 
 interface FortsettKnappProps {
   className?: string;
-  closeModal: () => void;
+  closeModal: any;
 }
-
-const Fortsett = (closeModal: () => void) => {
-  closeModal();
-};
 
 const Fortsettknapp = ({ className, closeModal }: FortsettKnappProps) => {
   return (
-    <Fareknapp
-      className={className}
-      onClick={() => Fortsett(closeModal)}
-      type={'standard'}
-    >
+    <Fareknapp className={className} onClick={e => closeModal(e)} type={'standard'}>
       {'Fortsett'}
     </Fareknapp>
   );

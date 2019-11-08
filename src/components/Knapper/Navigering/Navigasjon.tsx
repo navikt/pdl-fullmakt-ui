@@ -4,17 +4,15 @@ import * as React from 'react';
 import Avbrytknapp from '../Avbrytknapp/Avbrytknapp';
 import Fortsettknapp from '../Fortsettknapp/Fortsettknapp';
 import { opphoertMelding } from '../../../utils/konstanter';
-import { useState } from 'react';
 
-function Navigasjon() {
-  const [showHide, setShowHide] = useState(false);
-
+interface Interface {
+  showHide: boolean;
+  setShowHide: any;
+  handleConfirm: any;
+}
+const Navigasjon = ({ showHide, handleConfirm, setShowHide }: Interface) => {
   return (
     <section className={'navigasjon'}>
-      <Avbrytknapp
-        className={'navigasjon__knapp navigasjon__knapp--avbryt'}
-        openModal={() => setShowHide(!showHide)}
-      />
       <Modal
         isOpen={showHide}
         onRequestClose={() => setShowHide(!showHide)}
@@ -26,10 +24,7 @@ function Navigasjon() {
         <div className={'modal__advarseltekst'}>
           <Normaltekst>{opphoertMelding}</Normaltekst>
         </div>
-        <Fortsettknapp
-          className={'modal__avbrytknapp'}
-          closeModal={() => setShowHide(!showHide)}
-        />
+        <Fortsettknapp className={'modal__avbrytknapp'} closeModal={handleConfirm} />
 
         <Avbrytknapp
           className={'modal__fortsettknapp'}
@@ -38,5 +33,5 @@ function Navigasjon() {
       </Modal>
     </section>
   );
-}
+};
 export default Navigasjon;

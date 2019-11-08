@@ -22,6 +22,7 @@ import { Radio, Checkbox, SkjemaGruppe } from 'nav-frontend-skjema';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
 import { addSubString, findSubString, removeSubString } from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
+import { Element } from 'nav-frontend-typografi';
 
 const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -202,64 +203,71 @@ const Fullmakt = () => {
                                   NAV områder for fullmakt.
                                 </HjelpetekstHoyre>
                               </div>
-                              <Radio
-                                label='Alle områder'
-                                name={'NAV_ALL_OMRAADE'}
-                                checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
-                                onChange={() =>
-                                  setField({
-                                    hvemOmraade: 'NAV_ALL_OMRAADE',
-                                    omraade: '*'
-                                  })
-                                }
-                              />
-                              <Radio
-                                label='Avgrenset til bestemte områder'
-                                name={'NAV_BEGRENSET_OMRAADE'}
-                                checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
-                                onChange={() =>
-                                  setField({
-                                    hvemOmraade: 'NAV_BEGRENSET_OMRAADE',
-                                    omraade: ''
-                                  })
-                                }
-                              />
-                              {fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE' &&
-                                omraade &&
-                                omraade.status === 'RESULT' &&
-                                omraade.data.map(group => (
-                                  <div key={group.kode}>
-                                    <div style={{ fontWeight: 2 }}>
-                                      <div className='skjemaelement__label'>
-                                        {group.termer.no}
+                              <div style={{ paddingLeft: '10px' }}>
+                                <Radio
+                                  label='Alle områder'
+                                  name={'NAV_ALL_OMRAADE'}
+                                  checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
+                                  onChange={() =>
+                                    setField({
+                                      hvemOmraade: 'NAV_ALL_OMRAADE',
+                                      omraade: '*'
+                                    })
+                                  }
+                                />
+                                <Radio
+                                  label='Avgrenset til bestemte områder'
+                                  name={'NAV_BEGRENSET_OMRAADE'}
+                                  checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
+                                  onChange={() =>
+                                    setField({
+                                      hvemOmraade: 'NAV_BEGRENSET_OMRAADE',
+                                      omraade: ''
+                                    })
+                                  }
+                                />
+                                <div style={{ paddingLeft: '30px' }}>
+                                  {fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE' &&
+                                    omraade &&
+                                    omraade.status === 'RESULT' &&
+                                    omraade.data.map(group => (
+                                      <div key={group.kode}>
+                                        <div>
+                                          <Element className='skjemaelement__label'>
+                                            {group.termer.no}
+                                          </Element>
+                                        </div>
+                                        <div className={'fullmakt__checkbox'}>
+                                          {group.undernoder.map(n => (
+                                            <Checkbox
+                                              className={'fullmakt__checkbox-width'}
+                                              key={n.kode}
+                                              label={n.termer.no}
+                                              checked={findSubString(
+                                                n.kode,
+                                                fields.omraade
+                                              )}
+                                              value={n.kode}
+                                              onChange={e =>
+                                                setField({
+                                                  omraade: e.target.checked
+                                                    ? addSubString(
+                                                        e.target.value,
+                                                        fields.omraade
+                                                      )
+                                                    : removeSubString(
+                                                        e.target.value,
+                                                        fields.omraade
+                                                      )
+                                                })
+                                              }
+                                            />
+                                          ))}
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div className={'fullmakt__checkbox'}>
-                                      {group.undernoder.map(n => (
-                                        <Checkbox
-                                          className={'fullmakt__checkbox-width'}
-                                          key={n.kode}
-                                          label={n.termer.no}
-                                          checked={findSubString(n.kode, fields.omraade)}
-                                          value={n.kode}
-                                          onChange={e =>
-                                            setField({
-                                              omraade: e.target.checked
-                                                ? addSubString(
-                                                    e.target.value,
-                                                    fields.omraade
-                                                  )
-                                                : removeSubString(
-                                                    e.target.value,
-                                                    fields.omraade
-                                                  )
-                                            })
-                                          }
-                                        />
-                                      ))}
-                                    </div>
-                                  </div>
-                                ))}
+                                    ))}
+                                </div>
+                              </div>
                             </div>
                           </SkjemaGruppe>
                           <div className='flex__rad'>
@@ -300,7 +308,7 @@ const Fullmakt = () => {
                           </div>
                         )}
                       </div>
-                      <div className='navigasjon'>
+                      <div className='navigasjonLess'>
                         <div className='tb__knapp'>
                           <Link to={baseUrl}>
                             <Knapp>Tilbake</Knapp>

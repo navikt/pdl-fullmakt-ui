@@ -32,7 +32,7 @@ const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
   const [{ fullmatsgiver, fullmektig, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
-
+  const [showHide, setShowHide] = useState(false);
   const [error, settError] = useState();
   const history = useHistory();
   const showOmraade = (o: string) =>
@@ -89,10 +89,14 @@ const Frontpage = () => {
             <a className='lenke' href={fullmaktSkjemaURL}>
               her.
             </a>
-            <Navigasjon />
-            <InfoModal text={'Show here'} message={'Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er\n' +
-            '              fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker\n' +
-            '              og ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn'} />
+            <InfoModal
+              text={'Show here'}
+              message={
+                'Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er\n' +
+                '              fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker\n' +
+                '              og ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn'
+              }
+            />
           </Veilederpanel>
           <Box id={'fullmaktFrontPage'} tittel={''} beskrivelse={''} icon={FullmaktIcon}>
             <div id='fullmaktPage'>
@@ -149,33 +153,7 @@ const Frontpage = () => {
                                 autoDisableVedSpinner={true}
                                 onClick={e => {
                                   e.preventDefault();
-                                  deleteFullmakt(String(f.fullmaktId))
-                                    .then((response: any) => {
-                                      console.log(
-                                        String(f.fullmaktId) +
-                                          ' is deleted with response = ',
-                                        response
-                                      );
-                                      fetchFullmaktsgiver(fodselsnr)
-                                        .then((fullmaktsgiver: FullmaktType[]) =>
-                                          dispatch({
-                                            type: 'SETT_FULLMAKTSGIVER',
-                                            payload: fullmaktsgiver
-                                          })
-                                        )
-                                        .catch((error: HTTPError) => {
-                                          dispatch({
-                                            type: 'SETT_FULLMAKTSGIVER_ERROR',
-                                            payload: error
-                                          });
-                                        });
-                                    })
-                                    .catch((error: HTTPError) => {
-                                      settError(`${error.code} - ${error.text}`);
-                                    })
-                                    .then(() => {
-                                      settLoading(false);
-                                    });
+                                  setShowHide(true);
                                 }}
                               >
                                 {loading ? (
@@ -191,10 +169,45 @@ const Frontpage = () => {
                           </div>
                         </div>
                       </div>
+                      <Navigasjon
+                        showHide={showHide}
+                        handleConfirm={(e: any) => {
+                          e.preventDefault();
+                          setShowHide(false);
+                          deleteFullmakt(String(f.fullmaktId))
+                            .then((response: any) => {
+                              console.log(
+                                String(f.fullmaktId) + ' is deleted with response = ',
+                                response
+                              );
+                              fetchFullmaktsgiver(fodselsnr)
+                                .then((fullmaktsgiver: FullmaktType[]) =>
+                                  dispatch({
+                                    type: 'SETT_FULLMAKTSGIVER',
+                                    payload: fullmaktsgiver
+                                  })
+                                )
+                                .catch((error: HTTPError) => {
+                                  dispatch({
+                                    type: 'SETT_FULLMAKTSGIVER_ERROR',
+                                    payload: error
+                                  });
+                                });
+                            })
+                            .catch((error: HTTPError) => {
+                              settError(`${error.code} - ${error.text}`);
+                            })
+                            .then(() => {
+                              settLoading(false);
+                            });
+                        }}
+                        setShowHide={(e: boolean) => setShowHide(e)}
+                      />
                       <div key={f.fullmaktId + 'divider'} className={'divider'} />
                     </div>
                   ))}
               </div>
+
               <div key={'FullmakterAdd'} className={'frontpage__container'}>
                 <>&nbsp;</>
                 <Knapp
