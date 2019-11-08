@@ -23,6 +23,7 @@ import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
 import { addSubString, findSubString, removeSubString } from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import { Element } from 'nav-frontend-typografi';
+import InfoModal from '../../components/Knapper/infoModal/InfoModal';
 
 const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -33,6 +34,7 @@ const Fullmakt = () => {
   const [{ auth, fullmatsgiver, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
+  const [showHide, setShowHide] = useState(false);
 
   const fullmaktData =
     fullmatsgiver &&
@@ -54,7 +56,7 @@ const Fullmakt = () => {
 
   const send = (e: FormContext) => {
     const { isValid, fields } = e;
-
+      setShowHide(true);
     if (
       isValid &&
       fodselsnr &&
@@ -91,12 +93,13 @@ const Fullmakt = () => {
       postFullmakt(sendData, !!fullmaktId)
         .then((response: any) => {
           fetchFullmaktsgiver(fodselsnr)
-            .then((fullmaktsgiver: FullmaktType[]) =>
+            .then((fullmaktsgiver: FullmaktType[]) => {
               dispatch({
                 type: 'SETT_FULLMAKTSGIVER',
                 payload: fullmaktsgiver
-              })
-            )
+              });
+              setShowHide(true);
+            })
             .catch((error: HTTPError) => {
               dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
             });
@@ -307,6 +310,11 @@ const Fullmakt = () => {
                               )}
                           </div>
                         )}
+                        <InfoModal
+                          showHide={showHide}
+                          setShowHide={setShowHide}
+                          message={'Fullmakt er lagret!'}
+                        />
                       </div>
                       <div className='navigasjonLess'>
                         <div className='tb__knapp'>

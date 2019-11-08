@@ -33,6 +33,7 @@ const Frontpage = () => {
   const [{ fullmatsgiver, fullmektig, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [showHide, setShowHide] = useState(false);
+  const [slettId, setSlettId] = useState(-1);
   const [error, settError] = useState();
   const history = useHistory();
   const showOmraade = (o: string) =>
@@ -68,6 +69,34 @@ const Frontpage = () => {
     </div>
   );
 
+  const deletFullmakt = (e: any) => {
+    e.preventDefault();
+    setShowHide(false);
+    slettId > 0 &&
+      deleteFullmakt(String(slettId))
+        .then((response: any) => {
+          console.log(String(slettId) + ' is deleted with response = ', response);
+          fetchFullmaktsgiver(fodselsnr)
+            .then((fullmaktsgiver: FullmaktType[]) =>
+              dispatch({
+                type: 'SETT_FULLMAKTSGIVER',
+                payload: fullmaktsgiver
+              })
+            )
+            .catch((error: HTTPError) => {
+              dispatch({
+                type: 'SETT_FULLMAKTSGIVER_ERROR',
+                payload: error
+              });
+            });
+        })
+        .catch((error: HTTPError) => {
+          settError(`${error.code} - ${error.text}`);
+        })
+        .then(() => {
+          settLoading(false);
+        });
+  };
   return (
     <>
       <div className='pagecontent'>
@@ -89,15 +118,12 @@ const Frontpage = () => {
             <a className='lenke' href={fullmaktSkjemaURL}>
               her.
             </a>
-            <InfoModal
-              text={'Show here'}
-              message={
-                'Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er\n' +
-                '              fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker\n' +
-                '              og ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn'
-              }
-            />
           </Veilederpanel>
+          <Navigasjon
+            showHide={showHide}
+            handleConfirm={(e: any) => deletFullmakt(e)}
+            setShowHide={(e: boolean) => setShowHide(e)}
+          />
           <Box id={'fullmaktFrontPage'} tittel={''} beskrivelse={''} icon={FullmaktIcon}>
             <div id='fullmaktPage'>
               <div key='Fullmakter' className='frontpage__content'>
@@ -153,6 +179,7 @@ const Frontpage = () => {
                                 autoDisableVedSpinner={true}
                                 onClick={e => {
                                   e.preventDefault();
+                                  setSlettId(f.fullmaktId || -1);
                                   setShowHide(true);
                                 }}
                               >
@@ -169,40 +196,6 @@ const Frontpage = () => {
                           </div>
                         </div>
                       </div>
-                      <Navigasjon
-                        showHide={showHide}
-                        handleConfirm={(e: any) => {
-                          e.preventDefault();
-                          setShowHide(false);
-                          deleteFullmakt(String(f.fullmaktId))
-                            .then((response: any) => {
-                              console.log(
-                                String(f.fullmaktId) + ' is deleted with response = ',
-                                response
-                              );
-                              fetchFullmaktsgiver(fodselsnr)
-                                .then((fullmaktsgiver: FullmaktType[]) =>
-                                  dispatch({
-                                    type: 'SETT_FULLMAKTSGIVER',
-                                    payload: fullmaktsgiver
-                                  })
-                                )
-                                .catch((error: HTTPError) => {
-                                  dispatch({
-                                    type: 'SETT_FULLMAKTSGIVER_ERROR',
-                                    payload: error
-                                  });
-                                });
-                            })
-                            .catch((error: HTTPError) => {
-                              settError(`${error.code} - ${error.text}`);
-                            })
-                            .then(() => {
-                              settLoading(false);
-                            });
-                        }}
-                        setShowHide={(e: boolean) => setShowHide(e)}
-                      />
                       <div key={f.fullmaktId + 'divider'} className={'divider'} />
                     </div>
                   ))}

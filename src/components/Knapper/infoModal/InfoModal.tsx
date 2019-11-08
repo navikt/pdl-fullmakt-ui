@@ -1,26 +1,16 @@
 import { Knapp } from 'nav-frontend-knapper';
 import Modal from 'nav-frontend-modal';
 import * as React from 'react';
-import { useState } from 'react';
 
 interface InfoModalProps {
-  isOpen?: boolean;
-  text: string;
+  showHide: boolean;
+  setShowHide: any;
   message: string;
 }
 
-const InfoModal = ({ isOpen, text, message }: InfoModalProps) => {
-  const [showHide, setShowHide] = useState(false);
-
+const InfoModal = ({ showHide, message, setShowHide }: InfoModalProps) => {
   return (
     <div className={'infoModal'}>
-      <button
-        onClick={() => setShowHide(!showHide)}
-        aria-haspopup={'dialog'}
-        className={'infoModal__lenkeknapp'}
-      >
-        {text}
-      </button>
       <Modal
         isOpen={showHide}
         onRequestClose={() => setShowHide(!showHide)}
