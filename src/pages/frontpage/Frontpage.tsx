@@ -26,7 +26,6 @@ import { hentOmraadeDetaljer } from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
 import Navigasjon from '../../components/Knapper/Navigering/Navigasjon';
-import InfoModal from '../../components/Knapper/infoModal/InfoModal';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';

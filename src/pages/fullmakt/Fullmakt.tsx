@@ -56,7 +56,7 @@ const Fullmakt = () => {
 
   const send = (e: FormContext) => {
     const { isValid, fields } = e;
-      setShowHide(true);
+      // setShowHide(true);
     if (
       isValid &&
       fodselsnr &&
