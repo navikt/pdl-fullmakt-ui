@@ -62,7 +62,10 @@ const Fullmakt = () => {
       fodselsnr &&
       auth.status === 'RESULT' &&
       auth.data.authenticated &&
-      auth.data.name
+      auth.data.name &&
+      fields.gyldigFraOgMed &&
+      fields.gyldigTilOgMed &&
+      fields.gyldigFraOgMed <= fields.gyldigTilOgMed
     ) {
       const fullmaktPageData: FullmaktPageType = {
         fullmaktsgiverNavn: auth.data.name,
@@ -298,6 +301,13 @@ const Fullmakt = () => {
                         </div>
                       </div>
                       <div>
+                        {fields.gyldigFraOgMed &&
+                          fields.gyldigTilOgMed &&
+                          fields.gyldigFraOgMed > fields.gyldigTilOgMed && (
+                            <AlertStripeFeil>
+                              "Fra og med dato" er tidligere enn "Til og med dato"
+                            </AlertStripeFeil>
+                          )}
                         {error && (
                           <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
                         )}

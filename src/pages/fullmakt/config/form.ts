@@ -7,6 +7,10 @@ export const fullmaktFormConfig = {
     isExactLength: {
       message: 'Fødselsnummer må være 11 siffer',
       length: 11
+    },
+    isRegexMatch: {
+      message: 'Fødselsnummer må være 11 siffer',
+      regex: /^\d{11}$/
     }
   },
   omraade: {
