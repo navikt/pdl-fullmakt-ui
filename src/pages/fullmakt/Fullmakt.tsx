@@ -327,7 +327,7 @@ const Fullmakt = () => {
                             {loading ? (
                               <NavFrontendSpinner type={'S'} />
                             ) : (
-                              'Lagre og avslutt'
+                              'Lagre fullmakt'
                             )}
                           </Hovedknapp>
                         </div>
