@@ -1,7 +1,7 @@
 import { Knapp } from 'nav-frontend-knapper';
 import Modal from 'nav-frontend-modal';
 import * as React from 'react';
-import { FormattedHTMLMessage } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 
 interface InfoModalProps {
   showHide: boolean;
@@ -10,6 +10,7 @@ interface InfoModalProps {
 }
 
 const InfoModal = ({ showHide, message, setShowHide }: InfoModalProps) => {
+  const history = useHistory();
   return (
     <div className={'infoModal'}>
       <Modal
@@ -27,10 +28,15 @@ const InfoModal = ({ showHide, message, setShowHide }: InfoModalProps) => {
           aria-describedby={'description_infoModal_modal'}
         >
           <div id='description_infoModal_modal'>
-            <FormattedHTMLMessage id={message} />
             <p>{message}</p>
           </div>
-          <Knapp className={'infoModal__knapp'} onClick={() => setShowHide(!showHide)}>
+          <Knapp
+            className={'infoModal__knapp'}
+            onClick={() => {
+              setShowHide(!showHide);
+              history.push(`/person/pdl-fullmakt-ui`);
+            }}
+          >
             OK
           </Knapp>
         </div>

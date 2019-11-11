@@ -314,25 +314,35 @@ const Fullmakt = () => {
                           showHide={showHide}
                           setShowHide={setShowHide}
                           message={
-                              ( <div>
-                                  <p>Fullmakten din er nå lagret og gir fullmektig anledning til å representere deg med de begrensinger du eventuelt har angitt. Du kan når som helst endre og avslutte (trekke tilbake) fullmakten. Denne fullmakten brukes når fullmektig skal representere deg i forhold til NAV.</p>
-                                  <p>Du finner en oversikt over fullmakter du har gitt og fått under {' '}
-                                      <Link
-                                          to={`${baseUrl}${
-                                              auth.status === 'RESULT' && auth.data.authenticated
-                                                  ? ''
-                                                  : '/fullmakt/login'
-                                          }`}
-                                          className='lenke'
-                                      >
-                                          her
-                                      </Link></p>
-                                  <p>Du kan lese mer om digitale fullmakter {' '}
-                                      <a className='lenke' href={fullmaktSkjemaURL}>
-                                          her.
-                                      </a>
-                                  </p>
-                              </div>)
+                            <div>
+                              <p>
+                                Fullmakten din er nå lagret og gir fullmektig anledning
+                                til å representere deg med de begrensinger du eventuelt
+                                har angitt. Du kan når som helst endre og avslutte (trekke
+                                tilbake) fullmakten. Denne fullmakten brukes når
+                                fullmektig skal representere deg i forhold til NAV.
+                              </p>
+                              <p>
+                                Du finner en oversikt over fullmakter du har gitt og fått
+                                under{' '}
+                                <Link
+                                  to={`${baseUrl}${
+                                    auth.status === 'RESULT' && auth.data.authenticated
+                                      ? ''
+                                      : '/fullmakt/login'
+                                  }`}
+                                  className='lenke'
+                                >
+                                  her
+                                </Link>
+                              </p>
+                              <p>
+                                Du kan lese mer om digitale fullmakter{' '}
+                                <a className='lenke' href={fullmaktSkjemaURL}>
+                                  her.
+                                </a>
+                              </p>
+                            </div>
                           }
                         />
                       </div>
