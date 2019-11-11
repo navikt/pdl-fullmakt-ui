@@ -1,11 +1,12 @@
 import { Knapp } from 'nav-frontend-knapper';
 import Modal from 'nav-frontend-modal';
 import * as React from 'react';
+import { FormattedHTMLMessage } from 'react-intl';
 
 interface InfoModalProps {
   showHide: boolean;
   setShowHide: any;
-  message: string;
+  message: any;
 }
 
 const InfoModal = ({ showHide, message, setShowHide }: InfoModalProps) => {
@@ -26,10 +27,11 @@ const InfoModal = ({ showHide, message, setShowHide }: InfoModalProps) => {
           aria-describedby={'description_infoModal_modal'}
         >
           <div id='description_infoModal_modal'>
+            <FormattedHTMLMessage id={message} />
             <p>{message}</p>
           </div>
           <Knapp className={'infoModal__knapp'} onClick={() => setShowHide(!showHide)}>
-            close
+            OK
           </Knapp>
         </div>
       </Modal>

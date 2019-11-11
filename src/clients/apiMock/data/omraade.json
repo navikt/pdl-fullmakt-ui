@@ -7,6 +7,12 @@
         "no": "Arbeid"
       },
       "undernoder": {
+        "AAP": {
+          "kode": "AAP",
+          "termer": {
+            "no": "Arbeidsavklaringspenger"
+          }
+        },
         "DAG": {
           "kode": "DAG",
           "termer": {
@@ -217,20 +223,6 @@
           "kode": "UFO",
           "termer": {
             "no": "Uføretrygd"
-          }
-        }
-      }
-    },
-    "﻿ARBD": {
-      "kode": "﻿ARBD",
-      "termer": {
-        "no": "Arbeid"
-      },
-      "undernoder": {
-        "AAP": {
-          "kode": "AAP",
-          "termer": {
-            "no": "Arbeidsavklaringspenger"
           }
         }
       }

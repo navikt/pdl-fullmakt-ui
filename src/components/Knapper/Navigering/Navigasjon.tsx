@@ -1,5 +1,4 @@
 import Modal from 'nav-frontend-modal';
-import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import * as React from 'react';
 import Avbrytknapp from '../Avbrytknapp/Avbrytknapp';
 import Fortsettknapp from '../Fortsettknapp/Fortsettknapp';
@@ -16,18 +15,19 @@ const Navigasjon = ({ showHide, handleConfirm, setShowHide }: Interface) => {
       <Modal
         isOpen={showHide}
         onRequestClose={() => setShowHide(!showHide)}
-        closeButton={true}
+        closeButton={false}
         contentLabel='Opphør fullmakt'
         className='modal'
         {...{ ariaHideApp: false }}
       >
         <div className={'modal__advarseltekst'}>
-          <Normaltekst>{opphoertMelding}</Normaltekst>
+          <p>{opphoertMelding}</p>
         </div>
-        <Fortsettknapp className={'modal__avbrytknapp'} closeModal={handleConfirm} />
+
+        <Fortsettknapp className={'modal__fortsettknapp'} closeModal={handleConfirm} />
 
         <Avbrytknapp
-          className={'modal__fortsettknapp'}
+          className={'modal__avbrytknapp'}
           openModal={() => setShowHide(!showHide)}
         />
       </Modal>

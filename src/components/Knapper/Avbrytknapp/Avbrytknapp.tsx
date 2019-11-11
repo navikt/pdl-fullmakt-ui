@@ -9,7 +9,7 @@ interface AvbrytKnappProps {
 const Avbrytknapp = ({ className, openModal }: AvbrytKnappProps) => {
   return (
     <Flatknapp className={className} onClick={openModal}>
-      {'Avbryt'}
+      {'Nei, avbryt'}
     </Flatknapp>
   );
 };
