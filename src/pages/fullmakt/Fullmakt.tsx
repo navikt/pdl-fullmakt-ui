@@ -35,6 +35,8 @@ const Fullmakt = () => {
   const [loading, settLoading] = useState(false);
   const [error, settError] = useState();
   const [showHide, setShowHide] = useState(false);
+  const fullmaktsgiverNavn =
+    auth.status === 'RESULT' && auth.data.authenticated && auth.data.name;
 
   const fullmaktData =
     fullmatsgiver &&
@@ -60,15 +62,13 @@ const Fullmakt = () => {
     if (
       isValid &&
       fodselsnr &&
-      auth.status === 'RESULT' &&
-      auth.data.authenticated &&
-      auth.data.name &&
+      fullmaktsgiverNavn &&
       fields.gyldigFraOgMed &&
       fields.gyldigTilOgMed &&
       fields.gyldigFraOgMed <= fields.gyldigTilOgMed
     ) {
       const fullmaktPageData: FullmaktPageType = {
-        fullmaktsgiverNavn: auth.data.name,
+        fullmaktsgiverNavn: fullmaktsgiverNavn,
         fullmaktsgiver: fodselsnr,
         fullmektigNavn: fields.fullmektigNavn || 'Default navn',
         fullmektig: fields.fullmektigFodselsnr,
@@ -161,7 +161,7 @@ const Fullmakt = () => {
                     <div className='fullmakt__content'>
                       <div className='fullmakt__ekspandert'>
                         <div>
-                          <div className='flex__rad'>Jeg ønsker å gi fullmakt til</div>
+                          <div className='flex__rad'>{`Jeg, ${fullmaktsgiverNavn}, ønsker å gi fullmakt til:`}</div>
                           <br />
                           <div className='flex__rad'>
                             <div className='flex__kolonne-left'>

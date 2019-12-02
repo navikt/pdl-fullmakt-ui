@@ -185,7 +185,7 @@ const Frontpage = () => {
                                 {loading ? (
                                   <NavFrontendSpinner type={'S'} />
                                 ) : (
-                                  <EtikettLiten>Avslutt</EtikettLiten>
+                                  <EtikettLiten>Avslutt fullmakten</EtikettLiten>
                                 )}
                                 <div className={'frontpage__knapp-ikon'}>
                                   <img alt={'Opphør fullmakt'} src={slettIkon} />
