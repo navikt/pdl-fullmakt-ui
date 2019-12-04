@@ -12,12 +12,11 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { HTTPError } from '../../components/error/Error';
 import { FormContext, FormValidation } from 'calidation';
-import { FullmaktPageType, FullmaktSendType, FullmaktType } from '../../types/fullmakt';
+import { FullmaktPostType, FullmaktSendType, FullmaktType } from '../../types/fullmakt';
 import { fullmaktFormConfig } from './config/form';
 import Box from '../../components/box/Box';
 import DayPicker from '../../components/felter/day-picker/DayPicker';
 import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
-import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 import { Radio, Checkbox, SkjemaGruppe } from 'nav-frontend-skjema';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
 import { addSubString, findSubString, removeSubString } from '../../utils/utils';
@@ -67,9 +66,8 @@ const Fullmakt = () => {
       fields.gyldigTilOgMed &&
       fields.gyldigFraOgMed <= fields.gyldigTilOgMed
     ) {
-      const fullmaktPageData: FullmaktPageType = {
+      const fullmaktPageData: FullmaktPostType = {
         fullmaktsgiverNavn: fullmaktsgiverNavn,
-        fullmaktsgiver: fodselsnr,
         fullmektigNavn: fields.fullmektigNavn || 'Default navn',
         fullmektig: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
@@ -80,15 +78,9 @@ const Fullmakt = () => {
       const sendData: FullmaktSendType = fullmaktId
         ? {
             fullmaktId: Number(fullmaktId),
-            registrert: (fullmaktData && fullmaktData.registrert) || '',
-            registrertAv: (fullmaktData && fullmaktData.registrertAv) || '',
-            endret: nowDateFullmakt,
-            endretAv: fodselsnr,
             ...fullmaktPageData
           }
         : {
-            registrert: nowDateFullmakt,
-            registrertAv: fodselsnr,
             ...fullmaktPageData
           };
       console.log('Data to send = ', JSON.stringify(sendData));

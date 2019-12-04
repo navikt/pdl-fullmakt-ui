@@ -28,22 +28,13 @@ export type FullmaktOtherType = {
 
 export type FullmaktSendType = FullmaktPutType | FullmaktPostType;
 
-export type FullmaktPostType = FullmaktPageType & {
-  registrert: string;
-  registrertAv: string;
-};
-
-export type FullmaktPutType = FullmaktPageType & {
+export type FullmaktPutType = FullmaktPostType & {
   fullmaktId: number;
-  registrert: string;
-  registrertAv: string;
-  endret: string;
-  endretAv: string;
 };
 
-export type FullmaktPageType = {
+export type FullmaktPostType = {
   fullmaktsgiverNavn: string;
-  fullmaktsgiver: string;
+  // fullmaktsgiver: string;
   fullmektigNavn: string;
   fullmektig: string;
   omraade: string;
