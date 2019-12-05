@@ -166,7 +166,7 @@ const Frontpage = () => {
                               <>
                                 <EtikettLiten>Endre</EtikettLiten>
                                 <div className={'frontpage__knapp-ikon'}>
-                                  <img alt={'Endre fullmakt'} src={endreIkon} />
+                                  <img src={endreIkon} />
                                 </div>
                               </>
                             </Knapp>
@@ -188,7 +188,7 @@ const Frontpage = () => {
                                   <EtikettLiten>Avslutt fullmakten</EtikettLiten>
                                 )}
                                 <div className={'frontpage__knapp-ikon'}>
-                                  <img alt={'Opphør fullmakt'} src={slettIkon} />
+                                  <img src={slettIkon} />
                                 </div>
                               </Knapp>
                             </div>
@@ -211,7 +211,7 @@ const Frontpage = () => {
                 >
                   <EtikettLiten>Ny fullmakt</EtikettLiten>
                   <div className={'frontpage__knapp-ikon'}>
-                    <img alt={'Legg til fullmakt'} src={leggTilIkon} />
+                    <img  src={leggTilIkon} />
                   </div>
                 </Knapp>
               </div>
