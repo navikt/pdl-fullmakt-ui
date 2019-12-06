@@ -44,6 +44,7 @@ const sendJson = (url: string, data: FullmaktSendType, put: boolean): any =>
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
+      .then(res => res.json())
     .then(response => sjekkForFeil(url, response))
     .then(parseJson)
     .catch((err: string & HTTPError) => {
