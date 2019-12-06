@@ -20,7 +20,12 @@ async function hentJson(url: string) {
       headers: { 'Content-Type': 'application/json;charset=UTF-8' },
       credentials: 'include'
     });
-    return await response.json();
+    if (response.ok) {
+      return await response.json();
+    } else {
+      const json = await response.json();
+      throwFormatteError(json, url);
+    }
   } catch (err) {
     throwFormatteError(err, url);
   }
@@ -37,9 +42,8 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
       return await response.json();
     } else {
       const json = await response.json();
-      await throwFormatteError(json, url);
+      throwFormatteError(json, url);
     }
-    return await response.json().catch(err => throwFormatteError(err, url));
   } catch (err) {
     throwFormatteError(err, url);
   }
@@ -51,7 +55,12 @@ async function deleteRequest(url: string) {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     });
-    return await response.json();
+    if (response.ok) {
+      return await response.json();
+    } else {
+      const json = await response.json();
+      throwFormatteError(json, url);
+    }
   } catch (err) {
     throwFormatteError(err, url);
   }
