@@ -14,8 +14,10 @@ const parseSjekkForFeil = (response: any) => {
     const errorRes = parseJson(response);
     const error = {
       code: errorRes.status,
-      text: errorRes.error + (response.message ? ' : ' + response.message : '')
+      text: errorRes.error + (errorRes.message ? ' : ' + errorRes.message : '')
     };
+    console.log(errorRes);
+    console.log(error);
     throw error;
   }
 };
