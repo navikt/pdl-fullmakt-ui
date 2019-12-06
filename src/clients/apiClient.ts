@@ -37,7 +37,7 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
       return await response.json();
     } else {
       const json = await response.json();
-      throwFormatteError(json, url, json.message ? json.message : '');
+      await throwFormatteError(json, url, json.message ? json.message : '');
     }
     return await response.json().catch(err => throwFormatteError(err, url));
   } catch (err) {
