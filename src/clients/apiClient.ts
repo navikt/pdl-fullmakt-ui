@@ -47,8 +47,9 @@ const sendJson = (url: string, data: FullmaktSendType, put: boolean): any =>
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
-        text: err.text || err
+        text: err.text || JSON.stringify(err)
       };
+      console.log('errror :', error);
       logApiError(url, error);
       throw error;
     });

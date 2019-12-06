@@ -23,7 +23,10 @@ export const setUpMock = async () => {
       delay(10, 50).then(() => authInfo)
     );
   mockFodselsnr &&
-    fetchMock.get(`${apiUrl}/fodselsnr`, delay(10, 50).then(() => fodselsnr));
+    fetchMock.get(
+      `${apiUrl}/fodselsnr`,
+      delay(10, 50).then(() => fodselsnr)
+    );
   mockKontaktInfo &&
     fetchMock.get(
       `${personInfoApiUrl}/kontaktinformasjon`,
@@ -39,7 +42,11 @@ export const setUpMock = async () => {
       `${apiUrl}/fullmektig/12345678901`,
       delay(10, 50).then(() => fullmektig)
     );
-  mockOmraade && fetchMock.get(`${apiUrl}/omraade`, delay(10, 50).then(() => omraade));
+  mockOmraade &&
+    fetchMock.get(
+      `${apiUrl}/omraade`,
+      delay(10, 50).then(() => omraade)
+    );
 };
 
 const delay = (min: number, max: number) => {
