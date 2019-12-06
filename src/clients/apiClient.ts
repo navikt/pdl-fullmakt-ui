@@ -8,6 +8,8 @@ const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 const parseJson = (data: any) => data.json();
 
 const sjekkForFeil = (url: string, response: Response) => {
+    console.log('response :', response);
+    console.log('response :', JSON.stringify(response));
   if (response.ok) {
     return response;
   } else {
