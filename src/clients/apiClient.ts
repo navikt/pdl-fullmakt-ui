@@ -4,10 +4,10 @@ import { FullmaktSendType } from '../types/fullmakt';
 
 const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 
-function throwFormatteError(err: any, url: string, message: string = '') {
-  const error = {
+function throwFormatteError(err: any, url: string) {
+  const error = err.text ? err : {
     code: err.status || 404,
-    text: err.error + (message !== '' ? ' : ' + message : '')
+    text: err.error + (err.message !== '' ? ' : ' + err.message : '')
   };
   logApiError(url, error);
   throw error;
@@ -37,7 +37,7 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
       return await response.json();
     } else {
       const json = await response.json();
-      await throwFormatteError(json, url, json.message ? json.message : '');
+      await throwFormatteError(json, url);
     }
     return await response.json().catch(err => throwFormatteError(err, url));
   } catch (err) {
