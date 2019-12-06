@@ -1,14 +1,17 @@
 import Environment from '../utils/Environments';
 import { logApiError } from '../utils/logger';
 import { FullmaktSendType } from '../types/fullmakt';
+import { HTTPError } from '../components/error/Error';
 
 const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 
 function throwFormatteError(err: any, url: string) {
-  const error = err.text ? err : {
-    code: err.status || 404,
-    text: err.error + (err.message !== '' ? ' : ' + err.message : '')
-  };
+  const error = err.text
+    ? err
+    : {
+        code: err.status || 404,
+        text: err.error + (err.message !== '' ? ' : ' + err.message : '')
+      };
   logApiError(url, error);
   throw error;
 }
@@ -49,22 +52,20 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
   }
 }
 
-async function deleteRequest(url: string) {
-  try {
-    const response = await fetch(url, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+const deleteRequest = (url: string): any =>
+  fetch(url, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  })
+    .then(response => throwFormatteError(url, response))
+    .catch((err: string & HTTPError) => {
+      const error = {
+        code: err.code || 404,
+        text: err.text || err
+      };
+      logApiError(url, error);
+      throw error;
     });
-    if (response.ok) {
-      return await response.json();
-    } else {
-      const json = await response.json();
-      throwFormatteError(json, url);
-    }
-  } catch (err) {
-    throwFormatteError(err, url);
-  }
-}
 
 export const sendTilLogin = () => {
   const { pathname } = window.location;
