@@ -51,13 +51,24 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
     throwFormatteError(err, url);
   }
 }
+const sjekkForFeil = (url: string, response: Response) => {
+  if (response.ok) {
+    return response;
+  } else {
+    const error = {
+      code: response.status,
+      text: response.statusText
+    };
+    throw error;
+  }
+};
 
 const deleteRequest = (url: string): any =>
   fetch(url, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
-    .then(response => throwFormatteError(url, response))
+    .then(response => sjekkForFeil(url, response))
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
