@@ -7,15 +7,14 @@ const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 
 const parseJson = (data: any) => data.json();
 
-const sjekkForFeil = (url: string, response: Response) => {
-    console.log('response :', response);
-    console.log('response :', JSON.stringify(response));
+const parseSjekkForFeil = (response: any) => {
   if (response.ok) {
-    return response;
+    return parseJson(response);
   } else {
+    const errorRes = parseJson(response);
     const error = {
-      code: response.status,
-      text: response.statusText + JSON.stringify(response)
+      code: errorRes.status,
+      text: errorRes.error + (response.message ? ' : ' + response.message : '')
     };
     throw error;
   }
@@ -27,8 +26,7 @@ const hentJson = (url: string) =>
     headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     credentials: 'include'
   })
-    .then(response => sjekkForFeil(url, response))
-    .then(parseJson)
+    .then(response => parseSjekkForFeil(response))
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
@@ -44,9 +42,7 @@ const sendJson = (url: string, data: FullmaktSendType, put: boolean): any =>
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
-      .then(res => res.json())
-    .then(response => sjekkForFeil(url, response))
-    .then(parseJson)
+    .then(response => parseSjekkForFeil(response))
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
@@ -62,7 +58,7 @@ const deleteRequest = (url: string): any =>
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
-    .then(response => sjekkForFeil(url, response))
+    .then(response => parseSjekkForFeil(response))
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
