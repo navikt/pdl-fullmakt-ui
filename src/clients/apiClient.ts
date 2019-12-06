@@ -32,7 +32,7 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
       method: put ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     });
-    return await response.json();
+    return await response.json().catch(err => throwFormatteError(err, url));
   } catch (err) {
     throwFormatteError(err, url);
   }
