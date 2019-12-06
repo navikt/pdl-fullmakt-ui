@@ -1,5 +1,4 @@
 import Environment from '../utils/Environments';
-import { HTTPError } from '../components/error/Error';
 import { logApiError } from '../utils/logger';
 import { FullmaktSendType } from '../types/fullmakt';
 
