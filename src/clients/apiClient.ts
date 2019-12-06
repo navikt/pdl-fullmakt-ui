@@ -11,14 +11,7 @@ const parseSjekkForFeil = (response: any) => {
   if (response.ok) {
     return parseJson(response);
   } else {
-    const errorRes = parseJson(response);
-    const error = {
-      code: errorRes.status,
-      text: errorRes.error + (errorRes.message ? ' : ' + errorRes.message : '')
-    };
-    console.log(errorRes);
-    console.log(error);
-    throw error;
+    throw parseJson(response);
   }
 };
 
@@ -29,10 +22,10 @@ const hentJson = (url: string) =>
     credentials: 'include'
   })
     .then(response => parseSjekkForFeil(response))
-    .catch((err: string & HTTPError) => {
+    .catch((err: any & HTTPError) => {
       const error = {
-        code: err.code || 404,
-        text: err.text || err
+          code: err.status,
+          text: err.error + (err.message ? ' : ' + err.message : '')
       };
       logApiError(url, error);
       throw error;
@@ -41,14 +34,13 @@ const hentJson = (url: string) =>
 const sendJson = (url: string, data: FullmaktSendType, put: boolean): any =>
   fetch(url, {
     method: put ? 'PUT' : 'POST',
-    body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
     .then(response => parseSjekkForFeil(response))
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
-        text: err.text || JSON.stringify(err)
+        text: err.text
       };
       console.log('errror :', error);
       logApiError(url, error);
