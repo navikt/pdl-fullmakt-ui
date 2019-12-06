@@ -13,7 +13,7 @@ const sjekkForFeil = (url: string, response: Response) => {
   } else {
     const error = {
       code: response.status,
-      text: response.statusText
+      text: response.statusText + JSON.stringify(response)
     };
     throw error;
   }
