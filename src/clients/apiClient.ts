@@ -5,62 +5,51 @@ import { FullmaktSendType } from '../types/fullmakt';
 
 const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 
-const parseJson = (data: any) => data.json();
+function throwFormatteError(err: any, url: string) {
+  const error = {
+    code: err.status || 404,
+    text: err.error + (err.message ? ' : ' + err.message : '')
+  };
+  logApiError(url, error);
+  throw error;
+}
 
-const parseSjekkForFeil = (response: any) => {
-  if (response.ok) {
-    return parseJson(response);
-  } else {
-    throw parseJson(response);
+async function hentJson(url: string) {
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+      credentials: 'include'
+    });
+    return await response.json();
+  } catch (err) {
+    throwFormatteError(err, url);
   }
-};
+}
 
-const hentJson = (url: string) =>
-  fetch(url, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-    credentials: 'include'
-  })
-    .then(response => parseSjekkForFeil(response))
-    .catch((err: any & HTTPError) => {
-      const error = {
-          code: err.status,
-          text: err.error + (err.message ? ' : ' + err.message : '')
-      };
-      logApiError(url, error);
-      throw error;
+async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
+  try {
+    const response = await fetch(url, {
+      method: put ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     });
+    return await response.json();
+  } catch (err) {
+    throwFormatteError(err, url);
+  }
+}
 
-const sendJson = (url: string, data: FullmaktSendType, put: boolean): any =>
-  fetch(url, {
-    method: put ? 'PUT' : 'POST',
-    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
-  })
-    .then(response => parseSjekkForFeil(response))
-    .catch((err: string & HTTPError) => {
-      const error = {
-        code: err.code || 404,
-        text: err.text
-      };
-      console.log('errror :', error);
-      logApiError(url, error);
-      throw error;
+async function deleteRequest(url: string) {
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     });
-
-const deleteRequest = (url: string): any =>
-  fetch(url, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
-  })
-    .then(response => parseSjekkForFeil(response))
-    .catch((err: string & HTTPError) => {
-      const error = {
-        code: err.code || 404,
-        text: err.text || err
-      };
-      logApiError(url, error);
-      throw error;
-    });
+    return await response.json();
+  } catch (err) {
+    throwFormatteError(err, url);
+  }
+}
 
 export const sendTilLogin = () => {
   const { pathname } = window.location;
