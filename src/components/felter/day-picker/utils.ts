@@ -23,3 +23,5 @@ export const dateOneYearAhead = new Date(
 );
 
 export const nowDateFullmakt: string = moment().toISOString();
+
+export const dateNow = new Date(Date.now());

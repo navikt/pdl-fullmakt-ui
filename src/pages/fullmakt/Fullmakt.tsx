@@ -23,6 +23,7 @@ import { addSubString, findSubString, removeSubString } from '../../utils/utils'
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import { Element } from 'nav-frontend-typografi';
 import InfoModal from '../../components/Knapper/infoModal/InfoModal';
+import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
 
 const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -64,7 +65,9 @@ const Fullmakt = () => {
       fullmaktsgiverNavn &&
       fields.gyldigFraOgMed &&
       fields.gyldigTilOgMed &&
-      fields.gyldigFraOgMed <= fields.gyldigTilOgMed
+      fields.gyldigFraOgMed <= fields.gyldigTilOgMed &&
+      fields.gyldigFeaOgMed >= nowDateFullmakt &&
+      fields.gyldigTilOgMed >= nowDateFullmakt
     ) {
       const fullmaktPageData: FullmaktPostType = {
         fullmaktsgiverNavn: fullmaktsgiverNavn,
@@ -293,11 +296,21 @@ const Fullmakt = () => {
                         </div>
                       </div>
                       <div>
-                        {fields.gyldigFraOgMed &&
+                        {submitted &&
+                          fields.gyldigFraOgMed &&
                           fields.gyldigTilOgMed &&
                           fields.gyldigFraOgMed > fields.gyldigTilOgMed && (
                             <AlertStripeFeil>
                               "Fra og med dato" er tidligere enn "Til og med dato"
+                            </AlertStripeFeil>
+                          )}
+                        {submitted &&
+                          fields.gyldigFraOgMed &&
+                          fields.gyldigTilOgMed &&
+                          (fields.gyldigFraOgMed < nowDateFullmakt ||
+                            fields.gyldigTilOgMed < nowDateFullmakt) && (
+                            <AlertStripeFeil>
+                              "Dato kan bare være i dag eller fremover."
                             </AlertStripeFeil>
                           )}
                         {error && (

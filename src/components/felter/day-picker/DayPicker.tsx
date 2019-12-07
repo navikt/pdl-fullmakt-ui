@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import MomentLocaleUtils from 'react-day-picker/moment';
-import { formatDate, parseDate, dateOneYearAhead } from './utils';
+import { formatDate, parseDate, dateOneYearAhead, dateNow } from './utils';
 import { DayModifiers } from 'react-day-picker';
 import moment from 'moment';
 import cls from 'classnames';
@@ -21,7 +21,6 @@ interface Props {
 const DayPicker = (props: Props) => {
   const { label, onErrors, submitted, error } = props;
   const [valgtDag, settValgtDag] = useState<Date | undefined>(undefined);
-  const dateNow = new Date(Date.now());
 
   useEffect(() => {
     if (props.value) {
