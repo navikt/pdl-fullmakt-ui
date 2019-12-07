@@ -301,7 +301,7 @@ const Fullmakt = () => {
                           fields.gyldigTilOgMed &&
                           fields.gyldigFraOgMed > fields.gyldigTilOgMed && (
                             <AlertStripeFeil>
-                              "Fra og med dato" er tidligere enn "Til og med dato"
+                              Fra og med dato" er tidligere enn "Til og med dato.
                             </AlertStripeFeil>
                           )}
                         {submitted &&
@@ -310,7 +310,7 @@ const Fullmakt = () => {
                           (fields.gyldigFraOgMed < nowDateFullmakt ||
                             fields.gyldigTilOgMed < nowDateFullmakt) && (
                             <AlertStripeFeil>
-                              "Dato kan bare være i dag eller fremover."
+                              Dato kan bare være i dag eller fremover.
                             </AlertStripeFeil>
                           )}
                         {error && (
