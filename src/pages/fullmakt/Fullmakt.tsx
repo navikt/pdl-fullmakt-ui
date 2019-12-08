@@ -23,7 +23,9 @@ import { addSubString, findSubString, removeSubString } from '../../utils/utils'
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import { Element } from 'nav-frontend-typografi';
 import InfoModal from '../../components/Knapper/infoModal/InfoModal';
-import { nowDateFullmakt } from '../../components/felter/day-picker/utils';
+import moment from 'moment';
+
+const nowDateFullmakt: string = moment(moment().toISOString()).format('YYYY-MM-DD');
 
 const Fullmakt = () => {
   document.title = 'Fullmakt service - www.nav.no';
@@ -66,7 +68,7 @@ const Fullmakt = () => {
       fields.gyldigFraOgMed &&
       fields.gyldigTilOgMed &&
       fields.gyldigFraOgMed <= fields.gyldigTilOgMed &&
-      fields.gyldigFeaOgMed >= nowDateFullmakt &&
+      fields.gyldigFraOgMed >= nowDateFullmakt &&
       fields.gyldigTilOgMed >= nowDateFullmakt
     ) {
       const fullmaktPageData: FullmaktPostType = {
