@@ -48,7 +48,7 @@ const Fullmakt = () => {
 
   const initialValues = fullmaktData
     ? {
-        fullmektigNavn: fullmaktData.fullmektigNavn || 'Default navn ',
+        fullmektigsNavn: fullmaktData.fullmektigsNavn || 'Default navn ',
         fullmektigFodselsnr: fullmaktData.fullmektig || '',
         omraade: fullmaktData.omraade,
         gyldigFraOgMed: fullmaktData.gyldigFraOgMed || '',
@@ -73,7 +73,7 @@ const Fullmakt = () => {
     ) {
       const fullmaktPageData: FullmaktPostType = {
         fullmaktsgiverNavn: fullmaktsgiverNavn,
-        fullmektigNavn: fields.fullmektigNavn || 'Default navn',
+        fullmektigsNavn: fields.fullmektigsNavn || 'Default navn',
         fullmektig: fields.fullmektigFodselsnr,
         omraade: fields.omraade,
         gyldigFraOgMed: fields.gyldigFraOgMed,
@@ -165,9 +165,9 @@ const Fullmakt = () => {
                               <Felt
                                 label={'Navn'}
                                 submitted={submitted}
-                                value={fields.fullmektigNavn}
-                                error={errors.fullmektigNavn}
-                                onChange={v => setField({ fullmektigNavn: v })}
+                                value={fields.fullmektigsNavn}
+                                error={errors.fullmektigsNavn}
+                                onChange={v => setField({ fullmektigsNavn: v })}
                                 disabled={!!fullmaktId}
                                 placeholder='Fornavn Etternavn'
                                 hjelpetekst={

@@ -8,7 +8,7 @@ export type FetchFullmakt =
 export type FullmaktViewType = {
   fullmaktsgiverNavn: string;
   fullmaktsgiverFodselsnr: string;
-  fullmektigNavn: string;
+  fullmektigsNavn: string;
   fullmektigFodselsnr: string;
   omraade: string;
   gyldigFraOgMed: string;
@@ -35,7 +35,7 @@ export type FullmaktPutType = FullmaktPostType & {
 export type FullmaktPostType = {
   fullmaktsgiverNavn: string;
   // fullmaktsgiver: string;
-  fullmektigNavn: string;
+  fullmektigsNavn: string;
   fullmektig: string;
   omraade: string;
   gyldigFraOgMed: string;

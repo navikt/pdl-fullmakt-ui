@@ -138,7 +138,7 @@ const Frontpage = () => {
                           <div className='frontpage__input-container'>
                             <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
-                              {(f.fullmektigNavn || '') + ' (' + f.fullmektig + ')'}
+                              {(f.fullmektigsNavn || '') + ' (' + f.fullmektig + ')'}
                             </Normaltekst>
                           </div>
                           <div className='frontpage__input-container'>

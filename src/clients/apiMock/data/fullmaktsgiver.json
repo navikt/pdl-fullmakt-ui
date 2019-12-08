@@ -11,7 +11,7 @@
     "omraade": "*",
     "gyldigFraOgMed": "2018-11-30",
     "gyldigTilOgMed": "2020-12-31",
-    "fullmektigNavn": "Test navn",
+    "fullmektigsNavn": "Test navn",
     "fullmaktsgiverNavn": "Fullmaktsgiver Navn"
   },
   {
@@ -26,7 +26,7 @@
     "omraade": "AAP;DAG;FOS",
     "gyldigFraOgMed": "2019-12-31",
     "gyldigTilOgMed": "2020-12-31",
-    "fullmektigNavn": "Abc Xyz",
+    "fullmektigsNavn": "Abc Xyz",
     "fullmaktsgiverNavn": "Fullmaktsgiver Navn"
   },
   {
@@ -41,7 +41,7 @@
     "omraade": "AAP;DAG;FOS",
     "gyldigFraOgMed": "2019-12-31",
     "gyldigTilOgMed": "2020-12-31",
-    "fullmektigNavn": "Abcdefg Xyzdfdsfd",
+    "fullmektigsNavn": "Abcdefg Xyzdfdsfd",
     "fullmaktsgiverNavn": "Fullmaktsgiver Navn"
   },
   {
@@ -56,7 +56,7 @@
     "omraade": "AAP;DAG;FOS",
     "gyldigFraOgMed": "2019-12-31",
     "gyldigTilOgMed": "2020-12-31",
-    "fullmektigNavn": "Sdasd Zdfdfsdfdf",
+    "fullmektigsNavn": "Sdasd Zdfdfsdfdf",
     "fullmaktsgiverNavn": "Fullmaktsgiver Navn"
   }
 ]

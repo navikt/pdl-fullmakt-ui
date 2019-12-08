@@ -1,5 +1,5 @@
 export const fullmaktFormConfig = {
-  fullmektigNavn: {
+  fullmektigsNavn: {
     isRequired: 'Fullmektigens navn er påkrevd'
   },
   fullmektigFodselsnr: {
