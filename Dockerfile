@@ -1,6 +1,6 @@
 FROM node:11-alpine
 # RUN apk add --no-cache bash
-ENV NODE_ENV production
+ENV NODE_fullmektigsNavn production
 
 WORKDIR usr/src/app
 COPY server server/
