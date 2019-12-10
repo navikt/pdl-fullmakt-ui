@@ -52,7 +52,7 @@ export const setUpMock = async () => {
     );
   mockUnleash &&
     fetchMock.get(
-      `${apiUrl}/unleash`,
+      `${apiUrl}/personopplysninger-api/feature-toggles?feature=pdl-fullmakt`,
       delay(10, 50).then(() => unleash)
     );
 };

@@ -88,7 +88,7 @@ export const sendTilLogin = () => {
   }
 };
 
-export const fetchUnleash = () => hentJson(`${apiUrl}/unleash`);
+export const fetchUnleash = () => hentJson(`${apiUrl}/personopplysninger-api/feature-toggles?feature=pdl-fullmakt`);
 
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
