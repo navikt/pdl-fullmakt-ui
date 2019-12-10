@@ -88,6 +88,8 @@ export const sendTilLogin = () => {
   }
 };
 
+export const fetchUnleash = () => hentJson(`${apiUrl}/unleash`);
+
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
 export const fetchAuthInfo = () => hentJson(`${baseUrl}/innloggingslinje-api/auth`);

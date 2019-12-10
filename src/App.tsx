@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Frontpage from './pages/frontpage/Frontpage';
+import AlertStripe from 'nav-frontend-alertstriper';
 import PageNotFound from './pages/404/404';
 import {
   fetchAuthInfo,
@@ -8,7 +9,8 @@ import {
   fetchFodselsnr,
   fetchFullmaktsgiver,
   fetchFullmektig,
-  fetchOmraade
+  fetchOmraade,
+  fetchUnleash
 } from './clients/apiClient';
 import { useStore } from './providers/Provider';
 import { AuthInfo } from './types/authInfo';
@@ -21,10 +23,11 @@ import { FullmaktType } from './types/fullmakt';
 import WithAuth from './providers/auth/Auth';
 import { Omraade } from './types/omraade';
 import { transformData } from './utils/utils';
+import { Unleash } from './types/unleash';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
-  const [{ auth }, dispatch] = useStore();
+  const [{ auth, unleash }, dispatch] = useStore();
 
   useEffect(() => {
     if (!(auth.status === 'RESULT' && auth.data.authenticated))
@@ -78,25 +81,52 @@ const App = () => {
                   });
               })
               .catch((error: HTTPError) => console.error(error));
+            fetchUnleash()
+              .then((unleash: Unleash) => {
+                dispatch({
+                  type: 'SETT_UNLEASH',
+                  payload: { unleash: unleash['pdl-fullmakt'] }
+                });
+              })
+              .catch((error: HTTPError) => {
+                console.error(error);
+                dispatch({
+                  type: 'SETT_UNLEASH',
+                  payload: { unleash: false }
+                });
+              });
           }
         })
         .catch((error: HTTPError) => console.error(error));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Router>
-      <WithAuth>
-        <ScrollToTop>
-          <Switch>
-            <Route exact path={`(|${baseUrl})`} component={Frontpage} />
-            <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
-            <Route exact path={`${baseUrl}/fullmakt/:fullmaktId`} component={Fullmakt} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </ScrollToTop>
-      </WithAuth>
-    </Router>
+    <>
+      {!unleash ? (
+        <AlertStripe type='feil'>
+          Vi har for øyeblikket tekniske problemer med disse sidene.
+        </AlertStripe>
+      ) : (
+        <Router>
+          <WithAuth>
+            <ScrollToTop>
+              <Switch>
+                <Route exact path={`(|${baseUrl})`} component={Frontpage} />
+                <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
+                <Route
+                  exact
+                  path={`${baseUrl}/fullmakt/:fullmaktId`}
+                  component={Fullmakt}
+                />
+                <Route component={PageNotFound} />
+              </Switch>
+            </ScrollToTop>
+          </WithAuth>
+        </Router>
+      )}
+    </>
   );
 };
 

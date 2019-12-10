@@ -6,6 +6,7 @@ import Environment from '../../utils/Environments';
 import fullmaktsgiver from './data/fullmaktsgiver.json';
 import fullmektig from './data/fullmektig.json';
 import omraade from './data/omraade.json';
+import unleash from './data/unleash.json';
 
 const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
 fetchMock.config.fallbackToNetwork = true;
@@ -16,6 +17,8 @@ const mockKontaktInfo = true;
 const mockFullmaktsgiver = true;
 const mockFullmektig = true;
 const mockOmraade = true;
+const mockUnleash = true;
+
 export const setUpMock = async () => {
   mockAuthInfo &&
     fetchMock.get(
@@ -46,6 +49,11 @@ export const setUpMock = async () => {
     fetchMock.get(
       `${apiUrl}/omraade`,
       delay(10, 50).then(() => omraade)
+    );
+  mockUnleash &&
+    fetchMock.get(
+      `${apiUrl}/unleash`,
+      delay(10, 50).then(() => unleash)
     );
 };
 

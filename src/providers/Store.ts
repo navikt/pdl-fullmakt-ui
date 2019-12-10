@@ -7,6 +7,7 @@ import { FetchFullmakt, FullmaktType } from '../types/fullmakt';
 import { FetchOmraade, Omraade } from '../types/omraade';
 
 export const initialState = {
+  unleash: false,
   fodselsnr: '',
   language: sprak,
   locale: 'nb' as 'nb',
@@ -18,6 +19,7 @@ export const initialState = {
 };
 
 export interface Store {
+  unleash: boolean;
   locale: 'nb';
   language: Sprak;
   auth: FetchAuthInfo;
@@ -29,6 +31,12 @@ export interface Store {
 }
 
 export type Action =
+  | {
+      type: 'SETT_UNLEASH';
+      payload: {
+        unleash: boolean;
+      };
+    }
   | {
       type: 'SETT_AUTH_RESULT';
       payload: AuthInfo;
@@ -74,6 +82,11 @@ export type Action =
 
 export const reducer = (state: Store, action: Action) => {
   switch (action.type) {
+    case 'SETT_UNLEASH':
+      return {
+        ...state,
+        unleash: action.payload.unleash
+      };
     case 'SETT_AUTH_RESULT':
       return {
         ...state,
