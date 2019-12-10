@@ -35,6 +35,20 @@ const App = () => {
         .then((authInfo: AuthInfo) => {
           dispatch({ type: 'SETT_AUTH_RESULT', payload: authInfo });
           if (authInfo.authenticated) {
+            fetchUnleash()
+              .then((unleash: Unleash) => {
+                dispatch({
+                  type: 'SETT_UNLEASH',
+                  payload: { unleash: unleash['pdl-fullmakt'] }
+                });
+              })
+              .catch((error: HTTPError) => {
+                console.error(error);
+                dispatch({
+                  type: 'SETT_UNLEASH',
+                  payload: { unleash: false }
+                });
+              });
             fetchKontaktInfo()
               .then((kontaktInfo: KontaktInfo) =>
                 dispatch({
@@ -81,20 +95,6 @@ const App = () => {
                   });
               })
               .catch((error: HTTPError) => console.error(error));
-            fetchUnleash()
-              .then((unleash: Unleash) => {
-                dispatch({
-                  type: 'SETT_UNLEASH',
-                  payload: { unleash: unleash['pdl-fullmakt'] }
-                });
-              })
-              .catch((error: HTTPError) => {
-                console.error(error);
-                dispatch({
-                  type: 'SETT_UNLEASH',
-                  payload: { unleash: false }
-                });
-              });
           }
         })
         .catch((error: HTTPError) => console.error(error));
@@ -104,7 +104,8 @@ const App = () => {
 
   return (
     <>
-      {!unleash && (auth.status === 'RESULT' && auth.data.authenticated) &&
+      {!unleash &&
+      auth.status === 'RESULT' && auth.data.authenticated &&
       !(
         window.location.host.includes('localhost') // ||
         // window.location.host.includes('q0.nav.no')
