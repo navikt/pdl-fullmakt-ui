@@ -107,9 +107,9 @@ const App = () => {
       {!unleash &&
       !(
         window.location.host.includes('localhost') // ||
-       // window.location.host.includes('q0.nav.no')
+        // window.location.host.includes('q0.nav.no')
       ) ? (
-        <AlertStripe type='feil'>
+        <AlertStripe type='feil' style={{ marginTop: '10px' }}>
           Vi har for øyeblikket tekniske problemer med disse sidene.
         </AlertStripe>
       ) : (
