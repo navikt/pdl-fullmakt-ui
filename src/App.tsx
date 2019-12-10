@@ -104,7 +104,7 @@ const App = () => {
 
   return (
     <>
-      {!unleash &&
+      {!unleash && (auth.status === 'RESULT' && auth.data.authenticated) &&
       !(
         window.location.host.includes('localhost') // ||
         // window.location.host.includes('q0.nav.no')
