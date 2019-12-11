@@ -24,6 +24,9 @@ export type FullmaktOtherType = {
   opphoert?: boolean;
   fullmaktsgiver: string;
   fullmektig: string;
+  fullmaktUuid: string;
+  opplysningsId: string;
+  endringsId: number;
 };
 
 export type FullmaktSendType = FullmaktPutType | FullmaktPostType;

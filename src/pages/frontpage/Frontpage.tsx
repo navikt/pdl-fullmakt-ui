@@ -253,7 +253,7 @@ const Frontpage = () => {
               </div>
             </div>
             <div>
-              {error && <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>}
+              {error && <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>}
             </div>
           </Box>
         </div>

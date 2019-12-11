@@ -105,13 +105,14 @@ const App = () => {
   return (
     <>
       {!unleash &&
-      auth.status === 'RESULT' && auth.data.authenticated &&
+      auth.status === 'RESULT' &&
+      auth.data.authenticated &&
       !(
         window.location.host.includes('localhost') // ||
         // window.location.host.includes('q0.nav.no')
       ) ? (
         <AlertStripe type='feil' style={{ marginTop: '10px' }}>
-          Vi har for øyeblikket tekniske problemer med disse sidene.
+          Denne siden er dessverre ikke tilgjengelig for øyeblikket.
         </AlertStripe>
       ) : (
         <Router>

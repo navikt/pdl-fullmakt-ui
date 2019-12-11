@@ -125,10 +125,10 @@ const Fullmakt = () => {
             initialValues={initialValues}
           >
             {({ errors, fields, submitted, setField, setError }) => {
-              console.log('fields ', JSON.stringify(fields));
-              console.log('errors ', JSON.stringify(errors));
+              // console.log('fields ', JSON.stringify(fields));
+              // console.log('errors ', JSON.stringify(errors));
               // console.log('fullmakt ', JSON.stringify(fullmaktData));
-              console.log('omraade ', JSON.stringify(omraade));
+              // console.log('omraade ', JSON.stringify(omraade));
               return (
                 <>
                   <Tilbake to={''} />
@@ -160,120 +160,122 @@ const Fullmakt = () => {
                         <div>
                           <div className='flex__rad'>{`Jeg, ${fullmaktsgiverNavn}, ønsker å gi fullmakt til:`}</div>
                           <br />
-                          <div style={{marginBottom: '10px'}}>
-                          <div className='flex__rad'>
-                            <div className='flex__kolonne-left'>
-                              <Felt
-                                label={'Navn'}
-                                submitted={submitted}
-                                value={fields.fullmektigsNavn}
-                                error={errors.fullmektigsNavn}
-                                onChange={v => setField({ fullmektigsNavn: v })}
-                                disabled={!!fullmaktId}
-                                placeholder='Fornavn Etternavn'
-                              />
-                            </div>
-                            <div className='flex__kolonne-right'>
-                              <Felt
-                                label={'Fødselsnummer (11 siffer)'}
-                                submitted={submitted}
-                                value={fields.fullmektigFodselsnr}
-                                error={errors.fullmektigFodselsnr}
-                                onChange={v => setField({ fullmektigFodselsnr: v })}
-                                disabled={!!fullmaktId}
-                              />
-                            </div>
-                          </div>
-                          </div>
-                            <div style={{marginBottom: '20px'}}>
-                          <SkjemaGruppe
-                            feil={
-                              submitted && errors.omraade
-                                ? { feilmelding: errors.omraade }
-                                : undefined
-                            }
-                          >
-                            <div>
-                              <div className='ekf__header'>
-                                <div className='skjemaelement__label'>
-                                  <div>Fullmakten gjelder:</div>
-                                </div>
-                                <HjelpetekstHoyre
-                                  tittel={''}
-                                  id={'hjelpetekst'}
-                                  type='auto'
-                                >
-                                  NAV områder for fullmakt.
-                                </HjelpetekstHoyre>
+                          <div style={{ marginBottom: '10px' }}>
+                            <div className='flex__rad'>
+                              <div className='flex__kolonne-left'>
+                                <Felt
+                                  label={'Navn'}
+                                  submitted={submitted}
+                                  value={fields.fullmektigsNavn}
+                                  error={errors.fullmektigsNavn}
+                                  onChange={v => setField({ fullmektigsNavn: v })}
+                                  disabled={!!fullmaktId}
+                                  placeholder='Fornavn Etternavn'
+                                />
                               </div>
-                              <div style={{ paddingLeft: '10px' }}>
-                                <Radio
-                                  label='Alle områder'
-                                  name={'NAV_ALL_OMRAADE'}
-                                  checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
-                                  onChange={() =>
-                                    setField({
-                                      hvemOmraade: 'NAV_ALL_OMRAADE',
-                                      omraade: '*'
-                                    })
-                                  }
+                              <div className='flex__kolonne-right'>
+                                <Felt
+                                  label={'Fødselsnummer (11 siffer)'}
+                                  submitted={submitted}
+                                  value={fields.fullmektigFodselsnr}
+                                  error={errors.fullmektigFodselsnr}
+                                  onChange={v => setField({ fullmektigFodselsnr: v })}
+                                  disabled={!!fullmaktId}
                                 />
-                                <Radio
-                                  label='Avgrenset til bestemte områder'
-                                  name={'NAV_BEGRENSET_OMRAADE'}
-                                  checked={fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'}
-                                  onChange={() =>
-                                    setField({
-                                      hvemOmraade: 'NAV_BEGRENSET_OMRAADE',
-                                      omraade: ''
-                                    })
-                                  }
-                                />
-                                <div style={{ paddingLeft: '30px' }}>
-                                  {fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE' &&
-                                    omraade &&
-                                    omraade.status === 'RESULT' &&
-                                    omraade.data.map(group => (
-                                      <div key={group.kode}>
-                                        <div>
-                                          <Element className='skjemaelement__label'>
-                                            {group.termer.no}
-                                          </Element>
-                                        </div>
-                                        <div className={'fullmakt__checkbox'}>
-                                          {group.undernoder.map(n => (
-                                            <Checkbox
-                                              className={'fullmakt__checkbox-width'}
-                                              key={n.kode}
-                                              label={n.termer.no}
-                                              checked={findSubString(
-                                                n.kode,
-                                                fields.omraade
-                                              )}
-                                              value={n.kode}
-                                              onChange={e =>
-                                                setField({
-                                                  omraade: e.target.checked
-                                                    ? addSubString(
-                                                        e.target.value,
-                                                        fields.omraade
-                                                      )
-                                                    : removeSubString(
-                                                        e.target.value,
-                                                        fields.omraade
-                                                      )
-                                                })
-                                              }
-                                            />
-                                          ))}
-                                        </div>
-                                      </div>
-                                    ))}
-                                </div>
                               </div>
                             </div>
-                          </SkjemaGruppe>
-                            </div>
+                          </div>
+                          <div style={{ marginBottom: '20px' }}>
+                            <SkjemaGruppe
+                              feil={
+                                submitted && errors.omraade
+                                  ? { feilmelding: errors.omraade }
+                                  : undefined
+                              }
+                            >
+                              <div>
+                                <div className='ekf__header'>
+                                  <div className='skjemaelement__label'>
+                                    <div>Fullmakten gjelder:</div>
+                                  </div>
+                                  <HjelpetekstHoyre
+                                    tittel={''}
+                                    id={'hjelpetekst'}
+                                    type='auto'
+                                  >
+                                    NAV områder for fullmakt.
+                                  </HjelpetekstHoyre>
+                                </div>
+                                <div style={{ paddingLeft: '10px' }}>
+                                  <Radio
+                                    label='Alle områder'
+                                    name={'NAV_ALL_OMRAADE'}
+                                    checked={fields.hvemOmraade === 'NAV_ALL_OMRAADE'}
+                                    onChange={() =>
+                                      setField({
+                                        hvemOmraade: 'NAV_ALL_OMRAADE',
+                                        omraade: '*'
+                                      })
+                                    }
+                                  />
+                                  <Radio
+                                    label='Avgrenset til bestemte områder'
+                                    name={'NAV_BEGRENSET_OMRAADE'}
+                                    checked={
+                                      fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE'
+                                    }
+                                    onChange={() =>
+                                      setField({
+                                        hvemOmraade: 'NAV_BEGRENSET_OMRAADE',
+                                        omraade: ''
+                                      })
+                                    }
+                                  />
+                                  <div style={{ paddingLeft: '30px' }}>
+                                    {fields.hvemOmraade === 'NAV_BEGRENSET_OMRAADE' &&
+                                      omraade &&
+                                      omraade.status === 'RESULT' &&
+                                      omraade.data.map(group => (
+                                        <div key={group.kode}>
+                                          <div>
+                                            <Element className='skjemaelement__label'>
+                                              {group.termer.no}
+                                            </Element>
+                                          </div>
+                                          <div className={'fullmakt__checkbox'}>
+                                            {group.undernoder.map(n => (
+                                              <Checkbox
+                                                className={'fullmakt__checkbox-width'}
+                                                key={n.kode}
+                                                label={n.termer.no}
+                                                checked={findSubString(
+                                                  n.kode,
+                                                  fields.omraade
+                                                )}
+                                                value={n.kode}
+                                                onChange={e =>
+                                                  setField({
+                                                    omraade: e.target.checked
+                                                      ? addSubString(
+                                                          e.target.value,
+                                                          fields.omraade
+                                                        )
+                                                      : removeSubString(
+                                                          e.target.value,
+                                                          fields.omraade
+                                                        )
+                                                  })
+                                                }
+                                              />
+                                            ))}
+                                          </div>
+                                        </div>
+                                      ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </SkjemaGruppe>
+                          </div>
                           <div className='flex__rad'>
                             <div className='flex__kolonne-left'>
                               <DayPicker
@@ -304,7 +306,7 @@ const Fullmakt = () => {
                           fields.gyldigTilOgMed &&
                           fields.gyldigFraOgMed > fields.gyldigTilOgMed && (
                             <AlertStripeFeil>
-                              Fra og med dato" er tidligere enn "Til og med dato.
+                              Fra-dato kan ikke være før Til-dato.
                             </AlertStripeFeil>
                           )}
                         {submitted &&
@@ -313,7 +315,7 @@ const Fullmakt = () => {
                           (fields.gyldigFraOgMed < nowDateFullmakt ||
                             fields.gyldigTilOgMed < nowDateFullmakt) && (
                             <AlertStripeFeil>
-                              Dato kan bare være i dag eller fremover.
+                                Dato kan ikke være tilbake i tid.
                             </AlertStripeFeil>
                           )}
                         {error && (

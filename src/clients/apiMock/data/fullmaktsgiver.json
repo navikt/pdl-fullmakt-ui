@@ -12,7 +12,10 @@
     "gyldigFraOgMed": "2018-11-30",
     "gyldigTilOgMed": "2020-12-31",
     "fullmektigsNavn": "Test navn",
-    "fullmaktsgiverNavn": "Fullmaktsgiver Navn"
+    "fullmaktsgiverNavn": "Fullmaktsgiver Navn",
+    "fullmaktUuid": "665df735-d1dd-4011-8be4-4419ac433e76",
+    "opplysningsId": "248170d6-291c-496a-bfcb-235ada2afe2e",
+    "endringsId": "4574"
   },
   {
     "fullmaktId": 1,
