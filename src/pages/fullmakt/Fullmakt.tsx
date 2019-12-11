@@ -112,7 +112,7 @@ const Fullmakt = () => {
             history.push(`${location.pathname}/${response && response.fullmaktId}`);
         })
         .catch((error: HTTPError) => {
-          settError(`${error.code} - ${error.text}`);
+          settError(`${error.text} - (${error.code})`);
         })
         .then(() => {
           settLoading(false);
@@ -326,7 +326,7 @@ const Fullmakt = () => {
                             </AlertStripeFeil>
                           )}
                         {error && (
-                          <AlertStripeFeil>Oi! Noe gikk galt: {error}</AlertStripeFeil>
+                          <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>
                         )}
                         {submitted && errors && (
                           <div>

@@ -90,7 +90,7 @@ const Frontpage = () => {
             });
         })
         .catch((error: HTTPError) => {
-          settError(`${error.code} - ${error.text}`);
+          settError(`${error.text} - (${error.code})`);
         })
         .then(() => {
           settLoading(false);
@@ -198,7 +198,11 @@ const Frontpage = () => {
                           </div>
                         </div>
                       </div>
-                      <div key={f.fullmaktId + 'divider'} className={'divider'} />
+                      <div
+                        key={f.fullmaktId + 'divider'}
+                        className={'divider'}
+                        style={{ marginTop: '30px' }}
+                      />
                     </div>
                   ))}
               </div>
@@ -250,7 +254,11 @@ const Frontpage = () => {
                           {omraadeKomponent(f.omraade)}
                         </div>
                       </div>
-                      <div key={f.fullmaktId + 'divider'} className={'divider'} />
+                      <div
+                        key={f.fullmaktId + 'divider'}
+                        className={'divider'}
+                        style={{ marginTop: '30px' }}
+                      />
                     </div>
                   ))}
               </div>
