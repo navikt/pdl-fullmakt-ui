@@ -43,3 +43,12 @@ export const removeSubString = (s: string, list: string): string =>
     .split(';')
     .filter(d => d !== s)
     .join(';');
+
+export const formatNavn = (sentence: String) =>
+  sentence
+    ? sentence
+        .toLowerCase()
+        .split(' ')
+        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')
+    : '';

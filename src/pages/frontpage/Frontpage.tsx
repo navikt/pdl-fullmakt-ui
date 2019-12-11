@@ -22,7 +22,7 @@ import { HTTPError } from '../../components/error/Error';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
-import { hentOmraadeDetaljer } from '../../utils/utils';
+import { formatNavn, hentOmraadeDetaljer } from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
 import Navigasjon from '../../components/Knapper/Navigering/Navigasjon';
@@ -138,7 +138,10 @@ const Frontpage = () => {
                           <div className='frontpage__input-container'>
                             <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
-                              {(f.fullmektigsNavn || '') + ' (' + f.fullmektig + ')'}
+                              {(formatNavn(f.fullmektigsNavn) || '') +
+                                ' (' +
+                                f.fullmektig +
+                                ')'}
                             </Normaltekst>
                           </div>
                           <div className='frontpage__input-container'>
@@ -228,7 +231,7 @@ const Frontpage = () => {
                           <div className={'frontpage__input-container'}>
                             <Element>Navn: &nbsp;</Element>
                             <Normaltekst>
-                              {(f.fullmaktsgiverNavn || '') +
+                              {(formatNavn(f.fullmaktsgiverNavn) || '') +
                                 ' (' +
                                 f.fullmaktsgiver +
                                 ')'}

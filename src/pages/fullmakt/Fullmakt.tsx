@@ -19,7 +19,12 @@ import DayPicker from '../../components/felter/day-picker/DayPicker';
 import Felt from '../../components/felter/input-med-hjelpetekst/InputMedHjelpetekst';
 import { Radio, Checkbox, SkjemaGruppe } from 'nav-frontend-skjema';
 import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
-import { addSubString, findSubString, removeSubString } from '../../utils/utils';
+import {
+  addSubString,
+  findSubString,
+  formatNavn,
+  removeSubString
+} from '../../utils/utils';
 import { fullmaktSkjemaURL } from '../../utils/konstanter';
 import { Element } from 'nav-frontend-typografi';
 import InfoModal from '../../components/Knapper/infoModal/InfoModal';
@@ -38,7 +43,7 @@ const Fullmakt = () => {
   const [error, settError] = useState();
   const [showHide, setShowHide] = useState(false);
   const fullmaktsgiverNavn =
-    auth.status === 'RESULT' && auth.data.authenticated && auth.data.name;
+    auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '';
 
   const fullmaktData =
     fullmatsgiver &&
@@ -158,7 +163,9 @@ const Fullmakt = () => {
                     <div className='fullmakt__content'>
                       <div className='fullmakt__ekspandert'>
                         <div>
-                          <div className='flex__rad'>{`Jeg, ${fullmaktsgiverNavn}, ønsker å gi fullmakt til:`}</div>
+                          <div className='flex__rad'>{`Jeg, ${formatNavn(
+                            fullmaktsgiverNavn
+                          )}, ønsker å gi fullmakt til:`}</div>
                           <br />
                           <div style={{ marginBottom: '10px' }}>
                             <div className='flex__rad'>
@@ -315,7 +322,7 @@ const Fullmakt = () => {
                           (fields.gyldigFraOgMed < nowDateFullmakt ||
                             fields.gyldigTilOgMed < nowDateFullmakt) && (
                             <AlertStripeFeil>
-                                Dato kan ikke være tilbake i tid.
+                              Dato kan ikke være tilbake i tid.
                             </AlertStripeFeil>
                           )}
                         {error && (
