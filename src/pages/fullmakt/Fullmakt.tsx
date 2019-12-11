@@ -151,7 +151,7 @@ const Fullmakt = () => {
                   </Veilederpanel>
                   <Box
                     id='fullmaktFrontPage'
-                    tittel='Fullmakt'
+                    tittel={fullmaktId ? 'Endre fullmakt' : 'Ny fullmakt'}
                     beskrivelse=''
                     icon={FullmaktIcon}
                   >
@@ -160,6 +160,7 @@ const Fullmakt = () => {
                         <div>
                           <div className='flex__rad'>{`Jeg, ${fullmaktsgiverNavn}, ønsker å gi fullmakt til:`}</div>
                           <br />
+                          <div style={{marginBottom: '10px'}}>
                           <div className='flex__rad'>
                             <div className='flex__kolonne-left'>
                               <Felt
@@ -170,9 +171,6 @@ const Fullmakt = () => {
                                 onChange={v => setField({ fullmektigsNavn: v })}
                                 disabled={!!fullmaktId}
                                 placeholder='Fornavn Etternavn'
-                                hjelpetekst={
-                                  'Folkeregistrert navn (slik det står i pass, førerkort etc).'
-                                }
                               />
                             </div>
                             <div className='flex__kolonne-right'>
@@ -186,6 +184,8 @@ const Fullmakt = () => {
                               />
                             </div>
                           </div>
+                          </div>
+                            <div style={{marginBottom: '20px'}}>
                           <SkjemaGruppe
                             feil={
                               submitted && errors.omraade
@@ -273,6 +273,7 @@ const Fullmakt = () => {
                               </div>
                             </div>
                           </SkjemaGruppe>
+                            </div>
                           <div className='flex__rad'>
                             <div className='flex__kolonne-left'>
                               <DayPicker
