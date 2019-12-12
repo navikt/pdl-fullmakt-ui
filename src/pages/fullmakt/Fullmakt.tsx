@@ -97,7 +97,7 @@ const Fullmakt = () => {
       settLoading(true);
       postFullmakt(sendData, !!fullmaktId)
         .then((response: any) => {
-          fetchFullmaktsgiver(fodselsnr)
+          fetchFullmaktsgiver()
             .then((fullmaktsgiver: FullmaktType[]) => {
               dispatch({
                 type: 'SETT_FULLMAKTSGIVER',

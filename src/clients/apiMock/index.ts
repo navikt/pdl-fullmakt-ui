@@ -37,12 +37,12 @@ export const setUpMock = async () => {
     );
   mockFullmaktsgiver &&
     fetchMock.get(
-      `${apiUrl}/fullmaktsgiver/12345678901`,
+      `${apiUrl}/fullmaktsgiver`,
       delay(10, 50).then(() => fullmaktsgiver)
     );
   mockFullmektig &&
     fetchMock.get(
-      `${apiUrl}/fullmektig/12345678901`,
+      `${apiUrl}/fullmektig`,
       delay(10, 50).then(() => fullmektig)
     );
   mockOmraade &&

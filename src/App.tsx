@@ -73,7 +73,7 @@ const App = () => {
                   .catch((error: HTTPError) => {
                     dispatch({ type: 'SETT_OMRAADE_ERROR', payload: error });
                   });
-                fetchFullmaktsgiver(fodselsnr && fodselsnr.fodselsnr)
+                fetchFullmaktsgiver()
                   .then((fullmaktsgiver: FullmaktType[]) =>
                     dispatch({
                       type: 'SETT_FULLMAKTSGIVER',
@@ -83,7 +83,7 @@ const App = () => {
                   .catch((error: HTTPError) => {
                     dispatch({ type: 'SETT_FULLMAKTSGIVER_ERROR', payload: error });
                   });
-                fetchFullmektig(fodselsnr && fodselsnr.fodselsnr)
+                fetchFullmektig()
                   .then((fullmektig: FullmaktType[]) =>
                     dispatch({
                       type: 'SETT_FULLMEKTIG',
