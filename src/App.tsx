@@ -109,7 +109,7 @@ const App = () => {
       auth.data.authenticated &&
       !(
         window.location.host.includes('localhost') ||
-         window.location.host.includes('q0.nav.no')
+        window.location.host.includes('q0.nav.no')
       ) ? (
         <AlertStripe type='feil' style={{ marginTop: '10px' }}>
           Denne siden er dessverre ikke tilgjengelig for øyeblikket.

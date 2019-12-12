@@ -29,7 +29,7 @@ import Navigasjon from '../../components/Knapper/Navigering/Navigasjon';
 
 const Frontpage = () => {
   document.title = 'Fullmakter - www.nav.no';
-  const [{ fullmatsgiver, fullmektig, fodselsnr, omraade }, dispatch] = useStore();
+  const [{ fullmatsgiver, fullmektig, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
   const [showHide, setShowHide] = useState(false);
   const [slettId, setSlettId] = useState(-1);
