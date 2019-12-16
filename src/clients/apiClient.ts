@@ -10,7 +10,7 @@ function throwFormatteError(err: any, url: string) {
     ? err
     : {
         code: 'Feilkode: ' + (err.status || 404) + ' – ' + err.error,
-        text: (err.message !== '' ? ' ' + err.message : '')
+        text: err.message !== '' ? ' ' + err.message : ''
       };
   logApiError(url, error);
   throw error;

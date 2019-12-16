@@ -96,6 +96,11 @@ const Frontpage = () => {
           settLoading(false);
         });
   };
+
+  const getErrorText = (f: FullmaktType) =>
+    f.opplysningsId
+      ? ''
+      : 'Det skjedde en teknisk feil ved lagring. Du kan dessverre ikke bruke eller endre fullmakten akkurat nå, men vi skal rette opp feilen så fort som mulig.';
   return (
     <>
       <div className='pagecontent'>
@@ -135,7 +140,12 @@ const Frontpage = () => {
                   fullmatsgiver.data &&
                   fullmatsgiver.data.map((f, key) => (
                     <div key={f.fullmaktId}>
-                      <div className='frontpage__container' key={f.fullmaktId}>
+                      <div
+                        className='frontpage__container'
+                        key={f.fullmaktId}
+                        style={f.opplysningsId ? {} : { backgroundColor: 'red' }}
+                      >
+                        {getErrorText(f)}
                         <div>
                           <div className='frontpage__input-container'>
                             <Element>Navn: &nbsp;</Element>
@@ -232,7 +242,12 @@ const Frontpage = () => {
                   fullmektig.data &&
                   fullmektig.data.map((f, key) => (
                     <div key={f.fullmaktId}>
-                      <div className={'frontpage__container'} key={f.fullmaktId}>
+                      <div
+                        className={'frontpage__container'}
+                        key={f.fullmaktId}
+                        style={f.opplysningsId ? {} : { backgroundColor: 'red' }}
+                      >
+                        {getErrorText(f)}
                         <div>
                           <div className={'frontpage__input-container'}>
                             <Element>Navn: &nbsp;</Element>
