@@ -112,7 +112,7 @@ const Fullmakt = () => {
             history.push(`${location.pathname}/${response && response.fullmaktId}`);
         })
         .catch((error: HTTPError) => {
-          settError(`${error.text} - (${error.code})`);
+          settError(`${error.text} (${error.code})`);
         })
         .then(() => {
           settLoading(false);
@@ -138,7 +138,8 @@ const Fullmakt = () => {
                 <>
                   <Tilbake to={''} />
                   <Veilederpanel svg={<img src={VeilederIcon} alt='Veileder' />}>
-                    Se oversikt over dine fullmakter{' '}
+                    Her kan du opprette en ny fullmakt. Du kan også se Se oversikt over
+                    dine fullmakter{' '}
                     <Link
                       to={`${baseUrl}${
                         auth.status === 'RESULT' && auth.data.authenticated
@@ -147,11 +148,11 @@ const Fullmakt = () => {
                       }`}
                       className='lenke'
                     >
-                      her
+                      oversikt over fullmaktene dine,
                     </Link>
-                    . Les mer om fullmakt og innsyn{' '}
                     <a className='lenke' href={fullmaktSkjemaURL}>
-                      her.
+                      {' '}
+                      eller lese mer om fullmakt.
                     </a>
                   </Veilederpanel>
                   <Box
@@ -210,7 +211,9 @@ const Fullmakt = () => {
                                     id={'hjelpetekst'}
                                     type='auto'
                                   >
-                                    NAV områder for fullmakt.
+                                    Velg om fullmakten skal gjelde for alle eller bare
+                                    noen områder. Et område er for eksempel dagpenger
+                                    eller foreldrepenger.
                                   </HjelpetekstHoyre>
                                 </div>
                                 <div style={{ paddingLeft: '10px' }}>
@@ -343,15 +346,12 @@ const Fullmakt = () => {
                           message={
                             <div>
                               <p>
-                                Fullmakten din er nå lagret og gir fullmektig anledning
-                                til å representere deg med de begrensinger du eventuelt
-                                har angitt. Du kan når som helst endre og avslutte (trekke
-                                tilbake) fullmakten. Denne fullmakten brukes når
-                                fullmektig skal representere deg i forhold til NAV.
+                                Fullmakten er lagret. Personen du har gitt fullmakt til
+                                kan nå snakke med NAV på dine vegne og hjelpe deg i
+                                kontakten din med NAV. Du kan når som helst endre eller
+                                stoppe fullmakten.
                               </p>
                               <p>
-                                Du finner en oversikt over fullmakter du har gitt og fått
-                                under{' '}
                                 <Link
                                   to={`${baseUrl}${
                                     auth.status === 'RESULT' && auth.data.authenticated
@@ -360,13 +360,13 @@ const Fullmakt = () => {
                                   }`}
                                   className='lenke'
                                 >
-                                  her
+                                  Se oversikt over fullmaktene dine og
                                 </Link>
                               </p>
                               <p>
-                                Du kan lese mer om digitale fullmakter{' '}
                                 <a className='lenke' href={fullmaktSkjemaURL}>
-                                  her.
+                                  {' '}
+                                  les mer om fullmakt
                                 </a>
                               </p>
                             </div>

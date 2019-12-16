@@ -23,7 +23,7 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { useHistory } from 'react-router-dom';
 import { formatNavn, hentOmraadeDetaljer } from '../../utils/utils';
-import { fullmaktSkjemaURL } from '../../utils/konstanter';
+import { navURL } from '../../utils/konstanter';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
 import Navigasjon from '../../components/Knapper/Navigering/Navigasjon';
 
@@ -90,7 +90,7 @@ const Frontpage = () => {
             });
         })
         .catch((error: HTTPError) => {
-          settError(`${error.text} - (${error.code})`);
+          settError(`${error.text} (${error.code})`);
         })
         .then(() => {
           settLoading(false);
@@ -111,11 +111,13 @@ const Frontpage = () => {
             type={'plakat'}
             kompakt
           >
-            Her kan du se en oversikt over hvem du har gitt fullmakt til, og hvem du er
-            fullmektig for. Personer som du gir fullmakt til kan få innsyn i dine saker og
-            ha dialog med NAV på vegne av deg. Les mer om fullmakt og innsyn{' '}
-            <a className='lenke' href={fullmaktSkjemaURL}>
-              her.
+            Her ser du hvem du har gitt fullmakt til, og hvem du er fullmektig for. Når du
+            gir fullmakt til en annen kan denne personen snakke med NAV på dine vegne, og
+            hjelpe deg i kontakten din med NAV. Du bestemmer selv hva fullmakten skal
+            gjelde, og hvor lenge den varer. Fullmakten kan brukes i kontakt med NAV på
+            telefon eller NAV-kontoret. Den gjelder ikke i dine innloggede tjenester på{' '}
+            <a className='lenke' href={navURL}>
+              nav.no.
             </a>
           </Veilederpanel>
           <Navigasjon

@@ -1,6 +1,7 @@
 export const fullmaktSkjemaURL =
   'https://www.nav.no/soknader/nb/person/diverse/fullmaktskjema';
 
+export const navURL = 'https://www.nav.no';
 // export const tekst =
 //  "<span>For å søke elektronisk må du velge område her. Oppfyller du ikke d
 //  isse må du <a href='https://www.nav.no/no/Person/Skjemaer-for-privatpersoner/skjemaveileder/ved

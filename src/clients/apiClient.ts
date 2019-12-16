@@ -9,8 +9,8 @@ function throwFormatteError(err: any, url: string) {
   const error = err.text
     ? err
     : {
-        code: err.status || 404,
-        text: err.error + (err.message !== '' ? ' : ' + err.message : '')
+        code: 'Feilkode: ' + (err.status || 404) + ' – ' + err.error,
+        text: (err.message !== '' ? ' ' + err.message : '')
       };
   logApiError(url, error);
   throw error;
@@ -71,8 +71,8 @@ const deleteRequest = (url: string): any =>
     .then(response => sjekkForFeil(url, response))
     .catch((err: string & HTTPError) => {
       const error = {
-        code: err.code || 404,
-        text: err.text || err
+        code: 'Feilkode: ' + (err.code || 404),
+        text: err.text
       };
       logApiError(url, error);
       throw error;
