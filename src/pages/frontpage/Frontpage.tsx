@@ -100,7 +100,7 @@ const Frontpage = () => {
   const getErrorText = (f: FullmaktType) =>
     f.opplysningsId
       ? ''
-      : 'Det skjedde en teknisk feil ved lagring. Du kan dessverre ikke bruke eller endre fullmakten akkurat nå, men vi skal rette opp feilen så fort som mulig.';
+      : 'Fullmakten er lagret ok, men videre bruk av den er ikke dessverre ikke mulig akkurat nå grunnet en teknisk feil. Feilen er varslet og vi retter opp så raskt som mulig.';
   return (
     <>
       <div className='pagecontent'>
