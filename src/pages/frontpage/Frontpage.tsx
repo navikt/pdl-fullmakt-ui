@@ -143,7 +143,11 @@ const Frontpage = () => {
                       <div
                         className='frontpage__container'
                         key={f.fullmaktId}
-                        style={f.opplysningsId ? {} : { backgroundColor: '#e79999', border: '1px solid #BA3A26'}}
+                        style={
+                          f.opplysningsId
+                            ? {}
+                            : { backgroundColor: '#e79999', border: '1px solid #BA3A26' }
+                        }
                       >
                         {getErrorText(f)}
                         <div>
@@ -166,49 +170,51 @@ const Frontpage = () => {
                           </div>
                           {omraadeKomponent(f.omraade)}
                         </div>
-                        {f.opplysningsId &&  <div className={'frontpage__knapper-container'}>
-                          <div className={'frontpage__knapper'}>
-                            <Knapp
-                              type={'flat'}
-                              htmlType={'button'}
-                              className={'frontpage__knapp'}
-                              onClick={() =>
-                                history.push(
-                                  `/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`
-                                )
-                              }
-                            >
-                              <>
-                                <EtikettLiten>Endre</EtikettLiten>
-                                <div className={'frontpage__knapp-ikon'}>
-                                  <img alt={''} src={endreIkon} />
-                                </div>
-                              </>
-                            </Knapp>
-                            <div>
+                        {f.opplysningsId && (
+                          <div className={'frontpage__knapper-container'}>
+                            <div className={'frontpage__knapper'}>
                               <Knapp
                                 type={'flat'}
                                 htmlType={'button'}
                                 className={'frontpage__knapp'}
-                                autoDisableVedSpinner={true}
-                                onClick={e => {
-                                  e.preventDefault();
-                                  setSlettId(f.fullmaktId || -1);
-                                  setShowHide(true);
-                                }}
+                                onClick={() =>
+                                  history.push(
+                                    `/person/pdl-fullmakt-ui/fullmakt/${f.fullmaktId}`
+                                  )
+                                }
                               >
-                                {loading ? (
-                                  <NavFrontendSpinner type={'S'} />
-                                ) : (
-                                  <EtikettLiten>Avslutt fullmakten</EtikettLiten>
-                                )}
-                                <div className={'frontpage__knapp-ikon'}>
-                                  <img alt={''} src={slettIkon} />
-                                </div>
+                                <>
+                                  <EtikettLiten>Endre</EtikettLiten>
+                                  <div className={'frontpage__knapp-ikon'}>
+                                    <img alt={''} src={endreIkon} />
+                                  </div>
+                                </>
                               </Knapp>
+                              <div>
+                                <Knapp
+                                  type={'flat'}
+                                  htmlType={'button'}
+                                  className={'frontpage__knapp'}
+                                  autoDisableVedSpinner={true}
+                                  onClick={e => {
+                                    e.preventDefault();
+                                    setSlettId(f.fullmaktId || -1);
+                                    setShowHide(true);
+                                  }}
+                                >
+                                  {loading ? (
+                                    <NavFrontendSpinner type={'S'} />
+                                  ) : (
+                                    <EtikettLiten>Avslutt fullmakten</EtikettLiten>
+                                  )}
+                                  <div className={'frontpage__knapp-ikon'}>
+                                    <img alt={''} src={slettIkon} />
+                                  </div>
+                                </Knapp>
+                              </div>
                             </div>
                           </div>
-                        </div>}
+                        )}
                       </div>
                       <div
                         key={f.fullmaktId + 'divider'}
@@ -245,7 +251,11 @@ const Frontpage = () => {
                       <div
                         className={'frontpage__container'}
                         key={f.fullmaktId}
-                        style={f.opplysningsId ? {} : { backgroundColor: '#e79999', border: '1px solid #BA3A26' }}
+                        style={
+                          f.opplysningsId
+                            ? {}
+                            : { backgroundColor: '#e79999', border: '1px solid #BA3A26' }
+                        }
                       >
                         {getErrorText(f)}
                         <div>

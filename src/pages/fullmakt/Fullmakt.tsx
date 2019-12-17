@@ -148,8 +148,8 @@ const Fullmakt = () => {
                       className='lenke'
                     >
                       oversikt over fullmaktene dine,
-                    </Link>
-                      {' '}eller{' '}
+                    </Link>{' '}
+                    eller{' '}
                     <a className='lenke' href={fullmaktSkjemaURL}>
                       lese mer om fullmakt.
                     </a>
@@ -360,8 +360,8 @@ const Fullmakt = () => {
                                   className='lenke'
                                 >
                                   Se oversikt over fullmaktene dine
-                                </Link>
-                                  {' '}og{' '}
+                                </Link>{' '}
+                                og{' '}
                                 <a className='lenke' href={fullmaktSkjemaURL}>
                                   les mer om fullmakt
                                 </a>
