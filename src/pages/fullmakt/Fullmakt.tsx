@@ -138,8 +138,7 @@ const Fullmakt = () => {
                 <>
                   <Tilbake to={''} />
                   <Veilederpanel svg={<img src={VeilederIcon} alt='Veileder' />}>
-                    Her kan du opprette en ny fullmakt. Du kan også se Se oversikt over
-                    dine fullmakter{' '}
+                    Her kan du opprette en ny fullmakt. Du kan også se{' '}
                     <Link
                       to={`${baseUrl}${
                         auth.status === 'RESULT' && auth.data.authenticated
@@ -150,9 +149,9 @@ const Fullmakt = () => {
                     >
                       oversikt over fullmaktene dine,
                     </Link>
+                      {' '}eller{' '}
                     <a className='lenke' href={fullmaktSkjemaURL}>
-                      {' '}
-                      eller lese mer om fullmakt.
+                      lese mer om fullmakt.
                     </a>
                   </Veilederpanel>
                   <Box
@@ -360,12 +359,10 @@ const Fullmakt = () => {
                                   }`}
                                   className='lenke'
                                 >
-                                  Se oversikt over fullmaktene dine og
+                                  Se oversikt over fullmaktene dine
                                 </Link>
-                              </p>
-                              <p>
+                                  {' '}og{' '}
                                 <a className='lenke' href={fullmaktSkjemaURL}>
-                                  {' '}
                                   les mer om fullmakt
                                 </a>
                               </p>

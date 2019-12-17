@@ -143,7 +143,7 @@ const Frontpage = () => {
                       <div
                         className='frontpage__container'
                         key={f.fullmaktId}
-                        style={f.opplysningsId ? {} : { backgroundColor: 'red' }}
+                        style={f.opplysningsId ? {} : { backgroundColor: '#e79999', border: '1px solid #BA3A26'}}
                       >
                         {getErrorText(f)}
                         <div>
@@ -166,7 +166,7 @@ const Frontpage = () => {
                           </div>
                           {omraadeKomponent(f.omraade)}
                         </div>
-                        <div className={'frontpage__knapper-container'}>
+                        {f.opplysningsId &&  <div className={'frontpage__knapper-container'}>
                           <div className={'frontpage__knapper'}>
                             <Knapp
                               type={'flat'}
@@ -208,7 +208,7 @@ const Frontpage = () => {
                               </Knapp>
                             </div>
                           </div>
-                        </div>
+                        </div>}
                       </div>
                       <div
                         key={f.fullmaktId + 'divider'}
@@ -245,7 +245,7 @@ const Frontpage = () => {
                       <div
                         className={'frontpage__container'}
                         key={f.fullmaktId}
-                        style={f.opplysningsId ? {} : { backgroundColor: 'red' }}
+                        style={f.opplysningsId ? {} : { backgroundColor: '#e79999', border: '1px solid #BA3A26' }}
                       >
                         {getErrorText(f)}
                         <div>
