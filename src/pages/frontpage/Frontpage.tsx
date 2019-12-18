@@ -33,7 +33,7 @@ const Frontpage = () => {
   const [loading, settLoading] = useState(false);
   const [showHide, setShowHide] = useState(false);
   const [slettId, setSlettId] = useState(-1);
-  const [error, settError] = useState();
+  const [error] = useState();
   const history = useHistory();
   const showOmraade = (o: string) =>
     o ? (o === '*' ? 'Alle områder' : 'Valgte områder') : '';

@@ -40,7 +40,7 @@ const Fullmakt = () => {
 
   const [{ auth, fullmatsgiver, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
-  const [error, settError] = useState();
+  const [error] = useState();
   const [showHide, setShowHide] = useState(false);
   const fullmaktsgiverNavn =
     auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '';
