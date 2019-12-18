@@ -293,10 +293,10 @@ const Frontpage = () => {
             <div>
               {error && <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>}
               {!error && fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
-                  <AlertStripeFeil>
-                    Noe gikk galt:{' '}
-                    {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}
-                  </AlertStripeFeil>
+                <AlertStripeFeil>
+                  Noe gikk galt:{' '}
+                  {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}
+                </AlertStripeFeil>
               )}
             </div>
           </Box>

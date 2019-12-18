@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import Frontpage from './pages/frontpage/Frontpage';
 import AlertStripe from 'nav-frontend-alertstriper';
 import PageNotFound from './pages/404/404';
@@ -24,6 +24,9 @@ import WithAuth from './providers/auth/Auth';
 import { Omraade } from './types/omraade';
 import { transformData } from './utils/utils';
 import { Unleash } from './types/unleash';
+import Cookies from 'js-cookie';
+import { redirectLoginCookie } from './utils/cookies';
+import Spinner from './components/spinner/Spinner';
 
 export const baseUrl = '/person/pdl-fullmakt-ui';
 const App = () => {
@@ -103,7 +106,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div className='pagecontent'>
       {!unleash &&
       auth.status === 'RESULT' &&
       auth.data.authenticated &&
@@ -117,23 +120,39 @@ const App = () => {
       ) : (
         <Router>
           <WithAuth>
-            <ScrollToTop>
-              <Switch>
-                <Route exact path={`(|${baseUrl})`} component={Frontpage} />
-                <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
-                <Route
-                  exact
-                  path={`${baseUrl}/fullmakt/:fullmaktId`}
-                  component={Fullmakt}
-                />
-                <Route component={PageNotFound} />
-              </Switch>
-            </ScrollToTop>
+            <RedirectAfterLogin>
+              <ScrollToTop>
+                <Switch>
+                  <Route exact path={`(|${baseUrl})`} component={Frontpage} />
+                  <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
+                  <Route
+                    exact
+                    path={`${baseUrl}/fullmakt/:fullmaktId`}
+                    component={Fullmakt}
+                  />
+                  <Route component={PageNotFound} />
+                </Switch>
+              </ScrollToTop>
+            </RedirectAfterLogin>
           </WithAuth>
         </Router>
       )}
-    </>
+    </div>
   );
+};
+
+const RedirectAfterLogin = (props: { children: JSX.Element }) => {
+  const [loading, settLoading] = useState<boolean>(true);
+  const history = useHistory();
+  useEffect(() => {
+    const redirectTo = Cookies.get(redirectLoginCookie);
+    if (redirectTo) {
+      Cookies.remove(redirectLoginCookie);
+      history.replace(redirectTo);
+    }
+    settLoading(false);
+  }, [history]);
+  return loading ? <Spinner /> : props.children;
 };
 
 export default App;

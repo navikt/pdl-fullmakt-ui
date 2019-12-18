@@ -24,6 +24,7 @@
     "babel-polyfill": "^6.26.0",
     "calidation": "^1.16.2",
     "fetch-mock": "^7.7.3",
+    "js-cookie": "^2.2.1",
     "less-plugin-npm-import": "^2.1.0",
     "less-watch-compiler": "^1.14.1",
     "lodash.throttle": "^4.1.1",
@@ -81,6 +82,7 @@
   "devDependencies": {
     "@types/calidation": "^1.16.0",
     "@types/classnames": "^2.2.9",
+    "@types/js-cookie": "^2.2.4",
     "@types/fetch-mock": "^7.3.2",
     "@types/jest": "24.0.15",
     "@types/node": "12.6.6",
