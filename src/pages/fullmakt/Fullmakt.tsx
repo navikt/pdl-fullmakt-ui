@@ -111,9 +111,9 @@ const Fullmakt = () => {
           !fullmaktId &&
             history.push(`${location.pathname}/${response && response.fullmaktId}`);
         })
-        .catch((error: HTTPError) => {
+        /*.catch((error: HTTPError) => {
           settError(`${error.text} (${error.code})`);
-        })
+        })*/
         .then(() => {
           settLoading(false);
         });
@@ -329,6 +329,12 @@ const Fullmakt = () => {
                           )}
                         {error && (
                           <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>
+                        )}
+                        {fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
+                          <AlertStripeFeil>
+                            Noe gikk galt:{' '}
+                            {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}
+                          </AlertStripeFeil>
                         )}
                         {submitted && errors && (
                           <div>

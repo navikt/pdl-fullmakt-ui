@@ -89,9 +89,9 @@ const Frontpage = () => {
               });
             });
         })
-        .catch((error: HTTPError) => {
+       /* .catch((error: HTTPError) => {
           settError(`${error.text} (${error.code})`);
-        })
+        })*/
         .then(() => {
           settLoading(false);
         });
@@ -292,6 +292,12 @@ const Frontpage = () => {
             </div>
             <div>
               {error && <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>}
+              {fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
+                  <AlertStripeFeil>
+                    Noe gikk galt:{' '}
+                    {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}
+                  </AlertStripeFeil>
+              )}
             </div>
           </Box>
         </div>
