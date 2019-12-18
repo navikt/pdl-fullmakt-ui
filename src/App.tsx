@@ -104,34 +104,34 @@ const App = () => {
 
   return (
     <>
-      {auth.status === 'RESULT' &&
-        auth.data.authenticated &&
-        (!unleash &&
-        !(
-          window.location.host.includes('localhost') ||
-          window.location.host.includes('q0.nav.no')
-        ) ? (
-          <AlertStripe type='feil' style={{ marginTop: '10px' }}>
-            Denne siden er dessverre ikke tilgjengelig for øyeblikket.
-          </AlertStripe>
-        ) : (
-          <Router>
-            <WithAuth>
-              <ScrollToTop>
-                <Switch>
-                  <Route exact path={`(|${baseUrl})`} component={Frontpage} />
-                  <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
-                  <Route
-                    exact
-                    path={`${baseUrl}/fullmakt/:fullmaktId`}
-                    component={Fullmakt}
-                  />
-                  <Route component={PageNotFound} />
-                </Switch>
-              </ScrollToTop>
-            </WithAuth>
-          </Router>
-        ))}
+      {!unleash &&
+      auth.status === 'RESULT' &&
+      auth.data.authenticated &&
+      !(
+        window.location.host.includes('localhost') ||
+        window.location.host.includes('q0.nav.no')
+      ) ? (
+        <AlertStripe type='feil' style={{ marginTop: '10px' }}>
+          Denne siden er dessverre ikke tilgjengelig for øyeblikket.
+        </AlertStripe>
+      ) : (
+        <Router>
+          <WithAuth>
+            <ScrollToTop>
+              <Switch>
+                <Route exact path={`(|${baseUrl})`} component={Frontpage} />
+                <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
+                <Route
+                  exact
+                  path={`${baseUrl}/fullmakt/:fullmaktId`}
+                  component={Fullmakt}
+                />
+                <Route component={PageNotFound} />
+              </Switch>
+            </ScrollToTop>
+          </WithAuth>
+        </Router>
+      )}
     </>
   );
 };
