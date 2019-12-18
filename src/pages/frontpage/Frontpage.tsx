@@ -33,7 +33,7 @@ const Frontpage = () => {
   const [loading, settLoading] = useState(false);
   const [showHide, setShowHide] = useState(false);
   const [slettId, setSlettId] = useState(-1);
-  const [error] = useState();
+  const [error, settError] = useState();
   const history = useHistory();
   const showOmraade = (o: string) =>
     o ? (o === '*' ? 'Alle områder' : 'Valgte områder') : '';
@@ -89,9 +89,9 @@ const Frontpage = () => {
               });
             });
         })
-       /* .catch((error: HTTPError) => {
+        .catch((error: HTTPError) => {
           settError(`${error.text} (${error.code})`);
-        })*/
+        })
         .then(() => {
           settLoading(false);
         });
@@ -292,7 +292,7 @@ const Frontpage = () => {
             </div>
             <div>
               {error && <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>}
-              {fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
+              {!error && fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
                   <AlertStripeFeil>
                     Noe gikk galt:{' '}
                     {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}

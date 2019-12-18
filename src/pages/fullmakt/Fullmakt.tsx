@@ -40,7 +40,7 @@ const Fullmakt = () => {
 
   const [{ auth, fullmatsgiver, fodselsnr, omraade }, dispatch] = useStore();
   const [loading, settLoading] = useState(false);
-  const [error] = useState();
+  const [error, settError] = useState();
   const [showHide, setShowHide] = useState(false);
   const fullmaktsgiverNavn =
     auth.status === 'RESULT' && auth.data.authenticated ? auth.data.name : '';
@@ -111,9 +111,9 @@ const Fullmakt = () => {
           !fullmaktId &&
             history.push(`${location.pathname}/${response && response.fullmaktId}`);
         })
-        /*.catch((error: HTTPError) => {
+        .catch((error: HTTPError) => {
           settError(`${error.text} (${error.code})`);
-        })*/
+        })
         .then(() => {
           settLoading(false);
         });
@@ -330,7 +330,7 @@ const Fullmakt = () => {
                         {error && (
                           <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>
                         )}
-                        {fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
+                        {!error && fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
                           <AlertStripeFeil>
                             Noe gikk galt:{' '}
                             {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}
