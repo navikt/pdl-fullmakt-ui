@@ -1,7 +1,7 @@
 import { Omraade, UnderNode } from '../types/omraade';
 
 export const mapSubNodes = (obj: any): any =>
-  obj.map((n: UnderNode) => ({ checked: false, label: n.termer.no, value: n.kode }));
+  obj.map((n: UnderNode) => ({ checked: false, label: n.termer.nb, value: n.kode }));
 
 export const getArrayOfNodes = (obj: any): any => Object.values(obj).map(o => o);
 
@@ -14,7 +14,7 @@ export const transformData = (omraade: any): Omraade[] =>
 export const kodeDetaljer = (kode: string, omraader: Omraade[]): string => {
   var node = omraader.find(o => o.undernoder.find(u => u.kode === kode));
   var underNode = node ? node.undernoder.find(u => u.kode === kode) : null;
-  return underNode ? underNode.termer.no : kode;
+  return underNode ? underNode.termer.nb : kode;
 };
 
 export const hentOmraadeDetaljer = (omraader: Omraade[], kodeList: string): string[] =>

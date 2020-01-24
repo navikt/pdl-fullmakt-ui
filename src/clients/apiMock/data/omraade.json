@@ -4,67 +4,67 @@
     "ARBD": {
       "kode": "ARBD",
       "termer": {
-        "no": "Arbeid"
+        "nb": "Arbeid"
       },
       "undernoder": {
         "AAP": {
           "kode": "AAP",
           "termer": {
-            "no": "Arbeidsavklaringspenger"
+            "nb": "Arbeidsavklaringspenger"
           }
         },
         "DAG": {
           "kode": "DAG",
           "termer": {
-            "no": "Dagpenger"
+            "nb": "Dagpenger"
           }
         },
         "FOS": {
           "kode": "FOS",
           "termer": {
-            "no": "Forsikring"
+            "nb": "Forsikring"
           }
         },
         "IND": {
           "kode": "IND",
           "termer": {
-            "no": "Tiltakspenger"
+            "nb": "Tiltakspenger"
           }
         },
         "SAK": {
           "kode": "SAK",
           "termer": {
-            "no": "Saksomkostninger"
+            "nb": "Saksomkostninger"
           }
         },
         "SYK": {
           "kode": "SYK",
           "termer": {
-            "no": "Sykepenger"
+            "nb": "Sykepenger"
           }
         },
         "SYM": {
           "kode": "SYM",
           "termer": {
-            "no": "Sykmelding"
+            "nb": "Sykmelding"
           }
         },
         "TSO": {
           "kode": "TSO",
           "termer": {
-            "no": "Tilleggsstønad"
+            "nb": "Tilleggsstønad"
           }
         },
         "TSR": {
           "kode": "TSR",
           "termer": {
-            "no": "Tilleggsstønad arbeidssøkere"
+            "nb": "Tilleggsstønad arbeidssøkere"
           }
         },
         "YRK": {
           "kode": "YRK",
           "termer": {
-            "no": "Yrkesskade / Menerstatning"
+            "nb": "Yrkesskade / Menerstatning"
           }
         }
       }
@@ -72,55 +72,55 @@
     "FMLI": {
       "kode": "FMLI",
       "termer": {
-        "no": "Familie"
+        "nb": "Familie"
       },
       "undernoder": {
         "BAR": {
           "kode": "BAR",
           "termer": {
-            "no": "Barnetrygd"
+            "nb": "Barnetrygd"
           }
         },
         "BID": {
           "kode": "BID",
           "termer": {
-            "no": "Bidrag"
+            "nb": "Bidrag"
           }
         },
         "ENF": {
           "kode": "ENF",
           "termer": {
-            "no": "Enslig forsørger"
+            "nb": "Enslig forsørger"
           }
         },
         "FOR": {
           "kode": "FOR",
           "termer": {
-            "no": "Foreldre- og svangerskapspenger"
+            "nb": "Foreldre- og svangerskapspenger"
           }
         },
         "GRA": {
           "kode": "GRA",
           "termer": {
-            "no": "Gravferdsstønad"
+            "nb": "Gravferdsstønad"
           }
         },
         "GRU": {
           "kode": "GRU",
           "termer": {
-            "no": "Grunn- og hjelpestønad"
+            "nb": "Grunn- og hjelpestønad"
           }
         },
         "KON": {
           "kode": "KON",
           "termer": {
-            "no": "Kontantstøtte"
+            "nb": "Kontantstøtte"
           }
         },
         "OMS": {
           "kode": "OMS",
           "termer": {
-            "no": "Omsorgspenger, Pleiepenger og opplæringspenger"
+            "nb": "Omsorgspenger, Pleiepenger og opplæringspenger"
           }
         }
       }
@@ -128,25 +128,25 @@
     "HJLPM": {
       "kode": "HJLPM",
       "termer": {
-        "no": "Hjelpemidler"
+        "nb": "Hjelpemidler"
       },
       "undernoder": {
         "BIL": {
           "kode": "BIL",
           "termer": {
-            "no": "Bil"
+            "nb": "Bil"
           }
         },
         "HEL": {
           "kode": "HEL",
           "termer": {
-            "no": "Helsetjenester og ortopediske hjelpemidler"
+            "nb": "Helsetjenester og ortopediske hjelpemidler"
           }
         },
         "HJE": {
           "kode": "HJE",
           "termer": {
-            "no": "Hjelpemidler"
+            "nb": "Hjelpemidler"
           }
         }
       }
@@ -154,49 +154,49 @@
     "OVRG": {
       "kode": "OVRG",
       "termer": {
-        "no": "Øvrig"
+        "nb": "Øvrig"
       },
       "undernoder": {
         "FAR": {
           "kode": "FAR",
           "termer": {
-            "no": "Farskap"
+            "nb": "Farskap"
           }
         },
         "MED": {
           "kode": "MED",
           "termer": {
-            "no": "Medlemskap"
+            "nb": "Medlemskap"
           }
         },
         "RPO": {
           "kode": "RPO",
           "termer": {
-            "no": "Retting av personopplysninger"
+            "nb": "Retting av personopplysninger"
           }
         },
         "RVE": {
           "kode": "RVE",
           "termer": {
-            "no": "Rettferdsvederlag"
+            "nb": "Rettferdsvederlag"
           }
         },
         "SER": {
           "kode": "SER",
           "termer": {
-            "no": "Serviceklager"
+            "nb": "Serviceklager"
           }
         },
         "TRY": {
           "kode": "TRY",
           "termer": {
-            "no": "Trygdeavgift"
+            "nb": "Trygdeavgift"
           }
         },
         "UFM": {
           "kode": "UFM",
           "termer": {
-            "no": "Unntak fra medlemskap"
+            "nb": "Unntak fra medlemskap"
           }
         }
       }
@@ -204,25 +204,25 @@
     "PENS": {
       "kode": "PENS",
       "termer": {
-        "no": "Pensjon"
+        "nb": "Pensjon"
       },
       "undernoder": {
         "PEN": {
           "kode": "PEN",
           "termer": {
-            "no": "Pensjon"
+            "nb": "Pensjon"
           }
         },
         "SUP": {
           "kode": "SUP",
           "termer": {
-            "no": "Supplerende stønad"
+            "nb": "Supplerende stønad"
           }
         },
         "UFO": {
           "kode": "UFO",
           "termer": {
-            "no": "Uføretrygd"
+            "nb": "Uføretrygd"
           }
         }
       }

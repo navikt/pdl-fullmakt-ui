@@ -13,7 +13,7 @@ export interface OmraadeAPI {
 export interface Omraade {
   kode: string;
   termer: {
-    no: string;
+    nb: string;
   };
   undernoder: UnderNode[];
 }
@@ -21,7 +21,7 @@ export interface Omraade {
 export interface UnderNode {
   kode: string;
   termer: {
-    no: string;
+    nb: string;
   };
 }
 

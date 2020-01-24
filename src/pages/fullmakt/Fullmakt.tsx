@@ -248,7 +248,7 @@ const Fullmakt = () => {
                                         <div key={group.kode}>
                                           <div>
                                             <Element className='skjemaelement__label'>
-                                              {group.termer.no}
+                                              {group.termer.nb}
                                             </Element>
                                           </div>
                                           <div className={'fullmakt__checkbox'}>
@@ -256,7 +256,7 @@ const Fullmakt = () => {
                                               <Checkbox
                                                 className={'fullmakt__checkbox-width'}
                                                 key={n.kode}
-                                                label={n.termer.no}
+                                                label={n.termer.nb}
                                                 checked={findSubString(
                                                   n.kode,
                                                   fields.omraade
