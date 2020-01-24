@@ -12,7 +12,6 @@ function throwFormatteError(err: any, url: string) {
         code: 'Feilkode: ' + (err.status || 404) + ' – ' + err.error,
         text: err.message !== '' ? ' ' + err.message : ''
       };
-  logApiError(url, error);
   throw error;
 }
 
@@ -30,6 +29,7 @@ async function hentJson(url: string) {
       throwFormatteError(json, url);
     }
   } catch (err) {
+    logApiError(url, err);
     throwFormatteError(err, url);
   }
 }
@@ -48,6 +48,7 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
       throwFormatteError(json, url);
     }
   } catch (err) {
+    logApiError(url, err);
     throwFormatteError(err, url);
   }
 }
