@@ -93,7 +93,7 @@ const Fullmakt = () => {
         : {
             ...fullmaktPageData
           };
-      console.log('Data to send = ', JSON.stringify(sendData));
+      // console.log('Data to send = ', JSON.stringify(sendData));
       settLoading(true);
       postFullmakt(sendData, !!fullmaktId)
         .then((response: any) => {

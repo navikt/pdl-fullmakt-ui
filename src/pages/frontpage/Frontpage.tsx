@@ -74,7 +74,7 @@ const Frontpage = () => {
     slettId > 0 &&
       deleteFullmakt(String(slettId))
         .then((response: any) => {
-          console.log(String(slettId) + ' is deleted with response = ', response);
+          // console.log(String(slettId) + ' is deleted with response = ', response);
           fetchFullmaktsgiver()
             .then((fullmaktsgiver: FullmaktType[]) =>
               dispatch({
