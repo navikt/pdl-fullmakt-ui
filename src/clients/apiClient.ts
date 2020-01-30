@@ -3,6 +3,7 @@ import { logApiError } from '../utils/logger';
 import { FullmaktSendType } from '../types/fullmakt';
 import { HTTPError } from '../components/error/Error';
 import Cookies from 'js-cookie';
+import { redirectLoginCookie } from '../utils/cookies';
 
 const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
 
@@ -41,9 +42,10 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
     const response = await fetch(url, {
       method: put ? 'PUT' : 'POST',
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+      credentials: 'include'
     });
-    // sjekkAuth(response);
+    sjekkAuth(response);
     if (response.ok) {
       return await response.json();
     } else {
@@ -70,9 +72,10 @@ const sjekkForFeil = (url: string, response: Response) => {
 const deleteRequest = (url: string): any =>
   fetch(url, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+    credentials: 'include'
   })
-    // .then(sjekkAuth)
+    .then(sjekkAuth)
     .then(response => sjekkForFeil(url, response))
     .catch((err: string & HTTPError) => {
       const error = {
@@ -88,7 +91,7 @@ export const sendTilLogin = () => {
   const to = window.location.pathname + window.location.hash;
   const inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
   const options = { expires: inFiveMinutes };
-  Cookies.set('redirect-etter-login', to, options);
+  Cookies.set(redirectLoginCookie, to, options);
 
   if (pathname.includes('/fullmakt')) {
     window.location.assign(`${loginUrl}?redirect=${appUrl}/fullmakt`);
