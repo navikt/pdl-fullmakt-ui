@@ -115,7 +115,7 @@ const App = () => {
         window.location.host.includes('q0.nav.no')
       ) ? (
         <AlertStripe type='feil' style={{ marginTop: '10px' }}>
-           Denne siden er dessverre ikke tilgjengelig for øyeblikket.
+          Denne siden er dessverre ikke tilgjengelig for øyeblikket.
         </AlertStripe>
       ) : (
         <Router>
