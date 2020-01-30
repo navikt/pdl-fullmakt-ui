@@ -43,7 +43,7 @@ async function sendJson(url: string, data: FullmaktSendType, put: boolean) {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     });
-    sjekkAuth(response);
+    // sjekkAuth(response);
     if (response.ok) {
       return await response.json();
     } else {
@@ -72,7 +72,7 @@ const deleteRequest = (url: string): any =>
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   })
-    .then(sjekkAuth)
+    // .then(sjekkAuth)
     .then(response => sjekkForFeil(url, response))
     .catch((err: string & HTTPError) => {
       const error = {
