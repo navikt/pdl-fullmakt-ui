@@ -8,8 +8,8 @@ export const logApiError = (url: string, err: HTTPError) => {
   const title = 'pdl-fullmakt-ui.apiclient.error';
   const tags = {};
   const fields = {
-    status: err.code,
-    statusText: err.text,
+    status: err.code || JSON.stringify(err),
+    statusText: err.text || JSON.stringify(err),
     url
   };
 
