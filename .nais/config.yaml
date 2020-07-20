@@ -2,13 +2,13 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: personopplysninger
+  name: {{reponame}}
   namespace: {{namespace}}
   labels:
-    team: pdlfullmakt
+    team: {{team}}
 spec:
   image: {{image}}:{{version}}
-  team: pdlfullmakt
+  team: {{team}}
   port: 8080
   ingresses:
   {{#each ingresses as |url|}}
