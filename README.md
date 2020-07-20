@@ -3,7 +3,7 @@
 ![Deploy-to-prod](https://github.com/navikt/pdl-fullmakt-ui/workflows/Deploy-to-prod/badge.svg) <br>
 ![Deploy-to-q0](https://github.com/navikt/pdl-fullmakt-ui/workflows/Deploy-to-q0/badge.svg)
 
-Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api). React applikasjon som skal gi brukeren innsikt i fullmakt NAV har lagret.
+Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api). <br> React applikasjon som skal gi brukeren innsikt i fullmakt NAV har lagret.
 
 ## Komme i gang
 
