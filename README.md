@@ -39,7 +39,8 @@ Obs: Unleash er kun tilgjengelig i fagsystemsonen.
 
 ## Deployering
 
-- Q0, PROD: Tag på formatet `vX.X.X`.
+- Q0: Commit på master
+- PROD: Tag på formatet `vX.X.X`.
 
 ## Logging
 
