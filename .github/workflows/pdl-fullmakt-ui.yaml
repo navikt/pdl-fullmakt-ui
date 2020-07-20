@@ -1,0 +1,47 @@
+name: Build and Deploy pdl-fullmakt-ui
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'dev/*'
+
+env:
+  IMAGE: docker.pkg.github.com/${{ github.repository }}/pdl-fullmakt-ui:${{ github.sha }}
+
+jobs:
+  build-app:
+    name: build-app
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set node environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11
+      - run: npm ci
+      #      - run: npm run test //Feiler når det ikke er tester
+      - run: npm run build
+
+      - name: Build and publish Docker image
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          docker build -t ${IMAGE} .
+          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
+          docker push ${IMAGE}
+  deploy-dev:
+    name: Deploy to NAIS dev-sbs
+    needs: build-app
+    if: startsWith(github.ref, 'refs/heads/dev')
+    #    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-sbs
+          RESOURCE: .nais/dev-sbs-nais.yaml
