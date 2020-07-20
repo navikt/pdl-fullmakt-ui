@@ -28,17 +28,18 @@ server.get(`${basePath}/internal/isAlive|isReady`, (req, res) =>
 );
 
 // Match everything except internal og static
-server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-    getDecorator()
+server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) => {
+    const namespace = req.headers.host.includes("q0") || req.headers.host.includes("dev-sbs") ? "q0" : "p";
+    getDecorator(namespace)
         .then(fragments => {
-          res.render("index.html", fragments);
+            res.render("index.html", fragments);
         })
         .catch(e => {
-          const error = `Failed to get decorator: ${e}`;
-          logger.error(error);
-          res.status(500).send(error);
+            const error = `Failed to get decorator: ${e}`;
+            logger.error(error);
+            res.status(500).send(error);
         })
-);
+});
 
 const port = process.env.PORT || 8080;
 server.listen(port, () => logger.info(`App listening on port: ${port}`));
