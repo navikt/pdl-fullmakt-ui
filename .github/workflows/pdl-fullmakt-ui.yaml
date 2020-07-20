@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 11
       - run: npm ci
-      #      - run: npm run test //Feiler når det ikke er tester
+      - run: npm run test
       - run: npm run build
 
       - name: Build and publish Docker image
@@ -35,8 +35,8 @@ jobs:
   deploy-dev:
     name: Deploy to NAIS dev-sbs
     needs: build-app
-    if: startsWith(github.ref, 'refs/heads/dev')
-        if: github.ref == 'refs/heads/master'
+    #   if: startsWith(github.ref, 'refs/heads/dev')
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
