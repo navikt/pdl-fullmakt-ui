@@ -1,8 +1,9 @@
-[![CircleCI](https://circleci.com/gh/navikt/pdl-fullmakt-ui/tree/master.svg?style=svg&circle-token=db8ea8648ef924d422a97d6760db1fd8c4f92e1b)](https://circleci.com/gh/navikt/pdl-fullmakt-ui/tree/master)
-
-
 # pdl-fullmakt-ui
-Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api)
+
+![Deploy-to-prod](https://github.com/navikt/pdl-fullmakt-ui/workflows/Deploy-to-prod/badge.svg) <br>
+![Deploy-to-q0](https://github.com/navikt/pdl-fullmakt-ui/workflows/Deploy-to-q0/badge.svg)
+
+Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api). React applikasjon som skal gi brukeren innsikt i fullmakt NAV har lagret.
 
 ## Komme i gang
 
@@ -18,29 +19,27 @@ Installer nødvendige pakker:
 npm install
 ```
 
+Start dekoratøren og mocks
+
+```
+docker-compose up -d
+```
+
 Start applikasjonen lokalt:
 
 ```
 npm start
 ```
 
+## Feature toggles
+
+Unleash er brukes til å skru av og på applikasjonen.<br>
+https://unleash.nais.adeo.no/#/features/strategies/pdl-fullmakt <br>
+Obs: Unleash er kun tilgjengelig i fagsystemsonen.
 
 ## Deployering
 
-Applikasjonen bygges automatisk til dev / https://www-q0.nav.no/person/pdl-fullmakt-ui ved merge til master eller ved manuell godkjenning i [CircleCI](https://circleci.com/gh/navikt/workflows/pdl-fullmakt-ui). <br><br>
-For å lansere applikasjonen til produksjon / https://www.nav.no/person/pdl-fullmakt-ui, benytt [npm version](https://docs.npmjs.com/cli/version) til å oppdatere package.json og lage samsvarende Git-tag. Eks:
-
-```
-npm version patch -m "Din melding"
-```
-
-Push deretter den nye versjonen til GitHub og merge til master.
-
-```
-git push && git push --tags
-```
-
-Godkjenn produksjonssettingen i [CircleCI](https://circleci.com/gh/navikt/workflows/pdl-fullmakt-ui).
+- Q0, PROD: Tag på formatet `vX.X.X`.
 
 ## Logging
 
