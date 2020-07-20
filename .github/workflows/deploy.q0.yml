@@ -44,7 +44,6 @@ jobs:
       - name: Generate nais variables
         run: |
           cat > .nais/vars.yaml <<EOF
-          namespace: q0
           ingresses:
             - https://pdl-fullmakt-ui.dev-sbs.nais.io
             - https://www-q0.nav.no/person/pdl-fullmakt-ui
