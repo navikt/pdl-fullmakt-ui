@@ -5,10 +5,10 @@ metadata:
   name: {{reponame}}
   namespace: {{namespace}}
   labels:
-    team: {{team}}
+    team: pdlfullmakt
 spec:
   image: {{image}}:{{version}}
-  team: {{team}}
+  team: pdlfullmakt
   port: 8080
   ingresses:
   {{#each ingresses as |url|}}
