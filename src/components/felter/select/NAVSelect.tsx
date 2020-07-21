@@ -31,12 +31,7 @@ interface OptionType {
 }
 
 const LoadingIndicator = () => (
-  <NavFrontendSpinner
-    type='XS'
-    negativ={true}
-    stroke={true}
-    className='KodeverkSelect__spinner'
-  />
+  <NavFrontendSpinner type='XS' className='KodeverkSelect__spinner' />
 );
 
 const DropdownIndicator = (props: any) => (
