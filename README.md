@@ -1,9 +1,14 @@
 # pdl-fullmakt-ui
 
-![Deploy-to-prod](https://github.com/navikt/pdl-fullmakt-ui/workflows/Deploy-to-prod/badge.svg) <br>
-![Deploy-to-q0](https://github.com/navikt/pdl-fullmakt-ui/workflows/Deploy-to-q0/badge.svg)
+Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api). <br> 
+Selvbetjeningsløsning for lage/endre/slette fullmakter.
 
-Frontend for NAV ny [fullmakt](https://github.com/navikt/pdl-fullmakt-api). <br> React applikasjon som skal gi brukeren innsikt i fullmakt NAV har lagret.
+## Se appen på nav.no:
+https://www.nav.no/person/pdl-fullmakt-ui/fullmakt <br> 
+Logg deg inn via ID-porten. Merk at appen har level 4 sikkerhet.
+
+## Se appen i dev-sbs:
+Q0: https://www-q0.nav.no/person/pdl-fullmakt-ui/
 
 ## Komme i gang
 
@@ -39,8 +44,8 @@ Obs: Unleash er kun tilgjengelig i fagsystemsonen.
 
 ## Deployering
 
-- Q0: Commit på master
-- PROD: Tag på formatet `vX.X.X`.
+- Q0: Commit dev/* branch
+- PROD: Commit på master
 
 ## Logging
 
