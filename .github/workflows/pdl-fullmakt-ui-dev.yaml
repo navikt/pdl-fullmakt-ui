@@ -1,4 +1,4 @@
-name: Build and Deploy pdl-fullmakt-ui
+name: Build and Deploy pdl-fullmakt-ui Dev
 
 on:
   push:
