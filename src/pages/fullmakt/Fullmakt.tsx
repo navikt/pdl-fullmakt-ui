@@ -63,7 +63,7 @@ const Fullmakt = () => {
       }
     : {};
 
-  const send = (e: FormContext) => {
+  const send = (e: FormContext<any>) => {
     const { isValid, fields } = e;
     // setShowHide(true);
     if (
