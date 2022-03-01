@@ -34,7 +34,7 @@ jobs:
         run: |
           docker build -t ${IMAGE} .
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push ${IMAGE}
+          docker push $(cat .docker_image):$(cat .docker_tag)$
   deploy-dev:
     name: Deploy to dev-gcp
     needs: build-app
