@@ -38,8 +38,8 @@ jobs:
   deploy-dev:
     name: Deploy to dev-gcp
     needs: build-app
-    if: startsWith(github.ref, 'refs/heads/dev')
-    # if: github.ref == 'refs/heads/master'
+    # if: startsWith(github.ref, 'refs/heads/dev')
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
