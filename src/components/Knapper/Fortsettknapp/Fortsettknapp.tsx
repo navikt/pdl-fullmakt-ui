@@ -8,7 +8,7 @@ interface FortsettKnappProps {
 
 const Fortsettknapp = ({ className, closeModal }: FortsettKnappProps) => {
   return (
-    <Fareknapp className={className} onClick={e => closeModal(e)} type={'standard'}>
+    <Fareknapp className={className} onClick={(e) => closeModal(e)} type={'standard'}>
       {'Ja, avslutt fullmakten'}
     </Fareknapp>
   );

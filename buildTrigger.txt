@@ -1,0 +1,10 @@
+̌## Build Trigger
+
+Gjør endringer i denne filen for å trigge bygg og deploy på github når applikasjonen ikke har kode endringer.
+ 
+Man ønsker typisk å gjøre dette hvis man har gjort feilretting eller endringer i avhengigheter som ligger under libs.
+ 
+Skriv hvorfor du trenger å trigge nytt bygg og slett gammel beskrivelse for å holde filen ryddig.
+----
+
+- redeploy som følge  av log4j sikkerhetsrisiko,appDynamic baseimage er oppdatert, og maven dependency skal være satt til trygg versjon

@@ -8,7 +8,7 @@ import fullmektig from './data/fullmektig.json';
 import omraade from './data/omraade.json';
 import unleash from './data/unleash.json';
 
-const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
+const { apiUrl, personInfoApiUrl, innloggingsstatusUrl } = Environment();
 fetchMock.config.fallbackToNetwork = true;
 
 const mockAuthInfo = true;
@@ -22,7 +22,7 @@ const mockUnleash = true;
 export const setUpMock = async () => {
   mockAuthInfo &&
     fetchMock.get(
-      `${baseUrl}/innloggingslinje-api/auth`,
+      `${innloggingsstatusUrl}/person/innloggingsstatus/auth`,
       delay(10, 50).then(() => authInfo)
     );
   mockFodselsnr &&
@@ -58,7 +58,7 @@ export const setUpMock = async () => {
 };
 
 const delay = (min: number, max: number) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, Math.random() * (max - min) + min);
   });
 };

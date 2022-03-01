@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {
+  Element,
+  Undertekst,
   Normaltekst,
   Sidetittel,
-  Undertittel,
-  Element,
-  EtikettLiten
+  Undertittel
 } from 'nav-frontend-typografi';
 import { useStore } from '../../providers/Provider';
 import { Knapp } from 'nav-frontend-knapper';
@@ -33,7 +33,7 @@ const Frontpage = () => {
   const [loading, settLoading] = useState(false);
   const [showHide, setShowHide] = useState(false);
   const [slettId, setSlettId] = useState(-1);
-  const [error, settError] = useState();
+  const [error, settError] = useState('');
   const history = useHistory();
   const showOmraade = (o: string) =>
     o ? (o === '*' ? 'Alle områder' : 'Valgte områder') : '';
@@ -49,7 +49,7 @@ const Frontpage = () => {
           Du kan finne detaljene om begrenset fullmakt informasjon nedenfor
           <div style={{ marginLeft: 20, marginTop: 0 }}>
             {omraade && omraade.status === 'RESULT' && omraade.data ? (
-              hentOmraadeDetaljer(omraade.data, omr).map(o => <li key={o}>{o}</li>)
+              hentOmraadeDetaljer(omraade.data, omr).map((o) => <li key={o}>{o}</li>)
             ) : (
               <li key={omr}>{omr}</li>
             )}
@@ -90,7 +90,7 @@ const Frontpage = () => {
             });
         })
         .catch((error: HTTPError) => {
-          settError(`${error.text} (${error.code})`);
+          settError(`${error.text}`);
         })
         .then(() => {
           settLoading(false);
@@ -124,6 +124,11 @@ const Frontpage = () => {
             <a className='lenke' href={navURL}>
               nav.no.
             </a>
+            <br />
+            <br />
+            Den digitale fullmaktsløsningen omfatter ikke sosiale tjenester. En fullmakt
+            som gjelder sosiale tjenester må leveres/sendes på papir til NAV-kontoret og
+            arkiveres der.
           </Veilederpanel>
           <Navigasjon
             showHide={showHide}
@@ -156,7 +161,7 @@ const Frontpage = () => {
                             <Normaltekst>
                               {(formatNavn(f.fullmektigsNavn) || '') +
                                 ' (' +
-                                f.fullmektig +
+                                f.fullmektig.substring(0, 6) +
                                 ')'}
                             </Normaltekst>
                           </div>
@@ -184,7 +189,7 @@ const Frontpage = () => {
                                 }
                               >
                                 <>
-                                  <EtikettLiten>Endre</EtikettLiten>
+                                  <Undertekst>Endre</Undertekst>
                                   <div className={'frontpage__knapp-ikon'}>
                                     <img alt={''} src={endreIkon} />
                                   </div>
@@ -196,7 +201,7 @@ const Frontpage = () => {
                                   htmlType={'button'}
                                   className={'frontpage__knapp'}
                                   autoDisableVedSpinner={true}
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     e.preventDefault();
                                     setSlettId(f.fullmaktId || -1);
                                     setShowHide(true);
@@ -205,7 +210,7 @@ const Frontpage = () => {
                                   {loading ? (
                                     <NavFrontendSpinner type={'S'} />
                                   ) : (
-                                    <EtikettLiten>Avslutt fullmakten</EtikettLiten>
+                                    <Undertekst>Avslutt fullmakten</Undertekst>
                                   )}
                                   <div className={'frontpage__knapp-ikon'}>
                                     <img alt={''} src={slettIkon} />
@@ -234,7 +239,7 @@ const Frontpage = () => {
                   autoDisableVedSpinner={true}
                   onClick={() => history.push('/person/pdl-fullmakt-ui/fullmakt')}
                 >
-                  <EtikettLiten>Ny fullmakt</EtikettLiten>
+                  <Undertekst>Ny fullmakt</Undertekst>
                   <div className={'frontpage__knapp-ikon'}>
                     <img alt={''} src={leggTilIkon} />
                   </div>
@@ -264,7 +269,7 @@ const Frontpage = () => {
                             <Normaltekst>
                               {(formatNavn(f.fullmaktsgiverNavn) || '') +
                                 ' (' +
-                                f.fullmaktsgiver +
+                                f.fullmaktsgiver.substring(0, 6) +
                                 ')'}
                             </Normaltekst>
                           </div>
@@ -294,8 +299,7 @@ const Frontpage = () => {
               {error && <AlertStripeFeil>Noe gikk galt: {error}</AlertStripeFeil>}
               {!error && fullmatsgiver && fullmatsgiver.status === 'ERROR' && (
                 <AlertStripeFeil>
-                  Noe gikk galt:{' '}
-                  {`${fullmatsgiver.error.text} (${fullmatsgiver.error.code})`}
+                  Noe gikk galt: {`${fullmatsgiver.error.text}`}
                 </AlertStripeFeil>
               )}
             </div>

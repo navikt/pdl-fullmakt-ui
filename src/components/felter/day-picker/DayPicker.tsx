@@ -12,10 +12,10 @@ interface Props {
   error: string | null;
   format: string;
   locale: string;
-  submitted: boolean;
+  submitted?: boolean;
   placeholder: string;
   onChange: (value: string) => void;
-  onErrors: (value: string) => void;
+  onErrors?: (value: string) => void;
 }
 
 const DayPicker = (props: Props) => {
@@ -37,11 +37,13 @@ const DayPicker = (props: Props) => {
     const input = dayPickerInput.getInput();
     const isEmpty = input.value && !input.value.trim();
     const isDisabled = modifiers.disabled === true;
-    if (nyValgtDag && !isDisabled) {
+    if (nyValgtDag) {
       props.onChange(moment(nyValgtDag).format('YYYY-MM-DD'));
     }
-    if (!nyValgtDag && !isEmpty) {
-      onErrors('Ugyldig dato');
+    if ((!nyValgtDag && !isEmpty) || isDisabled) {
+      if (onErrors) {
+        onErrors('Ugyldig dato');
+      }
     }
   };
 

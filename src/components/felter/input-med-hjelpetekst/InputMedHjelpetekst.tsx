@@ -1,42 +1,40 @@
 import React from 'react';
-import { Input, NavFrontendInputProps } from 'nav-frontend-skjema';
-import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
+import { Input, InputProps as NavFrontendInputProps } from 'nav-frontend-skjema';
+import Hjelpetekst from 'nav-frontend-hjelpetekst';
+import { Control } from 'react-hook-form/dist/types/form';
+import { FieldValues } from 'react-hook-form/dist/types/fields';
+import { Controller } from 'react-hook-form';
 
 type InputProps = Omit<NavFrontendInputProps, 'onChange'>;
 interface Props extends InputProps {
-  value: string;
-  error: string | null;
-  submitted: boolean;
-  onChange: (value: string) => void;
+  name: string;
+  control: Control<FieldValues, object>;
+  label: string;
+  value?: string;
+  placeholder?: string;
   hjelpetekst?: string;
+  disabled?: boolean;
 }
 
-const Felt = ({
-  value,
-  onChange,
-  submitted,
-  error,
-  label,
-  hjelpetekst,
-  ...restProps
-}: Props) => {
+const Felt = ({ name, control, label, placeholder, hjelpetekst, disabled }: Props) => {
   return (
     <>
       <div className='ekf__header'>
         {label && <div className='skjemaelement__label'>{label}</div>}
         {hjelpetekst && (
-          <HjelpetekstHoyre tittel={''} id={'hjelpetekst'} type='auto'>
+          <Hjelpetekst tittel={''} id={'hjelpetekst'}>
             <div>{hjelpetekst}</div>
-          </HjelpetekstHoyre>
+          </Hjelpetekst>
         )}
       </div>
       <div className='ekf__input'>
-        <Input
-          label={''}
-          value={value}
-          onChange={e => onChange(e.target.value)}
-          feil={submitted && error ? { feilmelding: error } : undefined}
-          {...restProps}
+        <Controller
+          name={name}
+          control={control}
+          defaultValue={''}
+          render={({ field }) => {
+            return <Input placeholder={placeholder} disabled={disabled} {...field} />;
+          }}
         />
       </div>
     </>

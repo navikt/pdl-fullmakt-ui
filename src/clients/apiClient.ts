@@ -5,7 +5,8 @@ import { HTTPError } from '../components/error/Error';
 import Cookies from 'js-cookie';
 import { redirectLoginCookie } from '../utils/cookies';
 
-const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl } = Environment();
+const { appUrl, loginUrl, baseUrl, apiUrl, personInfoApiUrl, innloggingsstatusUrl } =
+  Environment();
 
 function throwFormatteError(err: any, url: string) {
   const error = err.text
@@ -76,7 +77,7 @@ const deleteRequest = (url: string): any =>
     credentials: 'include'
   })
     .then(sjekkAuth)
-    .then(response => sjekkForFeil(url, response))
+    .then((response) => sjekkForFeil(url, response))
     .catch((err: string & HTTPError) => {
       const error = {
         code: 'Feilkode: ' + (err.code || 404),
@@ -114,7 +115,8 @@ export const fetchUnleash = () =>
 
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
-export const fetchAuthInfo = () => hentJson(`${baseUrl}/innloggingslinje-api/auth`);
+export const fetchAuthInfo = () =>
+  hentJson(`${innloggingsstatusUrl}/person/innloggingsstatus/auth`);
 
 export const fetchKontaktInfo = () => hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
 

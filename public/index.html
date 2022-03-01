@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <link href='%PUBLIC_URL%/favicon.ico' rel='shortcut icon' />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        content='width=device-width, initial-scale=1, shrink-to-fit=no'
+        name='viewport'
     />
-    <meta name="theme-color" content="#000000" />
+    <meta content='#000000' name='theme-color' />
     {{{NAV_SCRIPTS}}} {{{NAV_STYLES}}} {{{MEGAMENU_RESOURCES}}}
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
+    <link href='%PUBLIC_URL%/manifest.json' rel='manifest' />
+    <link href='%PUBLIC_URL%/favicon.ico' rel='shortcut icon' />
+    <link href='%PUBLIC_URL%/index.css' rel='stylesheet' />
 
-    <script type="application/javascript">
-      window.frontendlogger = {
-        info: function() {},
-        warn: function() {},
-        error: function() {},
-        event: function() {}
-      };
-      window.frontendlogger.appname = "pdl-fullmakt-ui";
+    <script type='application/javascript'>
+        window.frontendlogger = {
+            info: function() {
+            },
+            warn: function() {
+            },
+            error: function() {
+            },
+            event: function() {
+            }
+        }
+        window.frontendlogger.appname = 'pdl-fullmakt-ui'
     </script>
     <script
-      type="application/javascript"
-      src="/frontendlogger/logger.js"
+        src='/frontendlogger/logger.js'
+        type='application/javascript'
     ></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -39,24 +43,24 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Fullmakter - www.nav.no</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="pagewrapper">
-      {{{NAV_SKIPLINKS}}} {{{NAV_HEADING}}}
-      <div class="app" id="app"></div>
-    </div>
-    <div class="hodefot-footer">{{{NAV_FOOTER}}}</div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <title>Fullmakt - www.nav.no</title>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div class='pagewrapper'>
+    {{{NAV_SKIPLINKS}}} {{{NAV_HEADING}}}
+    <div class='app' id='app'></div>
+</div>
+<div class='hodefot-footer'>{{{NAV_FOOTER}}}</div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
 </html>

@@ -1,0 +1,14 @@
+app: pdl-fullmakt-ui
+namespace: pdl
+team: pdl
+ingresses: |
+  ingresses:
+    - https://www.nav.no/person/pdl-fullmakt-ui
+
+env: |
+  env:
+    - name: DEKORATOR_MILJO
+      value: prod
+    - name: REACT_APP_API_URL
+      value: https://www.nav.no/person/pdl-fullmakt-api
+

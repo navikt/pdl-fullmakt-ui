@@ -1,8 +1,6 @@
-import { HTTPError } from '../components/error/Error';
-
 const { frontendlogger } = window as any;
 
-export const logApiError = (url: string, err: HTTPError) => {
+export const logApiError = (url: string, err: any) => {
   const error = `Feil ved henting av data: ${url} - ${err.code} ${err.text}`;
 
   const title = 'pdl-fullmakt-ui.apiclient.error';

@@ -18,6 +18,9 @@
       margin: 0.5rem 0;
     }
   }
+  &__hjelpetekst {
+    padding-left: 1.25rem;
+  }
   &__ekspandert {
     padding: 1rem;
     border-radius: 0.25rem;
@@ -33,7 +36,9 @@
     background-color: white !important;
   }
 }
-
+.popover--hidden {
+  display: none;
+}
 .navigasjonLess {
   display: flex;
   flex-wrap: wrap;
@@ -74,3 +79,25 @@
   }
 }
 
+.skjemaelement__label{
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.skjemaelement--horisontal {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.skjemaelement__feilmelding {
+  font-style: italic;
+  color: @redError;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}

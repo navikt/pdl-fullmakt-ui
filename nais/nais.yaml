@@ -1,0 +1,43 @@
+# Example https://github.com/nais/naiserator/blob/master/examples/nais-max.yaml
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: {{app}}
+  namespace: {{namespace}}
+  labels:
+    team: {{team}}
+    app: {{app}}
+spec:
+  image: {{image}}
+  port: 8000
+  liveness:
+    path: person/pdl-fullmakt-ui/internal/isAlive
+    initialDelay: 20
+    timeout: 1
+    periodSeconds: 5     # How often (in seconds) to perform the probe. Default to 10 seconds
+    failureThreshold: 10 # when a Pod starts and the probe fails,
+  readiness:
+    path: person/pdl-fullmakt-ui/internal/isReady
+    initialDelay: 20
+    timeout: 1
+  prometheus:
+    enabled: false
+    path: person/pdl-fullmakt-ui/internal/metrics
+  replicas:
+    min: 2
+    max: 4
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+  accessPolicy:
+    outbound:
+      external:
+        - host: www.nav.no
+        {{outbound_external}}
+  {{ingresses}}
+  sessionAffinity: ClientIP # Sticky Session for ingress controller to prevent 404 on rollout
+  {{env}}

@@ -1,1 +1,3 @@
-export default {};
+const nb = {};
+
+export default nb;

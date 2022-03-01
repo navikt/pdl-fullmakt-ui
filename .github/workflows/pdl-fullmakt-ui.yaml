@@ -33,7 +33,7 @@ jobs:
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push ${IMAGE}
   deploy-dev:
-    name: Deploy to NAIS dev-sbs
+    name: Deploy to dev-gcp
     needs: build-app
     if: startsWith(github.ref, 'refs/heads/dev')
     # if: github.ref == 'refs/heads/master'
@@ -43,17 +43,21 @@ jobs:
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-sbs
-          RESOURCE: .nais/dev-sbs-nais.yaml
-  deploy-prod:
-    name: Deploy to NAIS prod-sbs
-    needs: build-app
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-sbs
-          RESOURCE: .nais/prod-sbs-nais.yaml
+          CLUSTER: dev-gcp
+          RESOURCE: nais/nais.yaml
+          VARS: nais/dev/vars.yaml
+          PRINT_PAYLOAD: true
+#  deploy-prod:
+#    name: Deploy to prod-gcp
+#    needs: build-app
+#    if: github.ref == 'refs/heads/master'
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: nais/deploy/actions/deploy@v1
+#        env:
+#          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+#          CLUSTER: prod-gcp
+#          RESOURCE: nais/nais.yaml
+#          VARS: nais/prod/vars.yaml
+#          PRINT_PAYLOAD: true

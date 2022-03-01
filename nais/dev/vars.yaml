@@ -1,0 +1,15 @@
+app: pdl-fullmakt-ui
+namespace: pdl
+team: pdl
+ingresses: |
+  ingresses:
+    - https://www.dev.nav.no/person/pdl-fullmakt-ui
+    - https://www-q0.nav.no/person/pdl-fullmakt-ui
+env: |
+  env:
+    - name: DEKORATOR_MILJO
+      value: dev
+    - name: REACT_APP_API_URL
+      value: https://www.dev.nav.no/person/pdl-fullmakt-api
+outbound_external: |
+  - host: dekoratoren.dev.nav.no

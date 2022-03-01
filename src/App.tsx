@@ -5,10 +5,10 @@ import AlertStripe from 'nav-frontend-alertstriper';
 import PageNotFound from './pages/404/404';
 import {
   fetchAuthInfo,
-  fetchKontaktInfo,
   fetchFodselsnr,
   fetchFullmaktsgiver,
   fetchFullmektig,
+  fetchKontaktInfo,
   fetchOmraade,
   fetchUnleash
 } from './clients/apiClient';
@@ -99,44 +99,43 @@ const App = () => {
               })
               .catch((error: HTTPError) => console.error(error));
           }
-        })
-        .catch((error: HTTPError) => console.error(error));
 
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div className='pagecontent'>
-      {!unleash &&
-      auth.status === 'RESULT' &&
-      auth.data.authenticated &&
-      !(
-        window.location.host.includes('localhost') ||
-        window.location.host.includes('q0.nav.no')
-      ) ? (
-        <AlertStripe type='feil' style={{ marginTop: '10px' }}>
-          Denne siden er dessverre ikke tilgjengelig for øyeblikket.
-        </AlertStripe>
-      ) : (
-        <Router>
-          <WithAuth>
+        { !unleash &&
+            auth.status === 'RESULT' &&
+            auth.data.authenticated &&
+            !(
+            window.location.host.includes('localhost') ||
+            window.location.host.includes('dev.nav.no') ||
+            window.location.host.includes('q0.nav.no')
+            ) ? (
+            <AlertStripe type='feil' style={{marginTop: '10px'}}>
+            Denne siden er dessverre ikke tilgjengelig for øyeblikket.
+            </AlertStripe>
+            ) : (
+            <Router>
+            <WithAuth>
             <RedirectAfterLogin>
-              <ScrollToTop>
-                <Switch>
-                  <Route exact path={`(|${baseUrl})`} component={Frontpage} />
-                  <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
-                  <Route
-                    exact
-                    path={`${baseUrl}/fullmakt/:fullmaktId`}
-                    component={Fullmakt}
-                  />
-                  <Route component={PageNotFound} />
-                </Switch>
-              </ScrollToTop>
+            <ScrollToTop>
+            <Switch>
+            <Route exact path={`(|${baseUrl})`} component={Frontpage} />
+            <Route exact path={`${baseUrl}/fullmakt`} component={Fullmakt} />
+            <Route
+            exact
+            path={`${baseUrl}/fullmakt/:fullmaktId`}
+            component={Fullmakt}
+            />
+            <Route component={PageNotFound} />
+            </Switch>
+            </ScrollToTop>
             </RedirectAfterLogin>
-          </WithAuth>
-        </Router>
-      )}
+            </WithAuth>
+            </Router>
+            )}
     </div>
   );
 };

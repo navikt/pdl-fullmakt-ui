@@ -5,7 +5,8 @@ import cls from 'classnames';
 import { NedChevron } from 'nav-frontend-chevron';
 import { Input } from 'nav-frontend-skjema';
 import { FormatOptionLabelMeta } from 'react-select/base';
-import { HjelpetekstHoyre } from 'nav-frontend-hjelpetekst';
+import Hjelpetekst from 'nav-frontend-hjelpetekst';
+import { PopoverOrientering } from 'nav-frontend-popover';
 
 interface Props {
   value: OptionType[];
@@ -19,8 +20,8 @@ interface Props {
   borderUnderFirst?: boolean;
   loading?: boolean;
   defineLabel?: (
-    option: OptionType,
-    context: FormatOptionLabelMeta<OptionType>
+    data: typeof Option,
+    context: FormatOptionLabelMeta<typeof Option>
   ) => string;
   apiData?: Object[];
 }
@@ -31,12 +32,7 @@ interface OptionType {
 }
 
 const LoadingIndicator = () => (
-  <NavFrontendSpinner
-    type='XS'
-    negativ={true}
-    stroke={true}
-    className='KodeverkSelect__spinner'
-  />
+  <NavFrontendSpinner type='XS' className='KodeverkSelect__spinner' />
 );
 
 const DropdownIndicator = (props: any) => (
@@ -59,7 +55,7 @@ const NAVSelect = (props: Props) => {
   const value =
     props.value && props.value.length > 0
       ? props.options.filter((option: OptionType) =>
-          props.value.find(v => option.value === v.value)
+          props.value.find((v) => option.value === v.value)
         )
       : [];
 
@@ -71,7 +67,7 @@ const NAVSelect = (props: Props) => {
 
   const valueFormatted: OptionType[] =
     value && value.length > 0
-      ? value.map(v => ({
+      ? value.map((v) => ({
           value: v.value || '',
           label: v.label.split(':').shift() || ''
         }))
@@ -82,39 +78,44 @@ const NAVSelect = (props: Props) => {
       <div className='KodeverkSelect__header'>
         {props.label && <div className='skjemaelement__label'>{props.label}</div>}
         {props.hjelpetekst && (
-          <HjelpetekstHoyre tittel={''} id={'hjelpetekst'}>
+          <Hjelpetekst
+            type={PopoverOrientering.OverVenstre}
+            tittel={''}
+            id={'hjelpetekst'}
+          >
             <div>
               {props.hjelpetekst}
               {props.apiData &&
-                props.apiData.map((k: any) => (
+                props.apiData.map(
+                  (k: any) => `(
                   <div key={k.kode}>
                     {k.kode} => {k.term}: {k.tekst}
                   </div>
-                ))}
+                )`
+                )}
             </div>
-          </HjelpetekstHoyre>
+          </Hjelpetekst>
         )}
       </div>
       <div className={cls('KodeverkSelect--select-wrapper')}>
         <Select
           value={valueFormatted}
           // defaultValue={valueFormatted}
-          label={props.label}
+          //label={props.label}
           placeholder='Søk...'
           classNamePrefix='KodeverkSelect'
           loadingMessage={() => 'Laster inn...'}
-          noOptionsMessage={v => `Ingen treff funnet for ${v.inputValue}...`}
+          noOptionsMessage={(v) => `Ingen treff funnet for ${v.inputValue}...`}
           className={controlClasses}
           isLoading={props.loading}
           options={props.options}
-          formatOptionLabel={props.defineLabel}
+          //  formatOptionLabel={props.defineLabel}
           // onMenuOpen={() => props.onChange(undefined)}
           components={{ LoadingIndicator, DropdownIndicator }}
           onChange={onChange as any}
-          isMulti={true}
-          clearable={false}
-          closeOnSelect={true}
-          removeSelected={false}
+          //clearable={false}
+          // closeOnSelect={true}
+          // removeSelected={false}
         />
       </div>
       {props.submitted && props.error && (
@@ -126,8 +127,8 @@ const NAVSelect = (props: Props) => {
   ) : (
     <Input
       label={props.label}
-      value={props.value && props.value.map(v => v.value)}
-      onChange={e => props.onChange([{ label: props.label, value: e.target.value }])}
+      value={props.value && props.value.map((v) => v.value)}
+      onChange={(e) => props.onChange([{ label: props.label, value: e.target.value }])}
       feil={props.submitted && props.error ? { feilmelding: props.error } : undefined}
       placeholder={'+'}
     />
