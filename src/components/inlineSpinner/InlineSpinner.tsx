@@ -1,21 +1,19 @@
-import NavFrontendSpinner from 'nav-frontend-spinner'
-import { Normaltekst } from 'nav-frontend-typografi'
+import NavFrontendSpinner from 'nav-frontend-spinner';
+import { Normaltekst } from 'nav-frontend-typografi';
 
-import './InlineSpinner.less'
+import './InlineSpinner.less';
 
 interface InlineSpinnerProps {
-    text: string
+  text: string;
 }
 
 function InlineSpinner(props: InlineSpinnerProps) {
-    return (
-        <div className="InlineSpinner">
-            <NavFrontendSpinner transparent={true} />
-            <Normaltekst className="InlineSpinner__text">
-                {props.text}
-            </Normaltekst>
-        </div>
-    )
+  return (
+    <div className='InlineSpinner'>
+      <NavFrontendSpinner transparent={true} />
+      <Normaltekst className='InlineSpinner__text'>{props.text}</Normaltekst>
+    </div>
+  );
 }
 
-export default InlineSpinner
+export default InlineSpinner;

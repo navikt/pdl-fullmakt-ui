@@ -8,7 +8,7 @@ import { Controller } from 'react-hook-form';
 type InputProps = Omit<NavFrontendInputProps, 'onChange'>;
 interface Props extends InputProps {
   name: string;
-  control: Control<FieldValues, object>;
+  control: Control<FieldValues, object | unknown>;
   label: string;
   value?: string;
   placeholder?: string;
