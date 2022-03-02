@@ -7,7 +7,7 @@ on:
       - 'dev/*'
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/pdl-fullmakt-ui:${{ github.sha }}
+  IMAGE: docker.pkg.github.com/${{ github.repository }}/pdl-fullmakt-ui2:${{ github.sha }}
 
 jobs:
   build-app:
