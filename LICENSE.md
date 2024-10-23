@@ -1,3 +1,6 @@
+Kode er flyttet til Mono-repo som ikke er åpen ennå, men vi jobber med det slik at det snart åpner.
+
+
 # The MIT License
 
 Copyright 2018 NAV (Arbeids- og velferdsdirektoratet) - The Norwegian Labour and Welfare Administration
